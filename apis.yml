@@ -29,7 +29,7 @@ apis:
       - type: Documentation
         url: https://developer.spotify.com/documentation/web-api
       - type: OpenAPI
-        url: openapispotify-openapi-original.yml
+        url: openapi/spotify-openapi-original.yml
       - type: Getting Started
         url: >-
           https://developer.spotify.com/documentation/web-api/tutorials/getting-started
@@ -61,7 +61,4 @@ maintainers:
   - FN: API Evangelist
     url: http://apievangelist.com
     email: info@apievangelist.com
-overlays:
-  - type: APIs.io Search
-    url: overlays/apis-io-search.yml
 aid: spotify
