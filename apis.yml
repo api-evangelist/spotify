@@ -35,7 +35,7 @@ apis:
     properties:
       - url: https://developer.spotify.com/documentation/web-api
         type: Documentation
-      - url: openapi/spotify-web-api-openapi.yml
+      - url: properties/spotify-web-api-openapi.yml
         type: OpenAPI
       - url: >-
           https://developer.spotify.com/documentation/web-api/tutorials/getting-started
