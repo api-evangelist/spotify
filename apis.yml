@@ -1,37 +1,35 @@
 aid: spotify
-url: 
-  https://raw.githubusercontent.com/api-search/music/main/_apis/spotify/apis.md
+url: https://raw.githubusercontent.com/api-search/music/main/_apis/spotify/apis.md
 apis:
   - aid: spotify:spotify-web-api
     name: Spotify Web API
     tags:
-      - Tracks
       - Albums
-      - Top
-      - Related
-      - Episodes
-      - Chapters
-      - Audiobooks
-      - Libraries
-      - Users
-      - Playlists
-      - Shows
-      - User
-      - Featured
-      - Categories
-      - Releases
-      - Following
-      - Artists
-      - Contains
-      - Features
       - Analysis
+      - Artists
+      - Audiobooks
       - Available
-      - Seeds
+      - Categories
+      - Chapters
+      - Contains
+      - Episodes
+      - Featured
+      - Features
+      - Following
+      - Libraries
+      - Played
       - Player
       - Playing
-      - Played
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Playlists
+      - Related
+      - Releases
+      - Seeds
+      - Shows
+      - Top
+      - Tracks
+      - User
+      - Users
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.spotify.com/documentation/web-api
     properties:
@@ -49,21 +47,18 @@ apis:
       playback.
 name: Spotify
 tags:
-  - Music
   - Audio
-image: 
-  https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  - Music
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 common:
   - url: https://developer.spotify.com/
     type: Developer
   - url: >-
       https://developer.spotify.com/documentation/web-api/tutorials/getting-started
     type: Getting Started
-  - url: 
-      https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - url: https://developer.spotify.com/documentation/web-api/concepts/authorization
     type: Authorization
-  - url: 
-      https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
     type: Rate Limits
   - url: https://developer.spotify.com/documentation/web-api/concepts/scopes
     type: Scopes
