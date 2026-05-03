@@ -1,0 +1,65 @@
+{
+  "title": "Spotify Track Structure",
+  "description": "Hierarchical field map for the Spotify Track object",
+  "type": "object",
+  "fields": [
+    {"name": "id", "type": "string", "description": "22-character Spotify ID"},
+    {"name": "uri", "type": "string", "description": "spotify:track:{id}"},
+    {"name": "href", "type": "string", "format": "uri", "description": "API endpoint URL"},
+    {"name": "name", "type": "string", "description": "Track title"},
+    {"name": "type", "type": "string", "enum": ["track"]},
+    {"name": "duration_ms", "type": "integer", "description": "Duration in milliseconds"},
+    {"name": "explicit", "type": "boolean"},
+    {"name": "is_playable", "type": "boolean"},
+    {"name": "is_local", "type": "boolean"},
+    {"name": "popularity", "type": "integer", "range": [0, 100]},
+    {"name": "preview_url", "type": "string", "description": "30-second MP3 preview URL"},
+    {"name": "track_number", "type": "integer"},
+    {"name": "disc_number", "type": "integer"},
+    {
+      "name": "external_ids",
+      "type": "object",
+      "fields": [
+        {"name": "isrc", "type": "string", "description": "International Standard Recording Code"},
+        {"name": "ean", "type": "string"},
+        {"name": "upc", "type": "string"}
+      ]
+    },
+    {
+      "name": "external_urls",
+      "type": "object",
+      "fields": [
+        {"name": "spotify", "type": "string", "format": "uri"}
+      ]
+    },
+    {
+      "name": "artists",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "fields": [
+          {"name": "id", "type": "string"},
+          {"name": "uri", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "type", "type": "string"},
+          {"name": "external_urls", "type": "object"}
+        ]
+      }
+    },
+    {
+      "name": "album",
+      "type": "object",
+      "fields": [
+        {"name": "id", "type": "string"},
+        {"name": "uri", "type": "string"},
+        {"name": "name", "type": "string"},
+        {"name": "album_type", "type": "string", "enum": ["album", "single", "compilation"]},
+        {"name": "release_date", "type": "string"},
+        {"name": "total_tracks", "type": "integer"},
+        {"name": "images", "type": "array"},
+        {"name": "artists", "type": "array"}
+      ]
+    },
+    {"name": "available_markets", "type": "array", "items": "string", "description": "ISO 3166-1 alpha-2 market codes"}
+  ]
+}

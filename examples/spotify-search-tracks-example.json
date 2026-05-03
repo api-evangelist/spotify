@@ -1,0 +1,84 @@
+{
+  "operation": "search",
+  "request": {
+    "method": "GET",
+    "url": "https://api.spotify.com/v1/search",
+    "headers": {
+      "Authorization": "Bearer {{SPOTIFY_ACCESS_TOKEN}}"
+    },
+    "parameters": {
+      "q": "Blinding Lights",
+      "type": "track",
+      "limit": 5,
+      "market": "US"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "tracks": {
+        "href": "https://api.spotify.com/v1/search?q=Blinding+Lights&type=track&limit=5&market=US",
+        "limit": 5,
+        "next": "https://api.spotify.com/v1/search?q=Blinding+Lights&type=track&limit=5&offset=5&market=US",
+        "offset": 0,
+        "previous": null,
+        "total": 20,
+        "items": [
+          {
+            "id": "0VjIjW4GlUZAMYd2vXMi3b",
+            "uri": "spotify:track:0VjIjW4GlUZAMYd2vXMi3b",
+            "name": "Blinding Lights",
+            "type": "track",
+            "duration_ms": 200040,
+            "explicit": false,
+            "popularity": 92,
+            "track_number": 9,
+            "disc_number": 1,
+            "preview_url": "https://p.scdn.co/mp3-preview/abc123",
+            "external_ids": {
+              "isrc": "USUG11904266"
+            },
+            "external_urls": {
+              "spotify": "https://open.spotify.com/track/0VjIjW4GlUZAMYd2vXMi3b"
+            },
+            "artists": [
+              {
+                "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+                "uri": "spotify:artist:1Xyo4u8uXC1ZmMpatF05PJ",
+                "name": "The Weeknd",
+                "type": "artist",
+                "external_urls": {
+                  "spotify": "https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ"
+                }
+              }
+            ],
+            "album": {
+              "id": "4yP0hdKOZPNshxUOjY0cZj",
+              "uri": "spotify:album:4yP0hdKOZPNshxUOjY0cZj",
+              "name": "After Hours",
+              "type": "album",
+              "album_type": "album",
+              "release_date": "2020-03-20",
+              "release_date_precision": "day",
+              "total_tracks": 14,
+              "artists": [
+                {
+                  "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+                  "name": "The Weeknd"
+                }
+              ],
+              "images": [
+                {
+                  "url": "https://i.scdn.co/image/ab67616d0000b273ef017e899c0547766997d874",
+                  "height": 640,
+                  "width": 640
+                }
+              ]
+            },
+            "available_markets": ["US", "CA", "GB", "AU"]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "operation": "get-information-about-the-users-current-playback",
+  "request": {
+    "method": "GET",
+    "url": "https://api.spotify.com/v1/me/player",
+    "headers": {
+      "Authorization": "Bearer {{SPOTIFY_ACCESS_TOKEN}}"
+    },
+    "parameters": {
+      "market": "US"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "device": {
+        "id": "abc123def456",
+        "is_active": true,
+        "is_private_session": false,
+        "is_restricted": false,
+        "name": "My Phone",
+        "type": "Smartphone",
+        "volume_percent": 75,
+        "supports_volume": true
+      },
+      "shuffle_state": false,
+      "smart_shuffle": false,
+      "repeat_state": "off",
+      "timestamp": 1746192000000,
+      "context": {
+        "type": "playlist",
+        "uri": "spotify:playlist:3cEYpjA9oz9GiPac4AsH4n",
+        "href": "https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/3cEYpjA9oz9GiPac4AsH4n"
+        }
+      },
+      "progress_ms": 47200,
+      "is_playing": true,
+      "item": {
+        "id": "0VjIjW4GlUZAMYd2vXMi3b",
+        "uri": "spotify:track:0VjIjW4GlUZAMYd2vXMi3b",
+        "name": "Blinding Lights",
+        "type": "track",
+        "duration_ms": 200040,
+        "explicit": false,
+        "artists": [
+          {
+            "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+            "name": "The Weeknd"
+          }
+        ],
+        "album": {
+          "id": "4yP0hdKOZPNshxUOjY0cZj",
+          "name": "After Hours",
+          "album_type": "album"
+        }
+      },
+      "currently_playing_type": "track",
+      "actions": {
+        "disallows": {
+          "resuming": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.spotify.com/schemas/playlist",
+  "title": "Spotify Playlist",
+  "description": "Schema for a Spotify playlist object, including track listing, owner, and metadata.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Spotify ID for the playlist",
+      "examples": ["3cEYpjA9oz9GiPac4AsH4n"]
+    },
+    "uri": {
+      "type": "string",
+      "description": "The Spotify URI for the playlist",
+      "pattern": "^spotify:playlist:[a-zA-Z0-9]{22}$"
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "Link to the Web API endpoint providing full playlist details"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the playlist",
+      "examples": ["My Awesome Playlist"]
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "The playlist description"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["playlist"]
+    },
+    "public": {
+      "type": ["boolean", "null"],
+      "description": "Whether the playlist is public (visible to others)"
+    },
+    "collaborative": {
+      "type": "boolean",
+      "description": "Whether other users can add/remove tracks from the playlist"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "description": "The version identifier for the current playlist"
+    },
+    "followers": {
+      "type": "object",
+      "description": "Information about the followers of the playlist",
+      "properties": {
+        "href": {"type": ["string", "null"]},
+        "total": {"type": "integer", "minimum": 0}
+      }
+    },
+    "owner": {
+      "type": "object",
+      "description": "The user who owns the playlist",
+      "properties": {
+        "id": {"type": "string"},
+        "uri": {"type": "string"},
+        "href": {"type": "string", "format": "uri"},
+        "display_name": {"type": ["string", "null"]},
+        "type": {"type": "string", "enum": ["user"]},
+        "external_urls": {
+          "type": "object",
+          "properties": {
+            "spotify": {"type": "string", "format": "uri"}
+          }
+        }
+      },
+      "required": ["id"]
+    },
+    "tracks": {
+      "type": "object",
+      "description": "The tracks in the playlist (paginated)",
+      "properties": {
+        "href": {"type": "string", "format": "uri"},
+        "total": {"type": "integer", "minimum": 0},
+        "limit": {"type": "integer"},
+        "offset": {"type": "integer"},
+        "next": {"type": ["string", "null"]},
+        "previous": {"type": ["string", "null"]},
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "added_at": {"type": ["string", "null"], "format": "date-time"},
+              "added_by": {
+                "type": ["object", "null"],
+                "properties": {
+                  "id": {"type": "string"},
+                  "uri": {"type": "string"},
+                  "type": {"type": "string"}
+                }
+              },
+              "is_local": {"type": "boolean"},
+              "track": {
+                "description": "The track or episode in this playlist position"
+              }
+            }
+          }
+        }
+      }
+    },
+    "images": {
+      "type": "array",
+      "description": "Playlist cover art images",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {"type": "string", "format": "uri"},
+          "height": {"type": ["integer", "null"]},
+          "width": {"type": ["integer", "null"]}
+        },
+        "required": ["url"]
+      }
+    },
+    "external_urls": {
+      "type": "object",
+      "properties": {
+        "spotify": {"type": "string", "format": "uri"}
+      }
+    }
+  },
+  "required": ["id", "uri", "name", "type", "owner"]
+}

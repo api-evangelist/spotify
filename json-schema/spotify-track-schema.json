@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.spotify.com/schemas/track",
+  "title": "Spotify Track",
+  "description": "Schema for a Spotify track object, including metadata, audio features, and linked resources.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Spotify ID for the track",
+      "pattern": "^[a-zA-Z0-9]{22}$",
+      "examples": ["4iV5W9uYEdYUVa79Axb7Rh"]
+    },
+    "uri": {
+      "type": "string",
+      "description": "The Spotify URI for the track",
+      "pattern": "^spotify:track:[a-zA-Z0-9]{22}$",
+      "examples": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh"]
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "A link to the Web API endpoint providing full details of the track"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the track",
+      "examples": ["Blinding Lights"]
+    },
+    "type": {
+      "type": "string",
+      "enum": ["track"],
+      "description": "The object type: track"
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The track length in milliseconds",
+      "examples": [200040]
+    },
+    "explicit": {
+      "type": "boolean",
+      "description": "Whether or not the track has explicit lyrics"
+    },
+    "is_playable": {
+      "type": "boolean",
+      "description": "Whether the track is playable in the given market"
+    },
+    "is_local": {
+      "type": "boolean",
+      "description": "Whether the track is a local file"
+    },
+    "popularity": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "The popularity of the track (0-100, 100 being most popular)"
+    },
+    "preview_url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "A URL to a 30-second preview MP3 of the track"
+    },
+    "track_number": {
+      "type": "integer",
+      "description": "The number of the track on its album"
+    },
+    "disc_number": {
+      "type": "integer",
+      "description": "The disc number (usually 1 unless the album consists of more than one disc)"
+    },
+    "external_ids": {
+      "type": "object",
+      "description": "Known external IDs for the track",
+      "properties": {
+        "isrc": {"type": "string", "description": "International Standard Recording Code"},
+        "ean": {"type": "string", "description": "International Article Number"},
+        "upc": {"type": "string", "description": "Universal Product Code"}
+      }
+    },
+    "external_urls": {
+      "type": "object",
+      "description": "Known external URLs for the track",
+      "properties": {
+        "spotify": {
+          "type": "string",
+          "format": "uri",
+          "description": "The Spotify URL for the track"
+        }
+      }
+    },
+    "artists": {
+      "type": "array",
+      "description": "The artists who performed the track",
+      "items": {
+        "$ref": "#/$defs/SimplifiedArtist"
+      }
+    },
+    "album": {
+      "$ref": "#/$defs/SimplifiedAlbum"
+    },
+    "available_markets": {
+      "type": "array",
+      "description": "Markets where the track is available (ISO 3166-1 alpha-2 codes)",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{2}$"
+      }
+    }
+  },
+  "required": ["id", "uri", "name", "type", "duration_ms", "artists"],
+  "$defs": {
+    "SimplifiedArtist": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "uri": {"type": "string"},
+        "href": {"type": "string", "format": "uri"},
+        "name": {"type": "string"},
+        "type": {"type": "string", "enum": ["artist"]},
+        "external_urls": {
+          "type": "object",
+          "properties": {
+            "spotify": {"type": "string", "format": "uri"}
+          }
+        }
+      },
+      "required": ["id", "name"]
+    },
+    "SimplifiedAlbum": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "uri": {"type": "string"},
+        "href": {"type": "string", "format": "uri"},
+        "name": {"type": "string"},
+        "type": {"type": "string", "enum": ["album"]},
+        "album_type": {
+          "type": "string",
+          "enum": ["album", "single", "compilation"]
+        },
+        "release_date": {"type": "string"},
+        "release_date_precision": {
+          "type": "string",
+          "enum": ["year", "month", "day"]
+        },
+        "total_tracks": {"type": "integer"},
+        "images": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/Image"}
+        },
+        "artists": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/SimplifiedArtist"}
+        }
+      },
+      "required": ["id", "name", "album_type"]
+    },
+    "Image": {
+      "type": "object",
+      "properties": {
+        "url": {"type": "string", "format": "uri"},
+        "height": {"type": ["integer", "null"]},
+        "width": {"type": ["integer", "null"]}
+      },
+      "required": ["url"]
+    }
+  }
+}
