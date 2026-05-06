@@ -1,453 +1,831 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Spotify Music Discovery"
-  description: >-
-    Workflow capability for Spotify music discovery, playlist building, and personalization.
-    Enables AI assistants and applications to search the catalog, get recommendations,
-    manage playlists, control playback, and access user listening history and preferences.
-    Covers the full music experience lifecycle from discovery through listening.
+  label: Spotify Music Discovery
+  description: Workflow capability for Spotify music discovery, playlist building, and personalization. Enables AI assistants
+    and applications to search the catalog, get recommendations, manage playlists, control playback, and access user listening
+    history and preferences. Covers the full music experience lifecycle from discovery through listening.
   tags:
-    - Spotify
-    - Music
-    - Discovery
-    - Playlists
-    - Recommendations
-    - Playback
-    - Personalization
-  created: "2026-05-02"
-  modified: "2026-05-02"
-
+  - Spotify
+  - Music
+  - Discovery
+  - Playlists
+  - Recommendations
+  - Playback
+  - Personalization
+  created: '2026-05-02'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      SPOTIFY_ACCESS_TOKEN: SPOTIFY_ACCESS_TOKEN
-
+- namespace: env
+  keys:
+    SPOTIFY_ACCESS_TOKEN: SPOTIFY_ACCESS_TOKEN
 capability:
   consumes:
-    - import: spotify
-      location: ./shared/spotify-web-api.yaml
-
+  - type: http
+    namespace: spotify
+    baseUri: https://api.spotify.com/v1
+    description: Spotify Web API for music discovery, library management, and playback control
+    authentication:
+      type: bearer
+      token: '{{SPOTIFY_ACCESS_TOKEN}}'
+    resources:
+    - name: search
+      path: /search
+      description: Search Spotify catalog
+      operations:
+      - name: search
+        method: GET
+        description: Search for tracks, albums, artists, playlists, shows, or episodes
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          required: true
+          description: Search query
+        - name: type
+          in: query
+          type: string
+          required: true
+          description: 'Comma-separated types: track,album,artist,playlist,show,episode'
+        - name: market
+          in: query
+          type: string
+          required: false
+          description: ISO 3166-1 alpha-2 market code
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Max results per type (1-50)
+        - name: offset
+          in: query
+          type: integer
+          required: false
+          description: Pagination offset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: track
+      path: /tracks/{id}
+      description: Single track
+      operations:
+      - name: get-track
+        method: GET
+        description: Get a track by Spotify ID
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Spotify track ID
+        - name: market
+          in: query
+          type: string
+          required: false
+          description: Market for track availability
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: artist
+      path: /artists/{id}
+      description: Single artist
+      operations:
+      - name: get-artist
+        method: GET
+        description: Get an artist by Spotify ID
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Spotify artist ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: artist-albums
+      path: /artists/{id}/albums
+      description: Artist's albums
+      operations:
+      - name: get-artist-albums
+        method: GET
+        description: Get an artist's albums
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Spotify artist ID
+        - name: include_groups
+          in: query
+          type: string
+          required: false
+          description: 'Comma-separated: album,single,appears_on,compilation'
+        - name: market
+          in: query
+          type: string
+          required: false
+        - name: limit
+          in: query
+          type: integer
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: items
+          type: array
+          value: $.items
+    - name: album
+      path: /albums/{id}
+      description: Single album
+      operations:
+      - name: get-album
+        method: GET
+        description: Get an album by Spotify ID
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Spotify album ID
+        - name: market
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: player
+      path: /me/player
+      description: Playback state and control
+      operations:
+      - name: get-playback-state
+        method: GET
+        description: Get current playback state
+        inputParameters:
+        - name: market
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: transfer-playback
+        method: PUT
+        description: Transfer playback to a different device
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            device_ids: '{{tools.device_ids}}'
+            play: '{{tools.play}}'
+    - name: player-play
+      path: /me/player/play
+      description: Start or resume playback
+      operations:
+      - name: start-resume-playback
+        method: PUT
+        description: Start or resume playback on the active device
+        inputParameters:
+        - name: device_id
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            context_uri: '{{tools.context_uri}}'
+            uris: '{{tools.uris}}'
+            offset: '{{tools.offset}}'
+    - name: player-pause
+      path: /me/player/pause
+      description: Pause playback
+      operations:
+      - name: pause-playback
+        method: PUT
+        description: Pause playback on the current device
+        inputParameters:
+        - name: device_id
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: player-next
+      path: /me/player/next
+      description: Skip to next track
+      operations:
+      - name: skip-to-next
+        method: POST
+        description: Skip to the next track in the queue
+        inputParameters:
+        - name: device_id
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: player-queue
+      path: /me/player/queue
+      description: Playback queue
+      operations:
+      - name: get-queue
+        method: GET
+        description: Get the user's playback queue
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: add-to-queue
+        method: POST
+        description: Add an item to the playback queue
+        inputParameters:
+        - name: uri
+          in: query
+          type: string
+          required: true
+          description: Spotify URI of item to queue
+        - name: device_id
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: playlist
+      path: /playlists/{playlist_id}
+      description: Playlist details
+      operations:
+      - name: get-playlist
+        method: GET
+        description: Get a playlist by Spotify ID
+        inputParameters:
+        - name: playlist_id
+          in: path
+          type: string
+          required: true
+          description: Spotify playlist ID
+        - name: market
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: playlist-items
+      path: /playlists/{playlist_id}/items
+      description: Playlist tracks/items
+      operations:
+      - name: get-playlist-items
+        method: GET
+        description: Get tracks in a playlist
+        inputParameters:
+        - name: playlist_id
+          in: path
+          type: string
+          required: true
+        - name: market
+          in: query
+          type: string
+          required: false
+        - name: limit
+          in: query
+          type: integer
+          required: false
+        - name: offset
+          in: query
+          type: integer
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: items
+          type: array
+          value: $.items
+      - name: add-tracks-to-playlist
+        method: POST
+        description: Add tracks to a playlist
+        inputParameters:
+        - name: playlist_id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            uris: '{{tools.uris}}'
+            position: '{{tools.position}}'
+    - name: user-playlists
+      path: /me/playlists
+      description: Current user's playlists
+      operations:
+      - name: get-my-playlists
+        method: GET
+        description: Get playlists owned or followed by the current user
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          required: false
+        - name: offset
+          in: query
+          type: integer
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: items
+          type: array
+          value: $.items
+    - name: recommendations
+      path: /recommendations
+      description: Track recommendations
+      operations:
+      - name: get-recommendations
+        method: GET
+        description: Get track recommendations based on seeds
+        inputParameters:
+        - name: seed_artists
+          in: query
+          type: string
+          required: false
+          description: Comma-separated artist IDs
+        - name: seed_tracks
+          in: query
+          type: string
+          required: false
+          description: Comma-separated track IDs
+        - name: seed_genres
+          in: query
+          type: string
+          required: false
+          description: Comma-separated genre names
+        - name: limit
+          in: query
+          type: integer
+          required: false
+        - name: market
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: tracks
+          type: array
+          value: $.tracks
+    - name: user-top
+      path: /me/top/{type}
+      description: User's top artists or tracks
+      operations:
+      - name: get-users-top-items
+        method: GET
+        description: Get the user's top artists or tracks
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+          description: artists or tracks
+        - name: time_range
+          in: query
+          type: string
+          required: false
+          description: short_term, medium_term, or long_term
+        - name: limit
+          in: query
+          type: integer
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: items
+          type: array
+          value: $.items
   exposes:
-    - type: rest
-      port: 8080
-      namespace: spotify-discovery-api
-      description: "Unified REST API for Spotify music discovery and playback workflows."
-      resources:
-        - path: /v1/search
-          name: catalog-search
-          description: "Search the Spotify music catalog"
-          operations:
-            - method: GET
-              name: search
-              description: "Search for tracks, albums, artists, and playlists"
-              call: "spotify.search"
-              with:
-                q: "rest.q"
-                type: "rest.type"
-                limit: "rest.limit"
-                market: "rest.market"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/tracks/{id}
-          name: track
-          description: "Track metadata"
-          operations:
-            - method: GET
-              name: get-track
-              description: "Get track details"
-              call: "spotify.get-track"
-              with:
-                id: "rest.id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/artists/{id}
-          name: artist
-          description: "Artist profile"
-          operations:
-            - method: GET
-              name: get-artist
-              description: "Get artist details"
-              call: "spotify.get-artist"
-              with:
-                id: "rest.id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/albums/{id}
-          name: album
-          description: "Album details"
-          operations:
-            - method: GET
-              name: get-album
-              description: "Get album details and tracks"
-              call: "spotify.get-album"
-              with:
-                id: "rest.id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/recommendations
-          name: recommendations
-          description: "Personalized track recommendations"
-          operations:
-            - method: GET
-              name: get-recommendations
-              description: "Get track recommendations from seeds"
-              call: "spotify.get-recommendations"
-              with:
-                seed_artists: "rest.seed_artists"
-                seed_tracks: "rest.seed_tracks"
-                seed_genres: "rest.seed_genres"
-                limit: "rest.limit"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/playlists/{playlist_id}
-          name: playlist
-          description: "Playlist details"
-          operations:
-            - method: GET
-              name: get-playlist
-              description: "Get playlist metadata and tracks"
-              call: "spotify.get-playlist"
-              with:
-                playlist_id: "rest.playlist_id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/playlists/{playlist_id}/items
-          name: playlist-items
-          description: "Playlist track management"
-          operations:
-            - method: GET
-              name: get-playlist-items
-              description: "Get tracks in a playlist"
-              call: "spotify.get-playlist-items"
-              with:
-                playlist_id: "rest.playlist_id"
-                limit: "rest.limit"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: add-to-playlist
-              description: "Add tracks to a playlist"
-              call: "spotify.add-tracks-to-playlist"
-              with:
-                playlist_id: "rest.playlist_id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/me/playlists
-          name: my-playlists
-          description: "Current user's playlists"
-          operations:
-            - method: GET
-              name: get-my-playlists
-              description: "Get current user's playlists"
-              call: "spotify.get-my-playlists"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/player
-          name: player
-          description: "Playback state"
-          operations:
-            - method: GET
-              name: get-playback-state
-              description: "Get current playback state"
-              call: "spotify.get-playback-state"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/player/play
-          name: player-play
-          description: "Start playback"
-          operations:
-            - method: PUT
-              name: start-playback
-              description: "Start or resume playback"
-              call: "spotify.start-resume-playback"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/player/queue
-          name: player-queue
-          description: "Playback queue"
-          operations:
-            - method: GET
-              name: get-queue
-              description: "Get the playback queue"
-              call: "spotify.get-queue"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: add-to-queue
-              description: "Add a track to the queue"
-              call: "spotify.add-to-queue"
-              with:
-                uri: "rest.uri"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/me/top/{type}
-          name: top-items
-          description: "User's top artists and tracks"
-          operations:
-            - method: GET
-              name: get-top-items
-              description: "Get user's top artists or tracks"
-              call: "spotify.get-users-top-items"
-              with:
-                type: "rest.type"
-                time_range: "rest.time_range"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: spotify-discovery-mcp
-      transport: http
-      description: "MCP server for AI-assisted music discovery, playlist curation, and playback control."
-      tools:
-        - name: search-music
-          description: "Search the Spotify catalog for tracks, albums, artists, playlists, shows, or episodes. Use type='track,album,artist' to search multiple types at once."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "spotify.search"
-          with:
-            q: "tools.q"
-            type: "tools.type"
-            limit: "tools.limit"
-            market: "tools.market"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-track
-          description: "Get detailed metadata for a Spotify track including artists, album, duration, and audio features."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "spotify.get-track"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-artist
-          description: "Get an artist's profile including genres, popularity, and follower count."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "spotify.get-artist"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-artist-albums
-          description: "Get albums released by an artist, including singles, compilations, and appearances."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "spotify.get-artist-albums"
-          with:
-            id: "tools.id"
-            include_groups: "tools.include_groups"
-            limit: "tools.limit"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-album
-          description: "Get an album's metadata including tracklist, release date, and label."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "spotify.get-album"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-recommendations
-          description: "Get personalized track recommendations based on seed artists, tracks, and genres. Supports audio feature targeting (tempo, energy, danceability)."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "spotify.get-recommendations"
-          with:
-            seed_artists: "tools.seed_artists"
-            seed_tracks: "tools.seed_tracks"
-            seed_genres: "tools.seed_genres"
-            limit: "tools.limit"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-playlist
-          description: "Get playlist details including all tracks, description, and owner."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "spotify.get-playlist"
-          with:
-            playlist_id: "tools.playlist_id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-playlist-tracks
-          description: "Get the tracks in a playlist with pagination support."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "spotify.get-playlist-items"
-          with:
-            playlist_id: "tools.playlist_id"
-            limit: "tools.limit"
-            offset: "tools.offset"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: add-tracks-to-playlist
-          description: "Add one or more tracks to a Spotify playlist by their URIs."
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: false
-          call: "spotify.add-tracks-to-playlist"
-          with:
-            playlist_id: "tools.playlist_id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-my-playlists
-          description: "Get all playlists owned or followed by the authenticated user."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "spotify.get-my-playlists"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-playback-state
-          description: "Get the current Spotify playback state including track, device, position, and shuffle/repeat settings."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "spotify.get-playback-state"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: play-music
-          description: "Start or resume Spotify playback. Can play a specific context (album, playlist, artist) or list of track URIs."
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: false
-          call: "spotify.start-resume-playback"
-          with:
-            context_uri: "tools.context_uri"
-            uris: "tools.uris"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: pause-playback
-          description: "Pause Spotify playback on the current active device."
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: true
-          call: "spotify.pause-playback"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: skip-to-next
-          description: "Skip to the next track in the playback queue."
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: false
-          call: "spotify.skip-to-next"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-playback-queue
-          description: "Get the tracks currently in the Spotify playback queue."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "spotify.get-queue"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: add-to-queue
-          description: "Add a track or episode to the Spotify playback queue by URI."
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: false
-          call: "spotify.add-to-queue"
-          with:
-            uri: "tools.uri"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-top-artists
-          description: "Get the authenticated user's top artists over short, medium, or long term."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "spotify.get-users-top-items"
-          with:
-            type: "artists"
-            time_range: "tools.time_range"
-            limit: "tools.limit"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-top-tracks
-          description: "Get the authenticated user's top tracks over short, medium, or long term."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "spotify.get-users-top-items"
-          with:
-            type: "tracks"
-            time_range: "tools.time_range"
-            limit: "tools.limit"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: spotify-discovery-api
+    description: Unified REST API for Spotify music discovery and playback workflows.
+    resources:
+    - path: /v1/search
+      name: catalog-search
+      description: Search the Spotify music catalog
+      operations:
+      - method: GET
+        name: search
+        description: Search for tracks, albums, artists, and playlists
+        call: spotify.search
+        with:
+          q: rest.q
+          type: rest.type
+          limit: rest.limit
+          market: rest.market
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tracks/{id}
+      name: track
+      description: Track metadata
+      operations:
+      - method: GET
+        name: get-track
+        description: Get track details
+        call: spotify.get-track
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/artists/{id}
+      name: artist
+      description: Artist profile
+      operations:
+      - method: GET
+        name: get-artist
+        description: Get artist details
+        call: spotify.get-artist
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/albums/{id}
+      name: album
+      description: Album details
+      operations:
+      - method: GET
+        name: get-album
+        description: Get album details and tracks
+        call: spotify.get-album
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/recommendations
+      name: recommendations
+      description: Personalized track recommendations
+      operations:
+      - method: GET
+        name: get-recommendations
+        description: Get track recommendations from seeds
+        call: spotify.get-recommendations
+        with:
+          seed_artists: rest.seed_artists
+          seed_tracks: rest.seed_tracks
+          seed_genres: rest.seed_genres
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/playlists/{playlist_id}
+      name: playlist
+      description: Playlist details
+      operations:
+      - method: GET
+        name: get-playlist
+        description: Get playlist metadata and tracks
+        call: spotify.get-playlist
+        with:
+          playlist_id: rest.playlist_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/playlists/{playlist_id}/items
+      name: playlist-items
+      description: Playlist track management
+      operations:
+      - method: GET
+        name: get-playlist-items
+        description: Get tracks in a playlist
+        call: spotify.get-playlist-items
+        with:
+          playlist_id: rest.playlist_id
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: add-to-playlist
+        description: Add tracks to a playlist
+        call: spotify.add-tracks-to-playlist
+        with:
+          playlist_id: rest.playlist_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/playlists
+      name: my-playlists
+      description: Current user's playlists
+      operations:
+      - method: GET
+        name: get-my-playlists
+        description: Get current user's playlists
+        call: spotify.get-my-playlists
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/player
+      name: player
+      description: Playback state
+      operations:
+      - method: GET
+        name: get-playback-state
+        description: Get current playback state
+        call: spotify.get-playback-state
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/player/play
+      name: player-play
+      description: Start playback
+      operations:
+      - method: PUT
+        name: start-playback
+        description: Start or resume playback
+        call: spotify.start-resume-playback
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/player/queue
+      name: player-queue
+      description: Playback queue
+      operations:
+      - method: GET
+        name: get-queue
+        description: Get the playback queue
+        call: spotify.get-queue
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: add-to-queue
+        description: Add a track to the queue
+        call: spotify.add-to-queue
+        with:
+          uri: rest.uri
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/top/{type}
+      name: top-items
+      description: User's top artists and tracks
+      operations:
+      - method: GET
+        name: get-top-items
+        description: Get user's top artists or tracks
+        call: spotify.get-users-top-items
+        with:
+          type: rest.type
+          time_range: rest.time_range
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: spotify-discovery-mcp
+    transport: http
+    description: MCP server for AI-assisted music discovery, playlist curation, and playback control.
+    tools:
+    - name: search-music
+      description: Search the Spotify catalog for tracks, albums, artists, playlists, shows, or episodes. Use type='track,album,artist'
+        to search multiple types at once.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: spotify.search
+      with:
+        q: tools.q
+        type: tools.type
+        limit: tools.limit
+        market: tools.market
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-track
+      description: Get detailed metadata for a Spotify track including artists, album, duration, and audio features.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: spotify.get-track
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-artist
+      description: Get an artist's profile including genres, popularity, and follower count.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: spotify.get-artist
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-artist-albums
+      description: Get albums released by an artist, including singles, compilations, and appearances.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: spotify.get-artist-albums
+      with:
+        id: tools.id
+        include_groups: tools.include_groups
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-album
+      description: Get an album's metadata including tracklist, release date, and label.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: spotify.get-album
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-recommendations
+      description: Get personalized track recommendations based on seed artists, tracks, and genres. Supports audio feature
+        targeting (tempo, energy, danceability).
+      hints:
+        readOnly: true
+        openWorld: true
+      call: spotify.get-recommendations
+      with:
+        seed_artists: tools.seed_artists
+        seed_tracks: tools.seed_tracks
+        seed_genres: tools.seed_genres
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-playlist
+      description: Get playlist details including all tracks, description, and owner.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: spotify.get-playlist
+      with:
+        playlist_id: tools.playlist_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-playlist-tracks
+      description: Get the tracks in a playlist with pagination support.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: spotify.get-playlist-items
+      with:
+        playlist_id: tools.playlist_id
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-tracks-to-playlist
+      description: Add one or more tracks to a Spotify playlist by their URIs.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: spotify.add-tracks-to-playlist
+      with:
+        playlist_id: tools.playlist_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-my-playlists
+      description: Get all playlists owned or followed by the authenticated user.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: spotify.get-my-playlists
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-playback-state
+      description: Get the current Spotify playback state including track, device, position, and shuffle/repeat settings.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: spotify.get-playback-state
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: play-music
+      description: Start or resume Spotify playback. Can play a specific context (album, playlist, artist) or list of track
+        URIs.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: spotify.start-resume-playback
+      with:
+        context_uri: tools.context_uri
+        uris: tools.uris
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: pause-playback
+      description: Pause Spotify playback on the current active device.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: spotify.pause-playback
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: skip-to-next
+      description: Skip to the next track in the playback queue.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: spotify.skip-to-next
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-playback-queue
+      description: Get the tracks currently in the Spotify playback queue.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: spotify.get-queue
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-to-queue
+      description: Add a track or episode to the Spotify playback queue by URI.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: spotify.add-to-queue
+      with:
+        uri: tools.uri
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-top-artists
+      description: Get the authenticated user's top artists over short, medium, or long term.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: spotify.get-users-top-items
+      with:
+        type: artists
+        time_range: tools.time_range
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-top-tracks
+      description: Get the authenticated user's top tracks over short, medium, or long term.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: spotify.get-users-top-items
+      with:
+        type: tracks
+        time_range: tools.time_range
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
