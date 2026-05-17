@@ -49,11 +49,11 @@ apis:
         url: https://developer.spotify.com/documentation/web-api
       - type: OpenAPI
         url: openapi/spotify-openapi-original.yml
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
       - type: Authorization
         url: https://developer.spotify.com/documentation/web-api/concepts/authorization
-      - type: Rate Limits
+      - type: RateLimits
         url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
       - type: Scopes
         url: https://developer.spotify.com/documentation/web-api/concepts/scopes
@@ -103,11 +103,11 @@ common:
   - url: https://developer.spotify.com/
     type: Developer
   - url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
-    type: Getting Started
+    type: GettingStarted
   - url: https://developer.spotify.com/documentation/web-api/concepts/authorization
     type: Authorization
   - url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
-    type: Rate Limits
+    type: RateLimits
   - url: https://developer.spotify.com/documentation/web-api/concepts/scopes
     type: Scopes
   - url: https://developer.spotify.com/community
@@ -115,13 +115,13 @@ common:
   - url: https://developer.spotify.com/documentation/embeds
     type: Embeds
   - url: https://developer.spotify.com/terms
-    type: Terms of Service
+    type: TermsOfService
   - url: https://accounts.spotify.com/en/login
     type: Login
   - url: https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer
     type: Forum
   - url: https://developer.spotify.com/documentation/web-api/references/changes/february-2026
-    type: Changelog
+    type: ChangeLog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
