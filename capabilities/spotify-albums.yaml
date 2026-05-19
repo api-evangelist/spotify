@@ -1,0 +1,340 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spotify Web API — Albums
+  description: 'Spotify Web API — Albums. 9 operations. Lead operation: Get Several Albums. Self-contained Naftiko capability
+    covering one Spotify business surface.'
+  tags:
+  - Spotify
+  - Albums
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPOTIFY_API_KEY: SPOTIFY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: spotify-albums
+    baseUri: https://api.spotify.com/v1
+    description: Spotify Web API — Albums business capability. Self-contained, no shared references.
+    resources:
+    - name: albums
+      path: /albums
+      operations:
+      - name: getmultiplealbums
+        method: GET
+        description: Get Several Albums
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: albums-id
+      path: /albums/{id}
+      operations:
+      - name: getanalbum
+        method: GET
+        description: Get Album
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: albums-id-tracks
+      path: /albums/{id}/tracks
+      operations:
+      - name: getanalbumstracks
+        method: GET
+        description: Get Album Tracks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: artists-id-albums
+      path: /artists/{id}/albums
+      operations:
+      - name: getanartistsalbums
+        method: GET
+        description: Get Artist's Albums
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+    - name: browse-new-releases
+      path: /browse/new-releases
+      operations:
+      - name: getnewreleases
+        method: GET
+        description: Get New Releases
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: me-albums
+      path: /me/albums
+      operations:
+      - name: getuserssavedalbums
+        method: GET
+        description: Get User's Saved Albums
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: savealbumsuser
+        method: PUT
+        description: Save Albums for Current User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: removealbumsuser
+        method: DELETE
+        description: Remove Users' Saved Albums
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: me-albums-contains
+      path: /me/albums/contains
+      operations:
+      - name: checkuserssavedalbums
+        method: GET
+        description: Check User's Saved Albums
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SPOTIFY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: spotify-albums-rest
+    port: 8080
+    description: REST adapter for Spotify Web API — Albums. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/albums
+      name: albums
+      description: REST surface for albums.
+      operations:
+      - method: GET
+        name: getmultiplealbums
+        description: Get Several Albums
+        call: spotify-albums.getmultiplealbums
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/albums/{id}
+      name: albums-id
+      description: REST surface for albums-id.
+      operations:
+      - method: GET
+        name: getanalbum
+        description: Get Album
+        call: spotify-albums.getanalbum
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/albums/{id}/tracks
+      name: albums-id-tracks
+      description: REST surface for albums-id-tracks.
+      operations:
+      - method: GET
+        name: getanalbumstracks
+        description: Get Album Tracks
+        call: spotify-albums.getanalbumstracks
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/artists/{id}/albums
+      name: artists-id-albums
+      description: REST surface for artists-id-albums.
+      operations:
+      - method: GET
+        name: getanartistsalbums
+        description: Get Artist's Albums
+        call: spotify-albums.getanartistsalbums
+        with:
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/browse/new-releases
+      name: browse-new-releases
+      description: REST surface for browse-new-releases.
+      operations:
+      - method: GET
+        name: getnewreleases
+        description: Get New Releases
+        call: spotify-albums.getnewreleases
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/albums
+      name: me-albums
+      description: REST surface for me-albums.
+      operations:
+      - method: GET
+        name: getuserssavedalbums
+        description: Get User's Saved Albums
+        call: spotify-albums.getuserssavedalbums
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: savealbumsuser
+        description: Save Albums for Current User
+        call: spotify-albums.savealbumsuser
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removealbumsuser
+        description: Remove Users' Saved Albums
+        call: spotify-albums.removealbumsuser
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/albums/contains
+      name: me-albums-contains
+      description: REST surface for me-albums-contains.
+      operations:
+      - method: GET
+        name: checkuserssavedalbums
+        description: Check User's Saved Albums
+        call: spotify-albums.checkuserssavedalbums
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: spotify-albums-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spotify Web API — Albums. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-several-albums
+      description: Get Several Albums
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-albums.getmultiplealbums
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-album
+      description: Get Album
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-albums.getanalbum
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-album-tracks
+      description: Get Album Tracks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-albums.getanalbumstracks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-artist-s-albums
+      description: Get Artist's Albums
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-albums.getanartistsalbums
+      with:
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-new-releases
+      description: Get New Releases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-albums.getnewreleases
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user-s-saved-albums
+      description: Get User's Saved Albums
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-albums.getuserssavedalbums
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: save-albums-current-user
+      description: Save Albums for Current User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: spotify-albums.savealbumsuser
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-users-saved-albums
+      description: Remove Users' Saved Albums
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: spotify-albums.removealbumsuser
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: check-user-s-saved-albums
+      description: Check User's Saved Albums
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-albums.checkuserssavedalbums
+      outputParameters:
+      - type: object
+        mapping: $.

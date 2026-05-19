@@ -1,0 +1,838 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spotify Web API — Playlists
+  description: 'Spotify Web API — Playlists. 21 operations. Lead operation: Get Category''s Playlists. Self-contained Naftiko
+    capability covering one Spotify business surface.'
+  tags:
+  - Spotify
+  - Playlists
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPOTIFY_API_KEY: SPOTIFY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: spotify-playlists
+    baseUri: https://api.spotify.com/v1
+    description: Spotify Web API — Playlists business capability. Self-contained, no shared references.
+    resources:
+    - name: browse-categories-category_id-playlists
+      path: /browse/categories/{category_id}/playlists
+      operations:
+      - name: getacategoriesplaylists
+        method: GET
+        description: Get Category's Playlists
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: category_id
+          in: path
+          type: string
+          required: true
+    - name: browse-featured-playlists
+      path: /browse/featured-playlists
+      operations:
+      - name: getfeaturedplaylists
+        method: GET
+        description: Get Featured Playlists
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: locale
+          in: query
+          type: string
+    - name: me-playlists
+      path: /me/playlists
+      operations:
+      - name: getalistofcurrentusersplaylists
+        method: GET
+        description: Get Current User's Playlists
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: offset
+          in: query
+          type: integer
+      - name: createplaylist
+        method: POST
+        description: Create Playlist
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: playlists-playlist_id
+      path: /playlists/{playlist_id}
+      operations:
+      - name: getplaylist
+        method: GET
+        description: Get Playlist
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+      - name: changeplaylistdetails
+        method: PUT
+        description: Change Playlist Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: playlists-playlist_id-followers
+      path: /playlists/{playlist_id}/followers
+      operations:
+      - name: followplaylist
+        method: PUT
+        description: Follow Playlist
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: unfollowplaylist
+        method: DELETE
+        description: Unfollow Playlist
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: playlists-playlist_id-followers-contains
+      path: /playlists/{playlist_id}/followers/contains
+      operations:
+      - name: checkifuserfollowsplaylist
+        method: GET
+        description: Check if Current User Follows Playlist
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+    - name: playlists-playlist_id-images
+      path: /playlists/{playlist_id}/images
+      operations:
+      - name: getplaylistcover
+        method: GET
+        description: Get Playlist Cover Image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: uploadcustomplaylistcover
+        method: PUT
+        description: Add Custom Playlist Cover Image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: playlists-playlist_id-items
+      path: /playlists/{playlist_id}/items
+      operations:
+      - name: getplaylistsitems
+        method: GET
+        description: Get Playlist Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+      - name: additemstoplaylist
+        method: POST
+        description: Add Items to Playlist
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: position
+          in: query
+          type: integer
+        - name: uris
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: reorderorreplaceplaylistsitems
+        method: PUT
+        description: Update Playlist Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: uris
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: removeitemsplaylist
+        method: DELETE
+        description: Remove Playlist Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: playlists-playlist_id-tracks
+      path: /playlists/{playlist_id}/tracks
+      operations:
+      - name: getplayliststracks
+        method: GET
+        description: Get Playlist Items [DEPRECATED]
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+      - name: addtrackstoplaylist
+        method: POST
+        description: Add Items to Playlist [DEPRECATED]
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: position
+          in: query
+          type: integer
+        - name: uris
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: reorderorreplaceplayliststracks
+        method: PUT
+        description: Update Playlist Items [DEPRECATED]
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: uris
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: removetracksplaylist
+        method: DELETE
+        description: Remove Playlist Items [DEPRECATED]
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: users-user_id-playlists
+      path: /users/{user_id}/playlists
+      operations:
+      - name: getlistusersplaylists
+        method: GET
+        description: Get User's Playlists
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: offset
+          in: query
+          type: integer
+      - name: createplaylistforuser
+        method: POST
+        description: Create Playlist for user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.SPOTIFY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: spotify-playlists-rest
+    port: 8080
+    description: REST adapter for Spotify Web API — Playlists. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/browse/categories/{category-id}/playlists
+      name: browse-categories-category-id-playlists
+      description: REST surface for browse-categories-category_id-playlists.
+      operations:
+      - method: GET
+        name: getacategoriesplaylists
+        description: Get Category's Playlists
+        call: spotify-playlists.getacategoriesplaylists
+        with:
+          category_id: rest.category_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/browse/featured-playlists
+      name: browse-featured-playlists
+      description: REST surface for browse-featured-playlists.
+      operations:
+      - method: GET
+        name: getfeaturedplaylists
+        description: Get Featured Playlists
+        call: spotify-playlists.getfeaturedplaylists
+        with:
+          locale: rest.locale
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/playlists
+      name: me-playlists
+      description: REST surface for me-playlists.
+      operations:
+      - method: GET
+        name: getalistofcurrentusersplaylists
+        description: Get Current User's Playlists
+        call: spotify-playlists.getalistofcurrentusersplaylists
+        with:
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createplaylist
+        description: Create Playlist
+        call: spotify-playlists.createplaylist
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/playlists/{playlist-id}
+      name: playlists-playlist-id
+      description: REST surface for playlists-playlist_id.
+      operations:
+      - method: GET
+        name: getplaylist
+        description: Get Playlist
+        call: spotify-playlists.getplaylist
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: changeplaylistdetails
+        description: Change Playlist Details
+        call: spotify-playlists.changeplaylistdetails
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/playlists/{playlist-id}/followers
+      name: playlists-playlist-id-followers
+      description: REST surface for playlists-playlist_id-followers.
+      operations:
+      - method: PUT
+        name: followplaylist
+        description: Follow Playlist
+        call: spotify-playlists.followplaylist
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: unfollowplaylist
+        description: Unfollow Playlist
+        call: spotify-playlists.unfollowplaylist
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/playlists/{playlist-id}/followers/contains
+      name: playlists-playlist-id-followers-contains
+      description: REST surface for playlists-playlist_id-followers-contains.
+      operations:
+      - method: GET
+        name: checkifuserfollowsplaylist
+        description: Check if Current User Follows Playlist
+        call: spotify-playlists.checkifuserfollowsplaylist
+        with:
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/playlists/{playlist-id}/images
+      name: playlists-playlist-id-images
+      description: REST surface for playlists-playlist_id-images.
+      operations:
+      - method: GET
+        name: getplaylistcover
+        description: Get Playlist Cover Image
+        call: spotify-playlists.getplaylistcover
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: uploadcustomplaylistcover
+        description: Add Custom Playlist Cover Image
+        call: spotify-playlists.uploadcustomplaylistcover
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/playlists/{playlist-id}/items
+      name: playlists-playlist-id-items
+      description: REST surface for playlists-playlist_id-items.
+      operations:
+      - method: GET
+        name: getplaylistsitems
+        description: Get Playlist Items
+        call: spotify-playlists.getplaylistsitems
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: additemstoplaylist
+        description: Add Items to Playlist
+        call: spotify-playlists.additemstoplaylist
+        with:
+          position: rest.position
+          uris: rest.uris
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: reorderorreplaceplaylistsitems
+        description: Update Playlist Items
+        call: spotify-playlists.reorderorreplaceplaylistsitems
+        with:
+          uris: rest.uris
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removeitemsplaylist
+        description: Remove Playlist Items
+        call: spotify-playlists.removeitemsplaylist
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/playlists/{playlist-id}/tracks
+      name: playlists-playlist-id-tracks
+      description: REST surface for playlists-playlist_id-tracks.
+      operations:
+      - method: GET
+        name: getplayliststracks
+        description: Get Playlist Items [DEPRECATED]
+        call: spotify-playlists.getplayliststracks
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addtrackstoplaylist
+        description: Add Items to Playlist [DEPRECATED]
+        call: spotify-playlists.addtrackstoplaylist
+        with:
+          position: rest.position
+          uris: rest.uris
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: reorderorreplaceplayliststracks
+        description: Update Playlist Items [DEPRECATED]
+        call: spotify-playlists.reorderorreplaceplayliststracks
+        with:
+          uris: rest.uris
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removetracksplaylist
+        description: Remove Playlist Items [DEPRECATED]
+        call: spotify-playlists.removetracksplaylist
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/{user-id}/playlists
+      name: users-user-id-playlists
+      description: REST surface for users-user_id-playlists.
+      operations:
+      - method: GET
+        name: getlistusersplaylists
+        description: Get User's Playlists
+        call: spotify-playlists.getlistusersplaylists
+        with:
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createplaylistforuser
+        description: Create Playlist for user
+        call: spotify-playlists.createplaylistforuser
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: spotify-playlists-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spotify Web API — Playlists. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-category-s-playlists
+      description: Get Category's Playlists
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.getacategoriesplaylists
+      with:
+        category_id: tools.category_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-featured-playlists
+      description: Get Featured Playlists
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.getfeaturedplaylists
+      with:
+        locale: tools.locale
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-current-user-s-playlists
+      description: Get Current User's Playlists
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.getalistofcurrentusersplaylists
+      with:
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-playlist
+      description: Create Playlist
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: spotify-playlists.createplaylist
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-playlist
+      description: Get Playlist
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.getplaylist
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: change-playlist-details
+      description: Change Playlist Details
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.changeplaylistdetails
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: follow-playlist
+      description: Follow Playlist
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.followplaylist
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unfollow-playlist
+      description: Unfollow Playlist
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: spotify-playlists.unfollowplaylist
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: check-if-current-user-follows
+      description: Check if Current User Follows Playlist
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.checkifuserfollowsplaylist
+      with:
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-playlist-cover-image
+      description: Get Playlist Cover Image
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.getplaylistcover
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-custom-playlist-cover-image
+      description: Add Custom Playlist Cover Image
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.uploadcustomplaylistcover
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-playlist-items
+      description: Get Playlist Items
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.getplaylistsitems
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-items-playlist
+      description: Add Items to Playlist
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: spotify-playlists.additemstoplaylist
+      with:
+        position: tools.position
+        uris: tools.uris
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-playlist-items
+      description: Update Playlist Items
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.reorderorreplaceplaylistsitems
+      with:
+        uris: tools.uris
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-playlist-items
+      description: Remove Playlist Items
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: spotify-playlists.removeitemsplaylist
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-playlist-items-deprecated
+      description: Get Playlist Items [DEPRECATED]
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.getplayliststracks
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-items-playlist-deprecated
+      description: Add Items to Playlist [DEPRECATED]
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: spotify-playlists.addtrackstoplaylist
+      with:
+        position: tools.position
+        uris: tools.uris
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-playlist-items-deprecated
+      description: Update Playlist Items [DEPRECATED]
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.reorderorreplaceplayliststracks
+      with:
+        uris: tools.uris
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-playlist-items-deprecated
+      description: Remove Playlist Items [DEPRECATED]
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: spotify-playlists.removetracksplaylist
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user-s-playlists
+      description: Get User's Playlists
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-playlists.getlistusersplaylists
+      with:
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-playlist-user
+      description: Create Playlist for user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: spotify-playlists.createplaylistforuser
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

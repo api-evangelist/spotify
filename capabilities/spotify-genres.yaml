@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spotify Web API — Genres
+  description: 'Spotify Web API — Genres. 1 operations. Lead operation: Get Available Genre Seeds. Self-contained Naftiko
+    capability covering one Spotify business surface.'
+  tags:
+  - Spotify
+  - Genres
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPOTIFY_API_KEY: SPOTIFY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: spotify-genres
+    baseUri: https://api.spotify.com/v1
+    description: Spotify Web API — Genres business capability. Self-contained, no shared references.
+    resources:
+    - name: recommendations-available-genre-seeds
+      path: /recommendations/available-genre-seeds
+      operations:
+      - name: getrecommendationgenres
+        method: GET
+        description: Get Available Genre Seeds
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SPOTIFY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: spotify-genres-rest
+    port: 8080
+    description: REST adapter for Spotify Web API — Genres. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/recommendations/available-genre-seeds
+      name: recommendations-available-genre-seeds
+      description: REST surface for recommendations-available-genre-seeds.
+      operations:
+      - method: GET
+        name: getrecommendationgenres
+        description: Get Available Genre Seeds
+        call: spotify-genres.getrecommendationgenres
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: spotify-genres-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spotify Web API — Genres. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-available-genre-seeds
+      description: Get Available Genre Seeds
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-genres.getrecommendationgenres
+      outputParameters:
+      - type: object
+        mapping: $.

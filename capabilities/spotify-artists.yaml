@@ -1,0 +1,407 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spotify Web API — Artists
+  description: 'Spotify Web API — Artists. 9 operations. Lead operation: Get Several Artists. Self-contained Naftiko capability
+    covering one Spotify business surface.'
+  tags:
+  - Spotify
+  - Artists
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPOTIFY_API_KEY: SPOTIFY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: spotify-artists
+    baseUri: https://api.spotify.com/v1
+    description: Spotify Web API — Artists business capability. Self-contained, no shared references.
+    resources:
+    - name: artists
+      path: /artists
+      operations:
+      - name: getmultipleartists
+        method: GET
+        description: Get Several Artists
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          required: true
+    - name: artists-id
+      path: /artists/{id}
+      operations:
+      - name: getanartist
+        method: GET
+        description: Get Artist
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: artists-id-albums
+      path: /artists/{id}/albums
+      operations:
+      - name: getanartistsalbums
+        method: GET
+        description: Get Artist's Albums
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+    - name: artists-id-related-artists
+      path: /artists/{id}/related-artists
+      operations:
+      - name: getanartistsrelatedartists
+        method: GET
+        description: Get Artist's Related Artists
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: artists-id-top-tracks
+      path: /artists/{id}/top-tracks
+      operations:
+      - name: getanartiststoptracks
+        method: GET
+        description: Get Artist's Top Tracks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: me-following
+      path: /me/following
+      operations:
+      - name: getfollowed
+        method: GET
+        description: Get Followed Artists
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+          required: true
+        - name: after
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+      - name: followartistsusers
+        method: PUT
+        description: Follow Artists or Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+          required: true
+        - name: ids
+          in: query
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: unfollowartistsusers
+        method: DELETE
+        description: Unfollow Artists or Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+          required: true
+        - name: ids
+          in: query
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: me-following-contains
+      path: /me/following/contains
+      operations:
+      - name: checkcurrentuserfollows
+        method: GET
+        description: Check If User Follows Artists or Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+          required: true
+        - name: ids
+          in: query
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SPOTIFY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: spotify-artists-rest
+    port: 8080
+    description: REST adapter for Spotify Web API — Artists. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/artists
+      name: artists
+      description: REST surface for artists.
+      operations:
+      - method: GET
+        name: getmultipleartists
+        description: Get Several Artists
+        call: spotify-artists.getmultipleartists
+        with:
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/artists/{id}
+      name: artists-id
+      description: REST surface for artists-id.
+      operations:
+      - method: GET
+        name: getanartist
+        description: Get Artist
+        call: spotify-artists.getanartist
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/artists/{id}/albums
+      name: artists-id-albums
+      description: REST surface for artists-id-albums.
+      operations:
+      - method: GET
+        name: getanartistsalbums
+        description: Get Artist's Albums
+        call: spotify-artists.getanartistsalbums
+        with:
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/artists/{id}/related-artists
+      name: artists-id-related-artists
+      description: REST surface for artists-id-related-artists.
+      operations:
+      - method: GET
+        name: getanartistsrelatedartists
+        description: Get Artist's Related Artists
+        call: spotify-artists.getanartistsrelatedartists
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/artists/{id}/top-tracks
+      name: artists-id-top-tracks
+      description: REST surface for artists-id-top-tracks.
+      operations:
+      - method: GET
+        name: getanartiststoptracks
+        description: Get Artist's Top Tracks
+        call: spotify-artists.getanartiststoptracks
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/following
+      name: me-following
+      description: REST surface for me-following.
+      operations:
+      - method: GET
+        name: getfollowed
+        description: Get Followed Artists
+        call: spotify-artists.getfollowed
+        with:
+          type: rest.type
+          after: rest.after
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: followartistsusers
+        description: Follow Artists or Users
+        call: spotify-artists.followartistsusers
+        with:
+          type: rest.type
+          ids: rest.ids
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: unfollowartistsusers
+        description: Unfollow Artists or Users
+        call: spotify-artists.unfollowartistsusers
+        with:
+          type: rest.type
+          ids: rest.ids
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/following/contains
+      name: me-following-contains
+      description: REST surface for me-following-contains.
+      operations:
+      - method: GET
+        name: checkcurrentuserfollows
+        description: Check If User Follows Artists or Users
+        call: spotify-artists.checkcurrentuserfollows
+        with:
+          type: rest.type
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: spotify-artists-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spotify Web API — Artists. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-several-artists
+      description: Get Several Artists
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-artists.getmultipleartists
+      with:
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-artist
+      description: Get Artist
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-artists.getanartist
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-artist-s-albums
+      description: Get Artist's Albums
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-artists.getanartistsalbums
+      with:
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-artist-s-related-artists
+      description: Get Artist's Related Artists
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-artists.getanartistsrelatedartists
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-artist-s-top-tracks
+      description: Get Artist's Top Tracks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-artists.getanartiststoptracks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-followed-artists
+      description: Get Followed Artists
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-artists.getfollowed
+      with:
+        type: tools.type
+        after: tools.after
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: follow-artists-users
+      description: Follow Artists or Users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: spotify-artists.followartistsusers
+      with:
+        type: tools.type
+        ids: tools.ids
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unfollow-artists-users
+      description: Unfollow Artists or Users
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: spotify-artists.unfollowartistsusers
+      with:
+        type: tools.type
+        ids: tools.ids
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: check-if-user-follows-artists
+      description: Check If User Follows Artists or Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotify-artists.checkcurrentuserfollows
+      with:
+        type: tools.type
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
