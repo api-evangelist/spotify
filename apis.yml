@@ -9,145 +9,147 @@ position: Consuming
 access: 3rd-Party
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- Music
-- Audio
-- Streaming
-- Podcasts
-- Playlists
+  - Music
+  - Audio
+  - Streaming
+  - Podcasts
+  - Playlists
 created: '2023-11-15'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/spotify/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-- aid: spotify:spotify-web-api
-  name: Spotify Web API
-  description: The Spotify Web API provides RESTful access to Spotify's music and podcast catalog, user library management,
-    playback control, and personalization features. Developers can retrieve metadata for albums, artists, tracks, shows, and
-    episodes; manage user playlists and saved libraries; control playback on connected devices; and access audio analysis
-    and recommendations. OAuth 2.0 authentication supports Authorization Code Flow, PKCE, and Client Credentials flows.
-  humanURL: https://developer.spotify.com/documentation/web-api
-  baseURL: https://api.spotify.com/v1
-  tags:
-  - Albums
-  - Artists
-  - Tracks
-  - Playlists
-  - Player
-  - Search
-  - Podcasts
-  - Library
-  - Recommendations
-  - Audio Analysis
-  properties:
-  - type: Documentation
-    url: https://developer.spotify.com/documentation/web-api
-  - type: OpenAPI
-    url: openapi/spotify-openapi-original.yml
-  - type: GettingStarted
-    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
-  - type: Authorization
-    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
-  - type: RateLimits
-    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
-  - type: Scopes
-    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
-  - type: JSONSchema
-    url: json-schema/spotify-track-schema.json
-  - type: JSONSchema
-    url: json-schema/spotify-playlist-schema.json
-  - type: JSONStructure
-    url: json-structure/spotify-track-structure.json
-  - type: JSONLD
-    url: json-ld/spotify-context.jsonld
-  - type: SpectralRules
-    url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
-  - type: Vocabulary
-    url: vocabulary/spotify-vocabulary.yml
-  - type: NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: NaftikoCapability
-    url: capabilities/spotify-users.yaml
-  features:
-  - type: MusicCatalog
-    description: Search and retrieve metadata for 100M+ tracks, albums, and artists
-  - type: PlaybackControl
-    description: Control Spotify playback on any connected device via API
-  - type: LibraryManagement
-    description: Save, remove, and manage user's music library with generic URI-based endpoints
-  - type: PlaylistManagement
-    description: Create, update, and manage playlists; add, reorder, and remove items
-  - type: AudioAnalysis
-    description: Access beat-by-beat audio analysis including tempo, key, and energy
-  - type: Recommendations
-    description: Generate personalized track recommendations based on seeds and audio features
-  - type: Personalization
-    description: Access user's top artists and tracks over multiple time ranges
-  - type: PodcastsAudiobooks
-    description: Stream and manage shows, episodes, and audiobooks
-  useCases:
-  - type: MusicDiscovery
-    description: Build recommendation engines and music discovery experiences
-  - type: PlaylistBuilding
-    description: Create collaborative or AI-generated playlists
-  - type: PartyMode
-    description: Control music playback at events, restaurants, or shared spaces
-  - type: MusicAnalytics
-    description: Analyze listening patterns and audio characteristics
-  - type: DeviceControl
-    description: Remote control Spotify playback from companion apps
+  - aid: spotify:spotify-web-api
+    name: Spotify Web API
+    description: The Spotify Web API provides RESTful access to Spotify's music and podcast catalog, user library management,
+      playback control, and personalization features. Developers can retrieve metadata for albums, artists, tracks, shows, and
+      episodes; manage user playlists and saved libraries; control playback on connected devices; and access audio analysis
+      and recommendations. OAuth 2.0 authentication supports Authorization Code Flow, PKCE, and Client Credentials flows.
+    humanURL: https://developer.spotify.com/documentation/web-api
+    baseURL: https://api.spotify.com/v1
+    tags:
+    - Albums
+    - Artists
+    - Tracks
+    - Playlists
+    - Player
+    - Search
+    - Podcasts
+    - Library
+    - Recommendations
+    - Audio Analysis
+    properties:
+    - type: Documentation
+      url: https://developer.spotify.com/documentation/web-api
+    - type: OpenAPI
+      url: openapi/spotify-openapi-original.yml
+    - type: GettingStarted
+      url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+    - type: Authorization
+      url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+    - type: RateLimits
+      url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+    - type: Scopes
+      url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+    - type: JSONSchema
+      url: json-schema/spotify-track-schema.json
+    - type: JSONSchema
+      url: json-schema/spotify-playlist-schema.json
+    - type: JSONStructure
+      url: json-structure/spotify-track-structure.json
+    - type: JSONLD
+      url: json-ld/spotify-context.jsonld
+    - type: SpectralRules
+      url: rules/spotify-rules.yml
+    - type: Capabilities
+      url: capabilities/music-discovery.yaml
+    - type: Vocabulary
+      url: vocabulary/spotify-vocabulary.yml
+    - type: NaftikoCapability
+      url: capabilities/spotify-albums.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-artists.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-audiobooks.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-categories.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-chapters.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-episodes.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-genres.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-library.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-markets.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-player.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-playlists.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-search.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-shows.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-tracks.yaml
+    - type: NaftikoCapability
+      url: capabilities/spotify-users.yaml
+    features:
+    - type: MusicCatalog
+      description: Search and retrieve metadata for 100M+ tracks, albums, and artists
+    - type: PlaybackControl
+      description: Control Spotify playback on any connected device via API
+    - type: LibraryManagement
+      description: Save, remove, and manage user's music library with generic URI-based endpoints
+    - type: PlaylistManagement
+      description: Create, update, and manage playlists; add, reorder, and remove items
+    - type: AudioAnalysis
+      description: Access beat-by-beat audio analysis including tempo, key, and energy
+    - type: Recommendations
+      description: Generate personalized track recommendations based on seeds and audio features
+    - type: Personalization
+      description: Access user's top artists and tracks over multiple time ranges
+    - type: PodcastsAudiobooks
+      description: Stream and manage shows, episodes, and audiobooks
+    useCases:
+    - type: MusicDiscovery
+      description: Build recommendation engines and music discovery experiences
+    - type: PlaylistBuilding
+      description: Create collaborative or AI-generated playlists
+    - type: PartyMode
+      description: Control music playback at events, restaurants, or shared spaces
+    - type: MusicAnalytics
+      description: Analyze listening patterns and audio characteristics
+    - type: DeviceControl
+      description: Remote control Spotify playback from companion apps
 common:
-- type: LinkedIn
-  url: https://www.linkedin.com/company/spotify
-- url: https://developer.spotify.com/
-  type: Developer
-- url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
-  type: GettingStarted
-- url: https://developer.spotify.com/documentation/web-api/concepts/authorization
-  type: Authorization
-- url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
-  type: RateLimits
-- url: https://developer.spotify.com/documentation/web-api/concepts/scopes
-  type: Scopes
-- url: https://developer.spotify.com/community
-  type: Community
-- url: https://developer.spotify.com/documentation/embeds
-  type: Embeds
-- url: https://developer.spotify.com/terms
-  type: TermsOfService
-- url: https://accounts.spotify.com/en/login
-  type: Login
-- url: https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer
-  type: Forum
-- url: https://developer.spotify.com/documentation/web-api/references/changes/february-2026
-  type: ChangeLog
+  - type: GitHubOrganization
+    url: https://github.com/spotify
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/spotify
+  - url: https://developer.spotify.com/
+    type: Developer
+  - url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+    type: GettingStarted
+  - url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+    type: Authorization
+  - url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+    type: RateLimits
+  - url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+    type: Scopes
+  - url: https://developer.spotify.com/community
+    type: Community
+  - url: https://developer.spotify.com/documentation/embeds
+    type: Embeds
+  - url: https://developer.spotify.com/terms
+    type: TermsOfService
+  - url: https://accounts.spotify.com/en/login
+    type: Login
+  - url: https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer
+    type: Forum
+  - url: https://developer.spotify.com/documentation/web-api/references/changes/february-2026
+    type: ChangeLog
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
