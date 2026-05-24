@@ -150,6 +150,8 @@ common:
     type: Forum
   - url: https://developer.spotify.com/documentation/web-api/references/changes/february-2026
     type: ChangeLog
+  - type: LLMsTxt
+    url: https://developer.spotify.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
