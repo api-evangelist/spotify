@@ -1,555 +1,171 @@
-executed: '2025-01-04T00:58:08.286Z'
-results:
-  - code: apis-json-specification-aid-info
-    message: There is an aid.
-    path:
-      - aid
-    severity: 2
-    range:
-      start:
-        line: 0
-        character: 5
-      end:
-        line: 0
-        character: 12
-  - code: apis-json-url-info
-    message: There is a URL.
-    path:
-      - url
-    severity: 2
-    range:
-      start:
-        line: 1
-        character: 5
-      end:
-        line: 1
-        character: 82
-  - code: apis-json-apis-info
-    message: Has APIs
-    path:
-      - apis
-    severity: 2
-    range:
-      start:
-        line: 2
-        character: 5
-      end:
-        line: 21
-        character: 15
-  - code: apis-json-apis-contact-error
-    message: API COULD have a contact.
-    path:
-      - apis
-      - '0'
-    severity: 1
-    range:
-      start:
-        line: 3
-        character: 4
-      end:
-        line: 21
-        character: 15
-  - code: apis-json-apis-aid-info
-    message: API has an aid property.
-    path:
-      - apis
-      - '0'
-      - aid
-    severity: 2
-    range:
-      start:
-        line: 3
-        character: 9
-      end:
-        line: 3
-        character: 32
-  - code: apis-json-apis-name-info
-    message: Has a Name
-    path:
-      - apis
-      - '0'
-      - name
-    severity: 2
-    range:
-      start:
-        line: 4
-        character: 10
-      end:
-        line: 4
-        character: 25
-  - code: apis-json-apis-tags-info
-    message: API Have a Tags Object
-    path:
-      - apis
-      - '0'
-      - tags
-    severity: 2
-    range:
-      start:
-        line: 5
-        character: 9
-      end:
-        line: 5
-        character: 12
-  - code: apis-json-apis-image-info
-    message: Has an Image
-    path:
-      - apis
-      - '0'
-      - image
-    severity: 2
-    range:
-      start:
-        line: 6
-        character: 11
-      end:
-        line: 6
-        character: 85
-  - code: apis-json-apis-baseURL-info
-    message: APIs Has a Base URL
-    path:
-      - apis
-      - '0'
-      - baseURL
-    severity: 2
-    range:
-      start:
-        line: 7
-        character: 13
-      end:
-        line: 7
-        character: 36
-  - code: apis-json-apis-humanURL-info
-    message: Has a Human URL
-    path:
-      - apis
-      - '0'
-      - humanURL
-    severity: 2
-    range:
-      start:
-        line: 8
-        character: 14
-      end:
-        line: 8
-        character: 65
-  - code: apis-json-apis-properties-url-info
-    message: Property URLs Are Valid
-    path:
-      - apis
-      - '0'
-      - properties
-      - '0'
-      - url
-    severity: 2
-    range:
-      start:
-        line: 10
-        character: 13
-      end:
-        line: 10
-        character: 64
-  - code: apis-json-apis-properties-documentation-info
-    message: Has Documentation
-    path:
-      - apis
-      - '0'
-      - properties
-      - '0'
-      - type
-    severity: 2
-    range:
-      start:
-        line: 11
-        character: 14
-      end:
-        line: 11
-        character: 27
-  - code: apis-json-apis-properties-openapi-info
-    message: Has An OpenAPI
-    path:
-      - apis
-      - '0'
-      - properties
-      - '1'
-      - type
-    severity: 2
-    range:
-      start:
-        line: 13
-        character: 14
-      end:
-        line: 13
-        character: 21
-  - code: apis-json-apis-properties-url-info
-    message: Property URLs Are Valid
-    path:
-      - apis
-      - '0'
-      - properties
-      - '2'
-      - url
-    severity: 2
-    range:
-      start:
-        line: 14
-        character: 13
-      end:
-        line: 15
-        character: 87
-  - code: apis-json-apis-description-info
-    message: Has a Description
-    path:
-      - apis
-      - '0'
-      - description
-    severity: 2
-    range:
-      start:
-        line: 17
-        character: 17
-      end:
-        line: 21
-        character: 15
-  - code: apis-json-name-info
-    message: There is a name.
-    path:
-      - name
-    severity: 2
-    range:
-      start:
-        line: 22
-        character: 6
-      end:
-        line: 22
-        character: 13
-  - code: apis-json-tags-info
-    message: There is a Tags Object
-    path:
-      - tags
-    severity: 2
-    range:
-      start:
-        line: 23
-        character: 5
-      end:
-        line: 25
-        character: 9
-  - code: apis-json-tags-upper-case-info
-    message: Tags Upper Case
-    path:
-      - tags
-      - '0'
-    severity: 2
-    range:
-      start:
-        line: 24
-        character: 4
-      end:
-        line: 24
-        character: 9
-  - code: apis-json-tags-upper-case-info
-    message: Tags Upper Case
-    path:
-      - tags
-      - '1'
-    severity: 2
-    range:
-      start:
-        line: 25
-        character: 4
-      end:
-        line: 25
-        character: 9
-  - code: apis-json-specification-type-info
-    message: There is a specification type.
-    path:
-      - type
-    severity: 2
-    range:
-      start:
-        line: 26
-        character: 6
-      end:
-        line: 26
-        character: 14
-  - code: apis-json-image-info
-    message: There is an image.
-    path:
-      - image
-    severity: 2
-    range:
-      start:
-        line: 27
-        character: 7
-      end:
-        line: 27
-        character: 81
-  - code: apis-json-common-info
-    message: There is an common property.
-    path:
-      - common
-    severity: 2
-    range:
-      start:
-        line: 29
-        character: 7
-      end:
-        line: 51
-        character: 15
-  - code: apis-json-apis-properties-url-info
-    message: Property URLs Are Valid
-    path:
-      - common
-      - '0'
-      - url
-    severity: 2
-    range:
-      start:
-        line: 30
-        character: 9
-      end:
-        line: 30
-        character: 39
-  - code: apis-json-apis-properties-url-info
-    message: Property URLs Are Valid
-    path:
-      - common
-      - '1'
-      - url
-    severity: 2
-    range:
-      start:
-        line: 32
-        character: 9
-      end:
-        line: 33
-        character: 83
-  - code: apis-json-apis-properties-url-info
-    message: Property URLs Are Valid
-    path:
-      - common
-      - '2'
-      - url
-    severity: 2
-    range:
-      start:
-        line: 35
-        character: 9
-      end:
-        line: 35
-        character: 83
-  - code: apis-json-apis-properties-url-info
-    message: Property URLs Are Valid
-    path:
-      - common
-      - '3'
-      - url
-    severity: 2
-    range:
-      start:
-        line: 37
-        character: 9
-      end:
-        line: 37
-        character: 81
-  - code: apis-json-apis-properties-rate-limits-info
-    message: Has an API Terms of Services
-    path:
-      - common
-      - '3'
-      - type
-    severity: 2
-    range:
-      start:
-        line: 38
-        character: 10
-      end:
-        line: 38
-        character: 21
-  - code: apis-json-apis-properties-url-info
-    message: Property URLs Are Valid
-    path:
-      - common
-      - '4'
-      - url
-    severity: 2
-    range:
-      start:
-        line: 39
-        character: 9
-      end:
-        line: 39
-        character: 76
-  - code: apis-json-apis-properties-url-info
-    message: Property URLs Are Valid
-    path:
-      - common
-      - '5'
-      - url
-    severity: 2
-    range:
-      start:
-        line: 41
-        character: 9
-      end:
-        line: 41
-        character: 48
-  - code: apis-json-apis-properties-url-info
-    message: Property URLs Are Valid
-    path:
-      - common
-      - '6'
-      - url
-    severity: 2
-    range:
-      start:
-        line: 43
-        character: 9
-      end:
-        line: 43
-        character: 59
-  - code: apis-json-apis-properties-url-info
-    message: Property URLs Are Valid
-    path:
-      - common
-      - '7'
-      - url
-    severity: 2
-    range:
-      start:
-        line: 45
-        character: 9
-      end:
-        line: 45
-        character: 44
-  - code: apis-json-apis-properties-terms-of-service-info
-    message: Has an API Terms of Service
-    path:
-      - common
-      - '7'
-      - type
-    severity: 2
-    range:
-      start:
-        line: 46
-        character: 10
-      end:
-        line: 46
-        character: 26
-  - code: apis-json-apis-properties-url-info
-    message: Property URLs Are Valid
-    path:
-      - common
-      - '8'
-      - url
-    severity: 2
-    range:
-      start:
-        line: 47
-        character: 9
-      end:
-        line: 47
-        character: 46
-  - code: apis-json-apis-properties-url-info
-    message: Property URLs Are Valid
-    path:
-      - common
-      - '9'
-      - url
-    severity: 2
-    range:
-      start:
-        line: 49
-        character: 9
-      end:
-        line: 50
-        character: 84
-  - code: apis-json-created-info
-    message: There is a created date.
-    path:
-      - created
-    severity: 2
-    range:
-      start:
-        line: 52
-        character: 9
-      end:
-        line: 52
-        character: 35
-  - code: apis-json-modified-info
-    message: There is a modified date.
-    path:
-      - modified
-    severity: 2
-    range:
-      start:
-        line: 53
-        character: 10
-      end:
-        line: 53
-        character: 22
-  - code: apis-json-description-info
-    message: There is a description.
-    path:
-      - description
-    severity: 2
-    range:
-      start:
-        line: 55
-        character: 13
-      end:
-        line: 65
-        character: 48
-  - code: apis-json-maintainers-info
-    message: There is a maintainer object.
-    path:
-      - maintainers
-    severity: 2
-    range:
-      start:
-        line: 66
-        character: 12
-      end:
-        line: 69
-        character: 33
-  - code: apis-json-maintainers-fn-info
-    message: There is a FN property for maintainers.
-    path:
-      - maintainers
-      - '0'
-      - FN
-    severity: 2
-    range:
-      start:
-        line: 67
-        character: 8
-      end:
-        line: 67
-        character: 22
-  - code: apis-json-maintainers-email-info
-    message: There is a email property for maintainers.
-    path:
-      - maintainers
-      - '0'
-      - email
-    severity: 2
-    range:
-      start:
-        line: 69
-        character: 11
-      end:
-        line: 69
-        character: 33
-  - code: apis-json-specification-version-info
-    message: There is a specification version.
-    path:
-      - specificationVersion
-    severity: 2
-    range:
-      start:
-        line: 70
-        character: 22
-      end:
-        line: 70
-        character: 28
+provider: Spotify
+providerId: spotify
+reviewer: API Evangelist
+reviewedBy: Kin Lane
+date: '2026-05-30'
+scope: AsyncAPI / public webhook & streaming protocol review
+verdict: no-public-webhook-or-streaming-protocol
+verdictRationale: >
+  Spotify does not publish a documented public webhook, server-sent events, or
+  WebSocket protocol for developers. Every documented surface on
+  developer.spotify.com is either (a) a synchronous REST endpoint on the Web API
+  / Ads API or (b) a client-side SDK (Web Playback SDK, iOS SDK, Android SDK,
+  Embeds) that exposes local in-process event listeners rather than a network
+  contract. The Web Playback SDK does open a WebSocket connection to Spotify's
+  Connect backend internally, but that wire protocol is proprietary — no wss://
+  URL, subprotocol identifier, frame schema, or handshake is published, and the
+  only public contract is the JavaScript event API on the Spotify.Player
+  instance. Developers who need event-driven Spotify integrations must poll the
+  Web API (e.g. /me/player, /me/player/recently-played, /me/tracks) or rely on
+  third-party glue services (Zapier, n8n, Pipedream) that themselves poll.
+findings:
+  - finding: No public webhook endpoint, subscription API, or event delivery surface is documented.
+    evidence:
+      - The Web API documentation index, reference, and concepts pages contain
+        no webhook, subscription, callback, or notification section.
+      - The February 2026 and March 2026 changelogs introduce REST endpoint
+        changes only; neither announces a webhook or streaming surface.
+      - Long-standing community requests for webhook support remain open with
+        no official Spotify commitment.
+    sources:
+      - https://developer.spotify.com/documentation/web-api
+      - https://developer.spotify.com/documentation/web-api/reference
+      - https://developer.spotify.com/documentation/web-api/concepts/api-calls
+      - https://developer.spotify.com/documentation/web-api/references/changes/february-2026
+      - https://developer.spotify.com/documentation/web-api/references/changes/march-2026
+      - https://github.com/spotify/web-api/issues/538
+      - https://community.spotify.com/t5/Spotify-for-Developers/Spotify-webhook-support/td-p/5669938
+  - finding: The Web Playback SDK exposes only client-side JavaScript events, not a public WebSocket protocol.
+    evidence:
+      - The SDK is described as a client-side JavaScript library.
+      - Documented events on the Spotify.Player instance are ready, not_ready,
+        player_state_changed, autoplay_failed, initialization_error,
+        authentication_error, account_error, and playback_error.
+      - No wss:// URL, subprotocol, message schema, or handshake is published
+        in the Web Playback SDK reference.
+    sources:
+      - https://developer.spotify.com/documentation/web-playback-sdk
+      - https://developer.spotify.com/documentation/web-playback-sdk/reference
+  - finding: The internal Connect WebSocket used by Spotify clients is not a public protocol.
+    evidence:
+      - Spotify's playback / device-control fabric (Spotify Connect) is reached
+        via a long-lived WebSocket that the official clients and the Web
+        Playback SDK negotiate internally.
+      - Spotify does not document the dealer/accesspoint endpoints, the
+        Hermes/protobuf framing, or the device-state messages anywhere on
+        developer.spotify.com.
+      - Third-party reverse-engineered libraries (librespot, etc.) exist but
+        are not sanctioned and do not constitute a documented public surface.
+    sources:
+      - https://developer.spotify.com/documentation/web-playback-sdk
+      - https://developer.spotify.com/documentation
+  - finding: The Ads API is REST-only with no documented webhook or streaming surface.
+    evidence:
+      - Ads API documentation covers campaign management, reporting, and asset
+        endpoints under a synchronous request/response model.
+      - Reporting endpoints use continuation tokens (pull/poll), not push
+        notifications.
+    sources:
+      - https://developer.spotify.com/documentation/ads-api
+  - finding: Event-driven Spotify use cases are implemented via polling.
+    evidence:
+      - The recommended pattern in Spotify community threads is to poll
+        /me/player, /me/player/recently-played, /me/tracks, and playlist
+        endpoints on an interval.
+      - Third-party automation platforms (Zapier "New Saved Track", "New
+        Playlist", n8n, Pipedream) all wrap Spotify REST polling under the
+        hood; they do not consume a Spotify-issued webhook.
+    sources:
+      - https://developer.spotify.com/documentation/web-api/reference/get-the-users-currently-playing-track
+      - https://developer.spotify.com/documentation/web-api/reference/get-recently-played
+      - https://zapier.com/apps/spotify/integrations/webhook
+      - https://n8n.io/integrations/webhook/and/spotify/
+probes:
+  - probe: WebFetch https://developer.spotify.com/documentation/web-api
+    status: 200
+    note: Confirms Web API is REST-only; no webhook/streaming/SSE section exists.
+  - probe: WebFetch https://developer.spotify.com/documentation
+    status: 200
+    note: Top-level catalog lists Web API, Web Playback SDK, Ads API, iOS SDK,
+      Android SDK, Embeds, Commercial Hardware. No webhook or streaming product.
+  - probe: WebFetch https://developer.spotify.com/documentation/web-playback-sdk
+    status: 200
+    note: Client-side JS library only; no public wire protocol.
+  - probe: WebFetch https://developer.spotify.com/documentation/web-playback-sdk/reference
+    status: 200
+    note: Eight documented player events; no wss:// URL, subprotocol, or frame schema.
+  - probe: WebFetch https://developer.spotify.com/documentation/ads-api
+    status: 200
+    note: REST-only; pagination via continuation tokens, no push notifications.
+  - probe: WebSearch "Spotify Web API webhooks public documentation 2026"
+    status: ok
+    note: Returned only official Spotify Web API pages plus third-party glue
+      services; no official webhook surface surfaced.
+  - probe: WebSearch "Spotify developer webhook event subscription notification"
+    status: ok
+    note: Community thread and GitHub issue confirm webhooks remain unsupported.
+publicWebhookProtocol: false
+publicWebSocketProtocol: false
+publicSSEProtocol: false
+publicGrpcStreamingProtocol: false
+serverSentEventsDocumented: false
+eventDeliveryMechanisms:
+  - mechanism: REST polling (Web API)
+    transport: HTTPS GET
+    auth: OAuth 2.0 (Authorization Code, PKCE, Client Credentials)
+    docs: https://developer.spotify.com/documentation/web-api
+    note: Player state, recently-played, saved items, and playlist diffs must
+      be detected by client polling. Subject to per-app and per-user rate limits.
+  - mechanism: Web Playback SDK in-process events
+    transport: JavaScript event listeners on Spotify.Player
+    auth: Bearer token supplied to the SDK
+    docs: https://developer.spotify.com/documentation/web-playback-sdk/reference
+    note: Local-only; not a network contract. Events fire inside the browser tab
+      hosting the SDK and cannot be consumed by an external service directly.
+sdkInternalRealtime:
+  transport: WebSocket (Spotify Connect / dealer) + proprietary framing
+  purpose: Device discovery, playback state synchronization, transfer between
+    Spotify Connect devices, and remote control from the Spotify clients and
+    Web Playback SDK.
+  publiclyContracted: false
+  note: >
+    The wire protocol between Spotify clients (including the Web Playback SDK)
+    and the Spotify Connect backend is not published. Customers integrate via
+    the supported SDKs and the Web API rather than by speaking the wire protocol
+    directly. There is no documented way for a third-party server to open a
+    wss:// session against Spotify and receive playback events.
+decision:
+  produceAsyncAPI: false
+  produceWebhookOpenAPI: false
+  reason: >
+    Producing an AsyncAPI 2.6 / 3.0 spec or an OpenAPI webhooks document would
+    require fabricating channel URLs, message schemas, signature headers, and
+    operation bindings that Spotify has not published. The documented event
+    surface is fully covered by the existing REST OpenAPI artifact at
+    openapi/spotify-openapi-original.yml (polling /me/player, /me/player/
+    recently-played, /me/tracks, and playlist endpoints). No AsyncAPI or
+    webhook artifact will be added to apis.yml.
+  alternatives:
+    - Continue polling-based event capture against the existing Web API OpenAPI.
+    - Re-evaluate if Spotify publishes a documented webhook, SSE, or WebSocket
+      surface in a future changelog entry.
+links:
+  docs:
+    - https://developer.spotify.com/
+    - https://developer.spotify.com/documentation
+    - https://developer.spotify.com/documentation/web-api
+    - https://developer.spotify.com/documentation/web-api/reference
+    - https://developer.spotify.com/documentation/web-api/concepts/api-calls
+    - https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+    - https://developer.spotify.com/documentation/web-api/references/changes/february-2026
+    - https://developer.spotify.com/documentation/web-api/references/changes/march-2026
+    - https://developer.spotify.com/documentation/web-playback-sdk
+    - https://developer.spotify.com/documentation/web-playback-sdk/reference
+    - https://developer.spotify.com/documentation/ads-api
+    - https://developer.spotify.com/documentation/embeds
+  community:
+    - https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer
+    - https://community.spotify.com/t5/Spotify-for-Developers/Spotify-webhook-support/td-p/5669938
+    - https://github.com/spotify/web-api/issues/538
+  github:
+    - https://github.com/spotify
