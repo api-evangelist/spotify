@@ -1,0 +1,1103 @@
+"""
+Spotify Web API — Conceptual GraphQL Schema
+Source: https://developer.spotify.com/documentation/web-api/reference/
+This schema models the Spotify REST API resources as GraphQL types.
+"""
+
+# ─────────────────────────────────────────────
+# Enumerations
+# ─────────────────────────────────────────────
+
+enum AlbumType {
+  ALBUM
+  SINGLE
+  COMPILATION
+}
+
+enum ReleaseDatePrecision {
+  YEAR
+  MONTH
+  DAY
+}
+
+enum RepeatState {
+  OFF
+  TRACK
+  CONTEXT
+}
+
+enum DeviceType {
+  COMPUTER
+  SMARTPHONE
+  SPEAKER
+  TV
+  AVR
+  STB
+  AUDIO_DONGLE
+  GAME_CONSOLE
+  CAST_VIDEO
+  CAST_AUDIO
+  AUTOMOBILE
+  UNKNOWN
+}
+
+enum SearchType {
+  TRACK
+  ALBUM
+  ARTIST
+  PLAYLIST
+  SHOW
+  EPISODE
+  AUDIOBOOK
+}
+
+enum TopItemType {
+  TRACKS
+  ARTISTS
+}
+
+enum TimeRange {
+  SHORT_TERM
+  MEDIUM_TERM
+  LONG_TERM
+}
+
+enum SavedItemType {
+  TRACKS
+  ALBUMS
+  EPISODES
+  SHOWS
+  AUDIOBOOKS
+}
+
+enum FollowType {
+  ARTIST
+  USER
+}
+
+enum RestrictionReason {
+  MARKET
+  PRODUCT
+  EXPLICIT
+  PAYMENT_REQUIRED
+}
+
+enum ContextType {
+  ARTIST
+  PLAYLIST
+  ALBUM
+  SHOW
+}
+
+enum ItemType {
+  TRACK
+  EPISODE
+}
+
+# ─────────────────────────────────────────────
+# Shared / Utility Types
+# ─────────────────────────────────────────────
+
+"""A URL object with href and an optional array of named external URLs."""
+type ExternalUrl {
+  spotify: String
+}
+
+"""External identifiers such as ISRC, EAN, or UPC."""
+type ExternalIds {
+  isrc: String
+  ean: String
+  upc: String
+}
+
+"""An image object with URL and optional dimensions."""
+type Image {
+  url: String!
+  height: Int
+  width: Int
+}
+
+"""Copyright information for an album or audiobook."""
+type Copyrights {
+  text: String
+  type: String
+}
+
+"""A restriction placed on a track, album, or episode."""
+type Restriction {
+  reason: RestrictionReason!
+}
+
+"""Available markets as ISO 3166-1 alpha-2 country codes."""
+type Markets {
+  markets: [String!]!
+}
+
+"""Resume point indicating where a user left off in an episode or chapter."""
+type ResumePoint {
+  fullyPlayed: Boolean!
+  resumePositionMs: Int!
+}
+
+"""Follower information."""
+type Follower {
+  href: String
+  total: Int!
+}
+
+"""A cursor used for cursor-based pagination."""
+type Cursor {
+  after: String
+  before: String
+}
+
+"""Generic offset-based paging wrapper."""
+type Paging {
+  href: String!
+  limit: Int!
+  next: String
+  offset: Int!
+  previous: String
+  total: Int!
+  items: [String]
+}
+
+"""Cursor-based paging wrapper (used for recently played)."""
+type CursorPaging {
+  href: String!
+  limit: Int!
+  next: String
+  cursors: Cursor
+  total: Int
+}
+
+"""A generic analytics metric for reporting purposes."""
+type AnalyticsMetric {
+  name: String!
+  value: Float!
+  unit: String
+}
+
+# ─────────────────────────────────────────────
+# Track Types
+# ─────────────────────────────────────────────
+
+"""A full Spotify track object."""
+type Track {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  durationMs: Int!
+  discNumber: Int!
+  trackNumber: Int!
+  explicit: Boolean!
+  isPlayable: Boolean
+  isLocal: Boolean!
+  popularity: Int
+  previewUrl: String
+  album: Album!
+  artists: [Artist!]!
+  availableMarkets: [String!]
+  externalIds: ExternalIds
+  externalUrls: ExternalUrl!
+  restrictions: Restriction
+  linkedFrom: LinkedTrack
+  audioFeatures: AudioFeatures
+}
+
+"""A simplified track as it appears within an album's track listing."""
+type AlbumTrack {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  durationMs: Int!
+  discNumber: Int!
+  trackNumber: Int!
+  explicit: Boolean!
+  isPlayable: Boolean
+  isLocal: Boolean!
+  previewUrl: String
+  artists: [Artist!]!
+  availableMarkets: [String!]
+  externalUrls: ExternalUrl!
+  restrictions: Restriction
+}
+
+"""A track linked from another track (relinking)."""
+type LinkedTrack {
+  id: ID!
+  uri: String!
+  href: String!
+  externalUrls: ExternalUrl!
+}
+
+"""Audio features for a track (danceability, energy, tempo, etc.)."""
+type AudioFeatures {
+  id: ID!
+  uri: String!
+  trackHref: String!
+  analysisUrl: String!
+  danceability: Float!
+  energy: Float!
+  key: Int!
+  loudness: Float!
+  mode: Int!
+  speechiness: Float!
+  acousticness: Float!
+  instrumentalness: Float!
+  liveness: Float!
+  valence: Float!
+  tempo: Float!
+  durationMs: Int!
+  timeSignature: Int!
+  type: String!
+}
+
+"""Full audio analysis for a track."""
+type AudioAnalysis {
+  meta: AudioAnalysisMeta!
+  track: AudioAnalysisTrack!
+  bars: [Bar!]!
+  beats: [Beat!]!
+  sections: [Section!]!
+  segments: [Segment!]!
+  tatums: [Tatum!]!
+}
+
+"""Metadata about an audio analysis."""
+type AudioAnalysisMeta {
+  analyzerVersion: String!
+  platform: String!
+  detailedStatus: String!
+  statusCode: Int!
+  timestamp: Int!
+  analysisTime: Float!
+  inputProcess: String!
+}
+
+"""Track-level properties within an audio analysis."""
+type AudioAnalysisTrack {
+  numSamples: Int!
+  duration: Float!
+  sampleMd5: String
+  offsetSeconds: Int!
+  windowSeconds: Int!
+  analysisSampleRate: Int!
+  analysisChannels: Int!
+  endOfFadeIn: Float!
+  startOfFadeOut: Float!
+  loudness: Float!
+  tempo: Float!
+  tempoConfidence: Float!
+  timeSignature: Int!
+  timeSignatureConfidence: Float!
+  key: Int!
+  keyConfidence: Float!
+  mode: Int!
+  modeConfidence: Float!
+  codestring: String
+  codeVersion: Float
+  echoprintstring: String
+  echoprintVersion: Float
+  synchstring: String
+  synchVersion: Float
+  rhythmstring: String
+  rhythmVersion: Float
+}
+
+"""A musical section (chorus, verse, intro, etc.) within a track."""
+type Section {
+  start: Float!
+  duration: Float!
+  confidence: Float!
+  loudness: Float!
+  tempo: Float!
+  tempoConfidence: Float!
+  key: Int!
+  keyConfidence: Float!
+  mode: Int!
+  modeConfidence: Float!
+  timeSignature: Int!
+  timeSignatureConfidence: Float!
+}
+
+"""A musical segment with detailed spectral information."""
+type Segment {
+  start: Float!
+  duration: Float!
+  confidence: Float!
+  loudnessStart: Float!
+  loudnessMax: Float!
+  loudnessMaxTime: Float!
+  loudnessEnd: Float
+  pitches: [Float!]!
+  timbre: [Float!]!
+}
+
+"""A detected beat in the audio analysis."""
+type Beat {
+  start: Float!
+  duration: Float!
+  confidence: Float!
+}
+
+"""A detected bar (measure) in the audio analysis."""
+type Bar {
+  start: Float!
+  duration: Float!
+  confidence: Float!
+}
+
+"""A detected tatum (subdivision of a beat) in the audio analysis."""
+type Tatum {
+  start: Float!
+  duration: Float!
+  confidence: Float!
+}
+
+"""
+A tuneable track attribute used to seed recommendations.
+All float values are in the range 0.0 to 1.0 unless otherwise noted.
+"""
+type TuneableTrack {
+  acousticness: Float
+  danceability: Float
+  durationMs: Int
+  energy: Float
+  instrumentalness: Float
+  key: Int
+  liveness: Float
+  loudness: Float
+  mode: Int
+  popularity: Int
+  speechiness: Float
+  tempo: Float
+  timeSignature: Int
+  valence: Float
+}
+
+# ─────────────────────────────────────────────
+# Album Types
+# ─────────────────────────────────────────────
+
+"""A full Spotify album object."""
+type Album {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  albumType: AlbumType!
+  totalTracks: Int!
+  releaseDate: String!
+  releaseDatePrecision: ReleaseDatePrecision!
+  label: String
+  popularity: Int
+  genres: [String!]!
+  availableMarkets: [String!]
+  artists: [Artist!]!
+  tracks: [AlbumTrack!]!
+  images: [Image!]!
+  externalUrls: ExternalUrl!
+  externalIds: ExternalIds
+  copyrights: [Copyrights!]
+  restrictions: Restriction
+}
+
+"""A simplified new release album."""
+type NewRelease {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  albumType: AlbumType!
+  totalTracks: Int!
+  releaseDate: String!
+  releaseDatePrecision: ReleaseDatePrecision!
+  availableMarkets: [String!]
+  artists: [Artist!]!
+  images: [Image!]!
+  externalUrls: ExternalUrl!
+  restrictions: Restriction
+}
+
+# ─────────────────────────────────────────────
+# Artist Types
+# ─────────────────────────────────────────────
+
+"""A full Spotify artist object."""
+type Artist {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  popularity: Int
+  genres: [String!]!
+  followers: Follower
+  images: [Image!]
+  externalUrls: ExternalUrl!
+  topTracks(market: String!): [Track!]!
+  albums(includeGroups: [AlbumType!], market: String, limit: Int, offset: Int): [ArtistAlbum!]!
+  relatedArtists: [ArtistRelated!]!
+}
+
+"""A simplified album as it appears in an artist's discography."""
+type ArtistAlbum {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  albumType: AlbumType!
+  albumGroup: String
+  totalTracks: Int!
+  releaseDate: String!
+  releaseDatePrecision: ReleaseDatePrecision!
+  availableMarkets: [String!]
+  artists: [Artist!]!
+  images: [Image!]!
+  externalUrls: ExternalUrl!
+  restrictions: Restriction
+}
+
+"""A simplified artist returned in related-artists results."""
+type ArtistRelated {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  popularity: Int
+  genres: [String!]!
+  followers: Follower
+  images: [Image!]
+  externalUrls: ExternalUrl!
+}
+
+# ─────────────────────────────────────────────
+# Playlist Types
+# ─────────────────────────────────────────────
+
+"""A full Spotify playlist object."""
+type Playlist {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  description: String
+  public: Boolean
+  collaborative: Boolean!
+  snapshotId: String!
+  primaryColor: String
+  owner: PublicUser!
+  followers: Follower!
+  images: [Image!]!
+  tracks: [PlaylistTrack!]!
+  externalUrls: ExternalUrl!
+}
+
+"""A track or episode within a playlist, with added/by metadata."""
+type PlaylistTrack {
+  addedAt: String
+  addedBy: PublicUser
+  isLocal: Boolean!
+  primaryColor: String
+  videoThumbnail: Image
+  track: PlaylistItem
+}
+
+"""Union-like type representing either a track or episode in a playlist."""
+type PlaylistItem {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  type: ItemType!
+  durationMs: Int!
+  explicit: Boolean!
+  externalUrls: ExternalUrl!
+}
+
+"""A featured playlist as returned by the browse endpoints."""
+type FeaturedPlaylist {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  description: String
+  public: Boolean
+  collaborative: Boolean!
+  snapshotId: String!
+  owner: PublicUser!
+  followers: Follower
+  images: [Image!]!
+  externalUrls: ExternalUrl!
+}
+
+# ─────────────────────────────────────────────
+# User Types
+# ─────────────────────────────────────────────
+
+"""The current authenticated user's full profile."""
+type User {
+  id: ID!
+  uri: String!
+  href: String!
+  displayName: String
+  email: String
+  country: String
+  product: String
+  birthdate: String
+  explicitContent: ExplicitContentSettings
+  followers: Follower!
+  images: [Image!]
+  externalUrls: ExternalUrl!
+}
+
+"""A public user profile (non-authenticated)."""
+type PublicUser {
+  id: ID!
+  uri: String!
+  href: String!
+  displayName: String
+  followers: Follower
+  images: [Image!]
+  externalUrls: ExternalUrl!
+}
+
+"""Explicit content filter settings for a user."""
+type ExplicitContentSettings {
+  filterEnabled: Boolean!
+  filterLocked: Boolean!
+}
+
+# ─────────────────────────────────────────────
+# Podcast / Show Types
+# ─────────────────────────────────────────────
+
+"""A full Spotify podcast show object."""
+type Show {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  description: String!
+  htmlDescription: String!
+  publisher: String!
+  mediaType: String!
+  explicit: Boolean!
+  totalEpisodes: Int!
+  languages: [String!]!
+  availableMarkets: [String!]
+  images: [Image!]!
+  externalUrls: ExternalUrl!
+  copyrights: [Copyrights!]
+  episodes: [Episode!]!
+}
+
+"""A full Spotify podcast episode object."""
+type Episode {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  description: String!
+  htmlDescription: String!
+  durationMs: Int!
+  explicit: Boolean!
+  releaseDate: String!
+  releaseDatePrecision: ReleaseDatePrecision!
+  language: String
+  languages: [String!]!
+  isExternallyHosted: Boolean!
+  isPlayable: Boolean!
+  audioPreviewUrl: String
+  images: [Image!]!
+  externalUrls: ExternalUrl!
+  resumePoint: ResumePoint
+  show: Show!
+  restrictions: Restriction
+}
+
+# ─────────────────────────────────────────────
+# Audiobook Types
+# ─────────────────────────────────────────────
+
+"""A full Spotify audiobook object."""
+type Audiobook {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  description: String!
+  htmlDescription: String!
+  explicit: Boolean!
+  totalChapters: Int!
+  edition: String
+  languages: [String!]!
+  mediaType: String!
+  publisher: String!
+  availableMarkets: [String!]
+  authors: [AudiobookAuthor!]!
+  narrators: [AudiobookNarrator!]!
+  images: [Image!]!
+  externalUrls: ExternalUrl!
+  copyrights: [Copyrights!]
+  chapters: [AudiobookChapter!]!
+}
+
+"""An audiobook chapter."""
+type AudiobookChapter {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  description: String!
+  htmlDescription: String!
+  durationMs: Int!
+  explicit: Boolean!
+  releaseDate: String!
+  releaseDatePrecision: ReleaseDatePrecision!
+  chapterNumber: Int!
+  isPlayable: Boolean!
+  audioPreviewUrl: String
+  availableMarkets: [String!]
+  images: [Image!]!
+  externalUrls: ExternalUrl!
+  resumePoint: ResumePoint
+  restrictions: Restriction
+}
+
+"""An author of an audiobook."""
+type AudiobookAuthor {
+  name: String!
+}
+
+"""A narrator of an audiobook."""
+type AudiobookNarrator {
+  name: String!
+}
+
+# ─────────────────────────────────────────────
+# Browse / Catalog Types
+# ─────────────────────────────────────────────
+
+"""A Spotify browse category (e.g., Pop, Hip-Hop, Mood)."""
+type Category {
+  id: ID!
+  href: String!
+  name: String!
+  icons: [Image!]!
+  playlists: [FeaturedPlaylist!]
+}
+
+# ─────────────────────────────────────────────
+# Playback Types
+# ─────────────────────────────────────────────
+
+"""Full playback state for the current user."""
+type PlaybackState {
+  device: Device!
+  shuffleState: Boolean!
+  repeatState: RepeatState!
+  timestamp: Float!
+  progressMs: Int
+  isPlaying: Boolean!
+  currentlyPlayingType: ItemType
+  item: PlaylistItem
+  context: Context
+  actions: Actions!
+}
+
+"""The currently playing item with context."""
+type CurrentlyPlaying {
+  timestamp: Float!
+  progressMs: Int
+  isPlaying: Boolean!
+  currentlyPlayingType: ItemType
+  item: PlaylistItem
+  context: Context
+  actions: Actions
+}
+
+"""A Spotify Connect device."""
+type Device {
+  id: ID
+  isActive: Boolean!
+  isPrivateSession: Boolean!
+  isRestricted: Boolean!
+  name: String!
+  type: DeviceType!
+  volumePercent: Int
+  supportsVolume: Boolean!
+}
+
+"""
+The context in which a track is playing (album, artist, playlist, or show).
+"""
+type Context {
+  type: ContextType!
+  href: String!
+  externalUrls: ExternalUrl!
+  uri: String!
+}
+
+"""Actions allowed in the current playback state."""
+type Actions {
+  interruptingPlayback: Boolean
+  pausing: Boolean
+  resuming: Boolean
+  seeking: Boolean
+  skippingNext: Boolean
+  skippingPrev: Boolean
+  togglingRepeatContext: Boolean
+  togglingShuffle: Boolean
+  togglingRepeatTrack: Boolean
+  transferringPlayback: Boolean
+}
+
+# ─────────────────────────────────────────────
+# Recommendation Types
+# ─────────────────────────────────────────────
+
+"""A recommendation result containing tracks and seeds."""
+type Recommendation {
+  seeds: [RecommendationSeed!]!
+  tracks: [Track!]!
+}
+
+"""A recommendation seed describing the basis for recommendations."""
+type RecommendationSeed {
+  afterFilteringSize: Int!
+  afterRelinkingSize: Int!
+  href: String
+  id: ID!
+  initialPoolSize: Int!
+  type: String!
+}
+
+# ─────────────────────────────────────────────
+# Library / Personalization Types
+# ─────────────────────────────────────────────
+
+"""A saved library item with the timestamp it was saved."""
+type SavedItem {
+  addedAt: String!
+  track: Track
+  album: Album
+  episode: Episode
+  show: Show
+  audiobook: Audiobook
+}
+
+"""Top tracks or artists for a user over a given time range."""
+type TopItems {
+  href: String!
+  limit: Int!
+  next: String
+  offset: Int!
+  previous: String
+  total: Int!
+  items: [TopItem!]!
+}
+
+"""A single item in a user's top artists or tracks result."""
+type TopItem {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  type: TopItemType!
+  popularity: Int
+  images: [Image!]
+  genres: [String!]
+  followers: Follower
+  artists: [Artist!]
+  album: Album
+  durationMs: Int
+  explicit: Boolean
+}
+
+"""A recently played track with the time it was played."""
+type RecentlyPlayed {
+  track: Track!
+  playedAt: String!
+  context: Context
+}
+
+# ─────────────────────────────────────────────
+# Search Types
+# ─────────────────────────────────────────────
+
+"""A single search result item (discriminated by type field)."""
+type SearchResult {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  type: SearchType!
+  popularity: Int
+  images: [Image!]
+  artists: [Artist!]
+  album: Album
+  durationMs: Int
+  explicit: Boolean
+  totalEpisodes: Int
+  publisher: String
+  totalChapters: Int
+}
+
+"""Bundled paginated search results across all requested types."""
+type SearchResultSet {
+  tracks: SearchPage
+  albums: SearchPage
+  artists: SearchPage
+  playlists: SearchPage
+  shows: SearchPage
+  episodes: SearchPage
+  audiobooks: SearchPage
+}
+
+"""A page of search results for a single content type."""
+type SearchPage {
+  href: String!
+  limit: Int!
+  next: String
+  offset: Int!
+  previous: String
+  total: Int!
+  items: [SearchResult!]!
+}
+
+# ─────────────────────────────────────────────
+# Input Types
+# ─────────────────────────────────────────────
+
+"""Input for tuneable track recommendation parameters."""
+input TuneableTrackInput {
+  minAcousticness: Float
+  maxAcousticness: Float
+  targetAcousticness: Float
+  minDanceability: Float
+  maxDanceability: Float
+  targetDanceability: Float
+  minDurationMs: Int
+  maxDurationMs: Int
+  targetDurationMs: Int
+  minEnergy: Float
+  maxEnergy: Float
+  targetEnergy: Float
+  minInstrumentalness: Float
+  maxInstrumentalness: Float
+  targetInstrumentalness: Float
+  minKey: Int
+  maxKey: Int
+  targetKey: Int
+  minLiveness: Float
+  maxLiveness: Float
+  targetLiveness: Float
+  minLoudness: Float
+  maxLoudness: Float
+  targetLoudness: Float
+  minMode: Int
+  maxMode: Int
+  targetMode: Int
+  minPopularity: Int
+  maxPopularity: Int
+  targetPopularity: Int
+  minSpeechiness: Float
+  maxSpeechiness: Float
+  targetSpeechiness: Float
+  minTempo: Float
+  maxTempo: Float
+  targetTempo: Float
+  minTimeSignature: Int
+  maxTimeSignature: Int
+  targetTimeSignature: Int
+  minValence: Float
+  maxValence: Float
+  targetValence: Float
+}
+
+"""Input for specifying a playback offset (by URI or position)."""
+input PlaybackOffsetInput {
+  position: Int
+  uri: String
+}
+
+"""Input for removing a specific track from a playlist."""
+input PlaylistTrackInput {
+  uri: String!
+  positions: [Int!]
+}
+
+# ─────────────────────────────────────────────
+# Root Types
+# ─────────────────────────────────────────────
+
+type Query {
+  track(id: ID!, market: String): Track
+  tracks(ids: [ID!]!, market: String): [Track]
+  album(id: ID!, market: String): Album
+  albums(ids: [ID!]!, market: String): [Album]
+  artist(id: ID!): Artist
+  artists(ids: [ID!]!): [Artist]
+  playlist(id: ID!, market: String, fields: String): Playlist
+  user(id: ID!): PublicUser
+  me: User
+  show(id: ID!, market: String): Show
+  episode(id: ID!, market: String): Episode
+  audiobook(id: ID!, market: String): Audiobook
+  search(
+    query: String!
+    types: [SearchType!]!
+    market: String
+    limit: Int
+    offset: Int
+    includeExternal: String
+  ): SearchResultSet
+  recommendations(
+    seedArtists: [ID!]
+    seedTracks: [ID!]
+    seedGenres: [String!]
+    limit: Int
+    market: String
+    tuneableTrack: TuneableTrackInput
+  ): Recommendation
+  audioFeatures(id: ID!): AudioFeatures
+  audioFeaturesMultiple(ids: [ID!]!): [AudioFeatures]
+  audioAnalysis(id: ID!): AudioAnalysis
+  playbackState(market: String, additionalTypes: String): PlaybackState
+  currentlyPlaying(market: String, additionalTypes: String): CurrentlyPlaying
+  devices: [Device!]!
+  queue: PlaybackQueue
+  categories(locale: String, limit: Int, offset: Int): CategoryPage
+  category(id: ID!, locale: String): Category
+  featuredPlaylists(locale: String, limit: Int, offset: Int): FeaturedPlaylistPage
+  newReleases(limit: Int, offset: Int): NewReleasePage
+  myTopItems(
+    type: TopItemType!
+    timeRange: TimeRange
+    limit: Int
+    offset: Int
+  ): TopItems
+  recentlyPlayed(limit: Int, before: String, after: String): RecentlyPlayedPage
+  mySavedItems(type: SavedItemType!, market: String, limit: Int, offset: Int): SavedItemPage
+  isFollowingArtistsOrUsers(ids: [ID!]!, type: FollowType!): [Boolean!]!
+  isFollowingPlaylist(playlistId: ID!, ids: [ID!]!): [Boolean!]!
+  availableMarkets: Markets
+  availableGenreSeeds: [String!]!
+}
+
+type Mutation {
+  saveItems(uris: [String!]!): Boolean
+  removeItems(uris: [String!]!): Boolean
+  createPlaylist(
+    userId: ID!
+    name: String!
+    public: Boolean
+    collaborative: Boolean
+    description: String
+  ): Playlist
+  updatePlaylist(
+    playlistId: ID!
+    name: String
+    public: Boolean
+    collaborative: Boolean
+    description: String
+  ): Boolean
+  addToPlaylist(playlistId: ID!, uris: [String!]!, position: Int): String
+  removeFromPlaylist(playlistId: ID!, tracks: [PlaylistTrackInput!]!, snapshotId: String): String
+  reorderPlaylistItems(
+    playlistId: ID!
+    rangeStart: Int!
+    insertBefore: Int!
+    rangeLength: Int
+    snapshotId: String
+  ): String
+  replacePlaylistItems(playlistId: ID!, uris: [String!]!): Boolean
+  followPlaylist(playlistId: ID!, public: Boolean): Boolean
+  unfollowPlaylist(playlistId: ID!): Boolean
+  followArtistOrUser(ids: [ID!]!, type: FollowType!): Boolean
+  unfollowArtistOrUser(ids: [ID!]!, type: FollowType!): Boolean
+  startPlayback(
+    deviceId: ID
+    contextUri: String
+    uris: [String!]
+    offset: PlaybackOffsetInput
+    positionMs: Int
+  ): Boolean
+  pausePlayback(deviceId: ID): Boolean
+  skipToNext(deviceId: ID): Boolean
+  skipToPrevious(deviceId: ID): Boolean
+  seekToPosition(positionMs: Int!, deviceId: ID): Boolean
+  setRepeatMode(state: RepeatState!, deviceId: ID): Boolean
+  setVolume(volumePercent: Int!, deviceId: ID): Boolean
+  toggleShuffle(state: Boolean!, deviceId: ID): Boolean
+  transferPlayback(deviceIds: [ID!]!, play: Boolean): Boolean
+  addToQueue(uri: String!, deviceId: ID): Boolean
+  uploadPlaylistCoverImage(playlistId: ID!, imageData: String!): Boolean
+}
+
+# ─────────────────────────────────────────────
+# Additional Page / Queue Types
+# ─────────────────────────────────────────────
+
+"""The current playback queue."""
+type PlaybackQueue {
+  currentlyPlaying: PlaylistItem
+  queue: [PlaylistItem!]!
+}
+
+"""A paginated page of categories."""
+type CategoryPage {
+  href: String!
+  limit: Int!
+  next: String
+  offset: Int!
+  previous: String
+  total: Int!
+  items: [Category!]!
+}
+
+"""A paginated page of featured playlists."""
+type FeaturedPlaylistPage {
+  message: String
+  href: String!
+  limit: Int!
+  next: String
+  offset: Int!
+  previous: String
+  total: Int!
+  items: [FeaturedPlaylist!]!
+}
+
+"""A paginated page of new album releases."""
+type NewReleasePage {
+  href: String!
+  limit: Int!
+  next: String
+  offset: Int!
+  previous: String
+  total: Int!
+  items: [NewRelease!]!
+}
+
+"""A paginated page of recently played track history."""
+type RecentlyPlayedPage {
+  href: String!
+  limit: Int!
+  next: String
+  cursors: Cursor!
+  items: [RecentlyPlayed!]!
+}
+
+"""A paginated page of saved library items."""
+type SavedItemPage {
+  href: String!
+  limit: Int!
+  next: String
+  offset: Int!
+  previous: String
+  total: Int!
+  items: [SavedItem!]!
+}
