@@ -69,35 +69,35 @@ apis:
     url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-albums.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-artists.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-audiobooks.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-categories.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-chapters.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-episodes.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-genres.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-library.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-markets.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-player.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-playlists.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-search.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-shows.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-tracks.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/spotify-users.yaml
   - url: graphql/spotify-graphql.md
     type: GraphQL
@@ -155,10 +155,10 @@ common:
 - url: https://accounts.spotify.com/en/login
   type: Login
 - url: https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer
-  type: Forum
+  type: Forums
 - url: https://developer.spotify.com/documentation/web-api/references/changes/february-2026
   type: ChangeLog
-- type: LLMsTxt
+- type: LlmsText
   url: https://developer.spotify.com/llms.txt
 maintainers:
 - FN: Kin Lane
