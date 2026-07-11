@@ -132,6 +132,10 @@ apis:
   - type: DeviceControl
     description: Remote control Spotify playback from companion apps
 common:
+- type: Authentication
+  url: authentication/spotify-authentication.yml
+- type: OAuthScopes
+  url: scopes/spotify-scopes.yml
 - type: GitHubOrganization
   url: https://github.com/spotify
 - type: LinkedIn
@@ -160,6 +164,8 @@ common:
   type: ChangeLog
 - type: LlmsText
   url: https://developer.spotify.com/llms.txt
+- url: https://newsroom.spotify.com/feed/
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

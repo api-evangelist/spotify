@@ -1,0 +1,126 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/spotify-openapi-original.yml
+schemes:
+- name: oauth_2_0
+  source: openapi/spotify-openapi-original.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.spotify.com/authorize
+    tokenUrl: https://accounts.spotify.com/api/token
+  description: Spotify supports OAuth 2.0 for authenticating all API requests.
+scopes:
+- scope: app-remote-control
+  description: Communicate with the Spotify app on your device.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: playlist-modify-private
+  description: Manage your private playlists.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: playlist-modify-public
+  description: Manage your public playlists.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: playlist-read-collaborative
+  description: Access your collaborative playlists.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: playlist-read-private
+  description: Access your private playlists.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: streaming
+  description: Play content and control playback on your other devices.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: ugc-image-upload
+  description: Upload images to Spotify on your behalf.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: user-follow-modify
+  description: Manage your saved content.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: user-follow-read
+  description: Access your followers and who you are following.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: user-library-modify
+  description: Manage your saved content.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: user-library-read
+  description: Access your saved content.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: user-modify-playback-state
+  description: Control playback on your Spotify clients and Spotify Connect devices.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: user-read-currently-playing
+  description: Read your currently playing content.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: user-read-email
+  description: Get your real email address.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: user-read-playback-position
+  description: Read your position in content you have played.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: user-read-playback-state
+  description: Read your currently playing content and Spotify Connect devices information.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: user-read-private
+  description: Access your subscription details.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: user-read-recently-played
+  description: Access your recently played items.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
+- scope: user-top-read
+  description: Read your top artists and content.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spotify-openapi-original.yml
