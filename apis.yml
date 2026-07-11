@@ -132,6 +132,10 @@ apis:
   - type: DeviceControl
     description: Remote control Spotify playback from companion apps
 common:
+- type: VulnerabilityDisclosure
+  url: security/spotify-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/spotify-domain-security.yml
 - type: Authentication
   url: authentication/spotify-authentication.yml
 - type: OAuthScopes

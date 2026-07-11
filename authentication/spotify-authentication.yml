@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/spotify-openapi-original.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: oauth_2_0
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.spotify.com/authorize
+    tokenUrl: https://accounts.spotify.com/api/token
+    scopes: 19
+  description: Spotify supports OAuth 2.0 for authenticating all API requests.
+  sources:
+  - openapi/spotify-openapi-original.yml
