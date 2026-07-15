@@ -132,6 +132,8 @@ apis:
   - type: DeviceControl
     description: Remote control Spotify playback from companion apps
 common:
+- type: AgenticAccess
+  url: agentic-access/spotify-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/spotify-vulnerability-disclosure.yml
 - type: DomainSecurity
