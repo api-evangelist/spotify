@@ -1,0 +1,3391 @@
+openapi: 3.0.3
+info:
+  description: 'You can use Spotify''s Web API to discover music and podcasts, manage your Spotify library, control audio playback, and much more. Browse our available Web API endpoints using the sidebar at left, or via the navigation bar on top of this page on smaller screens.
+
+
+    In order to make successful Web API requests your app will need a valid access token. One can be obtained through <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/">OAuth 2.0</a>.
+
+
+    The base URI for all Web API requests is `https://api.spotify.com/v1`.
+
+
+    Need help? See our <a href="https://developer.spotify.com/documentation/web-api/guides/">Web API guides</a> for more information, or visit the <a href="https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer">Spotify for Developers community forum</a> to ask questions and connect with other developers.
+
+    '
+  version: 1.0.0
+  title: Spotify Web Albums Library API
+  termsOfService: https://developer.spotify.com/terms/
+  contact:
+    name: Spotify for Developers Community
+    url: https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer
+servers:
+- url: https://api.spotify.com/v1
+tags:
+- name: Library
+paths:
+  /me/audiobooks:
+    get:
+      tags:
+      - Library
+      operationId: get-users-saved-audiobooks
+      summary: 'Get User''s Saved Audiobooks
+
+        '
+      description: 'Get a list of the audiobooks saved in the current Spotify user''s ''Your Music'' library.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingSimplifiedAudiobookObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+    put:
+      deprecated: true
+      tags:
+      - Library
+      operationId: save-audiobooks-user
+      summary: 'Save Audiobooks for Current User
+
+        '
+      description: 'Save one or more audiobooks to the current Spotify user''s library.
+
+
+        **Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryAudiobookIds'
+      responses:
+        '200':
+          description: Audiobook(s) are saved to the library
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+    delete:
+      deprecated: true
+      tags:
+      - Library
+      operationId: remove-audiobooks-user
+      summary: 'Remove User''s Saved Audiobooks
+
+        '
+      description: 'Remove one or more audiobooks from the Spotify user''s library.
+
+
+        **Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryAudiobookIds'
+      responses:
+        '200':
+          description: Audiobook(s) have been removed from the library
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+  /me/audiobooks/contains:
+    get:
+      tags:
+      - Library
+      operationId: check-users-saved-audiobooks
+      summary: 'Check User''s Saved Audiobooks
+
+        '
+      deprecated: true
+      description: 'Check if one or more audiobooks are already saved in the current Spotify user''s library.
+
+
+        **Note:** This endpoint is deprecated. Use [Check User''s Saved Items](/documentation/web-api/reference/check-library-contains) instead.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryAudiobookIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+  /playlists/{playlist_id}:
+    put:
+      tags:
+      - Library
+      operationId: change-playlist-details
+      summary: 'Change Playlist Details
+
+        '
+      description: 'Change a playlist''s name and public/private state. (The user must, of
+
+        course, own the playlist.)
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/PathPlaylistId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                name: Updated Playlist Name
+                description: Updated playlist description
+                public: false
+              type: object
+              additionalProperties: true
+              properties:
+                name:
+                  type: string
+                  description: 'The new name for the playlist, for example `"My New Playlist Title"`
+
+                    '
+                public:
+                  type: boolean
+                  description: 'The playlist''s public/private status (if it should be added to the user''s profile or not): `true` the playlist will be public, `false` the playlist will be private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+
+                    '
+                collaborative:
+                  type: boolean
+                  description: 'If `true`, the playlist will become collaborative and other users will be able to modify the playlist in their Spotify client. <br/>
+
+                    _**Note**: You can only set `collaborative` to `true` on non-public playlists._
+
+                    '
+                description:
+                  type: string
+                  description: 'Value for playlist description as displayed in Spotify Clients and in the Web API.
+
+                    '
+      responses:
+        '200':
+          description: Playlist updated
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-modify-public
+        - playlist-modify-private
+  /me/playlists:
+    get:
+      tags:
+      - Library
+      operationId: get-a-list-of-current-users-playlists
+      summary: 'Get Current User''s Playlists
+
+        '
+      description: 'Get a list of the playlists owned or followed by the current Spotify
+
+        user.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryLimit'
+      - name: offset
+        required: false
+        in: query
+        schema:
+          title: Offset
+          description: '''The index of the first playlist to return. Default:
+
+            0 (the first object). Maximum offset: 100.000\. Use with `limit` to get the
+
+            next set of playlists.''
+
+            '
+          default: 0
+          example: 5
+          type: integer
+      responses:
+        '200':
+          $ref: '#/components/responses/PagedPlaylists'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-read-private
+    post:
+      tags:
+      - Library
+      operationId: create-playlist
+      summary: 'Create Playlist
+
+        '
+      description: 'Create a playlist for the current Spotify user. (The playlist will be empty until
+
+        you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
+
+        Each user is generally limited to a maximum of 11000 playlists.
+
+        '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                name: New Playlist
+                description: New playlist description
+                public: false
+              type: object
+              additionalProperties: true
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: 'The name for the new playlist, for example `"Your Coolest Playlist"`. This name does not need to be unique; a user may have several playlists with the same name.
+
+                    '
+                public:
+                  type: boolean
+                  description: 'Defaults to `true`. The playlist''s public/private status (if it should be added to the user''s profile or not): `true` the playlist will be public, `false` the playlist will be private. To be able to create private playlists, the user must have granted the `playlist-modify-private` [scope](/documentation/web-api/concepts/scopes/#list-of-scopes). For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+
+                    '
+                collaborative:
+                  type: boolean
+                  description: 'Defaults to `false`. If `true` the playlist will be collaborative. _**Note**: to create a collaborative playlist you must also set `public` to `false`. To create collaborative playlists you must have granted `playlist-modify-private` and `playlist-modify-public` [scopes](/documentation/web-api/concepts/scopes/#list-of-scopes)._
+
+                    '
+                description:
+                  type: string
+                  description: 'value for playlist description as displayed in Spotify Clients and in the Web API.
+
+                    '
+      responses:
+        '201':
+          $ref: '#/components/responses/OnePlaylist'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-modify-public
+        - playlist-modify-private
+  /me/library:
+    put:
+      tags:
+      - Library
+      operationId: save-library-items
+      summary: 'Save Items to Library
+
+        '
+      description: 'Add one or more items to the current user''s library. Accepts Spotify URIs for tracks, albums, episodes, shows, audiobooks, users, and playlists.
+
+        '
+      parameters:
+      - name: uris
+        required: true
+        in: query
+        schema:
+          title: Spotify URIs
+          description: 'A comma-separated list of [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids). Maximum: 40 URIs.
+
+
+            Supported URI types:
+
+            - `spotify:track:{id}`
+
+            - `spotify:album:{id}`
+
+            - `spotify:episode:{id}`
+
+            - `spotify:show:{id}`
+
+            - `spotify:audiobook:{id}`
+
+            - `spotify:user:{id}`
+
+            - `spotify:playlist:{id}`
+
+            '
+          example: spotify:track:7a3LWj5xSFhFRYmztS8wgK,spotify:album:4aawyAB9vmqN3uQ7FjRGTy
+          type: string
+      responses:
+        '200':
+          description: Items saved to library
+        '400':
+          description: 'Bad Request. Possible reasons: missing `uris` parameter, invalid URI format, unsupported URI type, or more than 40 URIs provided.
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+        - user-follow-modify
+        - playlist-modify-public
+    delete:
+      tags:
+      - Library
+      operationId: remove-library-items
+      summary: 'Remove Items from Library
+
+        '
+      description: 'Remove one or more items from the current user''s library. Accepts Spotify URIs for tracks, albums, episodes, shows, audiobooks, users, and playlists.
+
+        '
+      parameters:
+      - name: uris
+        required: true
+        in: query
+        schema:
+          title: Spotify URIs
+          description: 'A comma-separated list of [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids). Maximum: 40 URIs.
+
+
+            Supported URI types:
+
+            - `spotify:track:{id}`
+
+            - `spotify:album:{id}`
+
+            - `spotify:episode:{id}`
+
+            - `spotify:show:{id}`
+
+            - `spotify:audiobook:{id}`
+
+            - `spotify:user:{id}`
+
+            - `spotify:playlist:{id}`
+
+            '
+          example: spotify:track:7a3LWj5xSFhFRYmztS8wgK,spotify:album:4aawyAB9vmqN3uQ7FjRGTy
+          type: string
+      responses:
+        '200':
+          description: Items removed from library
+        '400':
+          description: 'Bad Request. Possible reasons: missing `uris` parameter, invalid URI format, unsupported URI type, or more than 40 URIs provided.
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+        - user-follow-modify
+        - playlist-modify-public
+  /me/library/contains:
+    get:
+      tags:
+      - Library
+      operationId: check-library-contains
+      summary: 'Check User''s Saved Items
+
+        '
+      description: 'Check if one or more items are already saved in the current user''s library. Accepts Spotify URIs for tracks, albums, episodes, shows, audiobooks, artists, users, and playlists.
+
+        '
+      parameters:
+      - name: uris
+        required: true
+        in: query
+        schema:
+          title: Spotify URIs
+          description: 'A comma-separated list of [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids). Maximum: 40 URIs.
+
+
+            Supported URI types:
+
+            - `spotify:track:{id}`
+
+            - `spotify:album:{id}`
+
+            - `spotify:episode:{id}`
+
+            - `spotify:show:{id}`
+
+            - `spotify:audiobook:{id}`
+
+            - `spotify:artist:{id}`
+
+            - `spotify:user:{id}`
+
+            - `spotify:playlist:{id}`
+
+            '
+          example: spotify:track:7a3LWj5xSFhFRYmztS8wgK,spotify:album:4aawyAB9vmqN3uQ7FjRGTy,spotify:artist:2takcwOaAZWiXQijPHIx7B
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '400':
+          description: 'Bad Request. Possible reasons: missing `uris` parameter, invalid URI format, unsupported URI type, or more than 40 URIs provided.
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+        - user-follow-read
+        - playlist-read-private
+  /me/albums:
+    get:
+      tags:
+      - Library
+      operationId: get-users-saved-albums
+      summary: 'Get User''s Saved Albums
+
+        '
+      description: 'Get a list of the albums saved in the current Spotify user''s ''Your Music'' library.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingSavedAlbumObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+    put:
+      deprecated: true
+      tags:
+      - Library
+      operationId: save-albums-user
+      summary: 'Save Albums for Current User
+
+        '
+      description: 'Save one or more albums to the current user''s ''Your Music'' library.
+
+
+        **Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryAlbumIds'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              properties:
+                ids:
+                  type: array
+                  description: 'A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+
+                    '
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: The album is saved
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+    delete:
+      deprecated: true
+      tags:
+      - Library
+      operationId: remove-albums-user
+      summary: 'Remove Users'' Saved Albums
+
+        '
+      description: 'Remove one or more albums from the current user''s ''Your Music'' library.
+
+
+        **Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryAlbumIds'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              properties:
+                ids:
+                  type: array
+                  description: 'A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+
+                    '
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Album(s) have been removed from the library
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+  /me/albums/contains:
+    get:
+      tags:
+      - Library
+      operationId: check-users-saved-albums
+      summary: 'Check User''s Saved Albums
+
+        '
+      deprecated: true
+      description: 'Check if one or more albums is already saved in the current Spotify user''s ''Your Music'' library.
+
+
+        **Note:** This endpoint is deprecated. Use [Check User''s Saved Items](/documentation/web-api/reference/check-library-contains) instead.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryAlbumIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+  /me/tracks:
+    get:
+      tags:
+      - Library
+      operationId: get-users-saved-tracks
+      summary: 'Get User''s Saved Tracks
+
+        '
+      description: 'Get a list of the songs saved in the current Spotify user''s ''Your Music'' library.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryMarket'
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingSavedTrackObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+    put:
+      deprecated: true
+      tags:
+      - Library
+      operationId: save-tracks-user
+      summary: 'Save Tracks for Current User
+
+        '
+      description: 'Save one or more tracks to the current user''s ''Your Music'' library.
+
+
+        **Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.
+
+        '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              required:
+              - uris
+              properties:
+                ids:
+                  type: array
+                  description: 'A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items can be specified in one request. _**Note**: if the `timestamped_ids` is present in the body, any IDs listed in the query parameters (deprecated) or the `ids` field in the body will be ignored._
+
+                    '
+                  items:
+                    type: string
+                timestamped_ids:
+                  type: array
+                  description: 'A JSON array of objects containing track IDs with their corresponding timestamps. Each object must include a track ID and an `added_at` timestamp. This allows you to specify when tracks were added to maintain a specific chronological order in the user''s library.<br/>A maximum of 50 items can be specified in one request. _**Note**: if the `timestamped_ids` is present in the body, any IDs listed in the query parameters (deprecated) or the `ids` field in the body will be ignored._
+
+                    '
+                  items:
+                    type: object
+                    required:
+                    - id
+                    - added_at
+                    properties:
+                      id:
+                        type: string
+                        description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.
+
+                          '
+                      added_at:
+                        type: string
+                        format: date-time
+                        x-spotify-docs-type: Timestamp
+                        description: 'The timestamp when the track was added to the library. Use ISO 8601 format with UTC timezone (e.g., `2023-01-15T14:30:00Z`). You can specify past timestamps to insert tracks at specific positions in the library''s chronological order. The API uses minute-level granularity for ordering, though the timestamp supports millisecond precision.
+
+                          '
+      responses:
+        '200':
+          description: Track saved
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+    delete:
+      deprecated: true
+      tags:
+      - Library
+      operationId: remove-tracks-user
+      summary: 'Remove User''s Saved Tracks
+
+        '
+      description: 'Remove one or more tracks from the current user''s ''Your Music'' library.
+
+
+        **Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryTrackIds'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              properties:
+                ids:
+                  type: array
+                  description: 'A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+
+                    '
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Track removed
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+  /me/tracks/contains:
+    get:
+      tags:
+      - Library
+      operationId: check-users-saved-tracks
+      summary: 'Check User''s Saved Tracks
+
+        '
+      deprecated: true
+      description: 'Check if one or more tracks is already saved in the current Spotify user''s ''Your Music'' library.
+
+
+        **Note:** This endpoint is deprecated. Use [Check User''s Saved Items](/documentation/web-api/reference/check-library-contains) instead.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryTrackIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+  /me/episodes:
+    get:
+      tags:
+      - Library
+      operationId: get-users-saved-episodes
+      summary: 'Get User''s Saved Episodes
+
+        '
+      description: 'Get a list of the episodes saved in the current Spotify user''s library.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryMarket'
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingSavedEpisodeObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+        - user-read-playback-position
+    put:
+      deprecated: true
+      tags:
+      - Library
+      operationId: save-episodes-user
+      summary: 'Save Episodes for Current User
+
+        '
+      description: 'Save one or more episodes to the current user''s library.
+
+
+        **Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.
+
+        '
+      parameters:
+      - name: ids
+        required: true
+        in: query
+        schema:
+          title: Spotify Episodes IDs
+          description: 'A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). Maximum: 50 IDs.
+
+            '
+          example: 77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              required:
+              - uris
+              properties:
+                ids:
+                  type: array
+                  description: 'A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). <br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+
+                    '
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Episode saved
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+    delete:
+      deprecated: true
+      tags:
+      - Library
+      operationId: remove-episodes-user
+      summary: 'Remove User''s Saved Episodes
+
+        '
+      description: 'Remove one or more episodes from the current user''s library.
+
+
+        **Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryTrackIds'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              properties:
+                ids:
+                  type: array
+                  description: 'A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). <br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+
+                    '
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Episode removed
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+  /me/episodes/contains:
+    get:
+      tags:
+      - Library
+      operationId: check-users-saved-episodes
+      summary: 'Check User''s Saved Episodes
+
+        '
+      deprecated: true
+      description: 'Check if one or more episodes is already saved in the current Spotify user''s ''Your Episodes'' library.
+
+
+        **Note:** This endpoint is deprecated. Use [Check User''s Saved Items](/documentation/web-api/reference/check-library-contains) instead.
+
+        '
+      parameters:
+      - name: ids
+        required: true
+        in: query
+        schema:
+          title: Spotify Episode IDs
+          description: 'A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the episodes. Maximum: 50 IDs.
+
+            '
+          example: 77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+  /me/shows:
+    get:
+      tags:
+      - Library
+      operationId: get-users-saved-shows
+      summary: 'Get User''s Saved Shows
+
+        '
+      description: 'Get a list of shows saved in the current Spotify user''s library. Optional parameters can be used to limit the number of shows returned.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '200':
+          $ref: '#/components/responses/PagingSavedShowObject'
+      security:
+      - oauth_2_0:
+        - user-library-read
+    put:
+      deprecated: true
+      tags:
+      - Library
+      operationId: save-shows-user
+      summary: 'Save Shows for Current User
+
+        '
+      description: 'Save one or more shows to current Spotify user''s library.
+
+
+        **Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryShowIds'
+      responses:
+        '200':
+          description: Show saved
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+    delete:
+      deprecated: true
+      tags:
+      - Library
+      operationId: remove-shows-user
+      summary: 'Remove User''s Saved Shows
+
+        '
+      description: 'Delete one or more shows from current Spotify user''s library.
+
+
+        **Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryShowIds'
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          description: Show removed
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+  /me/shows/contains:
+    get:
+      tags:
+      - Library
+      operationId: check-users-saved-shows
+      summary: 'Check User''s Saved Shows
+
+        '
+      deprecated: true
+      description: 'Check if one or more shows is already saved in the current Spotify user''s library.
+
+
+        **Note:** This endpoint is deprecated. Use [Check User''s Saved Items](/documentation/web-api/reference/check-library-contains) instead.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/QueryShowIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+  /me/top/{type}:
+    get:
+      tags:
+      - Library
+      operationId: get-users-top-artists-and-tracks
+      summary: 'Get User''s Top Items
+
+        '
+      description: 'Get the current user''s top artists or tracks based on calculated affinity.
+
+        '
+      parameters:
+      - name: type
+        required: true
+        in: path
+        schema:
+          title: Type
+          description: 'The type of entity to return. Valid values: `artists` or `tracks`
+
+            '
+          enum:
+          - artists
+          - tracks
+          type: string
+      - name: time_range
+        required: false
+        in: query
+        schema:
+          title: Time Range
+          description: 'Over what time frame the affinities are computed. Valid values: `long_term` (calculated from ~1 year of data and including all new data as it becomes available), `medium_term` (approximately last 6 months), `short_term` (approximately last 4 weeks). Default: `medium_term`
+
+            '
+          default: medium_term
+          example: medium_term
+          type: string
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingArtistOrTrackObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-top-read
+  /users/{user_id}/playlists:
+    post:
+      tags:
+      - Library
+      operationId: create-playlist-for-user
+      deprecated: true
+      summary: 'Create Playlist for user
+
+        '
+      description: '**Deprecated**: Use [Create Playlist](/documentation/web-api/reference/create-playlist) instead.
+
+
+        Create a playlist for a Spotify user. (The playlist will be empty until
+
+        you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
+
+        Each user is generally limited to a maximum of 11000 playlists.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/PathUserId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                name: New Playlist
+                description: New playlist description
+                public: false
+              type: object
+              additionalProperties: true
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: 'The name for the new playlist, for example `"Your Coolest Playlist"`. This name does not need to be unique; a user may have several playlists with the same name.
+
+                    '
+                public:
+                  type: boolean
+                  description: 'Defaults to `true`. The playlist''s public/private status (if it should be added to the user''s profile or not): `true` the playlist will be public, `false` the playlist will be private. To be able to create private playlists, the user must have granted the `playlist-modify-private` [scope](/documentation/web-api/concepts/scopes/#list-of-scopes). For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+
+                    '
+                collaborative:
+                  type: boolean
+                  description: 'Defaults to `false`. If `true` the playlist will be collaborative. _**Note**: to create a collaborative playlist you must also set `public` to `false`. To create collaborative playlists you must have granted `playlist-modify-private` and `playlist-modify-public` [scopes](/documentation/web-api/concepts/scopes/#list-of-scopes)._
+
+                    '
+                description:
+                  type: string
+                  description: 'value for playlist description as displayed in Spotify Clients and in the Web API.
+
+                    '
+      responses:
+        '201':
+          $ref: '#/components/responses/OnePlaylist'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-modify-public
+        - playlist-modify-private
+  /me/following:
+    get:
+      tags:
+      - Library
+      operationId: get-followed
+      summary: 'Get Followed Artists
+
+        '
+      description: 'Get the current user''s followed artists.
+
+        '
+      parameters:
+      - name: type
+        required: true
+        in: query
+        schema:
+          title: Item Type
+          description: 'The ID type: currently only `artist` is supported.
+
+            '
+          enum:
+          - artist
+          example: artist
+          type: string
+      - name: after
+        required: false
+        in: query
+        schema:
+          title: After
+          description: 'The last artist ID retrieved from the previous request.
+
+            '
+          example: 0I2XqVXqHScXjHhk6AYYRe
+          type: string
+      - name: limit
+        required: false
+        in: query
+        schema:
+          title: Limit
+          description: 'The maximum number of items to return. Default: 20\. Minimum: 1\. Maximum: 50\.
+
+            '
+          default: 20
+          example: 10
+          type: integer
+          minimum: 0
+          maximum: 50
+      responses:
+        '200':
+          $ref: '#/components/responses/CursorPagedArtists'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-follow-read
+    put:
+      deprecated: true
+      tags:
+      - Library
+      operationId: follow-artists-users
+      summary: 'Follow Artists or Users
+
+        '
+      description: 'Add the current user as a follower of one or more artists or other Spotify users.
+
+
+        **Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.
+
+        '
+      parameters:
+      - name: type
+        required: true
+        in: query
+        schema:
+          title: Item Type
+          description: 'The ID type.
+
+            '
+          enum:
+          - artist
+          - user
+          example: artist
+          type: string
+      - name: ids
+        required: true
+        in: query
+        schema:
+          title: Spotify IDs
+          description: 'A comma-separated list of the artist or the user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids).
+
+            A maximum of 50 IDs can be sent in one request.
+
+            '
+          example: 2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              required:
+              - ids
+              properties:
+                ids:
+                  type: array
+                  description: 'A JSON array of the artist or user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids).
+
+                    For example: `{ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}`. A maximum of 50 IDs can be sent in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+
+                    '
+                  items:
+                    type: string
+      responses:
+        '204':
+          description: Artist or user followed
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-follow-modify
+    delete:
+      deprecated: true
+      tags:
+      - Library
+      operationId: unfollow-artists-users
+      summary: 'Unfollow Artists or Users
+
+        '
+      description: 'Remove the current user as a follower of one or more artists or other Spotify users.
+
+
+        **Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.
+
+        '
+      parameters:
+      - name: type
+        required: true
+        in: query
+        schema:
+          title: Item Type
+          description: 'The ID type: either `artist` or `user`.
+
+            '
+          enum:
+          - artist
+          - user
+          example: artist
+          type: string
+      - name: ids
+        required: true
+        in: query
+        schema:
+          title: Spotify IDs
+          description: 'A comma-separated list of the artist or the user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q`. A maximum of 50 IDs can be sent in one request.
+
+            '
+          example: 2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              properties:
+                ids:
+                  type: array
+                  description: 'A JSON array of the artist or user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `{ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}`. A maximum of 50 IDs can be sent in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+
+                    '
+                  items:
+                    type: string
+      responses:
+        '204':
+          description: Artist or user unfollowed
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-follow-modify
+  /me/following/contains:
+    get:
+      tags:
+      - Library
+      operationId: check-current-user-follows
+      summary: 'Check If User Follows Artists or Users
+
+        '
+      deprecated: true
+      description: 'Check to see if the current user is following one or more artists or other Spotify users.
+
+
+        **Note:** This endpoint is deprecated. Use [Check User''s Saved Items](/documentation/web-api/reference/check-library-contains) instead.
+
+        '
+      parameters:
+      - name: type
+        required: true
+        in: query
+        schema:
+          title: Item Type
+          description: 'The ID type: either `artist` or `user`.
+
+            '
+          enum:
+          - artist
+          - user
+          example: artist
+          type: string
+      - name: ids
+        required: true
+        in: query
+        schema:
+          title: Spotify IDs
+          description: 'A comma-separated list of the artist or the user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) to check. For example: `ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q`. A maximum of 50 IDs can be sent in one request.
+
+            '
+          example: 2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-follow-read
+components:
+  schemas:
+    PagingSavedEpisodeObject:
+      type: object
+      x-spotify-docs-type: PagingEpisodeObject
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/SavedEpisodeObject'
+    TrackRestrictionObject:
+      type: object
+      x-spotify-docs-type: TrackRestrictionObject
+      properties:
+        reason:
+          type: string
+          description: 'The reason for the restriction. Supported values:
+
+            - `market` - The content item is not available in the given market.
+
+            - `product` - The content item is not available for the user''s subscription type.
+
+            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
+
+
+            Additional reasons may be added in the future.
+
+            **Note**: If you use this field, make sure that your application safely handles unknown values.
+
+            '
+    PlaylistTrackObject:
+      type: object
+      x-spotify-docs-type: PlaylistTrackObject
+      properties:
+        added_at:
+          type: string
+          format: date-time
+          x-spotify-docs-type: Timestamp
+          description: 'The date and time the track or episode was added. _**Note**: some very old playlists may return `null` in this field._
+
+            '
+        added_by:
+          allOf:
+          - $ref: '#/components/schemas/PlaylistUserObject'
+          description: 'The Spotify user who added the track or episode. _**Note**: some very old playlists may return `null` in this field._
+
+            '
+        is_local:
+          type: boolean
+          description: 'Whether this track or episode is a [local file](/documentation/web-api/concepts/playlists/#local-files) or not.
+
+            '
+        item:
+          oneOf:
+          - $ref: '#/components/schemas/TrackObject'
+          - $ref: '#/components/schemas/EpisodeObject'
+          x-spotify-docs-type: TrackObject | EpisodeObject
+          description: Information about the track or episode.
+          discriminator:
+            propertyName: type
+        track:
+          oneOf:
+          - $ref: '#/components/schemas/TrackObject'
+          - $ref: '#/components/schemas/EpisodeObject'
+          x-spotify-docs-type: TrackObject | EpisodeObject
+          deprecated: true
+          description: '**Deprecated:** Use `item` instead. Information about the track or episode.
+
+            '
+          discriminator:
+            propertyName: type
+    PlaylistObject:
+      type: object
+      x-spotify-docs-type: PlaylistObject
+      properties:
+        collaborative:
+          type: boolean
+          description: '`true` if the owner allows other users to modify the playlist.
+
+            '
+        description:
+          type: string
+          nullable: true
+          description: 'The playlist description. _Only returned for modified, verified playlists, otherwise_ `null`.
+
+            '
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'Known external URLs for this playlist.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint providing full details of the playlist.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.
+
+            '
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          description: 'Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/web-api/concepts/playlists). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._
+
+            '
+        name:
+          type: string
+          description: 'The name of the playlist.
+
+            '
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/PlaylistOwnerObject'
+          description: 'The user who owns the playlist
+
+            '
+        public:
+          type: boolean
+          description: 'The playlist''s public/private status (if it is added to the user''s profile): `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+
+            '
+        snapshot_id:
+          type: string
+          description: 'The version identifier for the current playlist. Can be supplied in other requests to target a specific playlist version
+
+            '
+        items:
+          type: object
+          allOf:
+          - $ref: '#/components/schemas/PagingPlaylistTrackObject'
+          description: 'The items of the playlist. _**Note**: This field is only available for playlists owned by the current user or playlists the user is a collaborator of._
+
+            '
+        tracks:
+          type: object
+          allOf:
+          - $ref: '#/components/schemas/PagingPlaylistTrackObject'
+          deprecated: true
+          description: '**Deprecated:** Use `items` instead. The tracks of the playlist.
+
+            '
+        type:
+          type: string
+          description: 'The object type: "playlist"
+
+            '
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.
+
+            '
+    NarratorObject:
+      type: object
+      x-spotify-docs-type: NarratorObject
+      properties:
+        name:
+          type: string
+          description: 'The name of the Narrator.
+
+            '
+    AlbumBase:
+      type: object
+      required:
+      - album_type
+      - total_tracks
+      - available_markets
+      - external_urls
+      - href
+      - id
+      - images
+      - name
+      - release_date
+      - release_date_precision
+      - type
+      - uri
+      properties:
+        album_type:
+          type: string
+          description: 'The type of the album.
+
+            '
+          enum:
+          - album
+          - single
+          - compilation
+          example: compilation
+        total_tracks:
+          type: integer
+          description: The number of tracks in the album.
+          example: 9
+        available_markets:
+          deprecated: true
+          type: array
+          items:
+            type: string
+          example:
+          - CA
+          - BR
+          - IT
+          description: 'The markets in which the album is available: [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _**NOTE**: an album is considered available in a market when at least 1 of its tracks is available in that market._
+
+            '
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'Known external URLs for this album.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint providing full details of the album.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the album.
+
+            '
+          example: 2up3OPMp9Tb4dAKM2erWXQ
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          description: 'The cover art for the album in various sizes, widest first.
+
+            '
+        name:
+          type: string
+          description: 'The name of the album. In case of an album takedown, the value may be an empty string.
+
+            '
+        release_date:
+          type: string
+          example: 1981-12
+          description: 'The date the album was first released.
+
+            '
+        release_date_precision:
+          type: string
+          enum:
+          - year
+          - month
+          - day
+          example: year
+          description: 'The precision with which `release_date` value is known.
+
+            '
+        restrictions:
+          allOf:
+          - $ref: '#/components/schemas/AlbumRestrictionObject'
+          description: 'Included in the response when a content restriction is applied.
+
+            '
+        type:
+          type: string
+          enum:
+          - album
+          description: 'The object type.
+
+            '
+        uri:
+          type: string
+          example: spotify:album:2up3OPMp9Tb4dAKM2erWXQ
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the album.
+
+            '
+    EpisodeBase:
+      type: object
+      required:
+      - audio_preview_url
+      - description
+      - html_description
+      - duration_ms
+      - explicit
+      - external_urls
+      - href
+      - id
+      - images
+      - is_externally_hosted
+      - is_playable
+      - languages
+      - name
+      - release_date
+      - release_date_precision
+      - type
+      - uri
+      properties:
+        audio_preview_url:
+          deprecated: true
+          type: string
+          nullable: true
+          example: https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17
+          description: 'A URL to a 30 second preview (MP3 format) of the episode. `null` if not available.
+
+            '
+          x-spotify-policy-list:
+          - $ref: '#/components/x-spotify-policy/policies/StandalonePreview'
+        description:
+          type: string
+          example: 'A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.
+
+            '
+          description: 'A description of the episode. HTML tags are stripped away from this field, use `html_description` field in case HTML tags are needed.
+
+            '
+        html_description:
+          type: string
+          example: '<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>
+
+            '
+          description: 'A description of the episode. This field may contain HTML tags.
+
+            '
+        duration_ms:
+          type: integer
+          example: 1686230
+          description: 'The episode length in milliseconds.
+
+            '
+        explicit:
+          type: boolean
+          description: 'Whether or not the episode has explicit content (true = yes it does; false = no it does not OR unknown).
+
+            '
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'External URLs for this episode.
+
+            '
+        href:
+          type: string
+          example: https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ
+          description: 'A link to the Web API endpoint providing full details of the episode.
+
+            '
+        id:
+          type: string
+          example: 5Xt5DXGzch68nYYamXrNxZ
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the episode.
+
+            '
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          description: 'The cover art for the episode in various sizes, widest first.
+
+            '
+        is_externally_hosted:
+          type: boolean
+          description: 'True if the episode is hosted outside of Spotify''s CDN.
+
+            '
+        is_playable:
+          type: boolean
+          description: 'True if the episode is playable in the given market. Otherwise false.
+
+            '
+        language:
+          type: string
+          deprecated: true
+          example: en
+          description: 'The language used in the episode, identified by a [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code. This field is deprecated and might be removed in the future. Please use the `languages` field instead.
+
+            '
+        languages:
+          type: array
+          items:
+            type: string
+          example:
+          - fr
+          - en
+          description: 'A list of the languages used in the episode, identified by their [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639) code.
+
+            '
+        name:
+          type: string
+          example: 'Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators
+
+            '
+          description: 'The name of the episode.
+
+            '
+        release_date:
+          type: string
+          example: '1981-12-15'
+          description: 'The date the episode was first released, for example `"1981-12-15"`. Depending on the precision, it might be shown as `"1981"` or `"1981-12"`.
+
+            '
+        release_date_precision:
+          type: string
+          example: day
+          enum:
+          - year
+          - month
+          - day
+          description: 'The precision with which `release_date` value is known.
+
+            '
+        resume_point:
+          allOf:
+          - $ref: '#/components/schemas/ResumePointObject'
+          description: 'The user''s most recent position in the episode. Set if the supplied access token is a user token and has the scope ''user-read-playback-position''.
+
+            '
+        type:
+          type: string
+          enum:
+          - episode
+          description: 'The object type.
+
+            '
+        uri:
+          type: string
+          example: spotify:episode:0zLhl3WsOCQHbe1BPTiHgr
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode.
+
+            '
+        restrictions:
+          allOf:
+          - $ref: '#/components/schemas/EpisodeRestrictionObject'
+          description: 'Included in the response when a content restriction is applied.
+
+            '
+    SimplifiedPlaylistObject:
+      type: object
+      x-spotify-docs-type: SimplifiedPlaylistObject
+      properties:
+        collaborative:
+          type: boolean
+          description: '`true` if the owner allows other users to modify the playlist.
+
+            '
+        description:
+          type: string
+          description: 'The playlist description. _Only returned for modified, verified playlists, otherwise_ `null`.
+
+            '
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'Known external URLs for this playlist.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint providing full details of the playlist.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.
+
+            '
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          description: 'Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/web-api/concepts/playlists). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._
+
+            '
+        name:
+          type: string
+          description: 'The name of the playlist.
+
+            '
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/PlaylistOwnerObject'
+          description: 'The user who owns the playlist
+
+            '
+        public:
+          type: boolean
+          description: 'The playlist''s public/private status (if it is added to the user''s profile): `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+
+            '
+        snapshot_id:
+          type: string
+          description: 'The version identifier for the current playlist. Can be supplied in other requests to target a specific playlist version
+
+            '
+        items:
+          allOf:
+          - $ref: '#/components/schemas/PlaylistTracksRefObject'
+          description: 'A collection containing a link ( `href` ) to the Web API endpoint where full details of the playlist''s items can be retrieved, along with the `total` number of items in the playlist. Note, a track object may be `null`. This can happen if a track is no longer available.
+
+            '
+        tracks:
+          allOf:
+          - $ref: '#/components/schemas/PlaylistTracksRefObject'
+          deprecated: true
+          description: '**Deprecated:** Use `items` instead. A collection containing a link ( `href` ) to the Web API endpoint where full details of the playlist''s tracks can be retrieved, along with the `total` number of tracks in the playlist. Note, a track object may be `null`. This can happen if a track is no longer available.
+
+            '
+        type:
+          type: string
+          description: 'The object type: "playlist"
+
+            '
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.
+
+            '
+    SavedAlbumObject:
+      type: object
+      x-spotify-docs-type: SavedAlbumObject
+      properties:
+        added_at:
+          type: string
+          format: date-time
+          x-spotify-docs-type: Timestamp
+          description: 'The date and time the album was saved
+
+            Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.
+
+            If the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object.
+
+            '
+        album:
+          allOf:
+          - $ref: '#/components/schemas/AlbumObject'
+          description: Information about the album.
+    SimplifiedTrackObject:
+      type: object
+      x-spotify-docs-type: SimplifiedTrackObject
+      properties:
+        artists:
+          type: array
+          items:
+            $ref: '#/components/schemas/SimplifiedArtistObject'
+          description: The artists who performed the track. Each artist object includes a link in `href` to more detailed information about the artist.
+        available_markets:
+          deprecated: true
+          type: array
+          items:
+            type: string
+          description: 'A list of the countries in which the track can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+
+            '
+        disc_number:
+          type: integer
+          description: The disc number (usually `1` unless the album consists of more than one disc).
+        duration_ms:
+          type: integer
+          description: The track length in milliseconds.
+        explicit:
+          type: boolean
+          description: Whether or not the track has explicit lyrics ( `true` = yes it does; `false` = no it does not OR unknown).
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'External URLs for this track.
+
+            '
+        href:
+          type: string
+          description: A link to the Web API endpoint providing full details of the track.
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.
+
+            '
+        is_playable:
+          type: boolean
+          description: 'Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking/) is applied. If `true`, the track is playable in the given market. Otherwise `false`.
+
+            '
+        linked_from:
+          deprecated: true
+          allOf:
+          - $ref: '#/components/schemas/LinkedTrackObject'
+          description: Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking/) is applied and is only part of the response if the track linking, in fact, exists. The requested track has been replaced with a different track. The track in the `linked_from` object contains information about the originally requested track.
+        restrictions:
+          allOf:
+          - $ref: '#/components/schemas/TrackRestrictionObject'
+          description: 'Included in the response when a content restriction is applied.
+
+            '
+        name:
+          type: string
+          description: The name of the track.
+        preview_url:
+          deprecated: true
+          type: string
+          nullable: true
+          description: 'A URL to a 30 second preview (MP3 format) of the track.
+
+            '
+          x-spotify-policy-list:
+          - $ref: '#/components/x-spotify-policy/policies/StandalonePreview'
+        track_number:
+          type: integer
+          description: 'The number of the track. If an album has several discs, the track number is the number on the specified disc.
+
+            '
+        type:
+          type: string
+          description: 'The object type: "track".
+
+            '
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.
+
+            '
+        is_local:
+          type: boolean
+          description: 'Whether or not the track is from a local file.
+
+            '
+    ExternalUrlObject:
+      type: object
+      x-spotify-docs-type: ExternalUrlObject
+      properties:
+        spotify:
+          type: string
+          description: 'The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
+
+            '
+    AuthorObject:
+      type: object
+      x-spotify-docs-type: AuthorObject
+      properties:
+        name:
+          type: string
+          description: 'The name of the author.
+
+            '
+    PlaylistUserObject:
+      type: object
+      x-spotify-docs-type: PlaylistUserObject
+      properties:
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'Known public external URLs for this user.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint for this user.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this user.
+
+            '
+        type:
+          type: string
+          enum:
+          - user
+          description: 'The object type.
+
+            '
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for this user.
+
+            '
+    PagingPlaylistTrackObject:
+      type: object
+      x-spotify-docs-type: PagingPlaylistTrackObject
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/PlaylistTrackObject'
+    AlbumObject:
+      x-spotify-docs-type: AlbumObject
+      required:
+      - artists
+      - tracks
+      - copyrights
+      - external_ids
+      - genres
+      - label
+      - popularity
+      allOf:
+      - $ref: '#/components/schemas/AlbumBase'
+      - type: object
+        properties:
+          artists:
+            type: array
+            items:
+              $ref: '#/components/schemas/SimplifiedArtistObject'
+            description: 'The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist.
+
+              '
+          tracks:
+            allOf:
+            - $ref: '#/components/schemas/PagingSimplifiedTrackObject'
+            description: 'The tracks of the album.
+
+              '
+          copyrights:
+            type: array
+            items:
+              $ref: '#/components/schemas/CopyrightObject'
+            description: 'The copyright statements of the album.
+
+              '
+          external_ids:
+            allOf:
+            - $ref: '#/components/schemas/ExternalIdObject'
+            description: 'Known external IDs for the album.
+
+              '
+          genres:
+            type: array
+            items:
+              type: string
+            deprecated: true
+            example: []
+            description: '**Deprecated** The array is always empty.
+
+              '
+          label:
+            deprecated: true
+            type: string
+            description: 'The label associated with the album.
+
+              '
+          popularity:
+            deprecated: true
+            type: integer
+            description: 'The popularity of the album. The value will be between 0 and 100, with 100 being the most popular.
+
+              '
+    SavedShowObject:
+      type: object
+      x-spotify-docs-type: SavedShowObject
+      properties:
+        added_at:
+          type: string
+          format: date-time
+          x-spotify-docs-type: Timestamp
+          description: 'The date and time the show was saved.
+
+            Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.
+
+            If the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object.
+
+            '
+        show:
+          allOf:
+          - $ref: '#/components/schemas/SimplifiedShowObject'
+          description: Information about the show.
+    ErrorObject:
+      type: object
+      x-spotify-docs-type: ErrorObject
+      required:
+      - status
+      - message
+      properties:
+        status:
+          type: integer
+          minimum: 400
+          maximum: 599
+          description: 'The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).
+
+            '
+        message:
+          type: string
+          description: 'A short description of the cause of the error.
+
+            '
+    CursorObject:
+      type: object
+      x-spotify-docs-type: CursorObject
+      properties:
+        after:
+          type: string
+          description: The cursor to use as key to find the next page of items.
+        before:
+          type: string
+          description: The cursor to use as key to find the previous page of items.
+    PagingPlaylistObject:
+      type: object
+      x-spotify-docs-type: PagingPlaylistObject
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/SimplifiedPlaylistObject'
+    CursorPagingObject:
+      type: object
+      x-spotify-docs-type: CursorPagingObject
+      properties:
+        href:
+          type: string
+          description: A link to the Web API endpoint returning the full result of the request.
+        limit:
+          type: integer
+          description: The maximum number of items in the response (as set in the query or by default).
+        next:
+          type: string
+          description: URL to the next page of items. ( `null` if none)
+        cursors:
+          allOf:
+          - $ref: '#/components/schemas/CursorObject'
+          description: The cursors used to find the next set of items.
+        total:
+          type: integer
+          description: The total number of items available to return.
+    SimplifiedAudiobookObject:
+      x-spotify-docs-type: SimplifiedAudiobookObject
+      allOf:
+      - $ref: '#/components/schemas/AudiobookBase'
+      - type: object
+    SavedEpisodeObject:
+      type: object
+      x-spotify-docs-type: SavedEpisodeObject
+      properties:
+        added_at:
+          type: string
+          format: date-time
+          x-spotify-docs-type: Timestamp
+          description: 'The date and time the episode was saved.
+
+            Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.
+
+            '
+        episode:
+          allOf:
+          - $ref: '#/components/schemas/EpisodeObject'
+          description: Information about the episode.
+    AudiobookBase:
+      type: object
+      required:
+      - authors
+      - available_markets
+      - copyrights
+      - description
+      - explicit
+      - external_urls
+      - href
+      - html_description
+      - id
+      - images
+      - languages
+      - media_type
+      - name
+      - narrators
+      - publisher
+      - total_chapters
+      - type
+      - uri
+      properties:
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorObject'
+          description: 'The author(s) for the audiobook.
+
+            '
+        available_markets:
+          deprecated: true
+          type: array
+          items:
+            type: string
+          description: 'A list of the countries in which the audiobook can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+
+            '
+        copyrights:
+          type: array
+          items:
+            $ref: '#/components/schemas/CopyrightObject'
+          description: 'The copyright statements of the audiobook.
+
+            '
+        description:
+          type: string
+          description: 'A description of the audiobook. HTML tags are stripped away from this field, use `html_description` field in case HTML tags are needed.
+
+            '
+        html_description:
+          type: string
+          description: 'A description of the audiobook. This field may contain HTML tags.
+
+            '
+        edition:
+          type: string
+          description: 'The edition of the audiobook.
+
+            '
+          example: Unabridged
+        explicit:
+          type: boolean
+          description: 'Whether or not the audiobook has explicit content (true = yes it does; false = no it does not OR unknown).
+
+            '
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'External URLs for this audiobook.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint providing full details of the audiobook.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.
+
+            '
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          description: 'The cover art for the audiobook in various sizes, widest first.
+
+            '
+        languages:
+          type: array
+          items:
+            type: string
+          description: 'A list of the languages used in the audiobook, identified by their [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code.
+
+            '
+        media_type:
+          type: string
+          description: 'The media type of the audiobook.
+
+            '
+        name:
+          type: string
+          description: 'The name of the audiobook.
+
+            '
+        narrators:
+          type: array
+          items:
+            $ref: '#/components/schemas/NarratorObject'
+          description: 'The narrator(s) for the audiobook.
+
+            '
+        publisher:
+          deprecated: true
+          type: string
+          description: 'The publisher of the audiobook.
+
+            '
+        type:
+          type: string
+          enum:
+          - audiobook
+          description: 'The object type.
+
+            '
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.
+
+            '
+        total_chapters:
+          type: integer
+          description: 'The number of chapters in this audiobook.
+
+            '
+    ImageObject:
+      type: object
+      x-spotify-docs-type: ImageObject
+      required:
+      - url
+      - height
+      - width
+      properties:
+        url:
+          type: string
+          example: 'https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228
+
+            '
+          description: 'The source URL of the image.
+
+            '
+        height:
+          type: integer
+          example: 300
+          nullable: true
+          description: 'The image height in pixels.
+
+            '
+        width:
+          type: integer
+          example: 300
+          nullable: true
+          description: 'The image width in pixels.
+
+            '
+    PagingSavedAlbumObject:
+      type: object
+      x-spotify-docs-type: PagingSavedAlbumObject
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/SavedAlbumObject'
+    ArtistObject:
+      type: object
+      x-spotify-docs-type: ArtistObject
+      properties:
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'Known external URLs for this artist.
+
+            '
+        followers:
+          deprecated: true
+          allOf:
+          - $ref: '#/components/schemas/FollowersObject'
+          description: 'Information about the followers of the artist.
+
+            '
+        genres:
+          deprecated: true
+          type: array
+          items:
+            type: string
+          example:
+          - Prog rock
+          - Grunge
+          description: 'A list of the genres the artist is associated with. If not yet classified, the array is empty.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint providing full details of the artist.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
+
+            '
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          description: 'Images of the artist in various sizes, widest first.
+
+            '
+        name:
+          type: string
+          description: 'The name of the artist.
+
+            '
+        popularity:
+          deprecated: true
+          type: integer
+          description: 'The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. The artist''s popularity is calculated from the popularity of all the artist''s tracks.
+
+            '
+        type:
+          type: string
+          enum:
+          - artist
+          description: 'The object type.
+
+            '
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
+
+            '
+    SimplifiedShowObject:
+      x-spotify-docs-type: SimplifiedShowObject
+      allOf:
+      - $ref: '#/components/schemas/ShowBase'
+      - type: object
+    EpisodeObject:
+      x-spotify-docs-type: EpisodeObject
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/EpisodeBase'
+      - type: object
+        required:
+        - show
+        properties:
+          show:
+            allOf:
+            - $ref: '#/components/schemas/SimplifiedShowObject'
+            description: 'The show on which the episode belongs.
+
+              '
+    AlbumRestrictionObject:
+      type: object
+      x-spotify-docs-type: AlbumRestrictionObject
+      properties:
+        reason:
+          type: string
+          enum:
+          - market
+          - product
+          - explicit
+          description: 'The reason for the restriction. Albums may be restricted if the content is not available in a given market, to the user''s subscription type, or when the user''s account is set to not play explicit content.
+
+            Additional reasons may be added in the future.
+
+            '
+    LinkedTrackObject:
+      type: object
+      x-spotify-docs-type: LinkedTrackObject
+      properties:
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'Known external URLs for this track.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint providing full details of the track.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.
+
+            '
+        type:
+          type: string
+          description: 'The object type: "track".
+
+            '
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.
+
+            '
+    CopyrightObject:
+      type: object
+      x-spotify-docs-type: CopyrightObject
+      properties:
+        text:
+          type: string
+          description: 'The copyright text for this content.
+
+            '
+        type:
+          type: string
+          description: 'The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright.
+
+            '
+    PagingSavedShowObject:
+      type: object
+      x-spotify-docs-type: PagingShowObject
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/SavedShowObject'
+    PagingObject:
+      type: object
+      x-spotify-docs-type: PagingObject
+      required:
+      - href
+      - items
+      - limit
+      - next
+      - offset
+      - previous
+      - total
+      properties:
+        href:
+          type: string
+          example: 'https://api.spotify.com/v1/me/shows?offset=0&limit=20
+
+            '
+          description: 'A link to the Web API endpoint returning the full result of the request
+
+            '
+        limit:
+          type: integer
+          example: 20
+          description: 'The maximum number of items in the response (as set in the query or by default).
+
+            '
+        next:
+          type: string
+          example: https://api.spotify.com/v1/me/shows?offset=1&limit=1
+          nullable: true
+          description: 'URL to the next page of items. ( `null` if none)
+
+            '
+        offset:
+          type: integer
+          example: 0
+          description: 'The offset of the items returned (as set in the query or by default)
+
+            '
+        previous:
+          type: string
+          example: https://api.spotify.com/v1/me/shows?offset=1&limit=1
+          nullable: true
+          description: 'URL to the previous page of items. ( `null` if none)
+
+            '
+        total:
+          type: integer
+          example: 4
+          description: 'The total number of items available to return.
+
+            '
+    FollowersObject:
+      type: object
+      x-spotify-docs-type: FollowersObject
+      properties:
+        href:
+          type: string
+          nullable: true
+          description: 'This will always be set to null, as the Web API does not support it at the moment.
+
+            '
+        total:
+          type: integer
+          description: 'The total number of followers.
+
+            '
+    SimplifiedArtistObject:
+      type: object
+      x-spotify-docs-type: SimplifiedArtistObject
+      properties:
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'Known external URLs for this artist.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint providing full details of the artist.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
+
+            '
+        name:
+          type: string
+          description: 'The name of the artist.
+
+            '
+        type:
+          type: string
+          enum:
+          - artist
+          description: 'The object type.
+
+            '
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
+
+            '
+    PlaylistTracksRefObject:
+      type: object
+      x-spotify-docs-type: PlaylistTracksRefObject
+      properties:
+        href:
+          type: string
+          description: 'A link to the Web API endpoint where full details of the playlist''s tracks can be retrieved.
+
+            '
+        total:
+          type: integer
+          description: 'Number of tracks in the playlist.
+
+            '
+    SavedTrackObject:
+      type: object
+      x-spotify-docs-type: SavedTrackObject
+      properties:
+        added_at:
+          type: string
+          format: date-time
+          x-spotify-docs-type: Timestamp
+          description: 'The date and time the track was saved.
+
+            Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.
+
+            If the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object.
+
+            '
+        track:
+          allOf:
+          - $ref: '#/components/schemas/TrackObject'
+          description: Information about the track.
+    TrackObject:
+      type: object
+      x-spotify-docs-type: TrackObject
+      properties:
+        album:
+          allOf:
+          - $ref: '#/components/schemas/SimplifiedAlbumObject'
+          description: 'The album on which the track appears. The album object includes a link in `href` to full information about the album.
+
+            '
+        artists:
+          type: array
+          items:
+            $ref: '#/components/schemas/SimplifiedArtistObject'
+          description: 'The artists who performed the track. Each artist object includes a link in `href` to more detailed information about the artist.
+
+            '
+        available_markets:
+          deprecated: true
+          type: array
+          items:
+            type: string
+          description: 'A list of the countries in which the track can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+
+            '
+        disc_number:
+          type: integer
+          description: 'The disc number (usually `1` unless the album consists of more than one disc).
+
+            '
+        duration_ms:
+          type: integer
+          description: 'The track length in milliseconds.
+
+            '
+        explicit:
+          type: boolean
+          description: 'Whether or not the track has explicit lyrics ( `true` = yes it does; `false` = no it does not OR unknown).
+
+            '
+        external_ids:
+          allOf:
+          - $ref: '#/components/schemas/ExternalIdObject'
+          description: 'Known external IDs for the track.
+
+            '
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'Known external URLs for this track.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint providing full details of the track.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.
+
+            '
+        is_playable:
+          type: boolean
+          description: 'Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied. If `true`, the track is playable in the given market. Otherwise `false`.
+
+            '
+        linked_from:
+          deprecated: true
+          type: object
+          description: 'Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied, and the requested track has been replaced with different track. The track in the `linked_from` object contains information about the originally requested track.
+
+            '
+        restrictions:
+          allOf:
+          - $ref: '#/components/schemas/TrackRestrictionObject'
+          description: 'Included in the response when a content restriction is applied.
+
+            '
+        name:
+          type: string
+          description: 'The name of the track.
+
+            '
+        popularity:
+          deprecated: true
+          type: integer
+          description: 'The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.<br/>The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.<br/>Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. _**Note**: the popularity value may lag actual popularity by a few days: the value is not updated in real time._
+
+            '
+        preview_url:
+          deprecated: true
+          type: string
+          nullable: true
+          description: 'A link to a 30 second preview (MP3 format) of the track. Can be `null`
+
+            '
+          x-spotify-policy-list:
+          - $ref: '#/components/x-spotify-policy/policies/StandalonePreview'
+        track_number:
+          type: integer
+          description: 'The number of the track. If an album has several discs, the track number is the number on the specified disc.
+
+            '
+        type:
+          type: string
+          description: 'The object type: "track".
+
+            '
+          enum:
+          - track
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.
+
+            '
+        is_local:
+          type: boolean
+          description: 'Whether or not the track is from a local file.
+
+            '
+    SimplifiedAlbumObject:
+      x-spotify-docs-type: SimplifiedAlbumObject
+      allOf:
+      - $ref: '#/components/schemas/AlbumBase'
+      - type: object
+        required:
+        - artists
+        properties:
+          artists:
+            type: array
+            items:
+              $ref: '#/components/schemas/SimplifiedArtistObject'
+            description: 'The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist.
+
+              '
+    EpisodeRestrictionObject:
+      type: object
+      x-spotify-docs-type: EpisodeRestrictionObject
+      properties:
+        reason:
+          type: string
+          description: 'The reason for the restriction. Supported values:
+
+            - `market` - The content item is not available in the given market.
+
+            - `product` - The content item is not available for the user''s subscription type.
+
+            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
+
+
+            Additional reasons may be added in the future.
+
+            **Note**: If you use this field, make sure that your application safely handles unknown values.
+
+            '
+    ResumePointObject:
+      type: object
+      x-spotify-docs-type: ResumePointObject
+      properties:
+        fully_played:
+          type: boolean
+          description: 'Whether or not the episode has been fully played by the user.
+
+            '
+        resume_position_ms:
+          type: integer
+          description: 'The user''s most recent position in the episode in milliseconds.
+
+            '
+    ExternalIdObject:
+      type: object
+      x-spotify-docs-type: ExternalIdObject
+      properties:
+        isrc:
+          type: string
+          description: '[International Standard Recording Code](http://en.wikipedia.org/wiki/International_Standard_Recording_Code)
+
+            '
+        ean:
+          type: string
+          description: '[International Article Number](http://en.wikipedia.org/wiki/International_Article_Number_%28EAN%29)
+
+            '
+        upc:
+          type: string
+          description: '[Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code)
+
+            '
+    PlaylistOwnerObject:
+      allOf:
+      - $ref: '#/components/schemas/PlaylistUserObject'
+      - type: object
+        properties:
+          display_name:
+            type: string
+            nullable: true
+            description: 'The name displayed on the user''s profile. `null` if not available.
+
+              '
+    PagingSimplifiedTrackObject:
+      type: object
+      x-spotify-docs-type: PagingTrackObject
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/SimplifiedTrackObject'
+    CursorPagingSimplifiedArtistObject:
+      type: object
+      x-spotify-docs-type: PagingArtistObject
+      allOf:
+      - $ref: '#/components/schemas/CursorPagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/ArtistObject'
+    PagingSavedTrackObject:
+      type: object
+      x-spotify-docs-type: PagingTrackObject
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/SavedTrackObject'
+    ShowBase:
+      type: object
+      required:
+      - available_markets
+      - copyrights
+      - description
+      - explicit
+      - external_urls
+      - href
+      - html_description
+      - id
+      - images
+      - is_externally_hosted
+      - languages
+      - media_type
+      - name
+      - publisher
+      - total_episodes
+      - type
+      - uri
+      properties:
+        available_markets:
+          deprecated: true
+          type: array
+          items:
+            type: string
+          description: 'A list of the countries in which the show can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+
+            '
+        copyrights:
+          type: array
+          items:
+            $ref: '#/components/schemas/CopyrightObject'
+          description: 'The copyright statements of the show.
+
+            '
+        description:
+          type: string
+          description: 'A description of the show. HTML tags are stripped away from this field, use `html_description` field in case HTML tags are needed.
+
+            '
+        html_description:
+          type: string
+          description: 'A description of the show. This field may contain HTML tags.
+
+            '
+        explicit:
+          type: boolean
+          description: 'Whether or not the show has explicit content (true = yes it does; false = no it does not OR unknown).
+
+            '
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'External URLs for this show.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint providing full details of the show.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.
+
+            '
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          description: 'The cover art for the show in various sizes, widest first.
+
+            '
+        is_externally_hosted:
+          type: boolean
+          description: 'True if all of the shows episodes are hosted outside of Spotify''s CDN. This field might be `null` in some cases.
+
+            '
+        languages:
+          type: array
+          items:
+            type: string
+          description: 'A list of the languages used in the show, identified by their [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code.
+
+            '
+        media_type:
+          type: string
+          description: 'The media type of the show.
+
+            '
+        name:
+          type: string
+          description: 'The name of the episode.
+
+            '
+        publisher:
+          deprecated: true
+          type: string
+          description: 'The publisher of the show.
+
+            '
+        type:
+          type: string
+          enum:
+          - show
+          description: 'The object type.
+
+            '
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the show.
+
+            '
+        total_episodes:
+          type: integer
+          description: 'The total number of episodes in the show.
+
+            '
+    PagingSimplifiedAudiobookObject:
+      type: object
+      x-spotify-docs-type: PagingAudiobookObject
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/SimplifiedAudiobookObject'
+  responses:
+    PagingSavedTrackObject:
+      description: Pages of tracks
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSavedTrackObject'
+    CursorPagedArtists:
+      description: A paged set of artists
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - artists
+            properties:
+              artists:
+                $ref: '#/components/schemas/CursorPagingSimplifiedArtistObject'
+    Forbidden:
+      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
+
+        timestamp...). Unfortunately, re-authenticating the user won''t help here.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    PagingSavedAlbumObject:
+      description: Pages of albums
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSavedAlbumObject'
+    Unauthorized:
+      description: 'Bad or expired token. This can happen if the user revoked a token or
+
+        the access token has expired. You should re-authenticate the user.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    PagingArtistOrTrackObject:
+      description: Pages of artists or tracks
+      content:
+        application/json:
+          schema:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/PagingObject'
+            - type: object
+              properties:
+                items:
+                  type: array
+                  items:
+                    type: object
+                    oneOf:
+                    - $ref: '#/components/schemas/ArtistObject'
+                    - $ref: '#/components/schemas/TrackObject'
+                    discriminator:
+                      propertyName: type
+    PagedPlaylists:
+      description: A paged set of playlists
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingPlaylistObject'
+    PagingSimplifiedAudiobookObject:
+      description: Pages of audiobooks
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSimplifiedAudiobookObject'
+    ArrayOfBooleans:
+      description: Array of booleans
+      content:
+        application/json:
+          schema:
+            type: array
+            example:
+            - false
+            - true
+            items:
+              type: boolean
+    PagingSavedEpisodeObject:
+      description: Pages of episodes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSavedEpisodeObject'
+    OnePlaylist:
+      description: A playlist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PlaylistObject'
+    TooManyRequests:
+      description: 'The app has exceeded its rate limits.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    PagingSavedShowObject:
+      description: Pages of shows
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSavedShowObject'
+  parameters:
+    QueryShowIds:
+      name: ids
+      required: true
+      in: query
+      schema:
+        title: Ids
+        description: 'A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the shows. Maximum: 50 IDs.
+
+          '
+        example: 5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ
+        type: string
+    QueryAudiobookIds:
+      name: ids
+      required: true
+      in: query
+      schema:
+        title: Spotify Audiobook IDs
+        description: 'A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
+
+          '
+        example: 18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe
+        type: string
+    QueryMarket:
+      name: market
+      required: false
+      in: query
+      schema:
+        title: Market
+        description: "An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).\n  If a country code is specified, only content that is available in that market will be returned.<br/>\n  If a valid user access token is specified in the request header, the country associated with\n  the user account will take priority over this parameter.<br/>\n  _**Note**: If neither market or user country are provided, the content is considered unavailable for the client._<br/>\n  Users can view the country that is associated with their account in the [account settings](https://www.spotify.com/account/overview/).\n"
+        example: ES
+        type: string
+    QueryAlbumIds:
+      name: ids
+      required: true
+      in: query
+      schema:
+        title: Spotify Album IDs
+        description: 'A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the albums. Maximum: 20 IDs.
+
+          '
+        example: 382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc
+        type: string
+    QueryOffset:
+      name: offset
+      required: false
+      in: query
+      schema:
+        title: Offset
+        description: 'The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
+
+          '
+        default: 0
+        example: 5
+        type: integer
+    PathUserId:
+      name: user_id
+      required: true
+      in: path
+      schema:
+        title: User ID
+        description: 'The user''s [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
+
+          '
+        example: smedjan
+        type: string
+    PathPlaylistId:
+      name: playlist_id
+      required: true
+      in: path
+      schema:
+        title: Playlist ID
+        description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playlist.
+
+          '
+        example: 3cEYpjA9oz9GiPac4AsH4n
+        type: string
+    QueryLimit:
+      name: limit
+      required: false
+      in: query
+      schema:
+        title: Limit
+        description: 'The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+
+          '
+        default: 20
+        example: 10
+        type: integer
+        minimum: 0
+        maximum: 50
+    QueryTrackIds:
+      name: ids
+      required: true
+      in: query
+      schema:
+        title: Spotify Track IDs
+        description: 'A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
+
+          '
+        example: 7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B
+        type: string
+  securitySchemes:
+    oauth_2_0:
+      type: oauth2
+      description: Spotify supports OAuth 2.0 for authenticating all API requests.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.spotify.com/authorize
+          tokenUrl: https://accounts.spotify.com/api/token
+          scopes:
+            app-remote-control: 'Communicate with the Spotify app on your device.
+
+              '
+            playlist-read-private: 'Access your private playlists.
+
+              '
+            playlist-read-collaborative: 'Access your collaborative playlists.
+
+              '
+            playlist-modify-public: 'Manage your public playlists.
+
+              '
+            playlist-modify-private: 'Manage your private playlists.
+
+              '
+            user-library-read: 'Access your saved content.
+
+              '
+            user-library-modify: 'Manage your saved content.
+
+              '
+            user-read-private: 'Access your subscription details.
+
+              '
+            user-read-email: 'Get your real email address.
+
+              '
+            user-follow-read: 'Access your followers and who you are following.
+
+              '
+            user-follow-modify: 'Manage your saved content.
+
+              '
+            user-top-read: 'Read your top artists and content.
+
+              '
+            user-read-playback-position: 'Read your position in content you have played.
+
+              '
+            user-read-playback-state: 'Read your currently playing content and Spotify Connect devices information.
+
+              '
+            user-read-recently-played: 'Access your recently played items.
+
+              '
+            user-read-currently-playing: 'Read your currently playing content.
+
+              '
+            user-modify-playback-state: 'Control playback on your Spotify clients and Spotify Connect devices.
+
+              '
+            ugc-image-upload: 'Upload images to Spotify on your behalf.
+
+              '
+            streaming: 'Play content and control playback on your other devices.
+
+              '
