@@ -7,9 +7,22 @@ description: Spotify is the world's leading music streaming platform with 600M+ 
   access. The API underwent significant changes in February 2026 with new generic
   library endpoints and streamlined playlist management.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consuming
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/spotify.png
 tags:
 - Music
 - Audio
@@ -21,32 +34,18 @@ modified: '2026-05-30'
 url: https://raw.githubusercontent.com/api-evangelist/spotify/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-- aid: spotify:spotify-web-api
-  name: Spotify Web API
-  description: The Spotify Web API provides RESTful access to Spotify's music and
-    podcast catalog, user library management, playback control, and personalization
-    features. Developers can retrieve metadata for albums, artists, tracks, shows,
-    and episodes; manage user playlists and saved libraries; control playback on connected
-    devices; and access audio analysis and recommendations. OAuth 2.0 authentication
-    supports Authorization Code Flow, PKCE, and Client Credentials flows.
+- aid: spotify:spotify-albums-api
+  name: Spotify Albums API
+  description: The Albums API from Spotify — 7 operation(s) for albums.
   humanURL: https://developer.spotify.com/documentation/web-api
   baseURL: https://api.spotify.com/v1
   tags:
   - Albums
-  - Artists
-  - Tracks
-  - Playlists
-  - Player
-  - Search
-  - Podcasts
-  - Library
-  - Recommendations
-  - Audio Analysis
   properties:
+  - type: OpenAPI
+    url: openapi/spotify-albums-api-openapi.yml
   - type: Documentation
     url: https://developer.spotify.com/documentation/web-api
-  - type: OpenAPI
-    url: openapi/spotify-openapi-original.yml
   - type: GettingStarted
     url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
   - type: Authorization
@@ -99,39 +98,935 @@ apis:
     url: capabilities/spotify-tracks.yaml
   - type: X-NaftikoCapability
     url: capabilities/spotify-users.yaml
-  - url: graphql/spotify-graphql.md
-    type: GraphQL
-  features:
-  - type: MusicCatalog
-    description: Search and retrieve metadata for 100M+ tracks, albums, and artists
-  - type: PlaybackControl
-    description: Control Spotify playback on any connected device via API
-  - type: LibraryManagement
-    description: Save, remove, and manage user's music library with generic URI-based
-      endpoints
-  - type: PlaylistManagement
-    description: Create, update, and manage playlists; add, reorder, and remove items
-  - type: AudioAnalysis
-    description: Access beat-by-beat audio analysis including tempo, key, and energy
-  - type: Recommendations
-    description: Generate personalized track recommendations based on seeds and audio
-      features
-  - type: Personalization
-    description: Access user's top artists and tracks over multiple time ranges
-  - type: PodcastsAudiobooks
-    description: Stream and manage shows, episodes, and audiobooks
-  useCases:
-  - type: MusicDiscovery
-    description: Build recommendation engines and music discovery experiences
-  - type: PlaylistBuilding
-    description: Create collaborative or AI-generated playlists
-  - type: PartyMode
-    description: Control music playback at events, restaurants, or shared spaces
-  - type: MusicAnalytics
-    description: Analyze listening patterns and audio characteristics
-  - type: DeviceControl
-    description: Remote control Spotify playback from companion apps
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-artists-api
+  name: Spotify Artists API
+  description: The Artists API from Spotify — 7 operation(s) for artists.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Artists
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-artists-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-audiobooks-api
+  name: Spotify Audiobooks API
+  description: The Audiobooks API from Spotify — 5 operation(s) for audiobooks.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Audiobooks
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-audiobooks-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-categories-api
+  name: Spotify Categories API
+  description: The Categories API from Spotify — 3 operation(s) for categories.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-categories-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-chapters-api
+  name: Spotify Chapters API
+  description: The Chapters API from Spotify — 3 operation(s) for chapters.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Chapters
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-chapters-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-episodes-api
+  name: Spotify Episodes API
+  description: The Episodes API from Spotify — 5 operation(s) for episodes.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Episodes
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-episodes-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-genres-api
+  name: Spotify Genres API
+  description: The Genres API from Spotify — 1 operation(s) for genres.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Genres
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-genres-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-library-api
+  name: Spotify Library API
+  description: The Library API from Spotify — 18 operation(s) for library.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Library
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-library-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-markets-api
+  name: Spotify Markets API
+  description: The Markets API from Spotify — 1 operation(s) for markets.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Markets
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-markets-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-player-api
+  name: Spotify Player API
+  description: The Player API from Spotify — 13 operation(s) for player.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Player
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-player-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-playlists-api
+  name: Spotify Playlists API
+  description: The Playlists API from Spotify — 10 operation(s) for playlists.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Playlists
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-playlists-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-search-api
+  name: Spotify Search API
+  description: The Search API from Spotify — 1 operation(s) for search.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-search-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-shows-api
+  name: Spotify Shows API
+  description: The Shows API from Spotify — 5 operation(s) for shows.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Shows
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-shows-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-tracks-api
+  name: Spotify Tracks API
+  description: The Tracks API from Spotify — 13 operation(s) for tracks.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Tracks
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-tracks-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
+- aid: spotify:spotify-users-api
+  name: Spotify Users API
+  description: The Users API from Spotify — 8 operation(s) for users.
+  humanURL: https://developer.spotify.com/documentation/web-api
+  baseURL: https://api.spotify.com/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/spotify-users-api-openapi.yml
+  - type: Documentation
+    url: https://developer.spotify.com/documentation/web-api
+  - type: GettingStarted
+    url: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+  - type: Authorization
+    url: https://developer.spotify.com/documentation/web-api/concepts/authorization
+  - type: RateLimits
+    url: https://developer.spotify.com/documentation/web-api/concepts/rate-limits
+  - type: Scopes
+    url: https://developer.spotify.com/documentation/web-api/concepts/scopes
+  - type: JSONSchema
+    url: json-schema/spotify-track-schema.json
+  - type: JSONSchema
+    url: json-schema/spotify-playlist-schema.json
+  - type: JSONStructure
+    url: json-structure/spotify-track-structure.json
+  - type: JSONLD
+    url: json-ld/spotify-context.jsonld
+  - type: SpectralRules
+    url: rules/spotify-rules.yml
+  - type: Capabilities
+    url: capabilities/music-discovery.yaml
+  - type: Vocabulary
+    url: vocabulary/spotify-vocabulary.yml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-albums.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-artists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-audiobooks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-categories.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-chapters.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-episodes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-genres.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-library.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-markets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-player.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-playlists.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-search.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-shows.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-tracks.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/spotify-users.yaml
+  - type: GraphQL
+    url: graphql/spotify-graphql.md
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/spotify/overview
 - type: AgenticAccess
   url: agentic-access/spotify-agentic-access.yml
 - type: VulnerabilityDisclosure
