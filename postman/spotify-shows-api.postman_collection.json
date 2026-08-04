@@ -1,0 +1,2050 @@
+{
+  "info": {
+    "_postman_id": "92d9ad18-7e6e-4a2e-85e7-84c67cdb8247",
+    "name": "Spotify Web Albums Shows API",
+    "description": "You can use Spotify's Web API to discover music and podcasts, manage your Spotify library, control audio playback, and much more. Browse our available Web API endpoints using the sidebar at left, or via the navigation bar on top of this page on smaller screens.\n\nIn order to make successful Web API requests your app will need a valid access token. One can be obtained through <a href=\"https://developer.spotify.com/documentation/general/guides/authorization-guide/\">OAuth 2.0</a>.\n\nThe base URI for all Web API requests is `https://api.spotify.com/v1`.\n\nNeed help? See our <a href=\"https://developer.spotify.com/documentation/web-api/guides/\">Web API guides</a> for more information, or visit the <a href=\"https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer\">Spotify for Developers community forum</a> to ask questions and connect with other developers.\n\n\nContact Support:\n Name: Spotify for Developers Community",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:30.000Z",
+    "updatedAt": "2026-07-28T03:01:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-92d9ad18-7e6e-4a2e-85e7-84c67cdb8247"
+  },
+  "item": [
+    {
+      "name": "shows",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "episodes",
+              "item": [
+                {
+                  "name": "Get Show Episodes\n",
+                  "id": "8ee875cf-c2ce-4de2-ab86-bf5d83fe6aeb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://accounts.spotify.com/api/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://accounts.spotify.com/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shows/:id/episodes?market=<string>&limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shows",
+                        ":id",
+                        "episodes"
+                      ],
+                      "query": [
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "a825969b-add3-430c-9be4-c2bcdeffc934",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Get Spotify catalog information about an show\u2019s episodes. Optional parameters can be used to limit the number of episodes returned.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "a7c52b20-d885-4434-b4c9-cb761c08bbaf",
+                      "name": "Pages of episodes",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shows/:id/episodes?market=<string>&limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shows",
+                            ":id",
+                            "episodes"
+                          ],
+                          "query": [
+                            {
+                              "key": "market",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"href\": \"<string>\",\n  \"items\": [\n    {\n      \"audio_preview_url\": \"<string>\",\n      \"description\": \"<string>\",\n      \"html_description\": \"<string>\",\n      \"duration_ms\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"href\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"is_externally_hosted\": \"<boolean>\",\n      \"is_playable\": \"<boolean>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"release_date\": \"<string>\",\n      \"release_date_precision\": \"month\",\n      \"type\": \"episode\",\n      \"uri\": \"<string>\",\n      \"language\": \"<string>\",\n      \"resume_point\": {\n        \"fully_played\": \"<boolean>\",\n        \"resume_position_ms\": \"<integer>\"\n      },\n      \"restrictions\": {\n        \"reason\": \"<string>\"\n      }\n    },\n    {\n      \"audio_preview_url\": \"<string>\",\n      \"description\": \"<string>\",\n      \"html_description\": \"<string>\",\n      \"duration_ms\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"href\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"is_externally_hosted\": \"<boolean>\",\n      \"is_playable\": \"<boolean>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"release_date\": \"<string>\",\n      \"release_date_precision\": \"day\",\n      \"type\": \"episode\",\n      \"uri\": \"<string>\",\n      \"language\": \"<string>\",\n      \"resume_point\": {\n        \"fully_played\": \"<boolean>\",\n        \"resume_position_ms\": \"<integer>\"\n      },\n      \"restrictions\": {\n        \"reason\": \"<string>\"\n      }\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"offset\": \"<integer>\",\n  \"previous\": \"<string>\",\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:01:30.000Z",
+                      "updatedAt": "2026-07-28T03:01:30.000Z",
+                      "uid": "35240-a7c52b20-d885-4434-b4c9-cb761c08bbaf"
+                    },
+                    {
+                      "id": "ac6df0ad-5aaa-48e6-acc6-14579d4030d4",
+                      "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shows/:id/episodes?market=<string>&limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shows",
+                            ":id",
+                            "episodes"
+                          ],
+                          "query": [
+                            {
+                              "key": "market",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:30.000Z",
+                      "updatedAt": "2026-07-28T03:01:30.000Z",
+                      "uid": "35240-ac6df0ad-5aaa-48e6-acc6-14579d4030d4"
+                    },
+                    {
+                      "id": "a8aa7379-4776-47bb-b6f1-3abfa7e41a11",
+                      "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shows/:id/episodes?market=<string>&limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shows",
+                            ":id",
+                            "episodes"
+                          ],
+                          "query": [
+                            {
+                              "key": "market",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:30.000Z",
+                      "updatedAt": "2026-07-28T03:01:30.000Z",
+                      "uid": "35240-a8aa7379-4776-47bb-b6f1-3abfa7e41a11"
+                    },
+                    {
+                      "id": "e4c79fc7-3687-48e6-8b5e-5cee2d85677a",
+                      "name": "The app has exceeded its rate limits.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shows/:id/episodes?market=<string>&limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shows",
+                            ":id",
+                            "episodes"
+                          ],
+                          "query": [
+                            {
+                              "key": "market",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:30.000Z",
+                      "updatedAt": "2026-07-28T03:01:30.000Z",
+                      "uid": "35240-e4c79fc7-3687-48e6-8b5e-5cee2d85677a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-8ee875cf-c2ce-4de2-ab86-bf5d83fe6aeb"
+                }
+              ],
+              "id": "d20e8ece-e37b-4dd2-93b4-59da90fc76ef",
+              "createdAt": "2026-07-28T03:01:30.000Z",
+              "updatedAt": "2026-07-28T03:01:30.000Z",
+              "uid": "35240-d20e8ece-e37b-4dd2-93b4-59da90fc76ef"
+            },
+            {
+              "name": "Get Show\n",
+              "id": "88590f3a-58b2-420d-b676-b227a662467e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shows/:id?market=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shows",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "c8389b1a-346b-4aa0-8193-cd5296ce9041",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get Spotify catalog information for a single show identified by its\nunique Spotify ID.\n"
+              },
+              "response": [
+                {
+                  "id": "75f6b1dc-a40e-445c-b415-0c8e3e775625",
+                  "name": "A show",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shows/:id?market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shows",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"available_markets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"copyrights\": [\n    {\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"episodes\": {\n    \"href\": \"<string>\",\n    \"items\": [\n      {\n        \"audio_preview_url\": \"<string>\",\n        \"description\": \"<string>\",\n        \"html_description\": \"<string>\",\n        \"duration_ms\": \"<integer>\",\n        \"explicit\": \"<boolean>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"is_externally_hosted\": \"<boolean>\",\n        \"is_playable\": \"<boolean>\",\n        \"languages\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"name\": \"<string>\",\n        \"release_date\": \"<string>\",\n        \"release_date_precision\": \"year\",\n        \"type\": \"episode\",\n        \"uri\": \"<string>\",\n        \"language\": \"<string>\",\n        \"resume_point\": {\n          \"fully_played\": \"<boolean>\",\n          \"resume_position_ms\": \"<integer>\"\n        },\n        \"restrictions\": {\n          \"reason\": \"<string>\"\n        }\n      },\n      {\n        \"audio_preview_url\": \"<string>\",\n        \"description\": \"<string>\",\n        \"html_description\": \"<string>\",\n        \"duration_ms\": \"<integer>\",\n        \"explicit\": \"<boolean>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"is_externally_hosted\": \"<boolean>\",\n        \"is_playable\": \"<boolean>\",\n        \"languages\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"name\": \"<string>\",\n        \"release_date\": \"<string>\",\n        \"release_date_precision\": \"year\",\n        \"type\": \"episode\",\n        \"uri\": \"<string>\",\n        \"language\": \"<string>\",\n        \"resume_point\": {\n          \"fully_played\": \"<boolean>\",\n          \"resume_position_ms\": \"<integer>\"\n        },\n        \"restrictions\": {\n          \"reason\": \"<string>\"\n        }\n      }\n    ],\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total\": \"<integer>\"\n  },\n  \"explicit\": \"<boolean>\",\n  \"external_urls\": {\n    \"spotify\": \"<string>\"\n  },\n  \"href\": \"<string>\",\n  \"html_description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"images\": [\n    {\n      \"url\": \"<string>\",\n      \"height\": \"<integer>\",\n      \"width\": \"<integer>\"\n    },\n    {\n      \"url\": \"<string>\",\n      \"height\": \"<integer>\",\n      \"width\": \"<integer>\"\n    }\n  ],\n  \"is_externally_hosted\": \"<boolean>\",\n  \"languages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"media_type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"publisher\": \"<string>\",\n  \"total_episodes\": \"<integer>\",\n  \"type\": \"show\",\n  \"uri\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-75f6b1dc-a40e-445c-b415-0c8e3e775625"
+                },
+                {
+                  "id": "fa0fe55d-8916-4999-8c14-948fba390a10",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shows/:id?market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shows",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-fa0fe55d-8916-4999-8c14-948fba390a10"
+                },
+                {
+                  "id": "1ba6aa46-1c8e-4321-a6a2-085ba1aea3bf",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shows/:id?market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shows",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-1ba6aa46-1c8e-4321-a6a2-085ba1aea3bf"
+                },
+                {
+                  "id": "0bc7a261-8b37-4334-b447-42951e9d27bb",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shows/:id?market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shows",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-0bc7a261-8b37-4334-b447-42951e9d27bb"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:30.000Z",
+              "updatedAt": "2026-07-28T03:01:30.000Z",
+              "uid": "35240-88590f3a-58b2-420d-b676-b227a662467e"
+            }
+          ],
+          "id": "a8c5dd2a-b3b1-4a98-8d32-8bd7c27e2b60",
+          "createdAt": "2026-07-28T03:01:30.000Z",
+          "updatedAt": "2026-07-28T03:01:30.000Z",
+          "uid": "35240-a8c5dd2a-b3b1-4a98-8d32-8bd7c27e2b60"
+        },
+        {
+          "name": "Get Several Shows\n",
+          "id": "d58775a9-2a5e-4270-8b94-79e979e74211",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/shows?market=<string>&ids=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "shows"
+              ],
+              "query": [
+                {
+                  "key": "market",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "ids",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Get Spotify catalog information for several shows based on their Spotify IDs.\n"
+          },
+          "response": [
+            {
+              "id": "2c6a928a-dcbf-4f85-ba26-42ec1ec745c8",
+              "name": "A set of shows",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shows?market=<string>&ids=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shows"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"shows\": [\n    {\n      \"available_markets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"copyrights\": [\n        {\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"description\": \"<string>\",\n      \"explicit\": \"<boolean>\",\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"href\": \"<string>\",\n      \"html_description\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"is_externally_hosted\": \"<boolean>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"media_type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"publisher\": \"<string>\",\n      \"total_episodes\": \"<integer>\",\n      \"type\": \"show\",\n      \"uri\": \"<string>\"\n    },\n    {\n      \"available_markets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"copyrights\": [\n        {\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"description\": \"<string>\",\n      \"explicit\": \"<boolean>\",\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"href\": \"<string>\",\n      \"html_description\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"is_externally_hosted\": \"<boolean>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"media_type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"publisher\": \"<string>\",\n      \"total_episodes\": \"<integer>\",\n      \"type\": \"show\",\n      \"uri\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:01:30.000Z",
+              "updatedAt": "2026-07-28T03:01:30.000Z",
+              "uid": "35240-2c6a928a-dcbf-4f85-ba26-42ec1ec745c8"
+            },
+            {
+              "id": "c40ef975-d031-48ec-8839-53af1ca5c6e4",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shows?market=<string>&ids=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shows"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:01:30.000Z",
+              "updatedAt": "2026-07-28T03:01:30.000Z",
+              "uid": "35240-c40ef975-d031-48ec-8839-53af1ca5c6e4"
+            },
+            {
+              "id": "4e3c6e41-ecdb-441c-a130-dfa79cd4458a",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shows?market=<string>&ids=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shows"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:01:30.000Z",
+              "updatedAt": "2026-07-28T03:01:30.000Z",
+              "uid": "35240-4e3c6e41-ecdb-441c-a130-dfa79cd4458a"
+            },
+            {
+              "id": "b7a9ad84-97e5-42bc-83b3-5b8e5707932d",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shows?market=<string>&ids=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shows"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:01:30.000Z",
+              "updatedAt": "2026-07-28T03:01:30.000Z",
+              "uid": "35240-b7a9ad84-97e5-42bc-83b3-5b8e5707932d"
+            }
+          ],
+          "createdAt": "2026-07-28T03:01:30.000Z",
+          "updatedAt": "2026-07-28T03:01:30.000Z",
+          "uid": "35240-d58775a9-2a5e-4270-8b94-79e979e74211"
+        }
+      ],
+      "id": "f2a29460-b043-4654-8720-14558e0b65bf",
+      "createdAt": "2026-07-28T03:01:30.000Z",
+      "updatedAt": "2026-07-28T03:01:30.000Z",
+      "uid": "35240-f2a29460-b043-4654-8720-14558e0b65bf"
+    },
+    {
+      "name": "me",
+      "item": [
+        {
+          "name": "shows",
+          "item": [
+            {
+              "name": "contains",
+              "item": [
+                {
+                  "name": "Check User's Saved Shows\n",
+                  "id": "07a7ea12-0391-45f1-901a-137d9edd87fc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://accounts.spotify.com/api/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://accounts.spotify.com/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/shows/contains?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "shows",
+                        "contains"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Check if one or more shows is already saved in the current Spotify user's library.\n\n**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "cf8c8f9e-9e27-4afb-824e-cc4c28830d65",
+                      "name": "Array of booleans",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/shows/contains?ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "shows",
+                            "contains"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  \"<boolean>\",\n  \"<boolean>\"\n]",
+                      "createdAt": "2026-07-28T03:01:30.000Z",
+                      "updatedAt": "2026-07-28T03:01:30.000Z",
+                      "uid": "35240-cf8c8f9e-9e27-4afb-824e-cc4c28830d65"
+                    },
+                    {
+                      "id": "ff0a4af7-42e4-4a16-aa86-e56e59ef7e16",
+                      "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/shows/contains?ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "shows",
+                            "contains"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:30.000Z",
+                      "updatedAt": "2026-07-28T03:01:30.000Z",
+                      "uid": "35240-ff0a4af7-42e4-4a16-aa86-e56e59ef7e16"
+                    },
+                    {
+                      "id": "bde2abac-1550-4f74-b20a-6987a1ed377e",
+                      "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/shows/contains?ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "shows",
+                            "contains"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:30.000Z",
+                      "updatedAt": "2026-07-28T03:01:30.000Z",
+                      "uid": "35240-bde2abac-1550-4f74-b20a-6987a1ed377e"
+                    },
+                    {
+                      "id": "64a3f044-2c20-44f9-a039-f1b67da9e0dc",
+                      "name": "The app has exceeded its rate limits.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/shows/contains?ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "shows",
+                            "contains"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:30.000Z",
+                      "updatedAt": "2026-07-28T03:01:30.000Z",
+                      "uid": "35240-64a3f044-2c20-44f9-a039-f1b67da9e0dc"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-07a7ea12-0391-45f1-901a-137d9edd87fc"
+                }
+              ],
+              "id": "276b4cdb-66a2-4f34-a00f-66dba6e886ed",
+              "createdAt": "2026-07-28T03:01:30.000Z",
+              "updatedAt": "2026-07-28T03:01:30.000Z",
+              "uid": "35240-276b4cdb-66a2-4f34-a00f-66dba6e886ed"
+            },
+            {
+              "name": "Get User's Saved Shows\n",
+              "id": "adaa3d81-0610-4a68-9ff0-c409e19c8851",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/me/shows?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me",
+                    "shows"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                },
+                "description": "Get a list of shows saved in the current Spotify user's library. Optional parameters can be used to limit the number of shows returned.\n"
+              },
+              "response": [
+                {
+                  "id": "ea2fe4db-97c7-4523-8d09-44cedf4e48e9",
+                  "name": "Pages of shows",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/shows?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "shows"
+                      ],
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"href\": \"<string>\",\n  \"items\": [\n    {\n      \"added_at\": \"<dateTime>\",\n      \"show\": {\n        \"available_markets\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"copyrights\": [\n          {\n            \"text\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"text\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string>\",\n        \"explicit\": \"<boolean>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"html_description\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"is_externally_hosted\": \"<boolean>\",\n        \"languages\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"media_type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"publisher\": \"<string>\",\n        \"total_episodes\": \"<integer>\",\n        \"type\": \"show\",\n        \"uri\": \"<string>\"\n      }\n    },\n    {\n      \"added_at\": \"<dateTime>\",\n      \"show\": {\n        \"available_markets\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"copyrights\": [\n          {\n            \"text\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"text\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string>\",\n        \"explicit\": \"<boolean>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"html_description\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"is_externally_hosted\": \"<boolean>\",\n        \"languages\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"media_type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"publisher\": \"<string>\",\n        \"total_episodes\": \"<integer>\",\n        \"type\": \"show\",\n        \"uri\": \"<string>\"\n      }\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"offset\": \"<integer>\",\n  \"previous\": \"<string>\",\n  \"total\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-ea2fe4db-97c7-4523-8d09-44cedf4e48e9"
+                },
+                {
+                  "id": "c0dd6fd9-6278-4f35-a12d-fab6f6107aab",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/shows?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "shows"
+                      ],
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-c0dd6fd9-6278-4f35-a12d-fab6f6107aab"
+                },
+                {
+                  "id": "d3fe3e76-7a6e-496e-bc04-d2e48ab39bbe",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/shows?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "shows"
+                      ],
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-d3fe3e76-7a6e-496e-bc04-d2e48ab39bbe"
+                },
+                {
+                  "id": "75254674-c328-4916-bdda-bf97227196cf",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/shows?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "shows"
+                      ],
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-75254674-c328-4916-bdda-bf97227196cf"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:30.000Z",
+              "updatedAt": "2026-07-28T03:01:30.000Z",
+              "uid": "35240-adaa3d81-0610-4a68-9ff0-c409e19c8851"
+            },
+            {
+              "name": "Save Shows for Current User\n",
+              "id": "d6d1307c-b2fa-44dd-9b5e-a40f601ecf75",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/me/shows?ids=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me",
+                    "shows"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Save one or more shows to current Spotify user's library.\n\n**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.\n"
+              },
+              "response": [
+                {
+                  "id": "a871d302-4561-452f-a506-1290e807b0fb",
+                  "name": "Show saved",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/shows?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "shows"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-a871d302-4561-452f-a506-1290e807b0fb"
+                },
+                {
+                  "id": "d187b0fe-8072-41d8-b563-80dac8913984",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/shows?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "shows"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-d187b0fe-8072-41d8-b563-80dac8913984"
+                },
+                {
+                  "id": "5fb9e3be-f5a7-4c2f-8c77-40ec9effd8e3",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/shows?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "shows"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-5fb9e3be-f5a7-4c2f-8c77-40ec9effd8e3"
+                },
+                {
+                  "id": "c0abf206-29ca-46f6-9664-bac63236de2b",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/shows?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "shows"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-c0abf206-29ca-46f6-9664-bac63236de2b"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:30.000Z",
+              "updatedAt": "2026-07-28T03:01:30.000Z",
+              "uid": "35240-d6d1307c-b2fa-44dd-9b5e-a40f601ecf75"
+            },
+            {
+              "name": "Remove User's Saved Shows\n",
+              "id": "28f7e1a1-e275-4116-9901-d816a8bc91fd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/me/shows?ids=<string>&market=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me",
+                    "shows"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Delete one or more shows from current Spotify user's library.\n\n**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.\n"
+              },
+              "response": [
+                {
+                  "id": "62edf03c-e104-49f8-864d-b5b86eb61378",
+                  "name": "Show removed",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/shows?ids=<string>&market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "shows"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-62edf03c-e104-49f8-864d-b5b86eb61378"
+                },
+                {
+                  "id": "b2480c5f-c048-4b07-8165-4ff38c793d4c",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/shows?ids=<string>&market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "shows"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-b2480c5f-c048-4b07-8165-4ff38c793d4c"
+                },
+                {
+                  "id": "c029b557-af07-4913-991d-758a4c26bee4",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/shows?ids=<string>&market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "shows"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-c029b557-af07-4913-991d-758a4c26bee4"
+                },
+                {
+                  "id": "1da1413f-42fa-49c2-a8e9-47cef23dd502",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/shows?ids=<string>&market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "shows"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:30.000Z",
+                  "updatedAt": "2026-07-28T03:01:30.000Z",
+                  "uid": "35240-1da1413f-42fa-49c2-a8e9-47cef23dd502"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:30.000Z",
+              "updatedAt": "2026-07-28T03:01:30.000Z",
+              "uid": "35240-28f7e1a1-e275-4116-9901-d816a8bc91fd"
+            }
+          ],
+          "id": "f02d8d08-a02b-43c2-ac7a-143951763407",
+          "createdAt": "2026-07-28T03:01:30.000Z",
+          "updatedAt": "2026-07-28T03:01:30.000Z",
+          "uid": "35240-f02d8d08-a02b-43c2-ac7a-143951763407"
+        }
+      ],
+      "id": "b03f6886-687b-4d7d-8fe3-9191f1661003",
+      "createdAt": "2026-07-28T03:01:30.000Z",
+      "updatedAt": "2026-07-28T03:01:30.000Z",
+      "uid": "35240-b03f6886-687b-4d7d-8fe3-9191f1661003"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.spotify.com/v1"
+    }
+  ]
+}

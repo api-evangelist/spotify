@@ -1,0 +1,2138 @@
+{
+  "info": {
+    "_postman_id": "61fb3e66-d3eb-4d31-9ed6-d1d28c911ee0",
+    "name": "Spotify Web Albums Audiobooks API",
+    "description": "You can use Spotify's Web API to discover music and podcasts, manage your Spotify library, control audio playback, and much more. Browse our available Web API endpoints using the sidebar at left, or via the navigation bar on top of this page on smaller screens.\n\nIn order to make successful Web API requests your app will need a valid access token. One can be obtained through <a href=\"https://developer.spotify.com/documentation/general/guides/authorization-guide/\">OAuth 2.0</a>.\n\nThe base URI for all Web API requests is `https://api.spotify.com/v1`.\n\nNeed help? See our <a href=\"https://developer.spotify.com/documentation/web-api/guides/\">Web API guides</a> for more information, or visit the <a href=\"https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer\">Spotify for Developers community forum</a> to ask questions and connect with other developers.\n\n\nContact Support:\n Name: Spotify for Developers Community",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:03.000Z",
+    "updatedAt": "2026-07-28T03:01:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-61fb3e66-d3eb-4d31-9ed6-d1d28c911ee0"
+  },
+  "item": [
+    {
+      "name": "audiobooks",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "chapters",
+              "item": [
+                {
+                  "name": "Get Audiobook Chapters\n",
+                  "id": "6729ea99-aa4c-437c-af8a-d0e5f5da4abc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://accounts.spotify.com/api/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://accounts.spotify.com/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/audiobooks/:id/chapters?market=<string>&limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audiobooks",
+                        ":id",
+                        "chapters"
+                      ],
+                      "query": [
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "b8b369d7-ab22-4266-82b7-b85c63736913",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Get Spotify catalog information about an audiobook's chapters. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "1d85606d-2a8b-4657-82b5-f5dc69f7665e",
+                      "name": "Pages of chapters",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/audiobooks/:id/chapters?market=<string>&limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "audiobooks",
+                            ":id",
+                            "chapters"
+                          ],
+                          "query": [
+                            {
+                              "key": "market",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"href\": \"<string>\",\n  \"items\": [\n    {\n      \"audio_preview_url\": \"<string>\",\n      \"chapter_number\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"html_description\": \"<string>\",\n      \"duration_ms\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"href\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"is_playable\": \"<boolean>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"release_date\": \"<string>\",\n      \"release_date_precision\": \"year\",\n      \"type\": \"episode\",\n      \"uri\": \"<string>\",\n      \"available_markets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"resume_point\": {\n        \"fully_played\": \"<boolean>\",\n        \"resume_position_ms\": \"<integer>\"\n      },\n      \"restrictions\": {\n        \"reason\": \"<string>\"\n      }\n    },\n    {\n      \"audio_preview_url\": \"<string>\",\n      \"chapter_number\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"html_description\": \"<string>\",\n      \"duration_ms\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"href\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"is_playable\": \"<boolean>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"release_date\": \"<string>\",\n      \"release_date_precision\": \"year\",\n      \"type\": \"episode\",\n      \"uri\": \"<string>\",\n      \"available_markets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"resume_point\": {\n        \"fully_played\": \"<boolean>\",\n        \"resume_position_ms\": \"<integer>\"\n      },\n      \"restrictions\": {\n        \"reason\": \"<string>\"\n      }\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"offset\": \"<integer>\",\n  \"previous\": \"<string>\",\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:01:03.000Z",
+                      "updatedAt": "2026-07-28T03:01:03.000Z",
+                      "uid": "35240-1d85606d-2a8b-4657-82b5-f5dc69f7665e"
+                    },
+                    {
+                      "id": "30e7030c-5ff3-49ad-befb-739d5754d100",
+                      "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/audiobooks/:id/chapters?market=<string>&limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "audiobooks",
+                            ":id",
+                            "chapters"
+                          ],
+                          "query": [
+                            {
+                              "key": "market",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:03.000Z",
+                      "updatedAt": "2026-07-28T03:01:03.000Z",
+                      "uid": "35240-30e7030c-5ff3-49ad-befb-739d5754d100"
+                    },
+                    {
+                      "id": "ddb586a8-0be6-4806-9cb1-61af8ece000e",
+                      "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/audiobooks/:id/chapters?market=<string>&limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "audiobooks",
+                            ":id",
+                            "chapters"
+                          ],
+                          "query": [
+                            {
+                              "key": "market",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:03.000Z",
+                      "updatedAt": "2026-07-28T03:01:03.000Z",
+                      "uid": "35240-ddb586a8-0be6-4806-9cb1-61af8ece000e"
+                    },
+                    {
+                      "id": "06cafe5d-f578-41d9-a975-46dac778d95b",
+                      "name": "The app has exceeded its rate limits.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/audiobooks/:id/chapters?market=<string>&limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "audiobooks",
+                            ":id",
+                            "chapters"
+                          ],
+                          "query": [
+                            {
+                              "key": "market",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:03.000Z",
+                      "updatedAt": "2026-07-28T03:01:03.000Z",
+                      "uid": "35240-06cafe5d-f578-41d9-a975-46dac778d95b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-6729ea99-aa4c-437c-af8a-d0e5f5da4abc"
+                }
+              ],
+              "id": "53c5fc18-abfe-4fac-9b2b-6113add7fb57",
+              "createdAt": "2026-07-28T03:01:03.000Z",
+              "updatedAt": "2026-07-28T03:01:03.000Z",
+              "uid": "35240-53c5fc18-abfe-4fac-9b2b-6113add7fb57"
+            },
+            {
+              "name": "Get an Audiobook\n",
+              "id": "115f1d1c-88ab-4563-ab7b-507fdc141dde",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/audiobooks/:id?market=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "audiobooks",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "f3a02adf-882f-47db-9225-23618aace5fc",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get Spotify catalog information for a single audiobook. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.\n"
+              },
+              "response": [
+                {
+                  "id": "fd150077-feaf-4537-aeac-dc5045f024a6",
+                  "name": "An Audiobook",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/audiobooks/:id?market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audiobooks",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"authors\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"available_markets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"chapters\": {\n    \"href\": \"<string>\",\n    \"items\": [\n      {\n        \"audio_preview_url\": \"<string>\",\n        \"chapter_number\": \"<integer>\",\n        \"description\": \"<string>\",\n        \"html_description\": \"<string>\",\n        \"duration_ms\": \"<integer>\",\n        \"explicit\": \"<boolean>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"is_playable\": \"<boolean>\",\n        \"languages\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"name\": \"<string>\",\n        \"release_date\": \"<string>\",\n        \"release_date_precision\": \"day\",\n        \"type\": \"episode\",\n        \"uri\": \"<string>\",\n        \"available_markets\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"resume_point\": {\n          \"fully_played\": \"<boolean>\",\n          \"resume_position_ms\": \"<integer>\"\n        },\n        \"restrictions\": {\n          \"reason\": \"<string>\"\n        }\n      },\n      {\n        \"audio_preview_url\": \"<string>\",\n        \"chapter_number\": \"<integer>\",\n        \"description\": \"<string>\",\n        \"html_description\": \"<string>\",\n        \"duration_ms\": \"<integer>\",\n        \"explicit\": \"<boolean>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"is_playable\": \"<boolean>\",\n        \"languages\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"name\": \"<string>\",\n        \"release_date\": \"<string>\",\n        \"release_date_precision\": \"year\",\n        \"type\": \"episode\",\n        \"uri\": \"<string>\",\n        \"available_markets\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"resume_point\": {\n          \"fully_played\": \"<boolean>\",\n          \"resume_position_ms\": \"<integer>\"\n        },\n        \"restrictions\": {\n          \"reason\": \"<string>\"\n        }\n      }\n    ],\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total\": \"<integer>\"\n  },\n  \"copyrights\": [\n    {\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"explicit\": \"<boolean>\",\n  \"external_urls\": {\n    \"spotify\": \"<string>\"\n  },\n  \"href\": \"<string>\",\n  \"html_description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"images\": [\n    {\n      \"url\": \"<string>\",\n      \"height\": \"<integer>\",\n      \"width\": \"<integer>\"\n    },\n    {\n      \"url\": \"<string>\",\n      \"height\": \"<integer>\",\n      \"width\": \"<integer>\"\n    }\n  ],\n  \"languages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"media_type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"narrators\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"publisher\": \"<string>\",\n  \"total_chapters\": \"<integer>\",\n  \"type\": \"audiobook\",\n  \"uri\": \"<string>\",\n  \"edition\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-fd150077-feaf-4537-aeac-dc5045f024a6"
+                },
+                {
+                  "id": "19d6c4fa-5237-451d-93c9-fe523829d622",
+                  "name": "The request contains malformed data in path, query parameters, or body.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/audiobooks/:id?market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audiobooks",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-19d6c4fa-5237-451d-93c9-fe523829d622"
+                },
+                {
+                  "id": "9d43993a-74c0-4b8e-bd1d-f0ddff3abd30",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/audiobooks/:id?market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audiobooks",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-9d43993a-74c0-4b8e-bd1d-f0ddff3abd30"
+                },
+                {
+                  "id": "265f7ef6-66cf-46b0-91af-32d6755b919b",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/audiobooks/:id?market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audiobooks",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-265f7ef6-66cf-46b0-91af-32d6755b919b"
+                },
+                {
+                  "id": "86883105-fb14-45dd-b441-79248615b617",
+                  "name": "The requested resource cannot be found.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/audiobooks/:id?market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audiobooks",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-86883105-fb14-45dd-b441-79248615b617"
+                },
+                {
+                  "id": "21271249-3172-4c32-9166-5114719594fe",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/audiobooks/:id?market=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audiobooks",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "key": "market",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-21271249-3172-4c32-9166-5114719594fe"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:03.000Z",
+              "updatedAt": "2026-07-28T03:01:03.000Z",
+              "uid": "35240-115f1d1c-88ab-4563-ab7b-507fdc141dde"
+            }
+          ],
+          "id": "60c79bbd-2ce8-4474-b67b-dc45e11f5627",
+          "createdAt": "2026-07-28T03:01:03.000Z",
+          "updatedAt": "2026-07-28T03:01:03.000Z",
+          "uid": "35240-60c79bbd-2ce8-4474-b67b-dc45e11f5627"
+        },
+        {
+          "name": "Get Several Audiobooks\n",
+          "id": "8d6e740b-229f-42dc-b12f-d0d66901d2e7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/audiobooks?ids=<string>&market=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "audiobooks"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "market",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Get Spotify catalog information for several audiobooks identified by their Spotify IDs. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.\n"
+          },
+          "response": [
+            {
+              "id": "c8c74476-672a-4350-b3b0-2c17348aca64",
+              "name": "A set of audiobooks. If one of the requested audiobooks is unavailable then you'll find a `null` item in the `audiobooks` array where the audiobook object would otherwise be.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/audiobooks?ids=<string>&market=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "audiobooks"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"audiobooks\": [\n    {\n      \"authors\": [\n        {\n          \"name\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\"\n        }\n      ],\n      \"available_markets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"chapters\": {\n        \"href\": \"<string>\",\n        \"items\": [\n          {\n            \"audio_preview_url\": \"<string>\",\n            \"chapter_number\": \"<integer>\",\n            \"description\": \"<string>\",\n            \"html_description\": \"<string>\",\n            \"duration_ms\": \"<integer>\",\n            \"explicit\": \"<boolean>\",\n            \"external_urls\": {\n              \"spotify\": \"<string>\"\n            },\n            \"href\": \"<string>\",\n            \"id\": \"<string>\",\n            \"images\": [\n              {\n                \"url\": \"<string>\",\n                \"height\": \"<integer>\",\n                \"width\": \"<integer>\"\n              },\n              {\n                \"url\": \"<string>\",\n                \"height\": \"<integer>\",\n                \"width\": \"<integer>\"\n              }\n            ],\n            \"is_playable\": \"<boolean>\",\n            \"languages\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"name\": \"<string>\",\n            \"release_date\": \"<string>\",\n            \"release_date_precision\": \"year\",\n            \"type\": \"episode\",\n            \"uri\": \"<string>\",\n            \"available_markets\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"resume_point\": {\n              \"fully_played\": \"<boolean>\",\n              \"resume_position_ms\": \"<integer>\"\n            },\n            \"restrictions\": {\n              \"reason\": \"<string>\"\n            }\n          },\n          {\n            \"audio_preview_url\": \"<string>\",\n            \"chapter_number\": \"<integer>\",\n            \"description\": \"<string>\",\n            \"html_description\": \"<string>\",\n            \"duration_ms\": \"<integer>\",\n            \"explicit\": \"<boolean>\",\n            \"external_urls\": {\n              \"spotify\": \"<string>\"\n            },\n            \"href\": \"<string>\",\n            \"id\": \"<string>\",\n            \"images\": [\n              {\n                \"url\": \"<string>\",\n                \"height\": \"<integer>\",\n                \"width\": \"<integer>\"\n              },\n              {\n                \"url\": \"<string>\",\n                \"height\": \"<integer>\",\n                \"width\": \"<integer>\"\n              }\n            ],\n            \"is_playable\": \"<boolean>\",\n            \"languages\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"name\": \"<string>\",\n            \"release_date\": \"<string>\",\n            \"release_date_precision\": \"day\",\n            \"type\": \"episode\",\n            \"uri\": \"<string>\",\n            \"available_markets\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"resume_point\": {\n              \"fully_played\": \"<boolean>\",\n              \"resume_position_ms\": \"<integer>\"\n            },\n            \"restrictions\": {\n              \"reason\": \"<string>\"\n            }\n          }\n        ],\n        \"limit\": \"<integer>\",\n        \"next\": \"<string>\",\n        \"offset\": \"<integer>\",\n        \"previous\": \"<string>\",\n        \"total\": \"<integer>\"\n      },\n      \"copyrights\": [\n        {\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"description\": \"<string>\",\n      \"explicit\": \"<boolean>\",\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"href\": \"<string>\",\n      \"html_description\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"media_type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"narrators\": [\n        {\n          \"name\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\"\n        }\n      ],\n      \"publisher\": \"<string>\",\n      \"total_chapters\": \"<integer>\",\n      \"type\": \"audiobook\",\n      \"uri\": \"<string>\",\n      \"edition\": \"<string>\"\n    },\n    {\n      \"authors\": [\n        {\n          \"name\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\"\n        }\n      ],\n      \"available_markets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"chapters\": {\n        \"href\": \"<string>\",\n        \"items\": [\n          {\n            \"audio_preview_url\": \"<string>\",\n            \"chapter_number\": \"<integer>\",\n            \"description\": \"<string>\",\n            \"html_description\": \"<string>\",\n            \"duration_ms\": \"<integer>\",\n            \"explicit\": \"<boolean>\",\n            \"external_urls\": {\n              \"spotify\": \"<string>\"\n            },\n            \"href\": \"<string>\",\n            \"id\": \"<string>\",\n            \"images\": [\n              {\n                \"url\": \"<string>\",\n                \"height\": \"<integer>\",\n                \"width\": \"<integer>\"\n              },\n              {\n                \"url\": \"<string>\",\n                \"height\": \"<integer>\",\n                \"width\": \"<integer>\"\n              }\n            ],\n            \"is_playable\": \"<boolean>\",\n            \"languages\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"name\": \"<string>\",\n            \"release_date\": \"<string>\",\n            \"release_date_precision\": \"month\",\n            \"type\": \"episode\",\n            \"uri\": \"<string>\",\n            \"available_markets\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"resume_point\": {\n              \"fully_played\": \"<boolean>\",\n              \"resume_position_ms\": \"<integer>\"\n            },\n            \"restrictions\": {\n              \"reason\": \"<string>\"\n            }\n          },\n          {\n            \"audio_preview_url\": \"<string>\",\n            \"chapter_number\": \"<integer>\",\n            \"description\": \"<string>\",\n            \"html_description\": \"<string>\",\n            \"duration_ms\": \"<integer>\",\n            \"explicit\": \"<boolean>\",\n            \"external_urls\": {\n              \"spotify\": \"<string>\"\n            },\n            \"href\": \"<string>\",\n            \"id\": \"<string>\",\n            \"images\": [\n              {\n                \"url\": \"<string>\",\n                \"height\": \"<integer>\",\n                \"width\": \"<integer>\"\n              },\n              {\n                \"url\": \"<string>\",\n                \"height\": \"<integer>\",\n                \"width\": \"<integer>\"\n              }\n            ],\n            \"is_playable\": \"<boolean>\",\n            \"languages\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"name\": \"<string>\",\n            \"release_date\": \"<string>\",\n            \"release_date_precision\": \"day\",\n            \"type\": \"episode\",\n            \"uri\": \"<string>\",\n            \"available_markets\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"resume_point\": {\n              \"fully_played\": \"<boolean>\",\n              \"resume_position_ms\": \"<integer>\"\n            },\n            \"restrictions\": {\n              \"reason\": \"<string>\"\n            }\n          }\n        ],\n        \"limit\": \"<integer>\",\n        \"next\": \"<string>\",\n        \"offset\": \"<integer>\",\n        \"previous\": \"<string>\",\n        \"total\": \"<integer>\"\n      },\n      \"copyrights\": [\n        {\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"description\": \"<string>\",\n      \"explicit\": \"<boolean>\",\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"href\": \"<string>\",\n      \"html_description\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"media_type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"narrators\": [\n        {\n          \"name\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\"\n        }\n      ],\n      \"publisher\": \"<string>\",\n      \"total_chapters\": \"<integer>\",\n      \"type\": \"audiobook\",\n      \"uri\": \"<string>\",\n      \"edition\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:01:03.000Z",
+              "updatedAt": "2026-07-28T03:01:03.000Z",
+              "uid": "35240-c8c74476-672a-4350-b3b0-2c17348aca64"
+            },
+            {
+              "id": "c3a1345c-cdf0-4aae-bae9-be2a7ade440a",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/audiobooks?ids=<string>&market=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "audiobooks"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:01:03.000Z",
+              "updatedAt": "2026-07-28T03:01:03.000Z",
+              "uid": "35240-c3a1345c-cdf0-4aae-bae9-be2a7ade440a"
+            },
+            {
+              "id": "f9ca3b9e-5a91-47a5-a7f3-f872e20f07fe",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/audiobooks?ids=<string>&market=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "audiobooks"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:01:03.000Z",
+              "updatedAt": "2026-07-28T03:01:03.000Z",
+              "uid": "35240-f9ca3b9e-5a91-47a5-a7f3-f872e20f07fe"
+            },
+            {
+              "id": "0ec1cf95-f75d-4aa2-bef7-c110a695d450",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/audiobooks?ids=<string>&market=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "audiobooks"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:01:03.000Z",
+              "updatedAt": "2026-07-28T03:01:03.000Z",
+              "uid": "35240-0ec1cf95-f75d-4aa2-bef7-c110a695d450"
+            }
+          ],
+          "createdAt": "2026-07-28T03:01:03.000Z",
+          "updatedAt": "2026-07-28T03:01:03.000Z",
+          "uid": "35240-8d6e740b-229f-42dc-b12f-d0d66901d2e7"
+        }
+      ],
+      "id": "7dc8f4ef-bfca-44a7-9c26-78a7788250d8",
+      "createdAt": "2026-07-28T03:01:03.000Z",
+      "updatedAt": "2026-07-28T03:01:03.000Z",
+      "uid": "35240-7dc8f4ef-bfca-44a7-9c26-78a7788250d8"
+    },
+    {
+      "name": "me",
+      "item": [
+        {
+          "name": "audiobooks",
+          "item": [
+            {
+              "name": "contains",
+              "item": [
+                {
+                  "name": "Check User's Saved Audiobooks\n",
+                  "id": "2ddb02bf-d33c-451b-b361-2cf2479b0844",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://accounts.spotify.com/api/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://accounts.spotify.com/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/audiobooks/contains?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "audiobooks",
+                        "contains"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Check if one or more audiobooks are already saved in the current Spotify user's library.\n\n**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "a5c1eb08-2ce0-4a9c-a500-262df291b958",
+                      "name": "Array of booleans",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/audiobooks/contains?ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "audiobooks",
+                            "contains"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  \"<boolean>\",\n  \"<boolean>\"\n]",
+                      "createdAt": "2026-07-28T03:01:03.000Z",
+                      "updatedAt": "2026-07-28T03:01:03.000Z",
+                      "uid": "35240-a5c1eb08-2ce0-4a9c-a500-262df291b958"
+                    },
+                    {
+                      "id": "55fc4511-0f50-41b2-88e8-eba2671831ab",
+                      "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/audiobooks/contains?ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "audiobooks",
+                            "contains"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:03.000Z",
+                      "updatedAt": "2026-07-28T03:01:03.000Z",
+                      "uid": "35240-55fc4511-0f50-41b2-88e8-eba2671831ab"
+                    },
+                    {
+                      "id": "139f78e3-0a1a-4b77-a5eb-5f8a1b769893",
+                      "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/audiobooks/contains?ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "audiobooks",
+                            "contains"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:03.000Z",
+                      "updatedAt": "2026-07-28T03:01:03.000Z",
+                      "uid": "35240-139f78e3-0a1a-4b77-a5eb-5f8a1b769893"
+                    },
+                    {
+                      "id": "eb9802f7-60fe-476b-914a-3678a7f1bb0f",
+                      "name": "The app has exceeded its rate limits.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/audiobooks/contains?ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "audiobooks",
+                            "contains"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:03.000Z",
+                      "updatedAt": "2026-07-28T03:01:03.000Z",
+                      "uid": "35240-eb9802f7-60fe-476b-914a-3678a7f1bb0f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-2ddb02bf-d33c-451b-b361-2cf2479b0844"
+                }
+              ],
+              "id": "2171c049-ecbb-459d-a0c1-f81a963c86b3",
+              "createdAt": "2026-07-28T03:01:03.000Z",
+              "updatedAt": "2026-07-28T03:01:03.000Z",
+              "uid": "35240-2171c049-ecbb-459d-a0c1-f81a963c86b3"
+            },
+            {
+              "name": "Get User's Saved Audiobooks\n",
+              "id": "3341b441-3408-4a4d-bdde-ab3a7fd05cc0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/me/audiobooks?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me",
+                    "audiobooks"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                },
+                "description": "Get a list of the audiobooks saved in the current Spotify user's 'Your Music' library.\n"
+              },
+              "response": [
+                {
+                  "id": "365fb5d7-7241-403b-9ba5-915634be5cbc",
+                  "name": "Pages of audiobooks",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/audiobooks?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "audiobooks"
+                      ],
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"href\": \"<string>\",\n  \"items\": [\n    {\n      \"authors\": [\n        {\n          \"name\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\"\n        }\n      ],\n      \"available_markets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"copyrights\": [\n        {\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"description\": \"<string>\",\n      \"explicit\": \"<boolean>\",\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"href\": \"<string>\",\n      \"html_description\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"media_type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"narrators\": [\n        {\n          \"name\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\"\n        }\n      ],\n      \"publisher\": \"<string>\",\n      \"total_chapters\": \"<integer>\",\n      \"type\": \"audiobook\",\n      \"uri\": \"<string>\",\n      \"edition\": \"<string>\"\n    },\n    {\n      \"authors\": [\n        {\n          \"name\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\"\n        }\n      ],\n      \"available_markets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"copyrights\": [\n        {\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"description\": \"<string>\",\n      \"explicit\": \"<boolean>\",\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"href\": \"<string>\",\n      \"html_description\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"media_type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"narrators\": [\n        {\n          \"name\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\"\n        }\n      ],\n      \"publisher\": \"<string>\",\n      \"total_chapters\": \"<integer>\",\n      \"type\": \"audiobook\",\n      \"uri\": \"<string>\",\n      \"edition\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"offset\": \"<integer>\",\n  \"previous\": \"<string>\",\n  \"total\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-365fb5d7-7241-403b-9ba5-915634be5cbc"
+                },
+                {
+                  "id": "02e67b34-cd70-48e2-8db0-5581738aaf4c",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/audiobooks?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "audiobooks"
+                      ],
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-02e67b34-cd70-48e2-8db0-5581738aaf4c"
+                },
+                {
+                  "id": "683dd710-9a1f-42f5-9ddc-ee013fc17844",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/audiobooks?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "audiobooks"
+                      ],
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-683dd710-9a1f-42f5-9ddc-ee013fc17844"
+                },
+                {
+                  "id": "7f8cf70a-a75e-4322-b414-03e1e75e377d",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/audiobooks?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "audiobooks"
+                      ],
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-7f8cf70a-a75e-4322-b414-03e1e75e377d"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:03.000Z",
+              "updatedAt": "2026-07-28T03:01:03.000Z",
+              "uid": "35240-3341b441-3408-4a4d-bdde-ab3a7fd05cc0"
+            },
+            {
+              "name": "Save Audiobooks for Current User\n",
+              "id": "e97ea7f6-c187-49b6-b572-6cd2cbfd5f5e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/me/audiobooks?ids=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me",
+                    "audiobooks"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Save one or more audiobooks to the current Spotify user's library.\n\n**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.\n"
+              },
+              "response": [
+                {
+                  "id": "e23b7459-7efe-4ff5-9d07-5947f7ff106c",
+                  "name": "Audiobook(s) are saved to the library",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/audiobooks?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "audiobooks"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-e23b7459-7efe-4ff5-9d07-5947f7ff106c"
+                },
+                {
+                  "id": "f986f940-c7c1-478e-a84e-116a9673ffbb",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/audiobooks?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "audiobooks"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-f986f940-c7c1-478e-a84e-116a9673ffbb"
+                },
+                {
+                  "id": "c22a8a4c-4ac8-4664-a9de-4497d3c22e2d",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/audiobooks?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "audiobooks"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-c22a8a4c-4ac8-4664-a9de-4497d3c22e2d"
+                },
+                {
+                  "id": "c5bcbca3-2600-484b-bd35-903d0ca85a49",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/audiobooks?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "audiobooks"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-c5bcbca3-2600-484b-bd35-903d0ca85a49"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:03.000Z",
+              "updatedAt": "2026-07-28T03:01:03.000Z",
+              "uid": "35240-e97ea7f6-c187-49b6-b572-6cd2cbfd5f5e"
+            },
+            {
+              "name": "Remove User's Saved Audiobooks\n",
+              "id": "f0d13cc6-2d54-47f1-a8d6-e878874ad6b1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/me/audiobooks?ids=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me",
+                    "audiobooks"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Remove one or more audiobooks from the Spotify user's library.\n\n**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.\n"
+              },
+              "response": [
+                {
+                  "id": "ac55af01-940f-4932-9b18-b658dad1caa6",
+                  "name": "Audiobook(s) have been removed from the library",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/audiobooks?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "audiobooks"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-ac55af01-940f-4932-9b18-b658dad1caa6"
+                },
+                {
+                  "id": "17e1107f-ca21-4360-96aa-18ec379e36cf",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/audiobooks?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "audiobooks"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-17e1107f-ca21-4360-96aa-18ec379e36cf"
+                },
+                {
+                  "id": "600a4adf-04e6-4fc8-89ce-edb492edf559",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/audiobooks?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "audiobooks"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-600a4adf-04e6-4fc8-89ce-edb492edf559"
+                },
+                {
+                  "id": "726a4737-3312-4c59-ab2e-d5897f9a4709",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/audiobooks?ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "audiobooks"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:03.000Z",
+                  "updatedAt": "2026-07-28T03:01:03.000Z",
+                  "uid": "35240-726a4737-3312-4c59-ab2e-d5897f9a4709"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:03.000Z",
+              "updatedAt": "2026-07-28T03:01:03.000Z",
+              "uid": "35240-f0d13cc6-2d54-47f1-a8d6-e878874ad6b1"
+            }
+          ],
+          "id": "f53b8ca8-c911-4eef-821c-1a1bde571353",
+          "createdAt": "2026-07-28T03:01:03.000Z",
+          "updatedAt": "2026-07-28T03:01:03.000Z",
+          "uid": "35240-f53b8ca8-c911-4eef-821c-1a1bde571353"
+        }
+      ],
+      "id": "71474d8f-2789-4b92-a8cc-1c4051c51a61",
+      "createdAt": "2026-07-28T03:01:03.000Z",
+      "updatedAt": "2026-07-28T03:01:03.000Z",
+      "uid": "35240-71474d8f-2789-4b92-a8cc-1c4051c51a61"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.spotify.com/v1"
+    }
+  ]
+}

@@ -1,0 +1,393 @@
+{
+  "info": {
+    "_postman_id": "01621f7f-c0b3-4530-a484-139d3058d603",
+    "name": "Spotify Web Albums Search API",
+    "description": "You can use Spotify's Web API to discover music and podcasts, manage your Spotify library, control audio playback, and much more. Browse our available Web API endpoints using the sidebar at left, or via the navigation bar on top of this page on smaller screens.\n\nIn order to make successful Web API requests your app will need a valid access token. One can be obtained through <a href=\"https://developer.spotify.com/documentation/general/guides/authorization-guide/\">OAuth 2.0</a>.\n\nThe base URI for all Web API requests is `https://api.spotify.com/v1`.\n\nNeed help? See our <a href=\"https://developer.spotify.com/documentation/web-api/guides/\">Web API guides</a> for more information, or visit the <a href=\"https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer\">Spotify for Developers community forum</a> to ask questions and connect with other developers.\n\n\nContact Support:\n Name: Spotify for Developers Community",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:28.000Z",
+    "updatedAt": "2026-07-28T03:01:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-01621f7f-c0b3-4530-a484-139d3058d603"
+  },
+  "item": [
+    {
+      "name": "search",
+      "item": [
+        {
+          "name": "Search for Item\n",
+          "id": "407fd1db-7874-41e3-9adb-7c0d31f61473",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search?q=<string>&type=playlist,playlist&market=<string>&limit=5&offset=0&include_external=audio",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "type",
+                  "value": "playlist,playlist"
+                },
+                {
+                  "key": "market",
+                  "value": "<string>"
+                },
+                {
+                  "key": "limit",
+                  "value": "5"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "key": "include_external",
+                  "value": "audio"
+                }
+              ]
+            },
+            "description": "Get Spotify catalog information about albums, artists, playlists, tracks, shows, episodes or audiobooks\nthat match a keyword string. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.\n"
+          },
+          "response": [
+            {
+              "id": "245b8c6c-8118-40eb-adcb-424ff98e0754",
+              "name": "Search response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/search?q=<string>&type=playlist,playlist&market=<string>&limit=5&offset=0&include_external=audio",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "type",
+                      "value": "playlist,playlist"
+                    },
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "include_external",
+                      "value": "audio"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"tracks\": {\n    \"href\": \"<string>\",\n    \"items\": [\n      {\n        \"album\": {\n          \"album_type\": \"single\",\n          \"artists\": [\n            {\n              \"external_urls\": {\n                \"spotify\": \"<string>\"\n              },\n              \"href\": \"<string>\",\n              \"id\": \"<string>\",\n              \"name\": \"<string>\",\n              \"type\": \"artist\",\n              \"uri\": \"<string>\"\n            },\n            {\n              \"external_urls\": {\n                \"spotify\": \"<string>\"\n              },\n              \"href\": \"<string>\",\n              \"id\": \"<string>\",\n              \"name\": \"<string>\",\n              \"type\": \"artist\",\n              \"uri\": \"<string>\"\n            }\n          ],\n          \"available_markets\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"external_urls\": {\n            \"spotify\": \"<string>\"\n          },\n          \"href\": \"<string>\",\n          \"id\": \"<string>\",\n          \"images\": [\n            {\n              \"url\": \"<string>\",\n              \"height\": \"<integer>\",\n              \"width\": \"<integer>\"\n            },\n            {\n              \"url\": \"<string>\",\n              \"height\": \"<integer>\",\n              \"width\": \"<integer>\"\n            }\n          ],\n          \"name\": \"<string>\",\n          \"release_date\": \"<string>\",\n          \"release_date_precision\": \"month\",\n          \"total_tracks\": \"<integer>\",\n          \"type\": \"album\",\n          \"uri\": \"<string>\",\n          \"restrictions\": {\n            \"reason\": \"explicit\"\n          }\n        },\n        \"artists\": [\n          {\n            \"external_urls\": {\n              \"spotify\": \"<string>\"\n            },\n            \"href\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"artist\",\n            \"uri\": \"<string>\"\n          },\n          {\n            \"external_urls\": {\n              \"spotify\": \"<string>\"\n            },\n            \"href\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"artist\",\n            \"uri\": \"<string>\"\n          }\n        ],\n        \"available_markets\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"disc_number\": \"<integer>\",\n        \"duration_ms\": \"<integer>\",\n        \"explicit\": \"<boolean>\",\n        \"external_ids\": {\n          \"isrc\": \"<string>\",\n          \"ean\": \"<string>\",\n          \"upc\": \"<string>\"\n        },\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"is_playable\": \"<boolean>\",\n        \"linked_from\": {},\n        \"restrictions\": {\n          \"reason\": \"<string>\"\n        },\n        \"name\": \"<string>\",\n        \"popularity\": \"<integer>\",\n        \"preview_url\": \"<string>\",\n        \"track_number\": \"<integer>\",\n        \"type\": \"track\",\n        \"uri\": \"<string>\",\n        \"is_local\": \"<boolean>\"\n      },\n      {\n        \"album\": {\n          \"album_type\": \"compilation\",\n          \"artists\": [\n            {\n              \"external_urls\": {\n                \"spotify\": \"<string>\"\n              },\n              \"href\": \"<string>\",\n              \"id\": \"<string>\",\n              \"name\": \"<string>\",\n              \"type\": \"artist\",\n              \"uri\": \"<string>\"\n            },\n            {\n              \"external_urls\": {\n                \"spotify\": \"<string>\"\n              },\n              \"href\": \"<string>\",\n              \"id\": \"<string>\",\n              \"name\": \"<string>\",\n              \"type\": \"artist\",\n              \"uri\": \"<string>\"\n            }\n          ],\n          \"available_markets\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"external_urls\": {\n            \"spotify\": \"<string>\"\n          },\n          \"href\": \"<string>\",\n          \"id\": \"<string>\",\n          \"images\": [\n            {\n              \"url\": \"<string>\",\n              \"height\": \"<integer>\",\n              \"width\": \"<integer>\"\n            },\n            {\n              \"url\": \"<string>\",\n              \"height\": \"<integer>\",\n              \"width\": \"<integer>\"\n            }\n          ],\n          \"name\": \"<string>\",\n          \"release_date\": \"<string>\",\n          \"release_date_precision\": \"year\",\n          \"total_tracks\": \"<integer>\",\n          \"type\": \"album\",\n          \"uri\": \"<string>\",\n          \"restrictions\": {\n            \"reason\": \"market\"\n          }\n        },\n        \"artists\": [\n          {\n            \"external_urls\": {\n              \"spotify\": \"<string>\"\n            },\n            \"href\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"artist\",\n            \"uri\": \"<string>\"\n          },\n          {\n            \"external_urls\": {\n              \"spotify\": \"<string>\"\n            },\n            \"href\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"artist\",\n            \"uri\": \"<string>\"\n          }\n        ],\n        \"available_markets\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"disc_number\": \"<integer>\",\n        \"duration_ms\": \"<integer>\",\n        \"explicit\": \"<boolean>\",\n        \"external_ids\": {\n          \"isrc\": \"<string>\",\n          \"ean\": \"<string>\",\n          \"upc\": \"<string>\"\n        },\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"is_playable\": \"<boolean>\",\n        \"linked_from\": {},\n        \"restrictions\": {\n          \"reason\": \"<string>\"\n        },\n        \"name\": \"<string>\",\n        \"popularity\": \"<integer>\",\n        \"preview_url\": \"<string>\",\n        \"track_number\": \"<integer>\",\n        \"type\": \"track\",\n        \"uri\": \"<string>\",\n        \"is_local\": \"<boolean>\"\n      }\n    ],\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total\": \"<integer>\"\n  },\n  \"artists\": {\n    \"href\": \"<string>\",\n    \"items\": [\n      {\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"followers\": {\n          \"href\": \"<string>\",\n          \"total\": \"<integer>\"\n        },\n        \"genres\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"name\": \"<string>\",\n        \"popularity\": \"<integer>\",\n        \"type\": \"artist\",\n        \"uri\": \"<string>\"\n      },\n      {\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"followers\": {\n          \"href\": \"<string>\",\n          \"total\": \"<integer>\"\n        },\n        \"genres\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"name\": \"<string>\",\n        \"popularity\": \"<integer>\",\n        \"type\": \"artist\",\n        \"uri\": \"<string>\"\n      }\n    ],\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total\": \"<integer>\"\n  },\n  \"albums\": {\n    \"href\": \"<string>\",\n    \"items\": [\n      {\n        \"album_type\": \"compilation\",\n        \"artists\": [\n          {\n            \"external_urls\": {\n              \"spotify\": \"<string>\"\n            },\n            \"href\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"artist\",\n            \"uri\": \"<string>\"\n          },\n          {\n            \"external_urls\": {\n              \"spotify\": \"<string>\"\n            },\n            \"href\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"artist\",\n            \"uri\": \"<string>\"\n          }\n        ],\n        \"available_markets\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"name\": \"<string>\",\n        \"release_date\": \"<string>\",\n        \"release_date_precision\": \"year\",\n        \"total_tracks\": \"<integer>\",\n        \"type\": \"album\",\n        \"uri\": \"<string>\",\n        \"restrictions\": {\n          \"reason\": \"product\"\n        }\n      },\n      {\n        \"album_type\": \"album\",\n        \"artists\": [\n          {\n            \"external_urls\": {\n              \"spotify\": \"<string>\"\n            },\n            \"href\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"artist\",\n            \"uri\": \"<string>\"\n          },\n          {\n            \"external_urls\": {\n              \"spotify\": \"<string>\"\n            },\n            \"href\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"artist\",\n            \"uri\": \"<string>\"\n          }\n        ],\n        \"available_markets\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"name\": \"<string>\",\n        \"release_date\": \"<string>\",\n        \"release_date_precision\": \"month\",\n        \"total_tracks\": \"<integer>\",\n        \"type\": \"album\",\n        \"uri\": \"<string>\",\n        \"restrictions\": {\n          \"reason\": \"product\"\n        }\n      }\n    ],\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total\": \"<integer>\"\n  },\n  \"playlists\": {\n    \"href\": \"<string>\",\n    \"items\": [\n      {\n        \"collaborative\": \"<boolean>\",\n        \"description\": \"<string>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"name\": \"<string>\",\n        \"owner\": {\n          \"external_urls\": {\n            \"spotify\": \"<string>\"\n          },\n          \"href\": \"<string>\",\n          \"id\": \"<string>\",\n          \"type\": \"user\",\n          \"uri\": \"<string>\",\n          \"display_name\": \"<string>\"\n        },\n        \"public\": \"<boolean>\",\n        \"snapshot_id\": \"<string>\",\n        \"items\": {\n          \"href\": \"<string>\",\n          \"total\": \"<integer>\"\n        },\n        \"tracks\": {\n          \"href\": \"<string>\",\n          \"total\": \"<integer>\"\n        },\n        \"type\": \"<string>\",\n        \"uri\": \"<string>\"\n      },\n      {\n        \"collaborative\": \"<boolean>\",\n        \"description\": \"<string>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"name\": \"<string>\",\n        \"owner\": {\n          \"external_urls\": {\n            \"spotify\": \"<string>\"\n          },\n          \"href\": \"<string>\",\n          \"id\": \"<string>\",\n          \"type\": \"user\",\n          \"uri\": \"<string>\",\n          \"display_name\": \"<string>\"\n        },\n        \"public\": \"<boolean>\",\n        \"snapshot_id\": \"<string>\",\n        \"items\": {\n          \"href\": \"<string>\",\n          \"total\": \"<integer>\"\n        },\n        \"tracks\": {\n          \"href\": \"<string>\",\n          \"total\": \"<integer>\"\n        },\n        \"type\": \"<string>\",\n        \"uri\": \"<string>\"\n      }\n    ],\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total\": \"<integer>\"\n  },\n  \"shows\": {\n    \"href\": \"<string>\",\n    \"items\": [\n      {\n        \"available_markets\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"copyrights\": [\n          {\n            \"text\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"text\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string>\",\n        \"explicit\": \"<boolean>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"html_description\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"is_externally_hosted\": \"<boolean>\",\n        \"languages\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"media_type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"publisher\": \"<string>\",\n        \"total_episodes\": \"<integer>\",\n        \"type\": \"show\",\n        \"uri\": \"<string>\"\n      },\n      {\n        \"available_markets\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"copyrights\": [\n          {\n            \"text\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"text\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string>\",\n        \"explicit\": \"<boolean>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"html_description\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"is_externally_hosted\": \"<boolean>\",\n        \"languages\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"media_type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"publisher\": \"<string>\",\n        \"total_episodes\": \"<integer>\",\n        \"type\": \"show\",\n        \"uri\": \"<string>\"\n      }\n    ],\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total\": \"<integer>\"\n  },\n  \"episodes\": {\n    \"href\": \"<string>\",\n    \"items\": [\n      {\n        \"audio_preview_url\": \"<string>\",\n        \"description\": \"<string>\",\n        \"html_description\": \"<string>\",\n        \"duration_ms\": \"<integer>\",\n        \"explicit\": \"<boolean>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"is_externally_hosted\": \"<boolean>\",\n        \"is_playable\": \"<boolean>\",\n        \"languages\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"name\": \"<string>\",\n        \"release_date\": \"<string>\",\n        \"release_date_precision\": \"day\",\n        \"type\": \"episode\",\n        \"uri\": \"<string>\",\n        \"language\": \"<string>\",\n        \"resume_point\": {\n          \"fully_played\": \"<boolean>\",\n          \"resume_position_ms\": \"<integer>\"\n        },\n        \"restrictions\": {\n          \"reason\": \"<string>\"\n        }\n      },\n      {\n        \"audio_preview_url\": \"<string>\",\n        \"description\": \"<string>\",\n        \"html_description\": \"<string>\",\n        \"duration_ms\": \"<integer>\",\n        \"explicit\": \"<boolean>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"is_externally_hosted\": \"<boolean>\",\n        \"is_playable\": \"<boolean>\",\n        \"languages\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"name\": \"<string>\",\n        \"release_date\": \"<string>\",\n        \"release_date_precision\": \"month\",\n        \"type\": \"episode\",\n        \"uri\": \"<string>\",\n        \"language\": \"<string>\",\n        \"resume_point\": {\n          \"fully_played\": \"<boolean>\",\n          \"resume_position_ms\": \"<integer>\"\n        },\n        \"restrictions\": {\n          \"reason\": \"<string>\"\n        }\n      }\n    ],\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total\": \"<integer>\"\n  },\n  \"audiobooks\": {\n    \"href\": \"<string>\",\n    \"items\": [\n      {\n        \"authors\": [\n          {\n            \"name\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\"\n          }\n        ],\n        \"available_markets\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"copyrights\": [\n          {\n            \"text\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"text\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string>\",\n        \"explicit\": \"<boolean>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"html_description\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"languages\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"media_type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"narrators\": [\n          {\n            \"name\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\"\n          }\n        ],\n        \"publisher\": \"<string>\",\n        \"total_chapters\": \"<integer>\",\n        \"type\": \"audiobook\",\n        \"uri\": \"<string>\",\n        \"edition\": \"<string>\"\n      },\n      {\n        \"authors\": [\n          {\n            \"name\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\"\n          }\n        ],\n        \"available_markets\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"copyrights\": [\n          {\n            \"text\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"text\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"description\": \"<string>\",\n        \"explicit\": \"<boolean>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"html_description\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"languages\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"media_type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"narrators\": [\n          {\n            \"name\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\"\n          }\n        ],\n        \"publisher\": \"<string>\",\n        \"total_chapters\": \"<integer>\",\n        \"type\": \"audiobook\",\n        \"uri\": \"<string>\",\n        \"edition\": \"<string>\"\n      }\n    ],\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:01:29.000Z",
+              "updatedAt": "2026-07-28T03:01:29.000Z",
+              "uid": "35240-245b8c6c-8118-40eb-adcb-424ff98e0754"
+            },
+            {
+              "id": "bdda6873-f303-435a-aaae-7fa865d5e8b8",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/search?q=<string>&type=playlist,playlist&market=<string>&limit=5&offset=0&include_external=audio",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "type",
+                      "value": "playlist,playlist"
+                    },
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "include_external",
+                      "value": "audio"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:01:29.000Z",
+              "updatedAt": "2026-07-28T03:01:29.000Z",
+              "uid": "35240-bdda6873-f303-435a-aaae-7fa865d5e8b8"
+            },
+            {
+              "id": "bfc43db1-3ccf-4484-b0c1-e815be84bb25",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/search?q=<string>&type=playlist,playlist&market=<string>&limit=5&offset=0&include_external=audio",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "type",
+                      "value": "playlist,playlist"
+                    },
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "include_external",
+                      "value": "audio"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:01:29.000Z",
+              "updatedAt": "2026-07-28T03:01:29.000Z",
+              "uid": "35240-bfc43db1-3ccf-4484-b0c1-e815be84bb25"
+            },
+            {
+              "id": "d221f9f3-022e-4272-bd02-d9984323f423",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/search?q=<string>&type=playlist,playlist&market=<string>&limit=5&offset=0&include_external=audio",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "type",
+                      "value": "playlist,playlist"
+                    },
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "include_external",
+                      "value": "audio"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:01:29.000Z",
+              "updatedAt": "2026-07-28T03:01:29.000Z",
+              "uid": "35240-d221f9f3-022e-4272-bd02-d9984323f423"
+            }
+          ],
+          "createdAt": "2026-07-28T03:01:29.000Z",
+          "updatedAt": "2026-07-28T03:01:29.000Z",
+          "uid": "35240-407fd1db-7874-41e3-9adb-7c0d31f61473"
+        }
+      ],
+      "id": "693d4f18-94a0-449c-b561-72119504e15a",
+      "createdAt": "2026-07-28T03:01:29.000Z",
+      "updatedAt": "2026-07-28T03:01:29.000Z",
+      "uid": "35240-693d4f18-94a0-449c-b561-72119504e15a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.spotify.com/v1"
+    }
+  ]
+}

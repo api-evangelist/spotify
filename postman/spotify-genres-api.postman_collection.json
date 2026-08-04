@@ -1,0 +1,267 @@
+{
+  "info": {
+    "_postman_id": "8bbfaaaa-62ca-45c4-80d3-33c3f892597e",
+    "name": "Spotify Web Albums Genres API",
+    "description": "You can use Spotify's Web API to discover music and podcasts, manage your Spotify library, control audio playback, and much more. Browse our available Web API endpoints using the sidebar at left, or via the navigation bar on top of this page on smaller screens.\n\nIn order to make successful Web API requests your app will need a valid access token. One can be obtained through <a href=\"https://developer.spotify.com/documentation/general/guides/authorization-guide/\">OAuth 2.0</a>.\n\nThe base URI for all Web API requests is `https://api.spotify.com/v1`.\n\nNeed help? See our <a href=\"https://developer.spotify.com/documentation/web-api/guides/\">Web API guides</a> for more information, or visit the <a href=\"https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer\">Spotify for Developers community forum</a> to ask questions and connect with other developers.\n\n\nContact Support:\n Name: Spotify for Developers Community",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:14.000Z",
+    "updatedAt": "2026-07-28T03:01:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8bbfaaaa-62ca-45c4-80d3-33c3f892597e"
+  },
+  "item": [
+    {
+      "name": "recommendations",
+      "item": [
+        {
+          "name": "available-genre-seeds",
+          "item": [
+            {
+              "name": "Get Available Genre Seeds\n",
+              "id": "3dd99ddb-fcea-468f-b3ed-799496647c69",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/recommendations/available-genre-seeds",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "recommendations",
+                    "available-genre-seeds"
+                  ]
+                },
+                "description": "Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/get-recommendations).\n"
+              },
+              "response": [
+                {
+                  "id": "927a74b8-a5e9-4562-b0af-aa9ce39d539d",
+                  "name": "A set of genres",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/recommendations/available-genre-seeds",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "recommendations",
+                        "available-genre-seeds"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"genres\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:01:15.000Z",
+                  "updatedAt": "2026-07-28T03:01:15.000Z",
+                  "uid": "35240-927a74b8-a5e9-4562-b0af-aa9ce39d539d"
+                },
+                {
+                  "id": "685cbfac-0e29-4b69-ae63-c37152f1d765",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/recommendations/available-genre-seeds",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "recommendations",
+                        "available-genre-seeds"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:15.000Z",
+                  "updatedAt": "2026-07-28T03:01:15.000Z",
+                  "uid": "35240-685cbfac-0e29-4b69-ae63-c37152f1d765"
+                },
+                {
+                  "id": "87dd8fed-1efe-493d-91f0-7b63c53b688f",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/recommendations/available-genre-seeds",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "recommendations",
+                        "available-genre-seeds"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:15.000Z",
+                  "updatedAt": "2026-07-28T03:01:15.000Z",
+                  "uid": "35240-87dd8fed-1efe-493d-91f0-7b63c53b688f"
+                },
+                {
+                  "id": "5b3488b1-e529-4651-a01a-c7f7c5644b7e",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/recommendations/available-genre-seeds",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "recommendations",
+                        "available-genre-seeds"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:15.000Z",
+                  "updatedAt": "2026-07-28T03:01:15.000Z",
+                  "uid": "35240-5b3488b1-e529-4651-a01a-c7f7c5644b7e"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:15.000Z",
+              "updatedAt": "2026-07-28T03:01:15.000Z",
+              "uid": "35240-3dd99ddb-fcea-468f-b3ed-799496647c69"
+            }
+          ],
+          "id": "21601d7b-b389-46c9-bd49-4475c7e3d7c5",
+          "createdAt": "2026-07-28T03:01:15.000Z",
+          "updatedAt": "2026-07-28T03:01:15.000Z",
+          "uid": "35240-21601d7b-b389-46c9-bd49-4475c7e3d7c5"
+        }
+      ],
+      "id": "6def4d93-356c-4c84-968f-86ddf5d5d92e",
+      "createdAt": "2026-07-28T03:01:15.000Z",
+      "updatedAt": "2026-07-28T03:01:15.000Z",
+      "uid": "35240-6def4d93-356c-4c84-968f-86ddf5d5d92e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.spotify.com/v1"
+    }
+  ]
+}

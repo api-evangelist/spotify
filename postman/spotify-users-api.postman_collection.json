@@ -1,0 +1,3424 @@
+{
+  "info": {
+    "_postman_id": "fa381d12-96da-4391-a9e7-5ed3c7b9ac09",
+    "name": "Spotify Web Albums Users API",
+    "description": "You can use Spotify's Web API to discover music and podcasts, manage your Spotify library, control audio playback, and much more. Browse our available Web API endpoints using the sidebar at left, or via the navigation bar on top of this page on smaller screens.\n\nIn order to make successful Web API requests your app will need a valid access token. One can be obtained through <a href=\"https://developer.spotify.com/documentation/general/guides/authorization-guide/\">OAuth 2.0</a>.\n\nThe base URI for all Web API requests is `https://api.spotify.com/v1`.\n\nNeed help? See our <a href=\"https://developer.spotify.com/documentation/web-api/guides/\">Web API guides</a> for more information, or visit the <a href=\"https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer\">Spotify for Developers community forum</a> to ask questions and connect with other developers.\n\n\nContact Support:\n Name: Spotify for Developers Community",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:36.000Z",
+    "updatedAt": "2026-07-28T03:01:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fa381d12-96da-4391-a9e7-5ed3c7b9ac09"
+  },
+  "item": [
+    {
+      "name": "me",
+      "item": [
+        {
+          "name": "top",
+          "item": [
+            {
+              "name": "{type}",
+              "item": [
+                {
+                  "name": "Get User's Top Items\n",
+                  "id": "299f97a7-360d-4348-b1a7-c125a08041af",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://accounts.spotify.com/api/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://accounts.spotify.com/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/top/:type?time_range=medium_term&limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "top",
+                        ":type"
+                      ],
+                      "query": [
+                        {
+                          "key": "time_range",
+                          "value": "medium_term"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "481c6fc0-6db6-4799-8c03-7ffd5aca9a09",
+                          "key": "type",
+                          "value": "artists",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Get the current user's top artists or tracks based on calculated affinity.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "10da4699-444c-4a7c-9905-6a5602c0f60f",
+                      "name": "Pages of artists or tracks",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/top/:type?time_range=medium_term&limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "top",
+                            ":type"
+                          ],
+                          "query": [
+                            {
+                              "key": "time_range",
+                              "value": "medium_term"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "type"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"href\": \"<string>\",\n  \"items\": [\n    {\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"followers\": {\n        \"href\": \"<string>\",\n        \"total\": \"<integer>\"\n      },\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"href\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"name\": \"<string>\",\n      \"popularity\": \"<integer>\",\n      \"type\": \"artist\",\n      \"uri\": \"<string>\"\n    },\n    {\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"followers\": {\n        \"href\": \"<string>\",\n        \"total\": \"<integer>\"\n      },\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"href\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"name\": \"<string>\",\n      \"popularity\": \"<integer>\",\n      \"type\": \"artist\",\n      \"uri\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"offset\": \"<integer>\",\n  \"previous\": \"<string>\",\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-10da4699-444c-4a7c-9905-6a5602c0f60f"
+                    },
+                    {
+                      "id": "db5b93ec-2656-43be-93f8-d6e2e5de6193",
+                      "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/top/:type?time_range=medium_term&limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "top",
+                            ":type"
+                          ],
+                          "query": [
+                            {
+                              "key": "time_range",
+                              "value": "medium_term"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "type"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-db5b93ec-2656-43be-93f8-d6e2e5de6193"
+                    },
+                    {
+                      "id": "3f86a269-b55a-4d20-b932-f6230fbb8fc5",
+                      "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/top/:type?time_range=medium_term&limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "top",
+                            ":type"
+                          ],
+                          "query": [
+                            {
+                              "key": "time_range",
+                              "value": "medium_term"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "type"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-3f86a269-b55a-4d20-b932-f6230fbb8fc5"
+                    },
+                    {
+                      "id": "ef99bf6c-3d12-4291-8850-6764532a3c13",
+                      "name": "The app has exceeded its rate limits.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/top/:type?time_range=medium_term&limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "top",
+                            ":type"
+                          ],
+                          "query": [
+                            {
+                              "key": "time_range",
+                              "value": "medium_term"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "type"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-ef99bf6c-3d12-4291-8850-6764532a3c13"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-299f97a7-360d-4348-b1a7-c125a08041af"
+                }
+              ],
+              "id": "beef1cab-dc63-4b3a-a826-93c4e7d0155d",
+              "createdAt": "2026-07-28T03:01:36.000Z",
+              "updatedAt": "2026-07-28T03:01:36.000Z",
+              "uid": "35240-beef1cab-dc63-4b3a-a826-93c4e7d0155d"
+            }
+          ],
+          "id": "e85df63b-e7f7-41e8-90ce-efd4f9ec71a8",
+          "createdAt": "2026-07-28T03:01:36.000Z",
+          "updatedAt": "2026-07-28T03:01:36.000Z",
+          "uid": "35240-e85df63b-e7f7-41e8-90ce-efd4f9ec71a8"
+        },
+        {
+          "name": "following",
+          "item": [
+            {
+              "name": "contains",
+              "item": [
+                {
+                  "name": "Check If User Follows Artists or Users\n",
+                  "id": "95ba1f2b-7939-4c37-83c3-f6064669daff",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://accounts.spotify.com/api/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://accounts.spotify.com/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/following/contains?type=user&ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "following",
+                        "contains"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "user"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Check to see if the current user is following one or more artists or other Spotify users.\n\n**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "cbe08678-d102-49de-845d-6a222a3c50b8",
+                      "name": "Array of booleans",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/following/contains?type=user&ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "following",
+                            "contains"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "type",
+                              "value": "user"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  \"<boolean>\",\n  \"<boolean>\"\n]",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-cbe08678-d102-49de-845d-6a222a3c50b8"
+                    },
+                    {
+                      "id": "63f0aa2f-5d16-4c64-bdef-563378e05c7a",
+                      "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/following/contains?type=user&ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "following",
+                            "contains"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "type",
+                              "value": "user"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-63f0aa2f-5d16-4c64-bdef-563378e05c7a"
+                    },
+                    {
+                      "id": "750e08b8-5529-491f-93c5-570da71a9e09",
+                      "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/following/contains?type=user&ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "following",
+                            "contains"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "type",
+                              "value": "user"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-750e08b8-5529-491f-93c5-570da71a9e09"
+                    },
+                    {
+                      "id": "199c78aa-de6d-4f6f-91ad-d755e3ac39fe",
+                      "name": "The app has exceeded its rate limits.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/me/following/contains?type=user&ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "me",
+                            "following",
+                            "contains"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "type",
+                              "value": "user"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-199c78aa-de6d-4f6f-91ad-d755e3ac39fe"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-95ba1f2b-7939-4c37-83c3-f6064669daff"
+                }
+              ],
+              "id": "c3793e79-86d0-499c-b532-fd1f8489c9ce",
+              "createdAt": "2026-07-28T03:01:36.000Z",
+              "updatedAt": "2026-07-28T03:01:36.000Z",
+              "uid": "35240-c3793e79-86d0-499c-b532-fd1f8489c9ce"
+            },
+            {
+              "name": "Get Followed Artists\n",
+              "id": "9c58bf9b-cb2e-448b-a563-044dad927431",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/me/following?type=artist&after=<string>&limit=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me",
+                    "following"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "type",
+                      "value": "artist"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ]
+                },
+                "description": "Get the current user's followed artists.\n"
+              },
+              "response": [
+                {
+                  "id": "dc4489f6-b352-48aa-a639-eac0d9876342",
+                  "name": "A paged set of artists",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/following?type=artist&after=<string>&limit=20",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "following"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "artist"
+                        },
+                        {
+                          "key": "after",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"artists\": {\n    \"href\": \"<string>\",\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"cursors\": {\n      \"after\": \"<string>\",\n      \"before\": \"<string>\"\n    },\n    \"total\": \"<integer>\",\n    \"items\": [\n      {\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"followers\": {\n          \"href\": \"<string>\",\n          \"total\": \"<integer>\"\n        },\n        \"genres\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"name\": \"<string>\",\n        \"popularity\": \"<integer>\",\n        \"type\": \"artist\",\n        \"uri\": \"<string>\"\n      },\n      {\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"followers\": {\n          \"href\": \"<string>\",\n          \"total\": \"<integer>\"\n        },\n        \"genres\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"name\": \"<string>\",\n        \"popularity\": \"<integer>\",\n        \"type\": \"artist\",\n        \"uri\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-dc4489f6-b352-48aa-a639-eac0d9876342"
+                },
+                {
+                  "id": "be8cdab2-4c7f-44b4-a2b2-d9aeb6681e57",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/following?type=artist&after=<string>&limit=20",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "following"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "artist"
+                        },
+                        {
+                          "key": "after",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-be8cdab2-4c7f-44b4-a2b2-d9aeb6681e57"
+                },
+                {
+                  "id": "80cd0290-cca9-4b46-bdc7-64cbf5127ee6",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/following?type=artist&after=<string>&limit=20",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "following"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "artist"
+                        },
+                        {
+                          "key": "after",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-80cd0290-cca9-4b46-bdc7-64cbf5127ee6"
+                },
+                {
+                  "id": "4bb3505b-2e8f-406a-b4ae-a0693de8aad3",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/me/following?type=artist&after=<string>&limit=20",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "following"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "artist"
+                        },
+                        {
+                          "key": "after",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-4bb3505b-2e8f-406a-b4ae-a0693de8aad3"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:37.000Z",
+              "updatedAt": "2026-07-28T03:01:37.000Z",
+              "uid": "35240-9c58bf9b-cb2e-448b-a563-044dad927431"
+            },
+            {
+              "name": "Follow Artists or Users\n",
+              "id": "184f13e0-b4d4-492d-90a6-820689155d2d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/me/following?type=user&ids=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me",
+                    "following"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "type",
+                      "value": "user"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Add the current user as a follower of one or more artists or other Spotify users.\n\n**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.\n"
+              },
+              "response": [
+                {
+                  "id": "1b88ea9c-e4f9-4329-ab3c-eeab95d13cdc",
+                  "name": "Artist or user followed",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/me/following?type=user&ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "following"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "user"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-1b88ea9c-e4f9-4329-ab3c-eeab95d13cdc"
+                },
+                {
+                  "id": "2df8c68a-8ec3-4f1c-a73a-b5d5cb1db364",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/me/following?type=user&ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "following"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "user"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-2df8c68a-8ec3-4f1c-a73a-b5d5cb1db364"
+                },
+                {
+                  "id": "8da01095-0778-459a-871d-92af02a71b5f",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/me/following?type=user&ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "following"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "user"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-8da01095-0778-459a-871d-92af02a71b5f"
+                },
+                {
+                  "id": "dddac66c-314e-45b5-98a6-95f88d6c58e5",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/me/following?type=user&ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "following"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "user"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-dddac66c-314e-45b5-98a6-95f88d6c58e5"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:37.000Z",
+              "updatedAt": "2026-07-28T03:01:37.000Z",
+              "uid": "35240-184f13e0-b4d4-492d-90a6-820689155d2d"
+            },
+            {
+              "name": "Unfollow Artists or Users\n",
+              "id": "77361ff7-411a-48a2-949d-a20f4925def9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ad_33f\": \"veniam consequat in aute\",\n  \"excf7\": true,\n  \"pariatur_ea3\": 95054122.1821096\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/me/following?type=user&ids=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me",
+                    "following"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "type",
+                      "value": "user"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Remove the current user as a follower of one or more artists or other Spotify users.\n\n**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.\n"
+              },
+              "response": [
+                {
+                  "id": "caddd49b-aa67-4b96-998c-36253badd984",
+                  "name": "Artist or user unfollowed",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ad_33f\": \"veniam consequat in aute\",\n  \"excf7\": true,\n  \"pariatur_ea3\": 95054122.1821096\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/me/following?type=user&ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "following"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "user"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-caddd49b-aa67-4b96-998c-36253badd984"
+                },
+                {
+                  "id": "1c9234cc-5d69-4fa8-86a3-199eedecc87d",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ad_33f\": \"veniam consequat in aute\",\n  \"excf7\": true,\n  \"pariatur_ea3\": 95054122.1821096\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/me/following?type=user&ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "following"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "user"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-1c9234cc-5d69-4fa8-86a3-199eedecc87d"
+                },
+                {
+                  "id": "fd044644-4f81-4eba-940b-c31085ddd2da",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ad_33f\": \"veniam consequat in aute\",\n  \"excf7\": true,\n  \"pariatur_ea3\": 95054122.1821096\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/me/following?type=user&ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "following"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "user"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-fd044644-4f81-4eba-940b-c31085ddd2da"
+                },
+                {
+                  "id": "50fa8bef-97b4-4ac5-992c-69ba93133e0a",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ad_33f\": \"veniam consequat in aute\",\n  \"excf7\": true,\n  \"pariatur_ea3\": 95054122.1821096\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/me/following?type=user&ids=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "me",
+                        "following"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "user"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "ids",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-50fa8bef-97b4-4ac5-992c-69ba93133e0a"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:37.000Z",
+              "updatedAt": "2026-07-28T03:01:37.000Z",
+              "uid": "35240-77361ff7-411a-48a2-949d-a20f4925def9"
+            }
+          ],
+          "id": "dbeb59e4-b549-4f18-bee4-076eb0794d6e",
+          "createdAt": "2026-07-28T03:01:36.000Z",
+          "updatedAt": "2026-07-28T03:01:36.000Z",
+          "uid": "35240-dbeb59e4-b549-4f18-bee4-076eb0794d6e"
+        },
+        {
+          "name": "Get Current User's Profile\n",
+          "id": "9a8ceb22-d961-48bb-94c1-1977e64a36c0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "me"
+              ]
+            },
+            "description": "Get detailed profile information about the current user (including the\ncurrent user's username).\n"
+          },
+          "response": [
+            {
+              "id": "64a3af5e-041f-445c-8dd8-faf6914f3f5e",
+              "name": "A user",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"country\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"explicit_content\": {\n    \"filter_enabled\": \"<boolean>\",\n    \"filter_locked\": \"<boolean>\"\n  },\n  \"external_urls\": {\n    \"spotify\": \"<string>\"\n  },\n  \"followers\": {\n    \"href\": \"<string>\",\n    \"total\": \"<integer>\"\n  },\n  \"href\": \"<string>\",\n  \"id\": \"<string>\",\n  \"images\": [\n    {\n      \"url\": \"<string>\",\n      \"height\": \"<integer>\",\n      \"width\": \"<integer>\"\n    },\n    {\n      \"url\": \"<string>\",\n      \"height\": \"<integer>\",\n      \"width\": \"<integer>\"\n    }\n  ],\n  \"product\": \"<string>\",\n  \"type\": \"<string>\",\n  \"uri\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:01:37.000Z",
+              "updatedAt": "2026-07-28T03:01:37.000Z",
+              "uid": "35240-64a3af5e-041f-445c-8dd8-faf6914f3f5e"
+            },
+            {
+              "id": "c7ed0c64-a1be-40ae-bcc0-d8ea7ce77fa6",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:01:37.000Z",
+              "updatedAt": "2026-07-28T03:01:37.000Z",
+              "uid": "35240-c7ed0c64-a1be-40ae-bcc0-d8ea7ce77fa6"
+            },
+            {
+              "id": "06cc9567-a019-411f-aff4-a22769b1923e",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:01:37.000Z",
+              "updatedAt": "2026-07-28T03:01:37.000Z",
+              "uid": "35240-06cc9567-a019-411f-aff4-a22769b1923e"
+            },
+            {
+              "id": "9bf3f160-94b9-4a9d-a284-a837332e6af0",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:01:37.000Z",
+              "updatedAt": "2026-07-28T03:01:37.000Z",
+              "uid": "35240-9bf3f160-94b9-4a9d-a284-a837332e6af0"
+            }
+          ],
+          "createdAt": "2026-07-28T03:01:37.000Z",
+          "updatedAt": "2026-07-28T03:01:37.000Z",
+          "uid": "35240-9a8ceb22-d961-48bb-94c1-1977e64a36c0"
+        }
+      ],
+      "id": "1848a6da-3b4c-4255-8228-c044a189001c",
+      "createdAt": "2026-07-28T03:01:36.000Z",
+      "updatedAt": "2026-07-28T03:01:36.000Z",
+      "uid": "35240-1848a6da-3b4c-4255-8228-c044a189001c"
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "{user_id}",
+          "item": [
+            {
+              "name": "playlists",
+              "item": [
+                {
+                  "name": "Get User's Playlists\n",
+                  "id": "912ed230-5758-49a3-9e4f-4160dd25c88f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://accounts.spotify.com/api/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://accounts.spotify.com/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id/playlists?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id",
+                        "playlists"
+                      ],
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "9c817485-6347-4682-8937-ea5f8c51441a",
+                          "key": "user_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Get a list of the playlists owned or followed by a Spotify user.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "50841e8c-6ff4-4299-92ce-232af83e082e",
+                      "name": "A paged set of playlists",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/playlists?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "playlists"
+                          ],
+                          "query": [
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"href\": \"<string>\",\n  \"items\": [\n    {\n      \"collaborative\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"href\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"name\": \"<string>\",\n      \"owner\": {\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"type\": \"user\",\n        \"uri\": \"<string>\",\n        \"display_name\": \"<string>\"\n      },\n      \"public\": \"<boolean>\",\n      \"snapshot_id\": \"<string>\",\n      \"items\": {\n        \"href\": \"<string>\",\n        \"total\": \"<integer>\"\n      },\n      \"tracks\": {\n        \"href\": \"<string>\",\n        \"total\": \"<integer>\"\n      },\n      \"type\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    {\n      \"collaborative\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"external_urls\": {\n        \"spotify\": \"<string>\"\n      },\n      \"href\": \"<string>\",\n      \"id\": \"<string>\",\n      \"images\": [\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        },\n        {\n          \"url\": \"<string>\",\n          \"height\": \"<integer>\",\n          \"width\": \"<integer>\"\n        }\n      ],\n      \"name\": \"<string>\",\n      \"owner\": {\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"type\": \"user\",\n        \"uri\": \"<string>\",\n        \"display_name\": \"<string>\"\n      },\n      \"public\": \"<boolean>\",\n      \"snapshot_id\": \"<string>\",\n      \"items\": {\n        \"href\": \"<string>\",\n        \"total\": \"<integer>\"\n      },\n      \"tracks\": {\n        \"href\": \"<string>\",\n        \"total\": \"<integer>\"\n      },\n      \"type\": \"<string>\",\n      \"uri\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"offset\": \"<integer>\",\n  \"previous\": \"<string>\",\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-50841e8c-6ff4-4299-92ce-232af83e082e"
+                    },
+                    {
+                      "id": "744865cf-ad86-419b-b9c4-9bf841a511c1",
+                      "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/playlists?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "playlists"
+                          ],
+                          "query": [
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-744865cf-ad86-419b-b9c4-9bf841a511c1"
+                    },
+                    {
+                      "id": "dd91e2a7-9b1a-42a6-afcb-e061d94802f4",
+                      "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/playlists?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "playlists"
+                          ],
+                          "query": [
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-dd91e2a7-9b1a-42a6-afcb-e061d94802f4"
+                    },
+                    {
+                      "id": "74138bd2-26ae-49d1-8dc9-e9fa426fafd2",
+                      "name": "The app has exceeded its rate limits.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user_id/playlists?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user_id",
+                            "playlists"
+                          ],
+                          "query": [
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-74138bd2-26ae-49d1-8dc9-e9fa426fafd2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-912ed230-5758-49a3-9e4f-4160dd25c88f"
+                }
+              ],
+              "id": "52df4483-8931-43e1-b72e-911666b91f9f",
+              "createdAt": "2026-07-28T03:01:36.000Z",
+              "updatedAt": "2026-07-28T03:01:36.000Z",
+              "uid": "35240-52df4483-8931-43e1-b72e-911666b91f9f"
+            },
+            {
+              "name": "Get User's Profile\n",
+              "id": "e3424cfa-89a5-4f7d-b5d5-4123ce8a18fc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/:user_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4bdd9c89-4864-4eb0-9bca-4ffb292dd1a5",
+                      "key": "user_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get public profile information about a Spotify user.\n"
+              },
+              "response": [
+                {
+                  "id": "b57890b5-7cac-4385-aaf1-c9d94e23e6b8",
+                  "name": "A user",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"display_name\": \"<string>\",\n  \"external_urls\": {\n    \"spotify\": \"<string>\"\n  },\n  \"followers\": {\n    \"href\": \"<string>\",\n    \"total\": \"<integer>\"\n  },\n  \"href\": \"<string>\",\n  \"id\": \"<string>\",\n  \"images\": [\n    {\n      \"url\": \"<string>\",\n      \"height\": \"<integer>\",\n      \"width\": \"<integer>\"\n    },\n    {\n      \"url\": \"<string>\",\n      \"height\": \"<integer>\",\n      \"width\": \"<integer>\"\n    }\n  ],\n  \"type\": \"user\",\n  \"uri\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-b57890b5-7cac-4385-aaf1-c9d94e23e6b8"
+                },
+                {
+                  "id": "ae14070d-7e87-4a1a-8d5b-c10fc082e695",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-ae14070d-7e87-4a1a-8d5b-c10fc082e695"
+                },
+                {
+                  "id": "e246a509-4223-4cc5-aa69-badad173d630",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-e246a509-4223-4cc5-aa69-badad173d630"
+                },
+                {
+                  "id": "d44b29ac-4da0-4dbc-bdb8-3867f07c0a39",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-d44b29ac-4da0-4dbc-bdb8-3867f07c0a39"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:37.000Z",
+              "updatedAt": "2026-07-28T03:01:37.000Z",
+              "uid": "35240-e3424cfa-89a5-4f7d-b5d5-4123ce8a18fc"
+            }
+          ],
+          "id": "0d7c4738-e171-4e40-800a-180e2e5127fb",
+          "createdAt": "2026-07-28T03:01:36.000Z",
+          "updatedAt": "2026-07-28T03:01:36.000Z",
+          "uid": "35240-0d7c4738-e171-4e40-800a-180e2e5127fb"
+        }
+      ],
+      "id": "3ea649e5-3b2b-4f6e-af5c-fddf8b3e92ba",
+      "createdAt": "2026-07-28T03:01:36.000Z",
+      "updatedAt": "2026-07-28T03:01:36.000Z",
+      "uid": "35240-3ea649e5-3b2b-4f6e-af5c-fddf8b3e92ba"
+    },
+    {
+      "name": "playlists",
+      "item": [
+        {
+          "name": "{playlist_id}",
+          "item": [
+            {
+              "name": "followers",
+              "item": [
+                {
+                  "name": "contains",
+                  "item": [
+                    {
+                      "name": "Check if Current User Follows Playlist\n",
+                      "id": "35dd2006-c82b-41e8-957e-9b5f54de1071",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://accounts.spotify.com/api/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://accounts.spotify.com/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/playlists/:playlist_id/followers/contains?ids=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "playlists",
+                            ":playlist_id",
+                            "followers",
+                            "contains"
+                          ],
+                          "query": [
+                            {
+                              "key": "ids",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "c0222b30-fa07-4814-a8e9-e2e6bd6bb90e",
+                              "key": "playlist_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Check to see if the current user is following a specified playlist.\n\n**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "3824ffe4-bff1-4400-be5b-48f3048dabc4",
+                          "name": "Array of boolean, containing a single boolean",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/playlists/:playlist_id/followers/contains?ids=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "playlists",
+                                ":playlist_id",
+                                "followers",
+                                "contains"
+                              ],
+                              "query": [
+                                {
+                                  "key": "ids",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "playlist_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  \"<boolean>\",\n  \"<boolean>\"\n]",
+                          "createdAt": "2026-07-28T03:01:37.000Z",
+                          "updatedAt": "2026-07-28T03:01:37.000Z",
+                          "uid": "35240-3824ffe4-bff1-4400-be5b-48f3048dabc4"
+                        },
+                        {
+                          "id": "0c2e521c-f26a-4340-b03f-b91f1bdff8b7",
+                          "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/playlists/:playlist_id/followers/contains?ids=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "playlists",
+                                ":playlist_id",
+                                "followers",
+                                "contains"
+                              ],
+                              "query": [
+                                {
+                                  "key": "ids",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "playlist_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:01:37.000Z",
+                          "updatedAt": "2026-07-28T03:01:37.000Z",
+                          "uid": "35240-0c2e521c-f26a-4340-b03f-b91f1bdff8b7"
+                        },
+                        {
+                          "id": "4f157cd4-7bca-4ab6-ba39-ffcab6a29974",
+                          "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/playlists/:playlist_id/followers/contains?ids=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "playlists",
+                                ":playlist_id",
+                                "followers",
+                                "contains"
+                              ],
+                              "query": [
+                                {
+                                  "key": "ids",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "playlist_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:01:37.000Z",
+                          "updatedAt": "2026-07-28T03:01:37.000Z",
+                          "uid": "35240-4f157cd4-7bca-4ab6-ba39-ffcab6a29974"
+                        },
+                        {
+                          "id": "7b6e5071-9b15-4eb6-a112-5ca5619e6e88",
+                          "name": "The app has exceeded its rate limits.\n",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/playlists/:playlist_id/followers/contains?ids=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "playlists",
+                                ":playlist_id",
+                                "followers",
+                                "contains"
+                              ],
+                              "query": [
+                                {
+                                  "key": "ids",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "playlist_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:01:37.000Z",
+                          "updatedAt": "2026-07-28T03:01:37.000Z",
+                          "uid": "35240-7b6e5071-9b15-4eb6-a112-5ca5619e6e88"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-35dd2006-c82b-41e8-957e-9b5f54de1071"
+                    }
+                  ],
+                  "id": "b8d5bdab-ad73-409b-8864-2f09606839d4",
+                  "createdAt": "2026-07-28T03:01:36.000Z",
+                  "updatedAt": "2026-07-28T03:01:36.000Z",
+                  "uid": "35240-b8d5bdab-ad73-409b-8864-2f09606839d4"
+                },
+                {
+                  "name": "Follow Playlist\n",
+                  "id": "3d63db53-e113-4faf-8c1b-94d5e20697a7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://accounts.spotify.com/api/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://accounts.spotify.com/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"public\": \"<boolean>\",\n  \"ullamco_9d3\": false,\n  \"Lorem_41\": \"ipsum Excepteur ut exercitatio\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/playlists/:playlist_id/followers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "playlists",
+                        ":playlist_id",
+                        "followers"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c2598f12-59f7-4dd6-b27f-307bec1708d6",
+                          "key": "playlist_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Add the current user as a follower of a playlist.\n\n**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "2fcb0332-8a54-4dc4-b304-7798947e670d",
+                      "name": "Playlist followed",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"public\": \"<boolean>\",\n  \"ullamco_9d3\": false,\n  \"Lorem_41\": \"ipsum Excepteur ut exercitatio\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/playlists/:playlist_id/followers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "playlists",
+                            ":playlist_id",
+                            "followers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "playlist_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-2fcb0332-8a54-4dc4-b304-7798947e670d"
+                    },
+                    {
+                      "id": "a21ff933-0ddd-48bb-af34-88f998c77950",
+                      "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"public\": \"<boolean>\",\n  \"ullamco_9d3\": false,\n  \"Lorem_41\": \"ipsum Excepteur ut exercitatio\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/playlists/:playlist_id/followers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "playlists",
+                            ":playlist_id",
+                            "followers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "playlist_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-a21ff933-0ddd-48bb-af34-88f998c77950"
+                    },
+                    {
+                      "id": "1838648b-2e8f-4bd0-a2df-f4fa151b2ec8",
+                      "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"public\": \"<boolean>\",\n  \"ullamco_9d3\": false,\n  \"Lorem_41\": \"ipsum Excepteur ut exercitatio\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/playlists/:playlist_id/followers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "playlists",
+                            ":playlist_id",
+                            "followers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "playlist_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-1838648b-2e8f-4bd0-a2df-f4fa151b2ec8"
+                    },
+                    {
+                      "id": "a128718a-632d-4554-8a8b-475a535183b0",
+                      "name": "The app has exceeded its rate limits.\n",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"public\": \"<boolean>\",\n  \"ullamco_9d3\": false,\n  \"Lorem_41\": \"ipsum Excepteur ut exercitatio\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/playlists/:playlist_id/followers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "playlists",
+                            ":playlist_id",
+                            "followers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "playlist_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-a128718a-632d-4554-8a8b-475a535183b0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-3d63db53-e113-4faf-8c1b-94d5e20697a7"
+                },
+                {
+                  "name": "Unfollow Playlist\n",
+                  "id": "34c281a2-97e3-41db-bc0d-5ad882396544",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://accounts.spotify.com/api/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://accounts.spotify.com/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/playlists/:playlist_id/followers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "playlists",
+                        ":playlist_id",
+                        "followers"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fae1fac5-cc79-4710-8922-f99de365c34a",
+                          "key": "playlist_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Remove the current user as a follower of a playlist.\n\n**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "364c2b2f-e104-411c-93d7-7dc1aef9bbc7",
+                      "name": "Playlist unfollowed",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/playlists/:playlist_id/followers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "playlists",
+                            ":playlist_id",
+                            "followers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "playlist_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-364c2b2f-e104-411c-93d7-7dc1aef9bbc7"
+                    },
+                    {
+                      "id": "e63a0bd2-32ec-4a2a-8ee6-a67a42ee33a8",
+                      "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/playlists/:playlist_id/followers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "playlists",
+                            ":playlist_id",
+                            "followers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "playlist_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-e63a0bd2-32ec-4a2a-8ee6-a67a42ee33a8"
+                    },
+                    {
+                      "id": "23b627f6-f661-4896-851c-f102d328181d",
+                      "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/playlists/:playlist_id/followers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "playlists",
+                            ":playlist_id",
+                            "followers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "playlist_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-23b627f6-f661-4896-851c-f102d328181d"
+                    },
+                    {
+                      "id": "7fdd04a4-0ba2-44d9-b383-2be9e6b3d52b",
+                      "name": "The app has exceeded its rate limits.\n",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/playlists/:playlist_id/followers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "playlists",
+                            ":playlist_id",
+                            "followers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "playlist_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:37.000Z",
+                      "updatedAt": "2026-07-28T03:01:37.000Z",
+                      "uid": "35240-7fdd04a4-0ba2-44d9-b383-2be9e6b3d52b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:01:37.000Z",
+                  "updatedAt": "2026-07-28T03:01:37.000Z",
+                  "uid": "35240-34c281a2-97e3-41db-bc0d-5ad882396544"
+                }
+              ],
+              "id": "75027d53-1541-470d-9e8a-bdb1b1f19c3b",
+              "createdAt": "2026-07-28T03:01:36.000Z",
+              "updatedAt": "2026-07-28T03:01:36.000Z",
+              "uid": "35240-75027d53-1541-470d-9e8a-bdb1b1f19c3b"
+            }
+          ],
+          "id": "712d1717-2ade-4b28-b384-5d2ef77ae84f",
+          "createdAt": "2026-07-28T03:01:36.000Z",
+          "updatedAt": "2026-07-28T03:01:36.000Z",
+          "uid": "35240-712d1717-2ade-4b28-b384-5d2ef77ae84f"
+        }
+      ],
+      "id": "73f7cd2e-2bf7-49bd-8be8-75026531ad62",
+      "createdAt": "2026-07-28T03:01:36.000Z",
+      "updatedAt": "2026-07-28T03:01:36.000Z",
+      "uid": "35240-73f7cd2e-2bf7-49bd-8be8-75026531ad62"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.spotify.com/v1"
+    }
+  ]
+}

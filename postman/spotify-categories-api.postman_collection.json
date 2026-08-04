@@ -1,0 +1,964 @@
+{
+  "info": {
+    "_postman_id": "7e536b78-3d74-4efd-8a79-1b7ccc36e04b",
+    "name": "Spotify Web Albums Categories API",
+    "description": "You can use Spotify's Web API to discover music and podcasts, manage your Spotify library, control audio playback, and much more. Browse our available Web API endpoints using the sidebar at left, or via the navigation bar on top of this page on smaller screens.\n\nIn order to make successful Web API requests your app will need a valid access token. One can be obtained through <a href=\"https://developer.spotify.com/documentation/general/guides/authorization-guide/\">OAuth 2.0</a>.\n\nThe base URI for all Web API requests is `https://api.spotify.com/v1`.\n\nNeed help? See our <a href=\"https://developer.spotify.com/documentation/web-api/guides/\">Web API guides</a> for more information, or visit the <a href=\"https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer\">Spotify for Developers community forum</a> to ask questions and connect with other developers.\n\n\nContact Support:\n Name: Spotify for Developers Community",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:01:04.000Z",
+    "updatedAt": "2026-07-28T03:01:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7e536b78-3d74-4efd-8a79-1b7ccc36e04b"
+  },
+  "item": [
+    {
+      "name": "browse",
+      "item": [
+        {
+          "name": "categories",
+          "item": [
+            {
+              "name": "{category_id}",
+              "item": [
+                {
+                  "name": "playlists",
+                  "item": [
+                    {
+                      "name": "Get Category's Playlists\n",
+                      "id": "374c7263-4f39-4382-aef4-47c86ec0cbff",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://accounts.spotify.com/api/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://accounts.spotify.com/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/browse/categories/:category_id/playlists?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "browse",
+                            "categories",
+                            ":category_id",
+                            "playlists"
+                          ],
+                          "query": [
+                            {
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "cfb3bcb7-50a3-4ae4-8bb8-5aed4a3f1b8c",
+                              "key": "category_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Get a list of Spotify playlists tagged with a particular category.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "ef5782e8-f4de-4485-a853-0a18a0043715",
+                          "name": "A paged set of playlists",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/browse/categories/:category_id/playlists?limit=20&offset=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "browse",
+                                "categories",
+                                ":category_id",
+                                "playlists"
+                              ],
+                              "query": [
+                                {
+                                  "key": "limit",
+                                  "value": "20"
+                                },
+                                {
+                                  "key": "offset",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "category_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"playlists\": {\n    \"href\": \"<string>\",\n    \"items\": [\n      {\n        \"collaborative\": \"<boolean>\",\n        \"description\": \"<string>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"name\": \"<string>\",\n        \"owner\": {\n          \"external_urls\": {\n            \"spotify\": \"<string>\"\n          },\n          \"href\": \"<string>\",\n          \"id\": \"<string>\",\n          \"type\": \"user\",\n          \"uri\": \"<string>\",\n          \"display_name\": \"<string>\"\n        },\n        \"public\": \"<boolean>\",\n        \"snapshot_id\": \"<string>\",\n        \"items\": {\n          \"href\": \"<string>\",\n          \"total\": \"<integer>\"\n        },\n        \"tracks\": {\n          \"href\": \"<string>\",\n          \"total\": \"<integer>\"\n        },\n        \"type\": \"<string>\",\n        \"uri\": \"<string>\"\n      },\n      {\n        \"collaborative\": \"<boolean>\",\n        \"description\": \"<string>\",\n        \"external_urls\": {\n          \"spotify\": \"<string>\"\n        },\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"images\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"name\": \"<string>\",\n        \"owner\": {\n          \"external_urls\": {\n            \"spotify\": \"<string>\"\n          },\n          \"href\": \"<string>\",\n          \"id\": \"<string>\",\n          \"type\": \"user\",\n          \"uri\": \"<string>\",\n          \"display_name\": \"<string>\"\n        },\n        \"public\": \"<boolean>\",\n        \"snapshot_id\": \"<string>\",\n        \"items\": {\n          \"href\": \"<string>\",\n          \"total\": \"<integer>\"\n        },\n        \"tracks\": {\n          \"href\": \"<string>\",\n          \"total\": \"<integer>\"\n        },\n        \"type\": \"<string>\",\n        \"uri\": \"<string>\"\n      }\n    ],\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:01:04.000Z",
+                          "updatedAt": "2026-07-28T03:01:04.000Z",
+                          "uid": "35240-ef5782e8-f4de-4485-a853-0a18a0043715"
+                        },
+                        {
+                          "id": "7351cb24-519b-47fa-84ae-e75dafda8b5e",
+                          "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/browse/categories/:category_id/playlists?limit=20&offset=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "browse",
+                                "categories",
+                                ":category_id",
+                                "playlists"
+                              ],
+                              "query": [
+                                {
+                                  "key": "limit",
+                                  "value": "20"
+                                },
+                                {
+                                  "key": "offset",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "category_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:01:04.000Z",
+                          "updatedAt": "2026-07-28T03:01:04.000Z",
+                          "uid": "35240-7351cb24-519b-47fa-84ae-e75dafda8b5e"
+                        },
+                        {
+                          "id": "6a664f3f-eb4b-48ae-a61a-df171d718fbb",
+                          "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/browse/categories/:category_id/playlists?limit=20&offset=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "browse",
+                                "categories",
+                                ":category_id",
+                                "playlists"
+                              ],
+                              "query": [
+                                {
+                                  "key": "limit",
+                                  "value": "20"
+                                },
+                                {
+                                  "key": "offset",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "category_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:01:04.000Z",
+                          "updatedAt": "2026-07-28T03:01:04.000Z",
+                          "uid": "35240-6a664f3f-eb4b-48ae-a61a-df171d718fbb"
+                        },
+                        {
+                          "id": "45bfe2e5-5563-4c22-a31b-8d11bdf08103",
+                          "name": "The app has exceeded its rate limits.\n",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/browse/categories/:category_id/playlists?limit=20&offset=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "browse",
+                                "categories",
+                                ":category_id",
+                                "playlists"
+                              ],
+                              "query": [
+                                {
+                                  "key": "limit",
+                                  "value": "20"
+                                },
+                                {
+                                  "key": "offset",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "category_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:01:04.000Z",
+                          "updatedAt": "2026-07-28T03:01:04.000Z",
+                          "uid": "35240-45bfe2e5-5563-4c22-a31b-8d11bdf08103"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:01:04.000Z",
+                      "updatedAt": "2026-07-28T03:01:04.000Z",
+                      "uid": "35240-374c7263-4f39-4382-aef4-47c86ec0cbff"
+                    }
+                  ],
+                  "id": "9707a081-58aa-4bf0-a841-cd06d0a03363",
+                  "createdAt": "2026-07-28T03:01:04.000Z",
+                  "updatedAt": "2026-07-28T03:01:04.000Z",
+                  "uid": "35240-9707a081-58aa-4bf0-a841-cd06d0a03363"
+                },
+                {
+                  "name": "Get Single Browse Category\n",
+                  "id": "3efb13dd-e6cb-4a7b-8a42-3fbcf6b1a297",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://accounts.spotify.com/api/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://accounts.spotify.com/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/browse/categories/:category_id?locale=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "browse",
+                        "categories",
+                        ":category_id"
+                      ],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "97ca90c4-1354-4f73-9686-e36490771839",
+                          "key": "category_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Get a single category used to tag items in Spotify (on, for example, the Spotify player\u2019s \u201cBrowse\u201d tab).\n"
+                  },
+                  "response": [
+                    {
+                      "id": "4096a8c4-6774-4571-abf7-0871368cb9f9",
+                      "name": "A category",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/browse/categories/:category_id?locale=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "browse",
+                            "categories",
+                            ":category_id"
+                          ],
+                          "query": [
+                            {
+                              "key": "locale",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "category_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"href\": \"<string>\",\n  \"icons\": [\n    {\n      \"url\": \"<string>\",\n      \"height\": \"<integer>\",\n      \"width\": \"<integer>\"\n    },\n    {\n      \"url\": \"<string>\",\n      \"height\": \"<integer>\",\n      \"width\": \"<integer>\"\n    }\n  ],\n  \"id\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:01:04.000Z",
+                      "updatedAt": "2026-07-28T03:01:04.000Z",
+                      "uid": "35240-4096a8c4-6774-4571-abf7-0871368cb9f9"
+                    },
+                    {
+                      "id": "c143d234-f5ab-4a8b-812e-3d901975f344",
+                      "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/browse/categories/:category_id?locale=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "browse",
+                            "categories",
+                            ":category_id"
+                          ],
+                          "query": [
+                            {
+                              "key": "locale",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "category_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:04.000Z",
+                      "updatedAt": "2026-07-28T03:01:04.000Z",
+                      "uid": "35240-c143d234-f5ab-4a8b-812e-3d901975f344"
+                    },
+                    {
+                      "id": "001370b6-7b20-48b1-b1df-f02e4e684354",
+                      "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/browse/categories/:category_id?locale=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "browse",
+                            "categories",
+                            ":category_id"
+                          ],
+                          "query": [
+                            {
+                              "key": "locale",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "category_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:04.000Z",
+                      "updatedAt": "2026-07-28T03:01:04.000Z",
+                      "uid": "35240-001370b6-7b20-48b1-b1df-f02e4e684354"
+                    },
+                    {
+                      "id": "3b4b791d-ff39-4976-8c6b-7908017e8d2d",
+                      "name": "The app has exceeded its rate limits.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/browse/categories/:category_id?locale=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "browse",
+                            "categories",
+                            ":category_id"
+                          ],
+                          "query": [
+                            {
+                              "key": "locale",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "category_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:01:04.000Z",
+                      "updatedAt": "2026-07-28T03:01:04.000Z",
+                      "uid": "35240-3b4b791d-ff39-4976-8c6b-7908017e8d2d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:01:04.000Z",
+                  "updatedAt": "2026-07-28T03:01:04.000Z",
+                  "uid": "35240-3efb13dd-e6cb-4a7b-8a42-3fbcf6b1a297"
+                }
+              ],
+              "id": "ff646a99-8810-469d-b71d-ec40865fb7a3",
+              "createdAt": "2026-07-28T03:01:04.000Z",
+              "updatedAt": "2026-07-28T03:01:04.000Z",
+              "uid": "35240-ff646a99-8810-469d-b71d-ec40865fb7a3"
+            },
+            {
+              "name": "Get Several Browse Categories\n",
+              "id": "36473ebc-a572-415f-9239-ddf90fb5abb6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://accounts.spotify.com/api/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://accounts.spotify.com/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/browse/categories?locale=<string>&limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "browse",
+                    "categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "locale",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                },
+                "description": "Get a list of categories used to tag items in Spotify (on, for example, the Spotify player\u2019s \u201cBrowse\u201d tab).\n"
+              },
+              "response": [
+                {
+                  "id": "a3be591b-06ab-49ab-8d88-def9ea084a68",
+                  "name": "A paged set of categories",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/browse/categories?locale=<string>&limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "browse",
+                        "categories"
+                      ],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"categories\": {\n    \"href\": \"<string>\",\n    \"items\": [\n      {\n        \"href\": \"<string>\",\n        \"icons\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"href\": \"<string>\",\n        \"icons\": [\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          },\n          {\n            \"url\": \"<string>\",\n            \"height\": \"<integer>\",\n            \"width\": \"<integer>\"\n          }\n        ],\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:04.000Z",
+                  "updatedAt": "2026-07-28T03:01:04.000Z",
+                  "uid": "35240-a3be591b-06ab-49ab-8d88-def9ea084a68"
+                },
+                {
+                  "id": "d119c38f-2143-46f1-af4a-e9862950e664",
+                  "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/browse/categories?locale=<string>&limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "browse",
+                        "categories"
+                      ],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:04.000Z",
+                  "updatedAt": "2026-07-28T03:01:04.000Z",
+                  "uid": "35240-d119c38f-2143-46f1-af4a-e9862950e664"
+                },
+                {
+                  "id": "6bfc2c8e-cd4a-400a-833d-ff4d131a5d2a",
+                  "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/browse/categories?locale=<string>&limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "browse",
+                        "categories"
+                      ],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:04.000Z",
+                  "updatedAt": "2026-07-28T03:01:04.000Z",
+                  "uid": "35240-6bfc2c8e-cd4a-400a-833d-ff4d131a5d2a"
+                },
+                {
+                  "id": "d96fb887-c29b-4f19-b798-8c469e6cc8af",
+                  "name": "The app has exceeded its rate limits.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/browse/categories?locale=<string>&limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "browse",
+                        "categories"
+                      ],
+                      "query": [
+                        {
+                          "key": "locale",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:01:04.000Z",
+                  "updatedAt": "2026-07-28T03:01:04.000Z",
+                  "uid": "35240-d96fb887-c29b-4f19-b798-8c469e6cc8af"
+                }
+              ],
+              "createdAt": "2026-07-28T03:01:04.000Z",
+              "updatedAt": "2026-07-28T03:01:04.000Z",
+              "uid": "35240-36473ebc-a572-415f-9239-ddf90fb5abb6"
+            }
+          ],
+          "id": "e7da3827-7e2a-4de7-9226-c5c826fd48f5",
+          "createdAt": "2026-07-28T03:01:04.000Z",
+          "updatedAt": "2026-07-28T03:01:04.000Z",
+          "uid": "35240-e7da3827-7e2a-4de7-9226-c5c826fd48f5"
+        }
+      ],
+      "id": "a918fcf3-5b1d-4434-b343-1422d1082b33",
+      "createdAt": "2026-07-28T03:01:04.000Z",
+      "updatedAt": "2026-07-28T03:01:04.000Z",
+      "uid": "35240-a918fcf3-5b1d-4434-b343-1422d1082b33"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.spotify.com/v1"
+    }
+  ]
+}
