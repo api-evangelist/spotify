@@ -64,40 +64,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-artists-api
@@ -130,40 +98,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-audiobooks-api
@@ -196,40 +132,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-categories-api
@@ -262,40 +166,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-chapters-api
@@ -328,40 +200,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-episodes-api
@@ -394,40 +234,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-genres-api
@@ -460,40 +268,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-library-api
@@ -526,40 +302,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-markets-api
@@ -592,40 +336,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-player-api
@@ -658,40 +370,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-playlists-api
@@ -724,40 +404,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-search-api
@@ -790,40 +438,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-shows-api
@@ -856,40 +472,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-tracks-api
@@ -922,40 +506,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 - aid: spotify:spotify-users-api
@@ -988,40 +540,8 @@ apis:
     url: json-ld/spotify-context.jsonld
   - type: SpectralRules
     url: rules/spotify-rules.yml
-  - type: Capabilities
-    url: capabilities/music-discovery.yaml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-albums.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-artists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-audiobooks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-categories.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-chapters.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-episodes.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-genres.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-library.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-markets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-player.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-playlists.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-search.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-shows.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-tracks.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/spotify-users.yaml
   - type: GraphQL
     url: graphql/spotify-graphql.md
 common:
