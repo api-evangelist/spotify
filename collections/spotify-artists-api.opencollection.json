@@ -1,0 +1,328 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spotify Web Albums Artists API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Artists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Artist\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/artists/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information for a single artist identified by their unique Spotify ID.\n"
+        },
+        {
+          "info": {
+            "name": "Get Several Artists\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/artists",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information for several artists based on their Spotify IDs.\n"
+        },
+        {
+          "info": {
+            "name": "Get Artist's Albums\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/artists/:id/albums",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include_groups",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information about an artist's albums.\n"
+        },
+        {
+          "info": {
+            "name": "Get Artist's Top Tracks\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/artists/:id/top-tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information about an artist's top tracks by country.\n"
+        },
+        {
+          "info": {
+            "name": "Get Artist's Related Artists\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/artists/:id/related-artists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community's listening history.\n"
+        },
+        {
+          "info": {
+            "name": "Get Followed Artists\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/me/following",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get the current user's followed artists.\n"
+        },
+        {
+          "info": {
+            "name": "Follow Artists or Users\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.spotify.com/v1/me/following",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Add the current user as a follower of one or more artists or other Spotify users.\n\n**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.\n"
+        },
+        {
+          "info": {
+            "name": "Unfollow Artists or Users\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.spotify.com/v1/me/following",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove the current user as a follower of one or more artists or other Spotify users.\n\n**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.\n"
+        },
+        {
+          "info": {
+            "name": "Check If User Follows Artists or Users\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/me/following/contains",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Check to see if the current user is following one or more artists or other Spotify users.\n\n**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

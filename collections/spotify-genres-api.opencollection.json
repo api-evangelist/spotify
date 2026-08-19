@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spotify Web Albums Genres API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Genres",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Available Genre Seeds\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/recommendations/available-genre-seeds",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/get-recommendations).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

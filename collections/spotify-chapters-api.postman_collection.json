@@ -1,0 +1,950 @@
+{
+  "item": [
+    {
+      "id": "5fddb8bb-a852-4da6-8755-67a95bedf7b2",
+      "name": "Chapters",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "845708e9-df6d-4a0a-9c0e-afba0f798e4a",
+          "name": "Get Audiobook Chapters\n",
+          "request": {
+            "name": "Get Audiobook Chapters\n",
+            "description": {
+              "content": "Get Spotify catalog information about an audiobook's chapters. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "audiobooks",
+                ":id",
+                "chapters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "market",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4fb1b2e1-1024-49ce-a0ec-58353d65f205",
+              "name": "Pages of chapters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audiobooks",
+                    ":id",
+                    "chapters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"href\": \"https://api.spotify.com/v1/me/shows?offset=0&limit=20\\n\",\n  \"items\": [\n    {\n      \"audio_preview_url\": \"https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17\",\n      \"chapter_number\": 1,\n      \"description\": \"We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\\n\",\n      \"html_description\": \"<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\\n\",\n      \"duration_ms\": 1686230,\n      \"explicit\": true,\n      \"external_urls\": {\n        \"spotify\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"href\": \"https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ\",\n      \"id\": \"5Xt5DXGzch68nYYamXrNxZ\",\n      \"images\": [\n        {\n          \"url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"height\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"width\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"height\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"width\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"is_playable\": true,\n      \"languages\": [\n        \"fr\",\n        \"en\"\n      ],\n      \"name\": \"Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators\\n\",\n      \"release_date\": \"1981-12-15\",\n      \"release_date_precision\": \"day\",\n      \"type\": \"episode\",\n      \"uri\": \"spotify:episode:0zLhl3WsOCQHbe1BPTiHgr\",\n      \"available_markets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"resume_point\": {\n        \"fully_played\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"resume_position_ms\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"restrictions\": {\n        \"reason\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"audio_preview_url\": \"https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17\",\n      \"chapter_number\": 1,\n      \"description\": \"We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\\n\",\n      \"html_description\": \"<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\\n\",\n      \"duration_ms\": 1686230,\n      \"explicit\": true,\n      \"external_urls\": {\n        \"spotify\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"href\": \"https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ\",\n      \"id\": \"5Xt5DXGzch68nYYamXrNxZ\",\n      \"images\": [\n        {\n          \"url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"height\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"width\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"height\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"width\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"is_playable\": false,\n      \"languages\": [\n        \"fr\",\n        \"en\"\n      ],\n      \"name\": \"Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators\\n\",\n      \"release_date\": \"1981-12-15\",\n      \"release_date_precision\": \"day\",\n      \"type\": \"episode\",\n      \"uri\": \"spotify:episode:0zLhl3WsOCQHbe1BPTiHgr\",\n      \"available_markets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"resume_point\": {\n        \"fully_played\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"resume_position_ms\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"restrictions\": {\n        \"reason\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ],\n  \"limit\": 20,\n  \"next\": \"https://api.spotify.com/v1/me/shows?offset=1&limit=1\",\n  \"offset\": 0,\n  \"previous\": \"https://api.spotify.com/v1/me/shows?offset=1&limit=1\",\n  \"total\": 4\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3bd3e05d-167c-4ba8-ac41-25f554ca2c8d",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audiobooks",
+                    ":id",
+                    "chapters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 450,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72f80e53-c304-48e0-92de-78d34ab44174",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audiobooks",
+                    ":id",
+                    "chapters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 450,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8dec2276-7490-41bf-9548-12f44b6789a0",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audiobooks",
+                    ":id",
+                    "chapters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 450,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ea3c952-aafd-4dd4-913c-e80fd19e67c4",
+          "name": "Get a Chapter\n",
+          "request": {
+            "name": "Get a Chapter\n",
+            "description": {
+              "content": "Get Spotify catalog information for a single audiobook chapter. Chapters are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chapters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "market",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "04cb14ec-ae84-4631-9dc1-2a1aa81ac562",
+              "name": "A Chapter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chapters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"audio_preview_url\": \"https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17\",\n  \"audiobook\": {\n    \"authors\": [\n      {\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"available_markets\": [\n      \"string\",\n      \"string\"\n    ],\n    \"copyrights\": [\n      {\n        \"text\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"text\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"description\": \"string\",\n    \"explicit\": false,\n    \"external_urls\": {\n      \"spotify\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"href\": \"string\",\n    \"html_description\": \"string\",\n    \"id\": \"string\",\n    \"images\": [\n      {\n        \"url\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"height\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"width\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"url\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"height\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"width\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"languages\": [\n      \"string\",\n      \"string\"\n    ],\n    \"media_type\": \"string\",\n    \"name\": \"string\",\n    \"narrators\": [\n      {\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"publisher\": \"string\",\n    \"total_chapters\": 7033,\n    \"type\": \"audiobook\",\n    \"uri\": \"string\",\n    \"edition\": \"Unabridged\"\n  },\n  \"chapter_number\": 1,\n  \"description\": \"We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\\n\",\n  \"duration_ms\": 1686230,\n  \"explicit\": false,\n  \"external_urls\": {\n    \"spotify\": \"string\"\n  },\n  \"href\": \"https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ\",\n  \"html_description\": \"<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\\n\",\n  \"id\": \"5Xt5DXGzch68nYYamXrNxZ\",\n  \"images\": [\n    {\n      \"url\": \"https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\\n\",\n      \"height\": 300,\n      \"width\": 300\n    },\n    {\n      \"url\": \"https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\\n\",\n      \"height\": 300,\n      \"width\": 300\n    }\n  ],\n  \"is_playable\": false,\n  \"languages\": [\n    \"fr\",\n    \"en\"\n  ],\n  \"name\": \"Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators\\n\",\n  \"release_date\": \"1981-12-15\",\n  \"release_date_precision\": \"day\",\n  \"type\": \"episode\",\n  \"uri\": \"spotify:episode:0zLhl3WsOCQHbe1BPTiHgr\",\n  \"available_markets\": [\n    \"string\",\n    \"string\"\n  ],\n  \"resume_point\": {\n    \"fully_played\": true,\n    \"resume_position_ms\": 8998\n  },\n  \"restrictions\": {\n    \"reason\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "949c30dc-2ea3-4e52-8723-d2e013a5a860",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chapters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 450,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b7537c6-4ae5-4609-99db-4d955beac8b5",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chapters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 450,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8c69a81-b1c4-45f5-9f7b-2a3ad0d13e31",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chapters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 450,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3e872e0-d23e-41d9-be37-f0deb9abfba0",
+          "name": "Get Several Chapters\n",
+          "request": {
+            "name": "Get Several Chapters\n",
+            "description": {
+              "content": "Get Spotify catalog information for several audiobook chapters identified by their Spotify IDs. Chapters are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chapters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "market",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7baffa89-7af5-4eb0-91ee-2360042dcf84",
+              "name": "A set of chapters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chapters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29"
+                    },
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chapters\": [\n    {\n      \"audio_preview_url\": \"https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17\",\n      \"audiobook\": {\n        \"authors\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"available_markets\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"copyrights\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"description\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"explicit\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"external_urls\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"href\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"html_description\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"images\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"languages\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"media_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"narrators\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"publisher\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"total_chapters\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"uri\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"edition\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"chapter_number\": 1,\n      \"description\": \"We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\\n\",\n      \"duration_ms\": 1686230,\n      \"explicit\": false,\n      \"external_urls\": {\n        \"spotify\": \"string\"\n      },\n      \"href\": \"https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ\",\n      \"html_description\": \"<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\\n\",\n      \"id\": \"5Xt5DXGzch68nYYamXrNxZ\",\n      \"images\": [\n        {\n          \"url\": \"https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\\n\",\n          \"height\": 300,\n          \"width\": 300\n        },\n        {\n          \"url\": \"https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\\n\",\n          \"height\": 300,\n          \"width\": 300\n        }\n      ],\n      \"is_playable\": false,\n      \"languages\": [\n        \"fr\",\n        \"en\"\n      ],\n      \"name\": \"Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators\\n\",\n      \"release_date\": \"1981-12-15\",\n      \"release_date_precision\": \"day\",\n      \"type\": \"episode\",\n      \"uri\": \"spotify:episode:0zLhl3WsOCQHbe1BPTiHgr\",\n      \"available_markets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"resume_point\": {\n        \"fully_played\": true,\n        \"resume_position_ms\": 6903\n      },\n      \"restrictions\": {\n        \"reason\": \"string\"\n      }\n    },\n    {\n      \"audio_preview_url\": \"https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17\",\n      \"audiobook\": {\n        \"authors\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"available_markets\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"copyrights\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"description\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"explicit\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"external_urls\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"href\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"html_description\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"images\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"languages\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"media_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"narrators\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"publisher\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"total_chapters\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"uri\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"edition\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"chapter_number\": 1,\n      \"description\": \"We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\\n\",\n      \"duration_ms\": 1686230,\n      \"explicit\": true,\n      \"external_urls\": {\n        \"spotify\": \"string\"\n      },\n      \"href\": \"https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ\",\n      \"html_description\": \"<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\\n\",\n      \"id\": \"5Xt5DXGzch68nYYamXrNxZ\",\n      \"images\": [\n        {\n          \"url\": \"https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\\n\",\n          \"height\": 300,\n          \"width\": 300\n        },\n        {\n          \"url\": \"https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\\n\",\n          \"height\": 300,\n          \"width\": 300\n        }\n      ],\n      \"is_playable\": true,\n      \"languages\": [\n        \"fr\",\n        \"en\"\n      ],\n      \"name\": \"Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators\\n\",\n      \"release_date\": \"1981-12-15\",\n      \"release_date_precision\": \"day\",\n      \"type\": \"episode\",\n      \"uri\": \"spotify:episode:0zLhl3WsOCQHbe1BPTiHgr\",\n      \"available_markets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"resume_point\": {\n        \"fully_played\": true,\n        \"resume_position_ms\": 7456\n      },\n      \"restrictions\": {\n        \"reason\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e823f04-d0fe-4a3f-a6da-19499bd8310b",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chapters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29"
+                    },
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 450,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "059b1209-f3a6-42e6-8e8b-57e5cd7ed08b",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chapters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29"
+                    },
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 450,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d59a6a07-3817-4168-a9ae-f7a8108a76b2",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chapters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29"
+                    },
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 450,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spotify.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "abe1ceeb-b172-4a8b-a968-239f38d4fdb1",
+    "name": "Spotify Web Albums Chapters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "You can use Spotify's Web API to discover music and podcasts, manage your Spotify library, control audio playback, and much more. Browse our available Web API endpoints using the sidebar at left, or via the navigation bar on top of this page on smaller screens.\n\nIn order to make successful Web API requests your app will need a valid access token. One can be obtained through <a href=\"https://developer.spotify.com/documentation/general/guides/authorization-guide/\">OAuth 2.0</a>.\n\nThe base URI for all Web API requests is `https://api.spotify.com/v1`.\n\nNeed help? See our <a href=\"https://developer.spotify.com/documentation/web-api/guides/\">Web API guides</a> for more information, or visit the <a href=\"https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer\">Spotify for Developers community forum</a> to ask questions and connect with other developers.\n\n\nContact Support:\n Name: Spotify for Developers Community",
+      "type": "text/plain"
+    }
+  }
+}

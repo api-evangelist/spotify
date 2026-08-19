@@ -1,0 +1,996 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spotify Web Albums Tracks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tracks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Album Tracks\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/albums/:id/tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information about an album’s tracks.\nOptional parameters can be used to limit the number of tracks returned.\n"
+        },
+        {
+          "info": {
+            "name": "Get Artist's Top Tracks\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/artists/:id/top-tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information about an artist's top tracks by country.\n"
+        },
+        {
+          "info": {
+            "name": "Get Track\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/tracks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information for a single track identified by its\nunique Spotify ID.\n"
+        },
+        {
+          "info": {
+            "name": "Get Several Tracks\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/tracks",
+            "params": [
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information for multiple tracks based on their Spotify IDs.\n"
+        },
+        {
+          "info": {
+            "name": "Get Playlist Items [DEPRECATED]\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/playlists/:playlist_id/tracks",
+            "params": [
+              {
+                "name": "playlist_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "additional_types",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "**Deprecated:** Use [Get Playlist Items](/documentation/web-api/reference/get-playlists-items) instead.\n\nGet full details of the items of a playlist owned by a Spotify user.\n"
+        },
+        {
+          "info": {
+            "name": "Add Items to Playlist [DEPRECATED]\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spotify.com/v1/playlists/:playlist_id/tracks",
+            "params": [
+              {
+                "name": "playlist_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "position",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "uris",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "**Deprecated:** Use [Add Items to Playlist](/documentation/web-api/reference/add-items-to-playlist) instead.\n\nAdd one or more items to a user's playlist.\n"
+        },
+        {
+          "info": {
+            "name": "Update Playlist Items [DEPRECATED]\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.spotify.com/v1/playlists/:playlist_id/tracks",
+            "params": [
+              {
+                "name": "playlist_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "uris",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "**Deprecated:** Use [Update Playlist Items](/documentation/web-api/reference/reorder-or-replace-playlists-items) instead.\n\nEither reorder or replace items in a playlist depending on the request's parameters.\nTo reorder items, include `range_start`, `insert_before`, `range_length` and `snapshot_id` in the request's body.\nTo replace items, include `uris` as either a query parameter or in the request's body.\nReplacing items in a playlist will overwrite its existing items. This operation can be used"
+        },
+        {
+          "info": {
+            "name": "Remove Playlist Items [DEPRECATED]\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.spotify.com/v1/playlists/:playlist_id/tracks",
+            "params": [
+              {
+                "name": "playlist_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "**Deprecated:** Use [Remove Playlist Items](/documentation/web-api/reference/remove-items-playlist) instead.\n\nRemove one or more items from a user's playlist.\n"
+        },
+        {
+          "info": {
+            "name": "Get Playlist Items\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/playlists/:playlist_id/items",
+            "params": [
+              {
+                "name": "playlist_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "additional_types",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get full details of the items of a playlist owned by a Spotify user.\n\n**Note**: This endpoint is only accessible for playlists owned by the current user or playlists the user is a collaborator of. A `403 Forbidden` status code will be returned if the user is neither the owner nor a collaborator of the playlist.\n"
+        },
+        {
+          "info": {
+            "name": "Add Items to Playlist\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spotify.com/v1/playlists/:playlist_id/items",
+            "params": [
+              {
+                "name": "playlist_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "position",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "uris",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Add one or more items to a user's playlist.\n"
+        },
+        {
+          "info": {
+            "name": "Update Playlist Items\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.spotify.com/v1/playlists/:playlist_id/items",
+            "params": [
+              {
+                "name": "playlist_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "uris",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Either reorder or replace items in a playlist depending on the request's parameters.\nTo reorder items, include `range_start`, `insert_before`, `range_length` and `snapshot_id` in the request's body.\nTo replace items, include `uris` as either a query parameter or in the request's body.\nReplacing items in a playlist will overwrite its existing items. This operation can be used for replacing or clearing items in a playlist.\n<br/>\n**Note**: Replace and reorder are mutually exclusive operations which"
+        },
+        {
+          "info": {
+            "name": "Remove Playlist Items\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.spotify.com/v1/playlists/:playlist_id/items",
+            "params": [
+              {
+                "name": "playlist_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove one or more items from a user's playlist.\n"
+        },
+        {
+          "info": {
+            "name": "Get User's Saved Tracks\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/me/tracks",
+            "params": [
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get a list of the songs saved in the current Spotify user's 'Your Music' library.\n"
+        },
+        {
+          "info": {
+            "name": "Save Tracks for Current User\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.spotify.com/v1/me/tracks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Save one or more tracks to the current user's 'Your Music' library.\n\n**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.\n"
+        },
+        {
+          "info": {
+            "name": "Remove User's Saved Tracks\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.spotify.com/v1/me/tracks",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove one or more tracks from the current user's 'Your Music' library.\n\n**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.\n"
+        },
+        {
+          "info": {
+            "name": "Check User's Saved Tracks\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/me/tracks/contains",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Check if one or more tracks is already saved in the current Spotify user's 'Your Music' library.\n\n**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.\n"
+        },
+        {
+          "info": {
+            "name": "Get User's Top Items\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/me/top/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "time_range",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get the current user's top artists or tracks based on calculated affinity.\n"
+        },
+        {
+          "info": {
+            "name": "Get Several Tracks' Audio Features\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/audio-features",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get audio features for multiple tracks based on their Spotify IDs.\n"
+        },
+        {
+          "info": {
+            "name": "Get Track's Audio Features\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/audio-features/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get audio feature information for a single track identified by its unique\nSpotify ID.\n"
+        },
+        {
+          "info": {
+            "name": "Get Track's Audio Analysis\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/audio-analysis/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get a low-level audio analysis for a track in the Spotify catalog. The audio analysis describes the track’s structure and musical content, including rhythm, pitch, and timbre.\n"
+        },
+        {
+          "info": {
+            "name": "Get Recommendations\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/recommendations",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "seed_artists",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "seed_genres",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "seed_tracks",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_acousticness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_acousticness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_acousticness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_danceability",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_danceability",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_danceability",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_duration_ms",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_duration_ms",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_duration_ms",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_energy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_energy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_energy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_instrumentalness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_instrumentalness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_instrumentalness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_key",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_key",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_key",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_liveness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_liveness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_liveness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_loudness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_loudness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_loudness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_mode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_mode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_mode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_popularity",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_popularity",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_popularity",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_speechiness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_speechiness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_speechiness",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_tempo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_tempo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_tempo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_time_signature",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_time_signature",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_time_signature",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_valence",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_valence",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_valence",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Recommendations are generated based on the available information for a given seed entity and matched against similar artists and tracks. If there is sufficient information about the provided seeds, a list of tracks will be returned together with pool size details.\n\nFor artists and tracks that are very new or obscure there might not be enough data to generate a list of tracks.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,244 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spotify Web Albums Audiobooks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Audiobooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an Audiobook\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/audiobooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information for a single audiobook. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.\n"
+        },
+        {
+          "info": {
+            "name": "Get Several Audiobooks\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/audiobooks",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information for several audiobooks identified by their Spotify IDs. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.\n"
+        },
+        {
+          "info": {
+            "name": "Get Audiobook Chapters\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/audiobooks/:id/chapters",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information about an audiobook's chapters. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.\n"
+        },
+        {
+          "info": {
+            "name": "Get User's Saved Audiobooks\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/me/audiobooks",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get a list of the audiobooks saved in the current Spotify user's 'Your Music' library.\n"
+        },
+        {
+          "info": {
+            "name": "Save Audiobooks for Current User\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.spotify.com/v1/me/audiobooks",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Save one or more audiobooks to the current Spotify user's library.\n\n**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.\n"
+        },
+        {
+          "info": {
+            "name": "Remove User's Saved Audiobooks\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.spotify.com/v1/me/audiobooks",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove one or more audiobooks from the Spotify user's library.\n\n**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.\n"
+        },
+        {
+          "info": {
+            "name": "Check User's Saved Audiobooks\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/me/audiobooks/contains",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Check if one or more audiobooks are already saved in the current Spotify user's library.\n\n**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

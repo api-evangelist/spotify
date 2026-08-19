@@ -1,0 +1,257 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spotify Web Albums Episodes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Episodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Show Episodes\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/shows/:id/episodes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information about an show’s episodes. Optional parameters can be used to limit the number of episodes returned.\n"
+        },
+        {
+          "info": {
+            "name": "Get Episode\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/episodes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information for a single episode identified by its\nunique Spotify ID.\n"
+        },
+        {
+          "info": {
+            "name": "Get Several Episodes\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/episodes",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get Spotify catalog information for several episodes based on their Spotify IDs.\n"
+        },
+        {
+          "info": {
+            "name": "Get User's Saved Episodes\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/me/episodes",
+            "params": [
+              {
+                "name": "market",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get a list of the episodes saved in the current Spotify user's library.\n"
+        },
+        {
+          "info": {
+            "name": "Save Episodes for Current User\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.spotify.com/v1/me/episodes",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Save one or more episodes to the current user's library.\n\n**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.\n"
+        },
+        {
+          "info": {
+            "name": "Remove User's Saved Episodes\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.spotify.com/v1/me/episodes",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove one or more episodes from the current user's library.\n\n**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.\n"
+        },
+        {
+          "info": {
+            "name": "Check User's Saved Episodes\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spotify.com/v1/me/episodes/contains",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.spotify.com/authorize",
+              "accessTokenUrl": "https://accounts.spotify.com/api/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.\n\n**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

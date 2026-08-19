@@ -1,0 +1,4182 @@
+{
+  "item": [
+    {
+      "id": "688373c6-3328-48a6-8244-f8ec371edca6",
+      "name": "Player",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7b92d101-d5bb-4353-9fc4-48e6ce32c0ad",
+          "name": "Get Playback State\n",
+          "request": {
+            "name": "Get Playback State\n",
+            "description": {
+              "content": "Get information about the user’s current playback state, including track or episode, progress, and active device.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "market",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "additional_types",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f93ee6d5-c1e7-4068-8c72-8c5c92029812",
+              "name": "Information about playback",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "additional_types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"device\": {\n    \"id\": \"string\",\n    \"is_active\": false,\n    \"is_private_session\": true,\n    \"is_restricted\": false,\n    \"name\": \"Kitchen speaker\",\n    \"type\": \"computer\",\n    \"volume_percent\": 59,\n    \"supports_volume\": false\n  },\n  \"repeat_state\": \"string\",\n  \"shuffle_state\": true,\n  \"context\": {\n    \"type\": \"string\",\n    \"href\": \"string\",\n    \"external_urls\": {\n      \"spotify\": \"string\"\n    },\n    \"uri\": \"string\"\n  },\n  \"timestamp\": 6671,\n  \"progress_ms\": 5543,\n  \"is_playing\": false,\n  \"item\": {\n    \"album\": {\n      \"album_type\": \"compilation\",\n      \"artists\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"available_markets\": [\n        \"CA\",\n        \"BR\",\n        \"IT\"\n      ],\n      \"external_urls\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"href\": \"string\",\n      \"id\": \"2up3OPMp9Tb4dAKM2erWXQ\",\n      \"images\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"string\",\n      \"release_date\": \"1981-12\",\n      \"release_date_precision\": \"year\",\n      \"total_tracks\": 9,\n      \"type\": \"album\",\n      \"uri\": \"spotify:album:2up3OPMp9Tb4dAKM2erWXQ\",\n      \"restrictions\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"artists\": [\n      {\n        \"external_urls\": {\n          \"spotify\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"href\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"artist\",\n        \"uri\": \"string\"\n      },\n      {\n        \"external_urls\": {\n          \"spotify\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"href\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"artist\",\n        \"uri\": \"string\"\n      }\n    ],\n    \"available_markets\": [\n      \"string\",\n      \"string\"\n    ],\n    \"disc_number\": 2003,\n    \"duration_ms\": 4029,\n    \"explicit\": true,\n    \"external_ids\": {\n      \"isrc\": \"string\",\n      \"ean\": \"string\",\n      \"upc\": \"string\"\n    },\n    \"external_urls\": {\n      \"spotify\": \"string\"\n    },\n    \"href\": \"string\",\n    \"id\": \"string\",\n    \"is_playable\": false,\n    \"linked_from\": {},\n    \"restrictions\": {\n      \"reason\": \"string\"\n    },\n    \"name\": \"string\",\n    \"popularity\": 6709,\n    \"preview_url\": \"string\",\n    \"track_number\": 7226,\n    \"type\": \"track\",\n    \"uri\": \"string\",\n    \"is_local\": true\n  },\n  \"currently_playing_type\": \"string\",\n  \"actions\": {\n    \"interrupting_playback\": true,\n    \"pausing\": true,\n    \"resuming\": false,\n    \"seeking\": true,\n    \"skipping_next\": true,\n    \"skipping_prev\": true,\n    \"toggling_repeat_context\": true,\n    \"toggling_shuffle\": false,\n    \"toggling_repeat_track\": true,\n    \"transferring_playback\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86db3b0c-c6ab-4d5d-9765-3dacc723801f",
+              "name": "Playback not available or active",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "additional_types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b879053-3510-4531-aa3e-c5d332936dea",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "additional_types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6870a408-fb8e-4a9a-b52f-bf85f0a17aa4",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "additional_types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61f788dd-29f1-4275-84a7-5720d13f2479",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "additional_types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61993662-f73b-4059-b25e-96dd0b33881e",
+          "name": "Transfer Playback\n",
+          "request": {
+            "name": "Transfer Playback\n",
+            "description": {
+              "content": "Transfer playback to a new device and optionally begin playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"device_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"play\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "680bf10b-a82a-46c0-a512-731a4df910e6",
+              "name": "Playback transferred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"play\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b0704c3-b011-4f91-8233-d442835c4b33",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"play\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3489f9b-ab31-414a-95fe-8d79b19be895",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"play\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f57d71d-8638-4657-af59-79e99010a0fd",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"play\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbf222e5-1522-4ab5-b4cd-f9a7bb2fc651",
+          "name": "Get Available Devices\n",
+          "request": {
+            "name": "Get Available Devices\n",
+            "description": {
+              "content": "Get information about a user’s available Spotify Connect devices. Some device models are not supported and will not be listed in the API response.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "764b4d62-809d-4e32-85fb-b3fa2b1508c7",
+              "name": "A set of devices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"devices\": [\n    {\n      \"id\": \"string\",\n      \"is_active\": false,\n      \"is_private_session\": true,\n      \"is_restricted\": false,\n      \"name\": \"Kitchen speaker\",\n      \"type\": \"computer\",\n      \"volume_percent\": 59,\n      \"supports_volume\": true\n    },\n    {\n      \"id\": \"string\",\n      \"is_active\": false,\n      \"is_private_session\": false,\n      \"is_restricted\": false,\n      \"name\": \"Kitchen speaker\",\n      \"type\": \"computer\",\n      \"volume_percent\": 59,\n      \"supports_volume\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "343e20f9-2e00-4114-904f-b9b8724764d6",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c514c9b-8998-48a8-b29d-eca0bc730c8c",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b65d464-e161-4b8f-aeb6-2db3c249eb95",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c91145c6-7fe6-4f5f-ba4d-2f43f75fe62d",
+          "name": "Get Currently Playing Track\n",
+          "request": {
+            "name": "Get Currently Playing Track\n",
+            "description": {
+              "content": "Get the object currently being played on the user's Spotify account.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player",
+                "currently-playing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "market",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "additional_types",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1356f39d-8c87-4d8d-83c5-de0d32fa6721",
+              "name": "Information about the currently playing track",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "currently-playing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "additional_types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"device\": {\n    \"id\": \"string\",\n    \"is_active\": false,\n    \"is_private_session\": false,\n    \"is_restricted\": false,\n    \"name\": \"Kitchen speaker\",\n    \"type\": \"computer\",\n    \"volume_percent\": 59,\n    \"supports_volume\": false\n  },\n  \"repeat_state\": \"string\",\n  \"shuffle_state\": true,\n  \"context\": {\n    \"type\": \"string\",\n    \"href\": \"string\",\n    \"external_urls\": {\n      \"spotify\": \"string\"\n    },\n    \"uri\": \"string\"\n  },\n  \"timestamp\": 5768,\n  \"progress_ms\": 7232,\n  \"is_playing\": true,\n  \"item\": {\n    \"album\": {\n      \"album_type\": \"compilation\",\n      \"artists\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"available_markets\": [\n        \"CA\",\n        \"BR\",\n        \"IT\"\n      ],\n      \"external_urls\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"href\": \"string\",\n      \"id\": \"2up3OPMp9Tb4dAKM2erWXQ\",\n      \"images\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"string\",\n      \"release_date\": \"1981-12\",\n      \"release_date_precision\": \"year\",\n      \"total_tracks\": 9,\n      \"type\": \"album\",\n      \"uri\": \"spotify:album:2up3OPMp9Tb4dAKM2erWXQ\",\n      \"restrictions\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"artists\": [\n      {\n        \"external_urls\": {\n          \"spotify\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"href\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"artist\",\n        \"uri\": \"string\"\n      },\n      {\n        \"external_urls\": {\n          \"spotify\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"href\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"artist\",\n        \"uri\": \"string\"\n      }\n    ],\n    \"available_markets\": [\n      \"string\",\n      \"string\"\n    ],\n    \"disc_number\": 7468,\n    \"duration_ms\": 2239,\n    \"explicit\": false,\n    \"external_ids\": {\n      \"isrc\": \"string\",\n      \"ean\": \"string\",\n      \"upc\": \"string\"\n    },\n    \"external_urls\": {\n      \"spotify\": \"string\"\n    },\n    \"href\": \"string\",\n    \"id\": \"string\",\n    \"is_playable\": false,\n    \"linked_from\": {},\n    \"restrictions\": {\n      \"reason\": \"string\"\n    },\n    \"name\": \"string\",\n    \"popularity\": 1605,\n    \"preview_url\": \"string\",\n    \"track_number\": 4005,\n    \"type\": \"track\",\n    \"uri\": \"string\",\n    \"is_local\": true\n  },\n  \"currently_playing_type\": \"string\",\n  \"actions\": {\n    \"interrupting_playback\": true,\n    \"pausing\": true,\n    \"resuming\": true,\n    \"seeking\": false,\n    \"skipping_next\": false,\n    \"skipping_prev\": true,\n    \"toggling_repeat_context\": true,\n    \"toggling_shuffle\": true,\n    \"toggling_repeat_track\": true,\n    \"transferring_playback\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d920ca15-7dd6-4204-a436-a72de78073e0",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "currently-playing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "additional_types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d25a921-30bd-43c7-a57c-d9259fbf5e1d",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "currently-playing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "additional_types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22d587d7-9d9b-451f-97f6-6079ac3cad92",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "currently-playing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market",
+                      "value": "ES"
+                    },
+                    {
+                      "key": "additional_types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44d59fae-df0b-447e-810a-1620b13f4ab3",
+          "name": "Start/Resume Playback\n",
+          "request": {
+            "name": "Start/Resume Playback\n",
+            "description": {
+              "content": "Start a new context or resume current playback on the user's active device. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player",
+                "play"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"context_uri\": \"<string>\",\n  \"uris\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"offset\": {\n    \"key_0\": 6796.327743845376,\n    \"key_1\": 1221\n  },\n  \"position_ms\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d2cdf481-4189-433a-86ed-0629c8f883f8",
+              "name": "Playback started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "play"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"context_uri\": \"spotify:album:5ht7ItJgpBH7W6vJ5BqpPr\",\n  \"offset\": {\n    \"position\": 5\n  },\n  \"position_ms\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a25ecc94-4ab8-4229-a71c-0c0ec54c67a7",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "play"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"context_uri\": \"spotify:album:5ht7ItJgpBH7W6vJ5BqpPr\",\n  \"offset\": {\n    \"position\": 5\n  },\n  \"position_ms\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23ff832b-1fda-40da-927f-125ca4ac21f7",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "play"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"context_uri\": \"spotify:album:5ht7ItJgpBH7W6vJ5BqpPr\",\n  \"offset\": {\n    \"position\": 5\n  },\n  \"position_ms\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "636b55c6-73d6-4ee3-89e5-0f817b3afd47",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "play"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"context_uri\": \"spotify:album:5ht7ItJgpBH7W6vJ5BqpPr\",\n  \"offset\": {\n    \"position\": 5\n  },\n  \"position_ms\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bda072d8-95d5-4feb-855b-7440938ec07e",
+          "name": "Pause Playback\n",
+          "request": {
+            "name": "Pause Playback\n",
+            "description": {
+              "content": "Pause playback on the user's account. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player",
+                "pause"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1863b95e-7c00-414e-8f5b-037eddb03aac",
+              "name": "Playback paused",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6a78539-a703-44c9-8a2d-3d6381c91732",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96feda53-5ea1-4b46-b1cb-95c809016866",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9b5db51-54be-49b4-b333-f2ca0b769466",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f04b3326-7c58-4729-b99f-837b19b2641f",
+          "name": "Skip To Next\n",
+          "request": {
+            "name": "Skip To Next\n",
+            "description": {
+              "content": "Skips to next track in the user’s queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player",
+                "next"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3d863c38-b15f-4199-8c76-2ee62b7532f9",
+              "name": "Command sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "next"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d397531-689e-4dad-9eea-946d5f6005fc",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "next"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4ca144f-5254-4b1b-8e2c-9b89a63b6a4c",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "next"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f04edee9-ced6-4671-a95f-a9b7b4fef653",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "next"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ecd3ad0-642b-4658-921c-79131295a2c8",
+          "name": "Skip To Previous\n",
+          "request": {
+            "name": "Skip To Previous\n",
+            "description": {
+              "content": "Skips to previous track in the user’s queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player",
+                "previous"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "828c2bcd-89b4-47cd-b379-1aec7290a992",
+              "name": "Command sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "previous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec25a101-948b-43d9-aec4-20ed5a23148a",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "previous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd211e4f-34b5-43b9-a443-96cb30c88f92",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "previous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ca35db0-1398-447d-86ce-ec1972934026",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "previous"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d382cc2e-781e-413b-8e90-f2369d3f7448",
+          "name": "Seek To Position\n",
+          "request": {
+            "name": "Seek To Position\n",
+            "description": {
+              "content": "Seeks to the given position in the user’s currently playing track. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player",
+                "seek"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "position_ms",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "77927ef8-dd34-42b9-b287-b433298363fb",
+              "name": "Command sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "seek"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "position_ms",
+                      "value": "25000"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e89980b-b388-45d4-91cb-80abffeea7cf",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "seek"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "position_ms",
+                      "value": "25000"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4affce59-9d29-45f6-becd-520eb0b231c5",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "seek"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "position_ms",
+                      "value": "25000"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c54d17f-169e-4041-9ab7-32162bc44156",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "seek"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "position_ms",
+                      "value": "25000"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cca0ed27-fec8-4892-9714-e6d5821dd3f7",
+          "name": "Set Repeat Mode\n",
+          "request": {
+            "name": "Set Repeat Mode\n",
+            "description": {
+              "content": "Set the repeat mode for the user's playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player",
+                "repeat"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c279d17c-009d-4321-929e-4d79b1b5e1f7",
+              "name": "Command sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "repeat"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "context"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f08a7bd7-236f-4a1c-827a-95b2e2b04a47",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "repeat"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "context"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42d88c67-4a14-495a-af35-7a5b2139d778",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "repeat"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "context"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f98f0752-314a-4392-8acf-40e318c7068a",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "repeat"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "context"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c5f265f-ee6c-4f94-984b-429ab0f751ea",
+          "name": "Set Playback Volume\n",
+          "request": {
+            "name": "Set Playback Volume\n",
+            "description": {
+              "content": "Set the volume for the user’s current playback device. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player",
+                "volume"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "volume_percent",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "71ee4cf9-a613-4440-b78c-8815fae29302",
+              "name": "Command sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "volume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "volume_percent",
+                      "value": "50"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3e619371-61d9-4681-a931-a501ae4fe04a",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "volume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "volume_percent",
+                      "value": "50"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8817499e-0a24-4ae4-9e79-b631d6f91612",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "volume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "volume_percent",
+                      "value": "50"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7972a237-0b64-4b38-80d9-5df3a4f84a7b",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "volume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "volume_percent",
+                      "value": "50"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7892db88-244b-48b1-a97b-4a46cca0b7bb",
+          "name": "Toggle Playback Shuffle\n",
+          "request": {
+            "name": "Toggle Playback Shuffle\n",
+            "description": {
+              "content": "Toggle shuffle on or off for user’s playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player",
+                "shuffle"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6849e697-998b-4bab-a89f-880ad90a92a8",
+              "name": "Command sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "shuffle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "true"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a32bd5ce-848f-47ca-960a-5215b1690c9e",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "shuffle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "true"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "211de702-8a36-4f1d-975b-3b56207d7872",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "shuffle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "true"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f66d9565-7c6c-431d-b8ad-bfb6809f1173",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "shuffle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "true"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "515c262a-1159-4ab2-b1cc-84ae9e75b70c",
+          "name": "Get Recently Played Tracks\n",
+          "request": {
+            "name": "Get Recently Played Tracks\n",
+            "description": {
+              "content": "Get tracks from the current user's recently played tracks.\n_**Note**: Currently doesn't support podcast episodes._\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player",
+                "recently-played"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "19abd5f8-4f90-4024-80dc-b401c08eb958",
+              "name": "A paged set of tracks",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "recently-played"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "after",
+                      "value": "1484811043508"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"href\": \"string\",\n  \"limit\": 8686,\n  \"next\": \"string\",\n  \"cursors\": {\n    \"after\": \"string\",\n    \"before\": \"string\"\n  },\n  \"total\": 6925,\n  \"items\": [\n    {\n      \"track\": {\n        \"album\": {\n          \"description\": \"The album on which the track appears. The album object includes a link in `href` to full information about the album.\\n\",\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"artists\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"available_markets\": [\n          \"string\",\n          \"string\"\n        ],\n        \"disc_number\": 7898,\n        \"duration_ms\": 5030,\n        \"explicit\": true,\n        \"external_ids\": {\n          \"description\": \"Known external IDs for the track.\\n\",\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"external_urls\": {\n          \"description\": \"Known external URLs for this track.\\n\",\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"href\": \"string\",\n        \"id\": \"string\",\n        \"is_playable\": true,\n        \"linked_from\": {},\n        \"restrictions\": {\n          \"description\": \"Included in the response when a content restriction is applied.\\n\",\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"popularity\": 6619,\n        \"preview_url\": \"string\",\n        \"track_number\": 5105,\n        \"type\": \"track\",\n        \"uri\": \"string\",\n        \"is_local\": true\n      },\n      \"played_at\": \"1978-06-03T23:06:16.669Z\",\n      \"context\": {\n        \"type\": \"string\",\n        \"href\": \"string\",\n        \"external_urls\": {\n          \"description\": \"External URLs for this context.\",\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"uri\": \"string\"\n      }\n    },\n    {\n      \"track\": {\n        \"album\": {\n          \"description\": \"The album on which the track appears. The album object includes a link in `href` to full information about the album.\\n\",\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"artists\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"available_markets\": [\n          \"string\",\n          \"string\"\n        ],\n        \"disc_number\": 160,\n        \"duration_ms\": 3663,\n        \"explicit\": false,\n        \"external_ids\": {\n          \"description\": \"Known external IDs for the track.\\n\",\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"external_urls\": {\n          \"description\": \"Known external URLs for this track.\\n\",\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"href\": \"string\",\n        \"id\": \"string\",\n        \"is_playable\": false,\n        \"linked_from\": {},\n        \"restrictions\": {\n          \"description\": \"Included in the response when a content restriction is applied.\\n\",\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"popularity\": 7534,\n        \"preview_url\": \"string\",\n        \"track_number\": 3702,\n        \"type\": \"track\",\n        \"uri\": \"string\",\n        \"is_local\": false\n      },\n      \"played_at\": \"2024-12-18T21:34:17.401Z\",\n      \"context\": {\n        \"type\": \"string\",\n        \"href\": \"string\",\n        \"external_urls\": {\n          \"description\": \"External URLs for this context.\",\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"uri\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "882d1f8b-5607-40e9-aa86-12f49cf140c3",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "recently-played"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "after",
+                      "value": "1484811043508"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9484ac36-7974-4705-8830-bfbeae6dbbd4",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "recently-played"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "after",
+                      "value": "1484811043508"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70097b70-278c-40b1-9990-309452282d08",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "recently-played"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "after",
+                      "value": "1484811043508"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fef69c23-5824-4ead-b281-c33a53a9bf73",
+          "name": "Get the User's Queue\n",
+          "request": {
+            "name": "Get the User's Queue\n",
+            "description": {
+              "content": "Get the list of objects that make up the user's queue.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player",
+                "queue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "971f8b72-514c-4249-b648-1c7ed47bd066",
+              "name": "Information about the queue",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currently_playing\": {\n    \"album\": {\n      \"album_type\": \"compilation\",\n      \"artists\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"available_markets\": [\n        \"CA\",\n        \"BR\",\n        \"IT\"\n      ],\n      \"external_urls\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"href\": \"string\",\n      \"id\": \"2up3OPMp9Tb4dAKM2erWXQ\",\n      \"images\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"name\": \"string\",\n      \"release_date\": \"1981-12\",\n      \"release_date_precision\": \"year\",\n      \"total_tracks\": 9,\n      \"type\": \"album\",\n      \"uri\": \"spotify:album:2up3OPMp9Tb4dAKM2erWXQ\",\n      \"restrictions\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    },\n    \"artists\": [\n      {\n        \"external_urls\": {\n          \"spotify\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"href\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"artist\",\n        \"uri\": \"string\"\n      },\n      {\n        \"external_urls\": {\n          \"spotify\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"href\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"artist\",\n        \"uri\": \"string\"\n      }\n    ],\n    \"available_markets\": [\n      \"string\",\n      \"string\"\n    ],\n    \"disc_number\": 3907,\n    \"duration_ms\": 2557,\n    \"explicit\": true,\n    \"external_ids\": {\n      \"isrc\": \"string\",\n      \"ean\": \"string\",\n      \"upc\": \"string\"\n    },\n    \"external_urls\": {\n      \"spotify\": \"string\"\n    },\n    \"href\": \"string\",\n    \"id\": \"string\",\n    \"is_playable\": false,\n    \"linked_from\": {},\n    \"restrictions\": {\n      \"reason\": \"string\"\n    },\n    \"name\": \"string\",\n    \"popularity\": 4871,\n    \"preview_url\": \"string\",\n    \"track_number\": 8351,\n    \"type\": \"track\",\n    \"uri\": \"string\",\n    \"is_local\": false\n  },\n  \"queue\": [\n    {\n      \"album\": {\n        \"album_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"artists\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"available_markets\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"external_urls\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"href\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"images\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"release_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"release_date_precision\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"total_tracks\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"uri\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"restrictions\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"artists\": [\n        {\n          \"external_urls\": {\n            \"description\": \"Known external URLs for this artist.\\n\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"href\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"artist\",\n          \"uri\": \"string\"\n        },\n        {\n          \"external_urls\": {\n            \"description\": \"Known external URLs for this artist.\\n\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"href\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"artist\",\n          \"uri\": \"string\"\n        }\n      ],\n      \"available_markets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"disc_number\": 1792,\n      \"duration_ms\": 4280,\n      \"explicit\": false,\n      \"external_ids\": {\n        \"isrc\": \"string\",\n        \"ean\": \"string\",\n        \"upc\": \"string\"\n      },\n      \"external_urls\": {\n        \"spotify\": \"string\"\n      },\n      \"href\": \"string\",\n      \"id\": \"string\",\n      \"is_playable\": false,\n      \"linked_from\": {},\n      \"restrictions\": {\n        \"reason\": \"string\"\n      },\n      \"name\": \"string\",\n      \"popularity\": 7093,\n      \"preview_url\": \"string\",\n      \"track_number\": 3083,\n      \"type\": \"track\",\n      \"uri\": \"string\",\n      \"is_local\": true\n    },\n    {\n      \"album\": {\n        \"album_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"artists\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"available_markets\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"external_urls\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"href\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"images\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"release_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"release_date_precision\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"total_tracks\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"uri\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"restrictions\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"artists\": [\n        {\n          \"external_urls\": {\n            \"description\": \"Known external URLs for this artist.\\n\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"href\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"artist\",\n          \"uri\": \"string\"\n        },\n        {\n          \"external_urls\": {\n            \"description\": \"Known external URLs for this artist.\\n\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"href\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"artist\",\n          \"uri\": \"string\"\n        }\n      ],\n      \"available_markets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"disc_number\": 6086,\n      \"duration_ms\": 2059,\n      \"explicit\": false,\n      \"external_ids\": {\n        \"isrc\": \"string\",\n        \"ean\": \"string\",\n        \"upc\": \"string\"\n      },\n      \"external_urls\": {\n        \"spotify\": \"string\"\n      },\n      \"href\": \"string\",\n      \"id\": \"string\",\n      \"is_playable\": true,\n      \"linked_from\": {},\n      \"restrictions\": {\n        \"reason\": \"string\"\n      },\n      \"name\": \"string\",\n      \"popularity\": 124,\n      \"preview_url\": \"string\",\n      \"track_number\": 251,\n      \"type\": \"track\",\n      \"uri\": \"string\",\n      \"is_local\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "129aecd7-2055-43a2-9211-59a0a72b626a",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f14e5e9-fa33-4a48-8db8-65dba96f5108",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed069d04-60cd-44d1-9192-e6f848181aa7",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d62bbf58-f087-4728-850a-df74e60f8416",
+          "name": "Add Item to Playback Queue\n",
+          "request": {
+            "name": "Add Item to Playback Queue\n",
+            "description": {
+              "content": "Add an item to be played next in the user's current playback queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "player",
+                "queue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "uri",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.spotify.com/api/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.spotify.com/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f5ea7fa3-260a-4292-80c6-97ab64144df3",
+              "name": "Command received",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "uri",
+                      "value": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d77f6100-084c-4f10-9c9e-42642502e499",
+              "name": "Bad or expired token. This can happen if the user revoked a token or\nthe access token has expired. You should re-authenticate the user.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "uri",
+                      "value": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "225cb136-5f41-4c72-89a8-b1f05213b546",
+              "name": "Bad OAuth request (wrong consumer key, bad nonce, expired\ntimestamp...). Unfortunately, re-authenticating the user won't help here.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "uri",
+                      "value": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3249d95e-20bb-402a-ac68-9e32196ba792",
+              "name": "The app has exceeded its rate limits.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "player",
+                    "queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "uri",
+                      "value": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 445,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spotify.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "86030425-283c-4b78-96a9-97ce7591da38",
+    "name": "Spotify Web Albums Player API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "You can use Spotify's Web API to discover music and podcasts, manage your Spotify library, control audio playback, and much more. Browse our available Web API endpoints using the sidebar at left, or via the navigation bar on top of this page on smaller screens.\n\nIn order to make successful Web API requests your app will need a valid access token. One can be obtained through <a href=\"https://developer.spotify.com/documentation/general/guides/authorization-guide/\">OAuth 2.0</a>.\n\nThe base URI for all Web API requests is `https://api.spotify.com/v1`.\n\nNeed help? See our <a href=\"https://developer.spotify.com/documentation/web-api/guides/\">Web API guides</a> for more information, or visit the <a href=\"https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer\">Spotify for Developers community forum</a> to ask questions and connect with other developers.\n\n\nContact Support:\n Name: Spotify for Developers Community",
+      "type": "text/plain"
+    }
+  }
+}
