@@ -32,7 +32,7 @@ tags:
 created: '2023-11-15'
 modified: '2026-05-30'
 url: https://raw.githubusercontent.com/api-evangelist/spotify/refs/heads/main/apis.yml
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: spotify:spotify-albums-api
   name: Spotify Albums API
