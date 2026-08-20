@@ -516,6 +516,8 @@ apis:
   humanURL: https://developer.spotify.com/documentation/web-api
   baseURL: https://api.spotify.com/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
