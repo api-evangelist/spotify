@@ -7,6 +7,18 @@ description: Spotify is the world's leading music streaming platform with 600M+ 
   access. The API underwent significant changes in February 2026 with new generic
   library endpoints and streamlined playlist management.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
