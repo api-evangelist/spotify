@@ -559,6 +559,8 @@ apis:
   - type: GraphQL
     url: graphql/spotify-graphql.md
 common:
+- type: Website
+  url: https://www.spotify.com/
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/spotify/overview
 - type: AgenticAccess
