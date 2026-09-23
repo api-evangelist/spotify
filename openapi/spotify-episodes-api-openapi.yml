@@ -1,19 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  description: 'You can use Spotify''s Web API to discover music and podcasts, manage your Spotify library, control audio playback, and much more. Browse our available Web API endpoints using the sidebar at left, or via the navigation bar on top of this page on smaller screens.
-
-
-    In order to make successful Web API requests your app will need a valid access token. One can be obtained through <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/">OAuth 2.0</a>.
-
-
-    The base URI for all Web API requests is `https://api.spotify.com/v1`.
-
-
-    Need help? See our <a href="https://developer.spotify.com/documentation/web-api/guides/">Web API guides</a> for more information, or visit the <a href="https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer">Spotify for Developers community forum</a> to ask questions and connect with other developers.
-
-    '
+  description: You can use Spotify's Web API to discover music and podcasts, manage your Spotify library, control audio playback, and much more.
   version: 1.0.0
-  title: Spotify Web Albums Episodes API
+  title: Spotify Web Episodes API
   termsOfService: https://developer.spotify.com/terms/
   contact:
     name: Spotify for Developers Community
@@ -23,36 +12,6 @@ servers:
 tags:
 - name: Episodes
 paths:
-  /shows/{id}/episodes:
-    get:
-      tags:
-      - Episodes
-      operationId: get-a-shows-episodes
-      x-spotify-policy-list:
-        $ref: '#/components/x-spotify-policy/metadataPolicyList'
-      summary: 'Get Show Episodes
-
-        '
-      description: 'Get Spotify catalog information about an show’s episodes. Optional parameters can be used to limit the number of episodes returned.
-
-        '
-      parameters:
-      - $ref: '#/components/parameters/PathShowId'
-      - $ref: '#/components/parameters/QueryMarket'
-      - $ref: '#/components/parameters/QueryLimit'
-      - $ref: '#/components/parameters/QueryOffset'
-      responses:
-        '200':
-          $ref: '#/components/responses/PagingSimplifiedEpisodeObject'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-      security:
-      - oauth_2_0:
-        - user-read-playback-position
   /episodes/{id}:
     get:
       tags:
@@ -60,14 +19,10 @@ paths:
       operationId: get-an-episode
       x-spotify-policy-list:
         $ref: '#/components/x-spotify-policy/metadataPolicyList'
-      summary: 'Get Episode
-
-        '
+      summary: Get Episode
       description: 'Get Spotify catalog information for a single episode identified by its
 
-        unique Spotify ID.
-
-        '
+        unique Spotify ID.'
       parameters:
       - name: id
         required: true
@@ -98,12 +53,8 @@ paths:
       operationId: get-multiple-episodes
       x-spotify-policy-list:
         $ref: '#/components/x-spotify-policy/metadataPolicyList'
-      summary: 'Get Several Episodes
-
-        '
-      description: 'Get Spotify catalog information for several episodes based on their Spotify IDs.
-
-        '
+      summary: Get Several Episodes
+      description: Get Spotify catalog information for several episodes based on their Spotify IDs.
       parameters:
       - name: ids
         required: true
@@ -133,12 +84,8 @@ paths:
       tags:
       - Episodes
       operationId: get-users-saved-episodes
-      summary: 'Get User''s Saved Episodes
-
-        '
-      description: 'Get a list of the episodes saved in the current Spotify user''s library.
-
-        '
+      summary: Get User's Saved Episodes
+      description: Get a list of the episodes saved in the current Spotify user's library.
       parameters:
       - $ref: '#/components/parameters/QueryMarket'
       - $ref: '#/components/parameters/QueryLimit'
@@ -161,15 +108,11 @@ paths:
       tags:
       - Episodes
       operationId: save-episodes-user
-      summary: 'Save Episodes for Current User
-
-        '
+      summary: Save Episodes for Current User
       description: 'Save one or more episodes to the current user''s library.
 
 
-        **Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.
-
-        '
+        **Note:** This endpoint is deprecated. Use Save Items to Library instead.'
       parameters:
       - name: ids
         required: true
@@ -214,15 +157,11 @@ paths:
       tags:
       - Episodes
       operationId: remove-episodes-user
-      summary: 'Remove User''s Saved Episodes
-
-        '
+      summary: Remove User's Saved Episodes
       description: 'Remove one or more episodes from the current user''s library.
 
 
-        **Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.
-
-        '
+        **Note:** This endpoint is deprecated. Use Remove Items from Library instead.'
       parameters:
       - $ref: '#/components/parameters/QueryTrackIds'
       requestBody:
@@ -256,16 +195,12 @@ paths:
       tags:
       - Episodes
       operationId: check-users-saved-episodes
-      summary: 'Check User''s Saved Episodes
-
-        '
+      summary: Check User's Saved Episodes
       deprecated: true
       description: 'Check if one or more episodes is already saved in the current Spotify user''s ''Your Episodes'' library.
 
 
-        **Note:** This endpoint is deprecated. Use [Check User''s Saved Items](/documentation/web-api/reference/check-library-contains) instead.
-
-        '
+        **Note:** This endpoint is deprecated. Use Check User''s Saved Items instead.'
       parameters:
       - name: ids
         required: true
@@ -290,18 +225,54 @@ paths:
       - oauth_2_0:
         - user-library-read
 components:
+  parameters:
+    QueryTrackIds:
+      name: ids
+      required: true
+      in: query
+      schema:
+        title: Spotify Track IDs
+        description: 'A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
+
+          '
+        example: 7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B
+        type: string
+    QueryOffset:
+      name: offset
+      required: false
+      in: query
+      schema:
+        title: Offset
+        description: 'The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
+
+          '
+        default: 0
+        example: 5
+        type: integer
+    QueryMarket:
+      name: market
+      required: false
+      in: query
+      schema:
+        title: Market
+        description: "An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).\n  If a country code is specified, only content that is available in that market will be returned.<br/>\n  If a valid user access token is specified in the request header, the country associated with\n  the user account will take priority over this parameter.<br/>\n  _**Note**: If neither market or user country are provided, the content is considered unavailable for the client._<br/>\n  Users can view the country that is associated with their account in the [account settings](https://www.spotify.com/account/overview/).\n"
+        example: ES
+        type: string
+    QueryLimit:
+      name: limit
+      required: false
+      in: query
+      schema:
+        title: Limit
+        description: 'The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+
+          '
+        default: 20
+        example: 10
+        type: integer
+        minimum: 0
+        maximum: 50
   schemas:
-    PagingSavedEpisodeObject:
-      type: object
-      x-spotify-docs-type: PagingEpisodeObject
-      allOf:
-      - $ref: '#/components/schemas/PagingObject'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/SavedEpisodeObject'
     EpisodeBase:
       type: object
       required:
@@ -325,8 +296,9 @@ components:
       properties:
         audio_preview_url:
           deprecated: true
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           example: https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17
           description: 'A URL to a 30 second preview (MP3 format) of the episode. `null` if not available.
 
@@ -461,22 +433,27 @@ components:
           description: 'Included in the response when a content restriction is applied.
 
             '
-    SimplifiedEpisodeObject:
-      x-spotify-docs-type: SimplifiedEpisodeObject
+    EpisodeRestrictionObject:
       type: object
-      allOf:
-      - $ref: '#/components/schemas/EpisodeBase'
-      - type: object
-    ExternalUrlObject:
-      type: object
-      x-spotify-docs-type: ExternalUrlObject
+      x-spotify-docs-type: EpisodeRestrictionObject
       properties:
-        spotify:
+        reason:
           type: string
-          description: 'The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
+          description: 'The reason for the restriction. Supported values:
+
+            - `market` - The content item is not available in the given market.
+
+            - `product` - The content item is not available for the user''s subscription type.
+
+            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
+
+
+            Additional reasons may be added in the future.
+
+            **Note**: If you use this field, make sure that your application safely handles unknown values.
 
             '
-    PagingSimplifiedEpisodeObject:
+    PagingSavedEpisodeObject:
       type: object
       x-spotify-docs-type: PagingEpisodeObject
       allOf:
@@ -486,7 +463,12 @@ components:
           items:
             type: array
             items:
-              $ref: '#/components/schemas/SimplifiedEpisodeObject'
+              $ref: '#/components/schemas/SavedEpisodeObject'
+    SimplifiedShowObject:
+      x-spotify-docs-type: SimplifiedShowObject
+      allOf:
+      - $ref: '#/components/schemas/ShowBase'
+      - type: object
     ErrorObject:
       type: object
       x-spotify-docs-type: ErrorObject
@@ -504,87 +486,6 @@ components:
         message:
           type: string
           description: 'A short description of the cause of the error.
-
-            '
-    SavedEpisodeObject:
-      type: object
-      x-spotify-docs-type: SavedEpisodeObject
-      properties:
-        added_at:
-          type: string
-          format: date-time
-          x-spotify-docs-type: Timestamp
-          description: 'The date and time the episode was saved.
-
-            Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.
-
-            '
-        episode:
-          allOf:
-          - $ref: '#/components/schemas/EpisodeObject'
-          description: Information about the episode.
-    ImageObject:
-      type: object
-      x-spotify-docs-type: ImageObject
-      required:
-      - url
-      - height
-      - width
-      properties:
-        url:
-          type: string
-          example: 'https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228
-
-            '
-          description: 'The source URL of the image.
-
-            '
-        height:
-          type: integer
-          example: 300
-          nullable: true
-          description: 'The image height in pixels.
-
-            '
-        width:
-          type: integer
-          example: 300
-          nullable: true
-          description: 'The image width in pixels.
-
-            '
-    EpisodeObject:
-      x-spotify-docs-type: EpisodeObject
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/EpisodeBase'
-      - type: object
-        required:
-        - show
-        properties:
-          show:
-            allOf:
-            - $ref: '#/components/schemas/SimplifiedShowObject'
-            description: 'The show on which the episode belongs.
-
-              '
-    SimplifiedShowObject:
-      x-spotify-docs-type: SimplifiedShowObject
-      allOf:
-      - $ref: '#/components/schemas/ShowBase'
-      - type: object
-    CopyrightObject:
-      type: object
-      x-spotify-docs-type: CopyrightObject
-      properties:
-        text:
-          type: string
-          description: 'The copyright text for this content.
-
-            '
-        type:
-          type: string
-          description: 'The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright.
 
             '
     PagingObject:
@@ -614,9 +515,10 @@ components:
 
             '
         next:
-          type: string
+          type:
+          - string
+          - 'null'
           example: https://api.spotify.com/v1/me/shows?offset=1&limit=1
-          nullable: true
           description: 'URL to the next page of items. ( `null` if none)
 
             '
@@ -627,9 +529,10 @@ components:
 
             '
         previous:
-          type: string
+          type:
+          - string
+          - 'null'
           example: https://api.spotify.com/v1/me/shows?offset=1&limit=1
-          nullable: true
           description: 'URL to the previous page of items. ( `null` if none)
 
             '
@@ -637,40 +540,6 @@ components:
           type: integer
           example: 4
           description: 'The total number of items available to return.
-
-            '
-    EpisodeRestrictionObject:
-      type: object
-      x-spotify-docs-type: EpisodeRestrictionObject
-      properties:
-        reason:
-          type: string
-          description: 'The reason for the restriction. Supported values:
-
-            - `market` - The content item is not available in the given market.
-
-            - `product` - The content item is not available for the user''s subscription type.
-
-            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
-
-
-            Additional reasons may be added in the future.
-
-            **Note**: If you use this field, make sure that your application safely handles unknown values.
-
-            '
-    ResumePointObject:
-      type: object
-      x-spotify-docs-type: ResumePointObject
-      properties:
-        fully_played:
-          type: boolean
-          description: 'Whether or not the episode has been fully played by the user.
-
-            '
-        resume_position_ms:
-          type: integer
-          description: 'The user''s most recent position in the episode in milliseconds.
 
             '
     ShowBase:
@@ -792,18 +661,159 @@ components:
           description: 'The total number of episodes in the show.
 
             '
-  x-spotify-policy:
-    metadataPolicyList:
-    - $ref: '#/components/x-spotify-policy/policies/Downloading'
-    - $ref: '#/components/x-spotify-policy/policies/VisualAlteration'
-    - $ref: '#/components/x-spotify-policy/policies/Attribution'
+    CopyrightObject:
+      type: object
+      x-spotify-docs-type: CopyrightObject
+      properties:
+        text:
+          type: string
+          description: 'The copyright text for this content.
+
+            '
+        type:
+          type: string
+          description: 'The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright.
+
+            '
+    ExternalUrlObject:
+      type: object
+      x-spotify-docs-type: ExternalUrlObject
+      properties:
+        spotify:
+          type: string
+          description: 'The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
+
+            '
+    ImageObject:
+      type: object
+      x-spotify-docs-type: ImageObject
+      required:
+      - url
+      - height
+      - width
+      properties:
+        url:
+          type: string
+          example: 'https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228
+
+            '
+          description: 'The source URL of the image.
+
+            '
+        height:
+          type:
+          - integer
+          - 'null'
+          example: 300
+          description: 'The image height in pixels.
+
+            '
+        width:
+          type:
+          - integer
+          - 'null'
+          example: 300
+          description: 'The image width in pixels.
+
+            '
+    ResumePointObject:
+      type: object
+      x-spotify-docs-type: ResumePointObject
+      properties:
+        fully_played:
+          type: boolean
+          description: 'Whether or not the episode has been fully played by the user.
+
+            '
+        resume_position_ms:
+          type: integer
+          description: 'The user''s most recent position in the episode in milliseconds.
+
+            '
+    EpisodeObject:
+      x-spotify-docs-type: EpisodeObject
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/EpisodeBase'
+      - type: object
+        required:
+        - show
+        properties:
+          show:
+            allOf:
+            - $ref: '#/components/schemas/SimplifiedShowObject'
+            description: 'The show on which the episode belongs.
+
+              '
+    SavedEpisodeObject:
+      type: object
+      x-spotify-docs-type: SavedEpisodeObject
+      properties:
+        added_at:
+          type: string
+          format: date-time
+          x-spotify-docs-type: Timestamp
+          description: 'The date and time the episode was saved.
+
+            Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.
+
+            '
+        episode:
+          allOf:
+          - $ref: '#/components/schemas/EpisodeObject'
+          description: Information about the episode.
   responses:
+    Unauthorized:
+      description: 'Bad or expired token. This can happen if the user revoked a token or
+
+        the access token has expired. You should re-authenticate the user.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
     OneEpisode:
       description: An episode
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/EpisodeObject'
+    TooManyRequests:
+      description: 'The app has exceeded its rate limits.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    ArrayOfBooleans:
+      description: Array of booleans
+      content:
+        application/json:
+          schema:
+            type: array
+            example:
+            - false
+            - true
+            items:
+              type: boolean
+    PagingSavedEpisodeObject:
+      description: Pages of episodes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSavedEpisodeObject'
     ManyEpisodes:
       description: A set of episodes
       content:
@@ -832,117 +842,11 @@ components:
             properties:
               error:
                 $ref: '#/components/schemas/ErrorObject'
-    Unauthorized:
-      description: 'Bad or expired token. This can happen if the user revoked a token or
-
-        the access token has expired. You should re-authenticate the user.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    ArrayOfBooleans:
-      description: Array of booleans
-      content:
-        application/json:
-          schema:
-            type: array
-            example:
-            - false
-            - true
-            items:
-              type: boolean
-    PagingSimplifiedEpisodeObject:
-      description: Pages of episodes
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PagingSimplifiedEpisodeObject'
-    PagingSavedEpisodeObject:
-      description: Pages of episodes
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PagingSavedEpisodeObject'
-    TooManyRequests:
-      description: 'The app has exceeded its rate limits.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-  parameters:
-    QueryMarket:
-      name: market
-      required: false
-      in: query
-      schema:
-        title: Market
-        description: "An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).\n  If a country code is specified, only content that is available in that market will be returned.<br/>\n  If a valid user access token is specified in the request header, the country associated with\n  the user account will take priority over this parameter.<br/>\n  _**Note**: If neither market or user country are provided, the content is considered unavailable for the client._<br/>\n  Users can view the country that is associated with their account in the [account settings](https://www.spotify.com/account/overview/).\n"
-        example: ES
-        type: string
-    PathShowId:
-      name: id
-      required: true
-      in: path
-      schema:
-        title: Spotify Show ID
-        description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
-
-          for the show.
-
-          '
-        example: 38bS44xjbVVZ3No3ByF1dJ
-        type: string
-    QueryOffset:
-      name: offset
-      required: false
-      in: query
-      schema:
-        title: Offset
-        description: 'The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
-
-          '
-        default: 0
-        example: 5
-        type: integer
-    QueryLimit:
-      name: limit
-      required: false
-      in: query
-      schema:
-        title: Limit
-        description: 'The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-
-          '
-        default: 20
-        example: 10
-        type: integer
-        minimum: 0
-        maximum: 50
-    QueryTrackIds:
-      name: ids
-      required: true
-      in: query
-      schema:
-        title: Spotify Track IDs
-        description: 'A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
-
-          '
-        example: 7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B
-        type: string
+  x-spotify-policy:
+    metadataPolicyList:
+    - $ref: '#/components/x-spotify-policy/policies/Downloading'
+    - $ref: '#/components/x-spotify-policy/policies/VisualAlteration'
+    - $ref: '#/components/x-spotify-policy/policies/Attribution'
   securitySchemes:
     oauth_2_0:
       type: oauth2
