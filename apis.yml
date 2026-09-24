@@ -79,8 +79,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-artists-api
   name: Spotify Artists API
   description: The Artists API from Spotify — 7 operation(s) for artists.
@@ -113,8 +111,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-audiobooks-api
   name: Spotify Audiobooks API
   description: The Audiobooks API from Spotify — 5 operation(s) for audiobooks.
@@ -147,8 +143,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-categories-api
   name: Spotify Categories API
   description: The Categories API from Spotify — 3 operation(s) for categories.
@@ -181,8 +175,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-chapters-api
   name: Spotify Chapters API
   description: The Chapters API from Spotify — 3 operation(s) for chapters.
@@ -215,8 +207,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-episodes-api
   name: Spotify Episodes API
   description: The Episodes API from Spotify — 5 operation(s) for episodes.
@@ -249,8 +239,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-genres-api
   name: Spotify Genres API
   description: The Genres API from Spotify — 1 operation(s) for genres.
@@ -283,8 +271,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-library-api
   name: Spotify Library API
   description: The Library API from Spotify — 18 operation(s) for library.
@@ -317,8 +303,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-markets-api
   name: Spotify Markets API
   description: The Markets API from Spotify — 1 operation(s) for markets.
@@ -351,8 +335,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-player-api
   name: Spotify Player API
   description: The Player API from Spotify — 13 operation(s) for player.
@@ -385,8 +367,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-playlists-api
   name: Spotify Playlists API
   description: The Playlists API from Spotify — 10 operation(s) for playlists.
@@ -419,8 +399,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-search-api
   name: Spotify Search API
   description: The Search API from Spotify — 1 operation(s) for search.
@@ -453,8 +431,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-shows-api
   name: Spotify Shows API
   description: The Shows API from Spotify — 5 operation(s) for shows.
@@ -487,8 +463,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-tracks-api
   name: Spotify Tracks API
   description: The Tracks API from Spotify — 13 operation(s) for tracks.
@@ -521,8 +495,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 - aid: spotify:spotify-users-api
   name: Spotify Users API
   description: The Users API from Spotify — 8 operation(s) for users.
@@ -557,8 +529,6 @@ apis:
     url: rules/spotify-rules.yml
   - type: Vocabulary
     url: vocabulary/spotify-vocabulary.yml
-  - type: GraphQL
-    url: graphql/spotify-graphql.md
 common:
 - type: Website
   url: https://www.spotify.com/
