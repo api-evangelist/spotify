@@ -61,11 +61,46 @@ paths:
       - oauth_2_0: []
 components:
   schemas:
-    SimplifiedAudiobookObject:
-      x-spotify-docs-type: SimplifiedAudiobookObject
-      allOf:
-      - $ref: '#/components/schemas/AudiobookBase'
-      - type: object
+    ChapterRestrictionObject:
+      type: object
+      x-spotify-docs-type: ChapterRestrictionObject
+      properties:
+        reason:
+          type: string
+          description: 'The reason for the restriction. Supported values:
+
+            - `market` - The content item is not available in the given market.
+
+            - `product` - The content item is not available for the user''s subscription type.
+
+            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
+
+            - `payment_required` - Payment is required to play the content item.
+
+
+            Additional reasons may be added in the future.
+
+            **Note**: If you use this field, make sure that your application safely handles unknown values.
+
+            '
+    NarratorObject:
+      type: object
+      x-spotify-docs-type: NarratorObject
+      properties:
+        name:
+          type: string
+          description: 'The name of the Narrator.
+
+            '
+    AuthorObject:
+      type: object
+      x-spotify-docs-type: AuthorObject
+      properties:
+        name:
+          type: string
+          description: 'The name of the author.
+
+            '
     ChapterObject:
       x-spotify-docs-type: ChapterObject
       type: object
@@ -81,6 +116,71 @@ components:
             description: 'The audiobook for which the chapter belongs.
 
               '
+    CopyrightObject:
+      type: object
+      x-spotify-docs-type: CopyrightObject
+      properties:
+        text:
+          type: string
+          description: 'The copyright text for this content.
+
+            '
+        type:
+          type: string
+          description: 'The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright.
+
+            '
+    SimplifiedAudiobookObject:
+      x-spotify-docs-type: SimplifiedAudiobookObject
+      allOf:
+      - $ref: '#/components/schemas/AudiobookBase'
+      - type: object
+    ImageObject:
+      type: object
+      x-spotify-docs-type: ImageObject
+      required:
+      - url
+      - height
+      - width
+      properties:
+        url:
+          type: string
+          example: 'https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228
+
+            '
+          description: 'The source URL of the image.
+
+            '
+        height:
+          type:
+          - integer
+          - 'null'
+          example: 300
+          description: 'The image height in pixels.
+
+            '
+        width:
+          type:
+          - integer
+          - 'null'
+          example: 300
+          description: 'The image width in pixels.
+
+            '
+    ResumePointObject:
+      type: object
+      x-spotify-docs-type: ResumePointObject
+      properties:
+        fully_played:
+          type: boolean
+          description: 'Whether or not the episode has been fully played by the user.
+
+            '
+        resume_position_ms:
+          type: integer
+          description: 'The user''s most recent position in the episode in milliseconds.
+
+            '
     ErrorObject:
       type: object
       x-spotify-docs-type: ErrorObject
@@ -262,92 +362,6 @@ components:
           description: 'Included in the response when a content restriction is applied.
 
             '
-    CopyrightObject:
-      type: object
-      x-spotify-docs-type: CopyrightObject
-      properties:
-        text:
-          type: string
-          description: 'The copyright text for this content.
-
-            '
-        type:
-          type: string
-          description: 'The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright.
-
-            '
-    NarratorObject:
-      type: object
-      x-spotify-docs-type: NarratorObject
-      properties:
-        name:
-          type: string
-          description: 'The name of the Narrator.
-
-            '
-    ExternalUrlObject:
-      type: object
-      x-spotify-docs-type: ExternalUrlObject
-      properties:
-        spotify:
-          type: string
-          description: 'The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
-
-            '
-    ImageObject:
-      type: object
-      x-spotify-docs-type: ImageObject
-      required:
-      - url
-      - height
-      - width
-      properties:
-        url:
-          type: string
-          example: 'https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228
-
-            '
-          description: 'The source URL of the image.
-
-            '
-        height:
-          type:
-          - integer
-          - 'null'
-          example: 300
-          description: 'The image height in pixels.
-
-            '
-        width:
-          type:
-          - integer
-          - 'null'
-          example: 300
-          description: 'The image width in pixels.
-
-            '
-    ChapterRestrictionObject:
-      type: object
-      x-spotify-docs-type: ChapterRestrictionObject
-      properties:
-        reason:
-          type: string
-          description: 'The reason for the restriction. Supported values:
-
-            - `market` - The content item is not available in the given market.
-
-            - `product` - The content item is not available for the user''s subscription type.
-
-            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
-
-            - `payment_required` - Payment is required to play the content item.
-
-
-            Additional reasons may be added in the future.
-
-            **Note**: If you use this field, make sure that your application safely handles unknown values.
-
-            '
     AudiobookBase:
       type: object
       required:
@@ -483,34 +497,20 @@ components:
           description: 'The number of chapters in this audiobook.
 
             '
-    AuthorObject:
+    ExternalUrlObject:
       type: object
-      x-spotify-docs-type: AuthorObject
+      x-spotify-docs-type: ExternalUrlObject
       properties:
-        name:
+        spotify:
           type: string
-          description: 'The name of the author.
-
-            '
-    ResumePointObject:
-      type: object
-      x-spotify-docs-type: ResumePointObject
-      properties:
-        fully_played:
-          type: boolean
-          description: 'Whether or not the episode has been fully played by the user.
-
-            '
-        resume_position_ms:
-          type: integer
-          description: 'The user''s most recent position in the episode in milliseconds.
+          description: 'The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
 
             '
   responses:
-    Unauthorized:
-      description: 'Bad or expired token. This can happen if the user revoked a token or
+    Forbidden:
+      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
 
-        the access token has expired. You should re-authenticate the user.
+        timestamp...). Unfortunately, re-authenticating the user won''t help here.
 
         '
       content:
@@ -522,8 +522,10 @@ components:
             properties:
               error:
                 $ref: '#/components/schemas/ErrorObject'
-    TooManyRequests:
-      description: 'The app has exceeded its rate limits.
+    Unauthorized:
+      description: 'Bad or expired token. This can happen if the user revoked a token or
+
+        the access token has expired. You should re-authenticate the user.
 
         '
       content:
@@ -554,10 +556,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ChapterObject'
-    Forbidden:
-      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
-
-        timestamp...). Unfortunately, re-authenticating the user won''t help here.
+    TooManyRequests:
+      description: 'The app has exceeded its rate limits.
 
         '
       content:
@@ -569,11 +569,6 @@ components:
             properties:
               error:
                 $ref: '#/components/schemas/ErrorObject'
-  x-spotify-policy:
-    metadataPolicyList:
-    - $ref: '#/components/x-spotify-policy/policies/Downloading'
-    - $ref: '#/components/x-spotify-policy/policies/VisualAlteration'
-    - $ref: '#/components/x-spotify-policy/policies/Attribution'
   parameters:
     QueryChapterIds:
       name: ids
@@ -608,6 +603,11 @@ components:
           '
         example: 0D5wENdkdwbqlrHoaJ9g29
         type: string
+  x-spotify-policy:
+    metadataPolicyList:
+    - $ref: '#/components/x-spotify-policy/policies/Downloading'
+    - $ref: '#/components/x-spotify-policy/policies/VisualAlteration'
+    - $ref: '#/components/x-spotify-policy/policies/Attribution'
   securitySchemes:
     oauth_2_0:
       type: oauth2

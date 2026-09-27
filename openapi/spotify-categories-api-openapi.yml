@@ -85,75 +85,6 @@ paths:
       security:
       - oauth_2_0: []
 components:
-  responses:
-    PagedCategories:
-      description: A paged set of categories
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - categories
-            properties:
-              categories:
-                type: object
-                allOf:
-                - $ref: '#/components/schemas/PagingObject'
-                - type: object
-                  properties:
-                    items:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/CategoryObject'
-    Unauthorized:
-      description: 'Bad or expired token. This can happen if the user revoked a token or
-
-        the access token has expired. You should re-authenticate the user.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    Forbidden:
-      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
-
-        timestamp...). Unfortunately, re-authenticating the user won''t help here.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    OneCategory:
-      description: A category
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CategoryObject'
-    TooManyRequests:
-      description: 'The app has exceeded its rate limits.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
   schemas:
     ImageObject:
       type: object
@@ -187,6 +118,25 @@ components:
           description: 'The image width in pixels.
 
             '
+    ErrorObject:
+      type: object
+      x-spotify-docs-type: ErrorObject
+      required:
+      - status
+      - message
+      properties:
+        status:
+          type: integer
+          minimum: 400
+          maximum: 599
+          description: 'The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).
+
+            '
+        message:
+          type: string
+          description: 'A short description of the cause of the error.
+
+            '
     CategoryObject:
       type: object
       x-spotify-docs-type: CategoryObject
@@ -218,25 +168,6 @@ components:
           type: string
           example: EQUAL
           description: 'The name of the category.
-
-            '
-    ErrorObject:
-      type: object
-      x-spotify-docs-type: ErrorObject
-      required:
-      - status
-      - message
-      properties:
-        status:
-          type: integer
-          minimum: 400
-          maximum: 599
-          description: 'The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).
-
-            '
-        message:
-          type: string
-          description: 'A short description of the cause of the error.
 
             '
     PagingObject:
@@ -293,19 +224,76 @@ components:
           description: 'The total number of items available to return.
 
             '
-  parameters:
-    QueryOffset:
-      name: offset
-      required: false
-      in: query
-      schema:
-        title: Offset
-        description: 'The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
+  responses:
+    Unauthorized:
+      description: 'Bad or expired token. This can happen if the user revoked a token or
 
-          '
-        default: 0
-        example: 5
-        type: integer
+        the access token has expired. You should re-authenticate the user.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    TooManyRequests:
+      description: 'The app has exceeded its rate limits.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    PagedCategories:
+      description: A paged set of categories
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - categories
+            properties:
+              categories:
+                type: object
+                allOf:
+                - $ref: '#/components/schemas/PagingObject'
+                - type: object
+                  properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/CategoryObject'
+    OneCategory:
+      description: A category
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CategoryObject'
+    Forbidden:
+      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
+
+        timestamp...). Unfortunately, re-authenticating the user won''t help here.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+  parameters:
     QueryLimit:
       name: limit
       required: false
@@ -320,6 +308,18 @@ components:
         type: integer
         minimum: 0
         maximum: 50
+    QueryOffset:
+      name: offset
+      required: false
+      in: query
+      schema:
+        title: Offset
+        description: 'The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
+
+          '
+        default: 0
+        example: 5
+        type: integer
   securitySchemes:
     oauth_2_0:
       type: oauth2

@@ -185,26 +185,193 @@ paths:
         - user-library-read
 components:
   schemas:
+    ChapterRestrictionObject:
+      type: object
+      x-spotify-docs-type: ChapterRestrictionObject
+      properties:
+        reason:
+          type: string
+          description: 'The reason for the restriction. Supported values:
+
+            - `market` - The content item is not available in the given market.
+
+            - `product` - The content item is not available for the user''s subscription type.
+
+            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
+
+            - `payment_required` - Payment is required to play the content item.
+
+
+            Additional reasons may be added in the future.
+
+            **Note**: If you use this field, make sure that your application safely handles unknown values.
+
+            '
+    NarratorObject:
+      type: object
+      x-spotify-docs-type: NarratorObject
+      properties:
+        name:
+          type: string
+          description: 'The name of the Narrator.
+
+            '
+    PagingObject:
+      type: object
+      x-spotify-docs-type: PagingObject
+      required:
+      - href
+      - items
+      - limit
+      - next
+      - offset
+      - previous
+      - total
+      properties:
+        href:
+          type: string
+          example: 'https://api.spotify.com/v1/me/shows?offset=0&limit=20
+
+            '
+          description: 'A link to the Web API endpoint returning the full result of the request
+
+            '
+        limit:
+          type: integer
+          example: 20
+          description: 'The maximum number of items in the response (as set in the query or by default).
+
+            '
+        next:
+          type:
+          - string
+          - 'null'
+          example: https://api.spotify.com/v1/me/shows?offset=1&limit=1
+          description: 'URL to the next page of items. ( `null` if none)
+
+            '
+        offset:
+          type: integer
+          example: 0
+          description: 'The offset of the items returned (as set in the query or by default)
+
+            '
+        previous:
+          type:
+          - string
+          - 'null'
+          example: https://api.spotify.com/v1/me/shows?offset=1&limit=1
+          description: 'URL to the previous page of items. ( `null` if none)
+
+            '
+        total:
+          type: integer
+          example: 4
+          description: 'The total number of items available to return.
+
+            '
+    SimplifiedChapterObject:
+      x-spotify-docs-type: SimplifiedChapterObject
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ChapterBase'
+      - type: object
+    AuthorObject:
+      type: object
+      x-spotify-docs-type: AuthorObject
+      properties:
+        name:
+          type: string
+          description: 'The name of the author.
+
+            '
+    CopyrightObject:
+      type: object
+      x-spotify-docs-type: CopyrightObject
+      properties:
+        text:
+          type: string
+          description: 'The copyright text for this content.
+
+            '
+        type:
+          type: string
+          description: 'The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright.
+
+            '
     SimplifiedAudiobookObject:
       x-spotify-docs-type: SimplifiedAudiobookObject
       allOf:
       - $ref: '#/components/schemas/AudiobookBase'
       - type: object
-    AudiobookObject:
-      x-spotify-docs-type: AudiobookObject
-      allOf:
-      - $ref: '#/components/schemas/AudiobookBase'
-      - type: object
-        required:
-        - chapters
-        properties:
-          chapters:
-            type: object
-            allOf:
-            - $ref: '#/components/schemas/PagingSimplifiedChapterObject'
-            description: 'The chapters of the audiobook.
+    ImageObject:
+      type: object
+      x-spotify-docs-type: ImageObject
+      required:
+      - url
+      - height
+      - width
+      properties:
+        url:
+          type: string
+          example: 'https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228
 
-              '
+            '
+          description: 'The source URL of the image.
+
+            '
+        height:
+          type:
+          - integer
+          - 'null'
+          example: 300
+          description: 'The image height in pixels.
+
+            '
+        width:
+          type:
+          - integer
+          - 'null'
+          example: 300
+          description: 'The image width in pixels.
+
+            '
+    PagingSimplifiedAudiobookObject:
+      type: object
+      x-spotify-docs-type: PagingAudiobookObject
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/SimplifiedAudiobookObject'
+    ResumePointObject:
+      type: object
+      x-spotify-docs-type: ResumePointObject
+      properties:
+        fully_played:
+          type: boolean
+          description: 'Whether or not the episode has been fully played by the user.
+
+            '
+        resume_position_ms:
+          type: integer
+          description: 'The user''s most recent position in the episode in milliseconds.
+
+            '
+    PagingSimplifiedChapterObject:
+      type: object
+      x-spotify-docs-type: PagingSimplifiedChapterObject
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/SimplifiedChapterObject'
     ErrorObject:
       type: object
       x-spotify-docs-type: ErrorObject
@@ -386,163 +553,6 @@ components:
           description: 'Included in the response when a content restriction is applied.
 
             '
-    PagingObject:
-      type: object
-      x-spotify-docs-type: PagingObject
-      required:
-      - href
-      - items
-      - limit
-      - next
-      - offset
-      - previous
-      - total
-      properties:
-        href:
-          type: string
-          example: 'https://api.spotify.com/v1/me/shows?offset=0&limit=20
-
-            '
-          description: 'A link to the Web API endpoint returning the full result of the request
-
-            '
-        limit:
-          type: integer
-          example: 20
-          description: 'The maximum number of items in the response (as set in the query or by default).
-
-            '
-        next:
-          type:
-          - string
-          - 'null'
-          example: https://api.spotify.com/v1/me/shows?offset=1&limit=1
-          description: 'URL to the next page of items. ( `null` if none)
-
-            '
-        offset:
-          type: integer
-          example: 0
-          description: 'The offset of the items returned (as set in the query or by default)
-
-            '
-        previous:
-          type:
-          - string
-          - 'null'
-          example: https://api.spotify.com/v1/me/shows?offset=1&limit=1
-          description: 'URL to the previous page of items. ( `null` if none)
-
-            '
-        total:
-          type: integer
-          example: 4
-          description: 'The total number of items available to return.
-
-            '
-    PagingSimplifiedChapterObject:
-      type: object
-      x-spotify-docs-type: PagingSimplifiedChapterObject
-      allOf:
-      - $ref: '#/components/schemas/PagingObject'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/SimplifiedChapterObject'
-    CopyrightObject:
-      type: object
-      x-spotify-docs-type: CopyrightObject
-      properties:
-        text:
-          type: string
-          description: 'The copyright text for this content.
-
-            '
-        type:
-          type: string
-          description: 'The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright.
-
-            '
-    NarratorObject:
-      type: object
-      x-spotify-docs-type: NarratorObject
-      properties:
-        name:
-          type: string
-          description: 'The name of the Narrator.
-
-            '
-    ExternalUrlObject:
-      type: object
-      x-spotify-docs-type: ExternalUrlObject
-      properties:
-        spotify:
-          type: string
-          description: 'The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
-
-            '
-    SimplifiedChapterObject:
-      x-spotify-docs-type: SimplifiedChapterObject
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/ChapterBase'
-      - type: object
-    ImageObject:
-      type: object
-      x-spotify-docs-type: ImageObject
-      required:
-      - url
-      - height
-      - width
-      properties:
-        url:
-          type: string
-          example: 'https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228
-
-            '
-          description: 'The source URL of the image.
-
-            '
-        height:
-          type:
-          - integer
-          - 'null'
-          example: 300
-          description: 'The image height in pixels.
-
-            '
-        width:
-          type:
-          - integer
-          - 'null'
-          example: 300
-          description: 'The image width in pixels.
-
-            '
-    ChapterRestrictionObject:
-      type: object
-      x-spotify-docs-type: ChapterRestrictionObject
-      properties:
-        reason:
-          type: string
-          description: 'The reason for the restriction. Supported values:
-
-            - `market` - The content item is not available in the given market.
-
-            - `product` - The content item is not available for the user''s subscription type.
-
-            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
-
-            - `payment_required` - Payment is required to play the content item.
-
-
-            Additional reasons may be added in the future.
-
-            **Note**: If you use this field, make sure that your application safely handles unknown values.
-
-            '
     AudiobookBase:
       type: object
       required:
@@ -678,45 +688,105 @@ components:
           description: 'The number of chapters in this audiobook.
 
             '
-    AuthorObject:
-      type: object
-      x-spotify-docs-type: AuthorObject
-      properties:
-        name:
-          type: string
-          description: 'The name of the author.
-
-            '
-    ResumePointObject:
-      type: object
-      x-spotify-docs-type: ResumePointObject
-      properties:
-        fully_played:
-          type: boolean
-          description: 'Whether or not the episode has been fully played by the user.
-
-            '
-        resume_position_ms:
-          type: integer
-          description: 'The user''s most recent position in the episode in milliseconds.
-
-            '
-    PagingSimplifiedAudiobookObject:
-      type: object
-      x-spotify-docs-type: PagingAudiobookObject
+    AudiobookObject:
+      x-spotify-docs-type: AudiobookObject
       allOf:
-      - $ref: '#/components/schemas/PagingObject'
+      - $ref: '#/components/schemas/AudiobookBase'
       - type: object
+        required:
+        - chapters
         properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/SimplifiedAudiobookObject'
+          chapters:
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/PagingSimplifiedChapterObject'
+            description: 'The chapters of the audiobook.
+
+              '
+    ExternalUrlObject:
+      type: object
+      x-spotify-docs-type: ExternalUrlObject
+      properties:
+        spotify:
+          type: string
+          description: 'The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
+
+            '
   responses:
+    OneAudiobook:
+      description: An Audiobook
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AudiobookObject'
+    ArrayOfBooleans:
+      description: Array of booleans
+      content:
+        application/json:
+          schema:
+            type: array
+            example:
+            - false
+            - true
+            items:
+              type: boolean
+    Forbidden:
+      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
+
+        timestamp...). Unfortunately, re-authenticating the user won''t help here.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
     Unauthorized:
       description: 'Bad or expired token. This can happen if the user revoked a token or
 
         the access token has expired. You should re-authenticate the user.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    PagingSimplifiedChapterObject:
+      description: Pages of chapters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSimplifiedChapterObject'
+    PagingSimplifiedAudiobookObject:
+      description: Pages of audiobooks
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSimplifiedAudiobookObject'
+    BadRequest:
+      description: 'The request contains malformed data in path, query parameters, or body.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    TooManyRequests:
+      description: 'The app has exceeded its rate limits.
 
         '
       content:
@@ -741,19 +811,6 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/AudiobookObject'
-    TooManyRequests:
-      description: 'The app has exceeded its rate limits.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
     NotFound:
       description: 'The requested resource cannot be found.
 
@@ -767,69 +824,21 @@ components:
             properties:
               error:
                 $ref: '#/components/schemas/ErrorObject'
-    PagingSimplifiedAudiobookObject:
-      description: Pages of audiobooks
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PagingSimplifiedAudiobookObject'
-    ArrayOfBooleans:
-      description: Array of booleans
-      content:
-        application/json:
-          schema:
-            type: array
-            example:
-            - false
-            - true
-            items:
-              type: boolean
-    PagingSimplifiedChapterObject:
-      description: Pages of chapters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PagingSimplifiedChapterObject'
-    BadRequest:
-      description: 'The request contains malformed data in path, query parameters, or body.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    Forbidden:
-      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
-
-        timestamp...). Unfortunately, re-authenticating the user won''t help here.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    OneAudiobook:
-      description: An Audiobook
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AudiobookObject'
   x-spotify-policy:
     metadataPolicyList:
     - $ref: '#/components/x-spotify-policy/policies/Downloading'
     - $ref: '#/components/x-spotify-policy/policies/VisualAlteration'
     - $ref: '#/components/x-spotify-policy/policies/Attribution'
   parameters:
+    QueryMarket:
+      name: market
+      required: false
+      in: query
+      schema:
+        title: Market
+        description: "An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).\n  If a country code is specified, only content that is available in that market will be returned.<br/>\n  If a valid user access token is specified in the request header, the country associated with\n  the user account will take priority over this parameter.<br/>\n  _**Note**: If neither market or user country are provided, the content is considered unavailable for the client._<br/>\n  Users can view the country that is associated with their account in the [account settings](https://www.spotify.com/account/overview/).\n"
+        example: ES
+        type: string
     QueryAudiobookIds:
       name: ids
       required: true
@@ -841,18 +850,6 @@ components:
           '
         example: 18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe
         type: string
-    QueryOffset:
-      name: offset
-      required: false
-      in: query
-      schema:
-        title: Offset
-        description: 'The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
-
-          '
-        default: 0
-        example: 5
-        type: integer
     PathAudiobookId:
       name: id
       required: true
@@ -865,15 +862,6 @@ components:
 
           '
         example: 7iHfbu1YPACw6oZPAFJtqe
-        type: string
-    QueryMarket:
-      name: market
-      required: false
-      in: query
-      schema:
-        title: Market
-        description: "An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).\n  If a country code is specified, only content that is available in that market will be returned.<br/>\n  If a valid user access token is specified in the request header, the country associated with\n  the user account will take priority over this parameter.<br/>\n  _**Note**: If neither market or user country are provided, the content is considered unavailable for the client._<br/>\n  Users can view the country that is associated with their account in the [account settings](https://www.spotify.com/account/overview/).\n"
-        example: ES
         type: string
     QueryLimit:
       name: limit
@@ -889,6 +877,18 @@ components:
         type: integer
         minimum: 0
         maximum: 50
+    QueryOffset:
+      name: offset
+      required: false
+      in: query
+      schema:
+        title: Offset
+        description: 'The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
+
+          '
+        default: 0
+        example: 5
+        type: integer
   securitySchemes:
     oauth_2_0:
       type: oauth2
