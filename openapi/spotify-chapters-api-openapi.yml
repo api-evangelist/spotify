@@ -60,81 +60,104 @@ paths:
       security:
       - oauth_2_0: []
 components:
+  responses:
+    Forbidden:
+      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
+
+        timestamp...). Unfortunately, re-authenticating the user won''t help here.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    Unauthorized:
+      description: 'Bad or expired token. This can happen if the user revoked a token or
+
+        the access token has expired. You should re-authenticate the user.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    TooManyRequests:
+      description: 'The app has exceeded its rate limits.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    OneChapter:
+      description: A Chapter
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ChapterObject'
+    ManyChapters:
+      description: A set of chapters
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - chapters
+            properties:
+              chapters:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChapterObject'
+  parameters:
+    QueryMarket:
+      name: market
+      required: false
+      in: query
+      schema:
+        title: Market
+        description: "An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).\n  If a country code is specified, only content that is available in that market will be returned.<br/>\n  If a valid user access token is specified in the request header, the country associated with\n  the user account will take priority over this parameter.<br/>\n  _**Note**: If neither market or user country are provided, the content is considered unavailable for the client._<br/>\n  Users can view the country that is associated with their account in the [account settings](https://www.spotify.com/account/overview/).\n"
+        example: ES
+        type: string
+    PathChapterId:
+      name: id
+      required: true
+      in: path
+      schema:
+        title: Spotify Chapter ID
+        description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
+
+          for the chapter.
+
+          '
+        example: 0D5wENdkdwbqlrHoaJ9g29
+        type: string
+    QueryChapterIds:
+      name: ids
+      required: true
+      in: query
+      schema:
+        title: Spotify Chapter IDs
+        description: 'A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU`. Maximum: 50 IDs.
+
+          '
+        example: 0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29
+        type: string
   schemas:
-    ChapterRestrictionObject:
-      type: object
-      x-spotify-docs-type: ChapterRestrictionObject
-      properties:
-        reason:
-          type: string
-          description: 'The reason for the restriction. Supported values:
-
-            - `market` - The content item is not available in the given market.
-
-            - `product` - The content item is not available for the user''s subscription type.
-
-            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
-
-            - `payment_required` - Payment is required to play the content item.
-
-
-            Additional reasons may be added in the future.
-
-            **Note**: If you use this field, make sure that your application safely handles unknown values.
-
-            '
-    NarratorObject:
-      type: object
-      x-spotify-docs-type: NarratorObject
-      properties:
-        name:
-          type: string
-          description: 'The name of the Narrator.
-
-            '
-    AuthorObject:
-      type: object
-      x-spotify-docs-type: AuthorObject
-      properties:
-        name:
-          type: string
-          description: 'The name of the author.
-
-            '
-    ChapterObject:
-      x-spotify-docs-type: ChapterObject
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/ChapterBase'
-      - type: object
-        required:
-        - audiobook
-        properties:
-          audiobook:
-            allOf:
-            - $ref: '#/components/schemas/SimplifiedAudiobookObject'
-            description: 'The audiobook for which the chapter belongs.
-
-              '
-    CopyrightObject:
-      type: object
-      x-spotify-docs-type: CopyrightObject
-      properties:
-        text:
-          type: string
-          description: 'The copyright text for this content.
-
-            '
-        type:
-          type: string
-          description: 'The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright.
-
-            '
-    SimplifiedAudiobookObject:
-      x-spotify-docs-type: SimplifiedAudiobookObject
-      allOf:
-      - $ref: '#/components/schemas/AudiobookBase'
-      - type: object
     ImageObject:
       type: object
       x-spotify-docs-type: ImageObject
@@ -167,6 +190,190 @@ components:
           description: 'The image width in pixels.
 
             '
+    AudiobookBase:
+      type: object
+      required:
+      - authors
+      - available_markets
+      - copyrights
+      - description
+      - explicit
+      - external_urls
+      - href
+      - html_description
+      - id
+      - images
+      - languages
+      - media_type
+      - name
+      - narrators
+      - publisher
+      - total_chapters
+      - type
+      - uri
+      properties:
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorObject'
+          description: 'The author(s) for the audiobook.
+
+            '
+        available_markets:
+          deprecated: true
+          type: array
+          items:
+            type: string
+          description: 'A list of the countries in which the audiobook can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+
+            '
+        copyrights:
+          type: array
+          items:
+            $ref: '#/components/schemas/CopyrightObject'
+          description: 'The copyright statements of the audiobook.
+
+            '
+        description:
+          type: string
+          description: 'A description of the audiobook. HTML tags are stripped away from this field, use `html_description` field in case HTML tags are needed.
+
+            '
+        html_description:
+          type: string
+          description: 'A description of the audiobook. This field may contain HTML tags.
+
+            '
+        edition:
+          type: string
+          description: 'The edition of the audiobook.
+
+            '
+          example: Unabridged
+        explicit:
+          type: boolean
+          description: 'Whether or not the audiobook has explicit content (true = yes it does; false = no it does not OR unknown).
+
+            '
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'External URLs for this audiobook.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint providing full details of the audiobook.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.
+
+            '
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          description: 'The cover art for the audiobook in various sizes, widest first.
+
+            '
+        languages:
+          type: array
+          items:
+            type: string
+          description: 'A list of the languages used in the audiobook, identified by their [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code.
+
+            '
+        media_type:
+          type: string
+          description: 'The media type of the audiobook.
+
+            '
+        name:
+          type: string
+          description: 'The name of the audiobook.
+
+            '
+        narrators:
+          type: array
+          items:
+            $ref: '#/components/schemas/NarratorObject'
+          description: 'The narrator(s) for the audiobook.
+
+            '
+        publisher:
+          deprecated: true
+          type: string
+          description: 'The publisher of the audiobook.
+
+            '
+        type:
+          type: string
+          enum:
+          - audiobook
+          description: 'The object type.
+
+            '
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.
+
+            '
+        total_chapters:
+          type: integer
+          description: 'The number of chapters in this audiobook.
+
+            '
+    AuthorObject:
+      type: object
+      x-spotify-docs-type: AuthorObject
+      properties:
+        name:
+          type: string
+          description: 'The name of the author.
+
+            '
+    ExternalUrlObject:
+      type: object
+      x-spotify-docs-type: ExternalUrlObject
+      properties:
+        spotify:
+          type: string
+          description: 'The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
+
+            '
+    ChapterRestrictionObject:
+      type: object
+      x-spotify-docs-type: ChapterRestrictionObject
+      properties:
+        reason:
+          type: string
+          description: 'The reason for the restriction. Supported values:
+
+            - `market` - The content item is not available in the given market.
+
+            - `product` - The content item is not available for the user''s subscription type.
+
+            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
+
+            - `payment_required` - Payment is required to play the content item.
+
+
+            Additional reasons may be added in the future.
+
+            **Note**: If you use this field, make sure that your application safely handles unknown values.
+
+            '
+    NarratorObject:
+      type: object
+      x-spotify-docs-type: NarratorObject
+      properties:
+        name:
+          type: string
+          description: 'The name of the Narrator.
+
+            '
     ResumePointObject:
       type: object
       x-spotify-docs-type: ResumePointObject
@@ -181,6 +388,21 @@ components:
           description: 'The user''s most recent position in the episode in milliseconds.
 
             '
+    ChapterObject:
+      x-spotify-docs-type: ChapterObject
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ChapterBase'
+      - type: object
+        required:
+        - audiobook
+        properties:
+          audiobook:
+            allOf:
+            - $ref: '#/components/schemas/SimplifiedAudiobookObject'
+            description: 'The audiobook for which the chapter belongs.
+
+              '
     ErrorObject:
       type: object
       x-spotify-docs-type: ErrorObject
@@ -362,247 +584,25 @@ components:
           description: 'Included in the response when a content restriction is applied.
 
             '
-    AudiobookBase:
+    SimplifiedAudiobookObject:
+      x-spotify-docs-type: SimplifiedAudiobookObject
+      allOf:
+      - $ref: '#/components/schemas/AudiobookBase'
+      - type: object
+    CopyrightObject:
       type: object
-      required:
-      - authors
-      - available_markets
-      - copyrights
-      - description
-      - explicit
-      - external_urls
-      - href
-      - html_description
-      - id
-      - images
-      - languages
-      - media_type
-      - name
-      - narrators
-      - publisher
-      - total_chapters
-      - type
-      - uri
+      x-spotify-docs-type: CopyrightObject
       properties:
-        authors:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuthorObject'
-          description: 'The author(s) for the audiobook.
-
-            '
-        available_markets:
-          deprecated: true
-          type: array
-          items:
-            type: string
-          description: 'A list of the countries in which the audiobook can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
-
-            '
-        copyrights:
-          type: array
-          items:
-            $ref: '#/components/schemas/CopyrightObject'
-          description: 'The copyright statements of the audiobook.
-
-            '
-        description:
+        text:
           type: string
-          description: 'A description of the audiobook. HTML tags are stripped away from this field, use `html_description` field in case HTML tags are needed.
-
-            '
-        html_description:
-          type: string
-          description: 'A description of the audiobook. This field may contain HTML tags.
-
-            '
-        edition:
-          type: string
-          description: 'The edition of the audiobook.
-
-            '
-          example: Unabridged
-        explicit:
-          type: boolean
-          description: 'Whether or not the audiobook has explicit content (true = yes it does; false = no it does not OR unknown).
-
-            '
-        external_urls:
-          allOf:
-          - $ref: '#/components/schemas/ExternalUrlObject'
-          description: 'External URLs for this audiobook.
-
-            '
-        href:
-          type: string
-          description: 'A link to the Web API endpoint providing full details of the audiobook.
-
-            '
-        id:
-          type: string
-          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.
-
-            '
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/ImageObject'
-          description: 'The cover art for the audiobook in various sizes, widest first.
-
-            '
-        languages:
-          type: array
-          items:
-            type: string
-          description: 'A list of the languages used in the audiobook, identified by their [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code.
-
-            '
-        media_type:
-          type: string
-          description: 'The media type of the audiobook.
-
-            '
-        name:
-          type: string
-          description: 'The name of the audiobook.
-
-            '
-        narrators:
-          type: array
-          items:
-            $ref: '#/components/schemas/NarratorObject'
-          description: 'The narrator(s) for the audiobook.
-
-            '
-        publisher:
-          deprecated: true
-          type: string
-          description: 'The publisher of the audiobook.
+          description: 'The copyright text for this content.
 
             '
         type:
           type: string
-          enum:
-          - audiobook
-          description: 'The object type.
+          description: 'The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright.
 
             '
-        uri:
-          type: string
-          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.
-
-            '
-        total_chapters:
-          type: integer
-          description: 'The number of chapters in this audiobook.
-
-            '
-    ExternalUrlObject:
-      type: object
-      x-spotify-docs-type: ExternalUrlObject
-      properties:
-        spotify:
-          type: string
-          description: 'The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
-
-            '
-  responses:
-    Forbidden:
-      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
-
-        timestamp...). Unfortunately, re-authenticating the user won''t help here.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    Unauthorized:
-      description: 'Bad or expired token. This can happen if the user revoked a token or
-
-        the access token has expired. You should re-authenticate the user.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    ManyChapters:
-      description: A set of chapters
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - chapters
-            properties:
-              chapters:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ChapterObject'
-    OneChapter:
-      description: A Chapter
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ChapterObject'
-    TooManyRequests:
-      description: 'The app has exceeded its rate limits.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-  parameters:
-    QueryChapterIds:
-      name: ids
-      required: true
-      in: query
-      schema:
-        title: Spotify Chapter IDs
-        description: 'A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU`. Maximum: 50 IDs.
-
-          '
-        example: 0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29
-        type: string
-    QueryMarket:
-      name: market
-      required: false
-      in: query
-      schema:
-        title: Market
-        description: "An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).\n  If a country code is specified, only content that is available in that market will be returned.<br/>\n  If a valid user access token is specified in the request header, the country associated with\n  the user account will take priority over this parameter.<br/>\n  _**Note**: If neither market or user country are provided, the content is considered unavailable for the client._<br/>\n  Users can view the country that is associated with their account in the [account settings](https://www.spotify.com/account/overview/).\n"
-        example: ES
-        type: string
-    PathChapterId:
-      name: id
-      required: true
-      in: path
-      schema:
-        title: Spotify Chapter ID
-        description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
-
-          for the chapter.
-
-          '
-        example: 0D5wENdkdwbqlrHoaJ9g29
-        type: string
   x-spotify-policy:
     metadataPolicyList:
     - $ref: '#/components/x-spotify-policy/policies/Downloading'

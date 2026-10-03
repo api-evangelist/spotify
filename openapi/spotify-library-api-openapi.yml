@@ -216,6 +216,17 @@ components:
             properties:
               error:
                 $ref: '#/components/schemas/ErrorObject'
+    ArrayOfBooleans:
+      description: Array of booleans
+      content:
+        application/json:
+          schema:
+            type: array
+            example:
+            - false
+            - true
+            items:
+              type: boolean
     TooManyRequests:
       description: 'The app has exceeded its rate limits.
 
@@ -229,17 +240,6 @@ components:
             properties:
               error:
                 $ref: '#/components/schemas/ErrorObject'
-    ArrayOfBooleans:
-      description: Array of booleans
-      content:
-        application/json:
-          schema:
-            type: array
-            example:
-            - false
-            - true
-            items:
-              type: boolean
   schemas:
     ErrorObject:
       type: object

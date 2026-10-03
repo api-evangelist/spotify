@@ -48,19 +48,6 @@ components:
             properties:
               error:
                 $ref: '#/components/schemas/ErrorObject'
-    TooManyRequests:
-      description: 'The app has exceeded its rate limits.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
     ManyGenres:
       description: A set of genres
       content:
@@ -81,6 +68,19 @@ components:
       description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
 
         timestamp...). Unfortunately, re-authenticating the user won''t help here.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    TooManyRequests:
+      description: 'The app has exceeded its rate limits.
 
         '
       content:
