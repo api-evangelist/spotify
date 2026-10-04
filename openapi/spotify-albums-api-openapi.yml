@@ -236,6 +236,52 @@ paths:
       - oauth_2_0: []
 components:
   schemas:
+    SimplifiedArtistObject:
+      type: object
+      x-spotify-docs-type: SimplifiedArtistObject
+      properties:
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'Known external URLs for this artist.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint providing full details of the artist.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
+
+            '
+        name:
+          type: string
+          description: 'The name of the artist.
+
+            '
+        type:
+          type: string
+          enum:
+          - artist
+          description: 'The object type.
+
+            '
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
+
+            '
+    ExternalUrlObject:
+      type: object
+      x-spotify-docs-type: ExternalUrlObject
+      properties:
+        spotify:
+          type: string
+          description: 'The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
+
+            '
     AlbumBase:
       type: object
       required:
@@ -342,6 +388,39 @@ components:
           description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the album.
 
             '
+    CopyrightObject:
+      type: object
+      x-spotify-docs-type: CopyrightObject
+      properties:
+        text:
+          type: string
+          description: 'The copyright text for this content.
+
+            '
+        type:
+          type: string
+          description: 'The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright.
+
+            '
+    ErrorObject:
+      type: object
+      x-spotify-docs-type: ErrorObject
+      required:
+      - status
+      - message
+      properties:
+        status:
+          type: integer
+          minimum: 400
+          maximum: 599
+          description: 'The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).
+
+            '
+        message:
+          type: string
+          description: 'A short description of the cause of the error.
+
+            '
     AlbumRestrictionObject:
       type: object
       x-spotify-docs-type: AlbumRestrictionObject
@@ -357,62 +436,97 @@ components:
             Additional reasons may be added in the future.
 
             '
-    ExternalIdObject:
+    LinkedTrackObject:
       type: object
-      x-spotify-docs-type: ExternalIdObject
-      properties:
-        isrc:
-          type: string
-          description: '[International Standard Recording Code](http://en.wikipedia.org/wiki/International_Standard_Recording_Code)
-
-            '
-        ean:
-          type: string
-          description: '[International Article Number](http://en.wikipedia.org/wiki/International_Article_Number_%28EAN%29)
-
-            '
-        upc:
-          type: string
-          description: '[Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code)
-
-            '
-    SimplifiedArtistObject:
-      type: object
-      x-spotify-docs-type: SimplifiedArtistObject
+      x-spotify-docs-type: LinkedTrackObject
       properties:
         external_urls:
           allOf:
           - $ref: '#/components/schemas/ExternalUrlObject'
-          description: 'Known external URLs for this artist.
+          description: 'Known external URLs for this track.
 
             '
         href:
           type: string
-          description: 'A link to the Web API endpoint providing full details of the artist.
+          description: 'A link to the Web API endpoint providing full details of the track.
 
             '
         id:
           type: string
-          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
-
-            '
-        name:
-          type: string
-          description: 'The name of the artist.
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.
 
             '
         type:
           type: string
-          enum:
-          - artist
-          description: 'The object type.
+          description: 'The object type: "track".
 
             '
         uri:
           type: string
-          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.
 
             '
+    AlbumObject:
+      x-spotify-docs-type: AlbumObject
+      required:
+      - artists
+      - tracks
+      - copyrights
+      - external_ids
+      - genres
+      - label
+      - popularity
+      allOf:
+      - $ref: '#/components/schemas/AlbumBase'
+      - type: object
+        properties:
+          artists:
+            type: array
+            items:
+              $ref: '#/components/schemas/SimplifiedArtistObject'
+            description: 'The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist.
+
+              '
+          tracks:
+            allOf:
+            - $ref: '#/components/schemas/PagingSimplifiedTrackObject'
+            description: 'The tracks of the album.
+
+              '
+          copyrights:
+            type: array
+            items:
+              $ref: '#/components/schemas/CopyrightObject'
+            description: 'The copyright statements of the album.
+
+              '
+          external_ids:
+            allOf:
+            - $ref: '#/components/schemas/ExternalIdObject'
+            description: 'Known external IDs for the album.
+
+              '
+          genres:
+            type: array
+            items:
+              type: string
+            deprecated: true
+            example: []
+            description: '**Deprecated** The array is always empty.
+
+              '
+          label:
+            deprecated: true
+            type: string
+            description: 'The label associated with the album.
+
+              '
+          popularity:
+            deprecated: true
+            type: integer
+            description: 'The popularity of the album. The value will be between 0 and 100, with 100 being the most popular.
+
+              '
     SimplifiedTrackObject:
       type: object
       x-spotify-docs-type: SimplifiedTrackObject
@@ -502,6 +616,28 @@ components:
           description: 'Whether or not the track is from a local file.
 
             '
+    PagingSimplifiedTrackObject:
+      type: object
+      x-spotify-docs-type: PagingTrackObject
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/SimplifiedTrackObject'
+    PagingSavedAlbumObject:
+      type: object
+      x-spotify-docs-type: PagingSavedAlbumObject
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/SavedAlbumObject'
     PagingObject:
       type: object
       x-spotify-docs-type: PagingObject
@@ -556,17 +692,26 @@ components:
           description: 'The total number of items available to return.
 
             '
-    PagingSavedAlbumObject:
+    TrackRestrictionObject:
       type: object
-      x-spotify-docs-type: PagingSavedAlbumObject
-      allOf:
-      - $ref: '#/components/schemas/PagingObject'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/SavedAlbumObject'
+      x-spotify-docs-type: TrackRestrictionObject
+      properties:
+        reason:
+          type: string
+          description: 'The reason for the restriction. Supported values:
+
+            - `market` - The content item is not available in the given market.
+
+            - `product` - The content item is not available for the user''s subscription type.
+
+            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
+
+
+            Additional reasons may be added in the future.
+
+            **Note**: If you use this field, make sure that your application safely handles unknown values.
+
+            '
     ImageObject:
       type: object
       x-spotify-docs-type: ImageObject
@@ -599,39 +744,9 @@ components:
           description: 'The image width in pixels.
 
             '
-    LinkedTrackObject:
+    PagingSimplifiedAlbumObject:
       type: object
-      x-spotify-docs-type: LinkedTrackObject
-      properties:
-        external_urls:
-          allOf:
-          - $ref: '#/components/schemas/ExternalUrlObject'
-          description: 'Known external URLs for this track.
-
-            '
-        href:
-          type: string
-          description: 'A link to the Web API endpoint providing full details of the track.
-
-            '
-        id:
-          type: string
-          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.
-
-            '
-        type:
-          type: string
-          description: 'The object type: "track".
-
-            '
-        uri:
-          type: string
-          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.
-
-            '
-    PagingSimplifiedTrackObject:
-      type: object
-      x-spotify-docs-type: PagingTrackObject
+      x-spotify-docs-type: PagingAlbumObject
       allOf:
       - $ref: '#/components/schemas/PagingObject'
       - type: object
@@ -639,14 +754,24 @@ components:
           items:
             type: array
             items:
-              $ref: '#/components/schemas/SimplifiedTrackObject'
-    ExternalUrlObject:
+              $ref: '#/components/schemas/SimplifiedAlbumObject'
+    ExternalIdObject:
       type: object
-      x-spotify-docs-type: ExternalUrlObject
+      x-spotify-docs-type: ExternalIdObject
       properties:
-        spotify:
+        isrc:
           type: string
-          description: 'The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
+          description: '[International Standard Recording Code](http://en.wikipedia.org/wiki/International_Standard_Recording_Code)
+
+            '
+        ean:
+          type: string
+          description: '[International Article Number](http://en.wikipedia.org/wiki/International_Article_Number_%28EAN%29)
+
+            '
+        upc:
+          type: string
+          description: '[Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code)
 
             '
     SimplifiedAlbumObject:
@@ -664,117 +789,6 @@ components:
             description: 'The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist.
 
               '
-    TrackRestrictionObject:
-      type: object
-      x-spotify-docs-type: TrackRestrictionObject
-      properties:
-        reason:
-          type: string
-          description: 'The reason for the restriction. Supported values:
-
-            - `market` - The content item is not available in the given market.
-
-            - `product` - The content item is not available for the user''s subscription type.
-
-            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
-
-
-            Additional reasons may be added in the future.
-
-            **Note**: If you use this field, make sure that your application safely handles unknown values.
-
-            '
-    AlbumObject:
-      x-spotify-docs-type: AlbumObject
-      required:
-      - artists
-      - tracks
-      - copyrights
-      - external_ids
-      - genres
-      - label
-      - popularity
-      allOf:
-      - $ref: '#/components/schemas/AlbumBase'
-      - type: object
-        properties:
-          artists:
-            type: array
-            items:
-              $ref: '#/components/schemas/SimplifiedArtistObject'
-            description: 'The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist.
-
-              '
-          tracks:
-            allOf:
-            - $ref: '#/components/schemas/PagingSimplifiedTrackObject'
-            description: 'The tracks of the album.
-
-              '
-          copyrights:
-            type: array
-            items:
-              $ref: '#/components/schemas/CopyrightObject'
-            description: 'The copyright statements of the album.
-
-              '
-          external_ids:
-            allOf:
-            - $ref: '#/components/schemas/ExternalIdObject'
-            description: 'Known external IDs for the album.
-
-              '
-          genres:
-            type: array
-            items:
-              type: string
-            deprecated: true
-            example: []
-            description: '**Deprecated** The array is always empty.
-
-              '
-          label:
-            deprecated: true
-            type: string
-            description: 'The label associated with the album.
-
-              '
-          popularity:
-            deprecated: true
-            type: integer
-            description: 'The popularity of the album. The value will be between 0 and 100, with 100 being the most popular.
-
-              '
-    PagingSimplifiedAlbumObject:
-      type: object
-      x-spotify-docs-type: PagingAlbumObject
-      allOf:
-      - $ref: '#/components/schemas/PagingObject'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/SimplifiedAlbumObject'
-    ErrorObject:
-      type: object
-      x-spotify-docs-type: ErrorObject
-      required:
-      - status
-      - message
-      properties:
-        status:
-          type: integer
-          minimum: 400
-          maximum: 599
-          description: 'The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).
-
-            '
-        message:
-          type: string
-          description: 'A short description of the cause of the error.
-
-            '
     SavedAlbumObject:
       type: object
       x-spotify-docs-type: SavedAlbumObject
@@ -794,21 +808,123 @@ components:
           allOf:
           - $ref: '#/components/schemas/AlbumObject'
           description: Information about the album.
-    CopyrightObject:
-      type: object
-      x-spotify-docs-type: CopyrightObject
-      properties:
-        text:
-          type: string
-          description: 'The copyright text for this content.
+  x-spotify-policy:
+    metadataPolicyList:
+    - $ref: '#/components/x-spotify-policy/policies/Downloading'
+    - $ref: '#/components/x-spotify-policy/policies/VisualAlteration'
+    - $ref: '#/components/x-spotify-policy/policies/Attribution'
+  responses:
+    ManyAlbums:
+      description: A set of albums
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - albums
+            properties:
+              albums:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AlbumObject'
+    PagingSavedAlbumObject:
+      description: Pages of albums
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSavedAlbumObject'
+    Unauthorized:
+      description: 'Bad or expired token. This can happen if the user revoked a token or
 
-            '
-        type:
-          type: string
-          description: 'The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright.
+        the access token has expired. You should re-authenticate the user.
 
-            '
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    Forbidden:
+      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
+
+        timestamp...). Unfortunately, re-authenticating the user won''t help here.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    PagedAlbums:
+      description: A paged set of albums
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - albums
+            properties:
+              albums:
+                $ref: '#/components/schemas/PagingSimplifiedAlbumObject'
+    OneAlbum:
+      description: An album
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AlbumObject'
+    ArrayOfBooleans:
+      description: Array of booleans
+      content:
+        application/json:
+          schema:
+            type: array
+            example:
+            - false
+            - true
+            items:
+              type: boolean
+    PagingSimplifiedTrackObject:
+      description: Pages of tracks
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSimplifiedTrackObject'
+    TooManyRequests:
+      description: 'The app has exceeded its rate limits.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
   parameters:
+    QueryLimit:
+      name: limit
+      required: false
+      in: query
+      schema:
+        title: Limit
+        description: 'The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+
+          '
+        default: 20
+        example: 10
+        type: integer
+        minimum: 0
+        maximum: 50
     PathAlbumId:
       in: path
       name: id
@@ -852,122 +968,6 @@ components:
         default: 0
         example: 5
         type: integer
-    QueryLimit:
-      name: limit
-      required: false
-      in: query
-      schema:
-        title: Limit
-        description: 'The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-
-          '
-        default: 20
-        example: 10
-        type: integer
-        minimum: 0
-        maximum: 50
-  responses:
-    Forbidden:
-      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
-
-        timestamp...). Unfortunately, re-authenticating the user won''t help here.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    ManyAlbums:
-      description: A set of albums
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - albums
-            properties:
-              albums:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AlbumObject'
-    Unauthorized:
-      description: 'Bad or expired token. This can happen if the user revoked a token or
-
-        the access token has expired. You should re-authenticate the user.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    ArrayOfBooleans:
-      description: Array of booleans
-      content:
-        application/json:
-          schema:
-            type: array
-            example:
-            - false
-            - true
-            items:
-              type: boolean
-    TooManyRequests:
-      description: 'The app has exceeded its rate limits.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    PagingSavedAlbumObject:
-      description: Pages of albums
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PagingSavedAlbumObject'
-    OneAlbum:
-      description: An album
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AlbumObject'
-    PagedAlbums:
-      description: A paged set of albums
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - albums
-            properties:
-              albums:
-                $ref: '#/components/schemas/PagingSimplifiedAlbumObject'
-    PagingSimplifiedTrackObject:
-      description: Pages of tracks
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PagingSimplifiedTrackObject'
-  x-spotify-policy:
-    metadataPolicyList:
-    - $ref: '#/components/x-spotify-policy/policies/Downloading'
-    - $ref: '#/components/x-spotify-policy/policies/VisualAlteration'
-    - $ref: '#/components/x-spotify-policy/policies/Attribution'
   securitySchemes:
     oauth_2_0:
       type: oauth2

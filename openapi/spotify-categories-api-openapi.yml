@@ -85,33 +85,6 @@ paths:
       security:
       - oauth_2_0: []
 components:
-  parameters:
-    QueryOffset:
-      name: offset
-      required: false
-      in: query
-      schema:
-        title: Offset
-        description: 'The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
-
-          '
-        default: 0
-        example: 5
-        type: integer
-    QueryLimit:
-      name: limit
-      required: false
-      in: query
-      schema:
-        title: Limit
-        description: 'The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-
-          '
-        default: 20
-        example: 10
-        type: integer
-        minimum: 0
-        maximum: 50
   responses:
     Unauthorized:
       description: 'Bad or expired token. This can happen if the user revoked a token or
@@ -128,27 +101,6 @@ components:
             properties:
               error:
                 $ref: '#/components/schemas/ErrorObject'
-    Forbidden:
-      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
-
-        timestamp...). Unfortunately, re-authenticating the user won''t help here.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    OneCategory:
-      description: A category
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CategoryObject'
     TooManyRequests:
       description: 'The app has exceeded its rate limits.
 
@@ -181,7 +133,47 @@ components:
                       type: array
                       items:
                         $ref: '#/components/schemas/CategoryObject'
+    OneCategory:
+      description: A category
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CategoryObject'
+    Forbidden:
+      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
+
+        timestamp...). Unfortunately, re-authenticating the user won''t help here.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
   schemas:
+    ErrorObject:
+      type: object
+      x-spotify-docs-type: ErrorObject
+      required:
+      - status
+      - message
+      properties:
+        status:
+          type: integer
+          minimum: 400
+          maximum: 599
+          description: 'The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).
+
+            '
+        message:
+          type: string
+          description: 'A short description of the cause of the error.
+
+            '
     ImageObject:
       type: object
       x-spotify-docs-type: ImageObject
@@ -212,25 +204,6 @@ components:
           - 'null'
           example: 300
           description: 'The image width in pixels.
-
-            '
-    ErrorObject:
-      type: object
-      x-spotify-docs-type: ErrorObject
-      required:
-      - status
-      - message
-      properties:
-        status:
-          type: integer
-          minimum: 400
-          maximum: 599
-          description: 'The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).
-
-            '
-        message:
-          type: string
-          description: 'A short description of the cause of the error.
 
             '
     CategoryObject:
@@ -320,6 +293,33 @@ components:
           description: 'The total number of items available to return.
 
             '
+  parameters:
+    QueryLimit:
+      name: limit
+      required: false
+      in: query
+      schema:
+        title: Limit
+        description: 'The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+
+          '
+        default: 20
+        example: 10
+        type: integer
+        minimum: 0
+        maximum: 50
+    QueryOffset:
+      name: offset
+      required: false
+      in: query
+      schema:
+        title: Offset
+        description: 'The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
+
+          '
+        default: 0
+        example: 5
+        type: integer
   securitySchemes:
     oauth_2_0:
       type: oauth2
