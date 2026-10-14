@@ -1,5 +1,22 @@
 generated: '2026-10-14'
 edges:
+- partner_name: JetBrains Marketplace
+  partner: jetbrains
+  partner_match: aggregator
+  type: marketplace
+  marketplace: jetbrains
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://plugins.jetbrains.com/vendor/Spotify
+  listing_count: 1
+  apps:
+  - Scio
+  publisher_name: Spotify
+  badges:
+  - Verified vendor
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
 - partner_name: mParticle
   partner: mparticle
   partner_match: aggregator
@@ -43,23 +60,6 @@ edges:
       - insert
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
-- partner_name: JetBrains Marketplace
-  partner: jetbrains
-  partner_match: aggregator
-  type: marketplace
-  marketplace: jetbrains
-  channel: partner-built
-  relationship: platform-app
-  direction: third-party
-  evidence: https://plugins.jetbrains.com/vendor/Spotify
-  listing_count: 1
-  apps:
-  - Scio
-  publisher_name: Spotify
-  badges:
-  - Verified vendor
-  detected_by: sweep-devtools.py
-  detected: '2026-10-14'
 method: searched
 checked:
 - https://docs.mparticle.com/integrations/spotify/event/
