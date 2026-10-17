@@ -607,42 +607,191 @@ paths:
       - oauth_2_0:
         - user-modify-playback-state
 components:
+  responses:
+    Queue:
+      description: Information about the queue
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QueueObject'
+    OneCurrentlyPlaying:
+      description: Information about playback
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CurrentlyPlayingContextObject'
+    TooManyRequests:
+      description: 'The app has exceeded its rate limits.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    OneCurrentlyPlayingTrack:
+      description: Information about the currently playing track
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CurrentlyPlayingContextObject'
+    Unauthorized:
+      description: 'Bad or expired token. This can happen if the user revoked a token or
+
+        the access token has expired. You should re-authenticate the user.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+    CursorPagedPlayHistory:
+      description: A paged set of tracks
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CursorPagingPlayHistoryObject'
+    ManyDevices:
+      description: A set of devices
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - devices
+            properties:
+              devices:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeviceObject'
+    Forbidden:
+      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
+
+        timestamp...). Unfortunately, re-authenticating the user won''t help here.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
   schemas:
-    SimplifiedArtistObject:
+    ErrorObject:
       type: object
-      x-spotify-docs-type: SimplifiedArtistObject
+      x-spotify-docs-type: ErrorObject
+      required:
+      - status
+      - message
       properties:
-        external_urls:
+        status:
+          type: integer
+          minimum: 400
+          maximum: 599
+          description: 'The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).
+
+            '
+        message:
+          type: string
+          description: 'A short description of the cause of the error.
+
+            '
+    SimplifiedAlbumObject:
+      x-spotify-docs-type: SimplifiedAlbumObject
+      allOf:
+      - $ref: '#/components/schemas/AlbumBase'
+      - type: object
+        required:
+        - artists
+        properties:
+          artists:
+            type: array
+            items:
+              $ref: '#/components/schemas/SimplifiedArtistObject'
+            description: 'The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist.
+
+              '
+    EpisodeRestrictionObject:
+      type: object
+      x-spotify-docs-type: EpisodeRestrictionObject
+      properties:
+        reason:
+          type: string
+          description: 'The reason for the restriction. Supported values:
+
+            - `market` - The content item is not available in the given market.
+
+            - `product` - The content item is not available for the user''s subscription type.
+
+            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
+
+
+            Additional reasons may be added in the future.
+
+            **Note**: If you use this field, make sure that your application safely handles unknown values.
+
+            '
+    CursorObject:
+      type: object
+      x-spotify-docs-type: CursorObject
+      properties:
+        after:
+          type: string
+          description: The cursor to use as key to find the next page of items.
+        before:
+          type: string
+          description: The cursor to use as key to find the previous page of items.
+    CursorPagingObject:
+      type: object
+      x-spotify-docs-type: CursorPagingObject
+      properties:
+        href:
+          type: string
+          description: A link to the Web API endpoint returning the full result of the request.
+        limit:
+          type: integer
+          description: The maximum number of items in the response (as set in the query or by default).
+        next:
+          type: string
+          description: URL to the next page of items. ( `null` if none)
+        cursors:
           allOf:
-          - $ref: '#/components/schemas/ExternalUrlObject'
-          description: 'Known external URLs for this artist.
+          - $ref: '#/components/schemas/CursorObject'
+          description: The cursors used to find the next set of items.
+        total:
+          type: integer
+          description: The total number of items available to return.
+    ContextObject:
+      type: object
+      x-spotify-docs-type: ContextObject
+      properties:
+        type:
+          type: string
+          description: 'The object type, e.g. "artist", "playlist", "album", "show".
 
             '
         href:
           type: string
-          description: 'A link to the Web API endpoint providing full details of the artist.
-
-            '
-        id:
-          type: string
-          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
-
-            '
-        name:
-          type: string
-          description: 'The name of the artist.
-
-            '
-        type:
-          type: string
-          enum:
-          - artist
-          description: 'The object type.
-
-            '
+          description: A link to the Web API endpoint providing full details of the track.
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: External URLs for this context.
         uri:
           type: string
-          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the context.
 
             '
     CurrentlyPlayingContextObject:
@@ -693,6 +842,159 @@ components:
           description: 'Allows to update the user interface based on which playback actions are available within the current context.
 
             '
+    TrackRestrictionObject:
+      type: object
+      x-spotify-docs-type: TrackRestrictionObject
+      properties:
+        reason:
+          type: string
+          description: 'The reason for the restriction. Supported values:
+
+            - `market` - The content item is not available in the given market.
+
+            - `product` - The content item is not available for the user''s subscription type.
+
+            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
+
+
+            Additional reasons may be added in the future.
+
+            **Note**: If you use this field, make sure that your application safely handles unknown values.
+
+            '
+    ShowBase:
+      type: object
+      required:
+      - available_markets
+      - copyrights
+      - description
+      - explicit
+      - external_urls
+      - href
+      - html_description
+      - id
+      - images
+      - is_externally_hosted
+      - languages
+      - media_type
+      - name
+      - publisher
+      - total_episodes
+      - type
+      - uri
+      properties:
+        available_markets:
+          deprecated: true
+          type: array
+          items:
+            type: string
+          description: 'A list of the countries in which the show can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+
+            '
+        copyrights:
+          type: array
+          items:
+            $ref: '#/components/schemas/CopyrightObject'
+          description: 'The copyright statements of the show.
+
+            '
+        description:
+          type: string
+          description: 'A description of the show. HTML tags are stripped away from this field, use `html_description` field in case HTML tags are needed.
+
+            '
+        html_description:
+          type: string
+          description: 'A description of the show. This field may contain HTML tags.
+
+            '
+        explicit:
+          type: boolean
+          description: 'Whether or not the show has explicit content (true = yes it does; false = no it does not OR unknown).
+
+            '
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'External URLs for this show.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint providing full details of the show.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.
+
+            '
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          description: 'The cover art for the show in various sizes, widest first.
+
+            '
+        is_externally_hosted:
+          type: boolean
+          description: 'True if all of the shows episodes are hosted outside of Spotify''s CDN. This field might be `null` in some cases.
+
+            '
+        languages:
+          type: array
+          items:
+            type: string
+          description: 'A list of the languages used in the show, identified by their [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code.
+
+            '
+        media_type:
+          type: string
+          description: 'The media type of the show.
+
+            '
+        name:
+          type: string
+          description: 'The name of the episode.
+
+            '
+        publisher:
+          deprecated: true
+          type: string
+          description: 'The publisher of the show.
+
+            '
+        type:
+          type: string
+          enum:
+          - show
+          description: 'The object type.
+
+            '
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the show.
+
+            '
+        total_episodes:
+          type: integer
+          description: 'The total number of episodes in the show.
+
+            '
+    CopyrightObject:
+      type: object
+      x-spotify-docs-type: CopyrightObject
+      properties:
+        text:
+          type: string
+          description: 'The copyright text for this content.
+
+            '
+        type:
+          type: string
+          description: 'The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright.
+
+            '
     ExternalUrlObject:
       type: object
       x-spotify-docs-type: ExternalUrlObject
@@ -702,23 +1004,115 @@ components:
           description: 'The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
 
             '
-    PlayHistoryObject:
+    ResumePointObject:
       type: object
-      x-spotify-docs-type: PlayHistoryObject
+      x-spotify-docs-type: ResumePointObject
       properties:
-        track:
-          allOf:
-          - $ref: '#/components/schemas/TrackObject'
-          description: The track the user listened to.
-        played_at:
+        fully_played:
+          type: boolean
+          description: 'Whether or not the episode has been fully played by the user.
+
+            '
+        resume_position_ms:
+          type: integer
+          description: 'The user''s most recent position in the episode in milliseconds.
+
+            '
+    DisallowsObject:
+      type: object
+      x-spotify-docs-type: DisallowsObject
+      properties:
+        interrupting_playback:
+          type: boolean
+          description: Interrupting playback. Optional field.
+        pausing:
+          type: boolean
+          description: Pausing. Optional field.
+        resuming:
+          type: boolean
+          description: Resuming. Optional field.
+        seeking:
+          type: boolean
+          description: Seeking playback location. Optional field.
+        skipping_next:
+          type: boolean
+          description: Skipping to the next context. Optional field.
+        skipping_prev:
+          type: boolean
+          description: Skipping to the previous context. Optional field.
+        toggling_repeat_context:
+          type: boolean
+          description: Toggling repeat context flag. Optional field.
+        toggling_shuffle:
+          type: boolean
+          description: Toggling shuffle flag. Optional field.
+        toggling_repeat_track:
+          type: boolean
+          description: Toggling repeat track flag. Optional field.
+        transferring_playback:
+          type: boolean
+          description: Transfering playback between devices. Optional field.
+    SimplifiedShowObject:
+      x-spotify-docs-type: SimplifiedShowObject
+      allOf:
+      - $ref: '#/components/schemas/ShowBase'
+      - type: object
+    ExternalIdObject:
+      type: object
+      x-spotify-docs-type: ExternalIdObject
+      properties:
+        isrc:
           type: string
-          format: date-time
-          x-spotify-docs-type: Timestamp
-          description: The date and time the track was played.
-        context:
+          description: '[International Standard Recording Code](http://en.wikipedia.org/wiki/International_Standard_Recording_Code)
+
+            '
+        ean:
+          type: string
+          description: '[International Article Number](http://en.wikipedia.org/wiki/International_Article_Number_%28EAN%29)
+
+            '
+        upc:
+          type: string
+          description: '[Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code)
+
+            '
+    SimplifiedArtistObject:
+      type: object
+      x-spotify-docs-type: SimplifiedArtistObject
+      properties:
+        external_urls:
           allOf:
-          - $ref: '#/components/schemas/ContextObject'
-          description: The context the track was played from.
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: 'Known external URLs for this artist.
+
+            '
+        href:
+          type: string
+          description: 'A link to the Web API endpoint providing full details of the artist.
+
+            '
+        id:
+          type: string
+          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
+
+            '
+        name:
+          type: string
+          description: 'The name of the artist.
+
+            '
+        type:
+          type: string
+          enum:
+          - artist
+          description: 'The object type.
+
+            '
+        uri:
+          type: string
+          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
+
+            '
     AlbumBase:
       type: object
       required:
@@ -825,106 +1219,6 @@ components:
           description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the album.
 
             '
-    QueueObject:
-      type: object
-      x-spotify-docs-type: QueueObject
-      properties:
-        currently_playing:
-          oneOf:
-          - $ref: '#/components/schemas/TrackObject'
-          - $ref: '#/components/schemas/EpisodeObject'
-          discriminator:
-            propertyName: type
-          x-spotify-docs-type: TrackObject | EpisodeObject
-          description: The currently playing track or episode. Can be `null`.
-        queue:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/TrackObject'
-            - $ref: '#/components/schemas/EpisodeObject'
-            discriminator:
-              propertyName: type
-            x-spotify-docs-type: TrackObject | EpisodeObject
-          description: The tracks or episodes in the queue. Can be empty.
-    CopyrightObject:
-      type: object
-      x-spotify-docs-type: CopyrightObject
-      properties:
-        text:
-          type: string
-          description: 'The copyright text for this content.
-
-            '
-        type:
-          type: string
-          description: 'The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright.
-
-            '
-    ErrorObject:
-      type: object
-      x-spotify-docs-type: ErrorObject
-      required:
-      - status
-      - message
-      properties:
-        status:
-          type: integer
-          minimum: 400
-          maximum: 599
-          description: 'The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).
-
-            '
-        message:
-          type: string
-          description: 'A short description of the cause of the error.
-
-            '
-    AlbumRestrictionObject:
-      type: object
-      x-spotify-docs-type: AlbumRestrictionObject
-      properties:
-        reason:
-          type: string
-          enum:
-          - market
-          - product
-          - explicit
-          description: 'The reason for the restriction. Albums may be restricted if the content is not available in a given market, to the user''s subscription type, or when the user''s account is set to not play explicit content.
-
-            Additional reasons may be added in the future.
-
-            '
-    CursorObject:
-      type: object
-      x-spotify-docs-type: CursorObject
-      properties:
-        after:
-          type: string
-          description: The cursor to use as key to find the next page of items.
-        before:
-          type: string
-          description: The cursor to use as key to find the previous page of items.
-    CursorPagingObject:
-      type: object
-      x-spotify-docs-type: CursorPagingObject
-      properties:
-        href:
-          type: string
-          description: A link to the Web API endpoint returning the full result of the request.
-        limit:
-          type: integer
-          description: The maximum number of items in the response (as set in the query or by default).
-        next:
-          type: string
-          description: URL to the next page of items. ( `null` if none)
-        cursors:
-          allOf:
-          - $ref: '#/components/schemas/CursorObject'
-          description: The cursors used to find the next set of items.
-        total:
-          type: integer
-          description: The total number of items available to return.
     EpisodeBase:
       type: object
       required:
@@ -1085,102 +1379,6 @@ components:
           description: 'Included in the response when a content restriction is applied.
 
             '
-    SimplifiedShowObject:
-      x-spotify-docs-type: SimplifiedShowObject
-      allOf:
-      - $ref: '#/components/schemas/ShowBase'
-      - type: object
-    EpisodeRestrictionObject:
-      type: object
-      x-spotify-docs-type: EpisodeRestrictionObject
-      properties:
-        reason:
-          type: string
-          description: 'The reason for the restriction. Supported values:
-
-            - `market` - The content item is not available in the given market.
-
-            - `product` - The content item is not available for the user''s subscription type.
-
-            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
-
-
-            Additional reasons may be added in the future.
-
-            **Note**: If you use this field, make sure that your application safely handles unknown values.
-
-            '
-    DisallowsObject:
-      type: object
-      x-spotify-docs-type: DisallowsObject
-      properties:
-        interrupting_playback:
-          type: boolean
-          description: Interrupting playback. Optional field.
-        pausing:
-          type: boolean
-          description: Pausing. Optional field.
-        resuming:
-          type: boolean
-          description: Resuming. Optional field.
-        seeking:
-          type: boolean
-          description: Seeking playback location. Optional field.
-        skipping_next:
-          type: boolean
-          description: Skipping to the next context. Optional field.
-        skipping_prev:
-          type: boolean
-          description: Skipping to the previous context. Optional field.
-        toggling_repeat_context:
-          type: boolean
-          description: Toggling repeat context flag. Optional field.
-        toggling_shuffle:
-          type: boolean
-          description: Toggling shuffle flag. Optional field.
-        toggling_repeat_track:
-          type: boolean
-          description: Toggling repeat track flag. Optional field.
-        transferring_playback:
-          type: boolean
-          description: Transfering playback between devices. Optional field.
-    DeviceObject:
-      type: object
-      x-spotify-docs-type: DeviceObject
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-          description: The device ID. This ID is unique and persistent to some extent. However, this is not guaranteed and any cached `device_id` should periodically be cleared out and refetched as necessary.
-        is_active:
-          type: boolean
-          description: If this device is the currently active device.
-        is_private_session:
-          type: boolean
-          description: If this device is currently in a private session.
-        is_restricted:
-          type: boolean
-          description: Whether controlling this device is restricted. At present if this is "true" then no Web API commands will be accepted by this device.
-        name:
-          type: string
-          example: Kitchen speaker
-          description: A human-readable name for the device. Some devices have a name that the user can configure (e.g. \"Loudest speaker\") and some devices have a generic name associated with the manufacturer or device model.
-        type:
-          type: string
-          example: computer
-          description: Device type, such as "computer", "smartphone" or "speaker".
-        volume_percent:
-          type:
-          - integer
-          - 'null'
-          minimum: 0
-          example: 59
-          maximum: 100
-          description: The current volume in percent.
-        supports_volume:
-          type: boolean
-          description: If this device can be used to set the volume.
     TrackObject:
       type: object
       x-spotify-docs-type: TrackObject
@@ -1303,160 +1501,6 @@ components:
           description: 'Whether or not the track is from a local file.
 
             '
-    EpisodeObject:
-      x-spotify-docs-type: EpisodeObject
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/EpisodeBase'
-      - type: object
-        required:
-        - show
-        properties:
-          show:
-            allOf:
-            - $ref: '#/components/schemas/SimplifiedShowObject'
-            description: 'The show on which the episode belongs.
-
-              '
-    ShowBase:
-      type: object
-      required:
-      - available_markets
-      - copyrights
-      - description
-      - explicit
-      - external_urls
-      - href
-      - html_description
-      - id
-      - images
-      - is_externally_hosted
-      - languages
-      - media_type
-      - name
-      - publisher
-      - total_episodes
-      - type
-      - uri
-      properties:
-        available_markets:
-          deprecated: true
-          type: array
-          items:
-            type: string
-          description: 'A list of the countries in which the show can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
-
-            '
-        copyrights:
-          type: array
-          items:
-            $ref: '#/components/schemas/CopyrightObject'
-          description: 'The copyright statements of the show.
-
-            '
-        description:
-          type: string
-          description: 'A description of the show. HTML tags are stripped away from this field, use `html_description` field in case HTML tags are needed.
-
-            '
-        html_description:
-          type: string
-          description: 'A description of the show. This field may contain HTML tags.
-
-            '
-        explicit:
-          type: boolean
-          description: 'Whether or not the show has explicit content (true = yes it does; false = no it does not OR unknown).
-
-            '
-        external_urls:
-          allOf:
-          - $ref: '#/components/schemas/ExternalUrlObject'
-          description: 'External URLs for this show.
-
-            '
-        href:
-          type: string
-          description: 'A link to the Web API endpoint providing full details of the show.
-
-            '
-        id:
-          type: string
-          description: 'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.
-
-            '
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/ImageObject'
-          description: 'The cover art for the show in various sizes, widest first.
-
-            '
-        is_externally_hosted:
-          type: boolean
-          description: 'True if all of the shows episodes are hosted outside of Spotify''s CDN. This field might be `null` in some cases.
-
-            '
-        languages:
-          type: array
-          items:
-            type: string
-          description: 'A list of the languages used in the show, identified by their [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code.
-
-            '
-        media_type:
-          type: string
-          description: 'The media type of the show.
-
-            '
-        name:
-          type: string
-          description: 'The name of the episode.
-
-            '
-        publisher:
-          deprecated: true
-          type: string
-          description: 'The publisher of the show.
-
-            '
-        type:
-          type: string
-          enum:
-          - show
-          description: 'The object type.
-
-            '
-        uri:
-          type: string
-          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the show.
-
-            '
-        total_episodes:
-          type: integer
-          description: 'The total number of episodes in the show.
-
-            '
-    TrackRestrictionObject:
-      type: object
-      x-spotify-docs-type: TrackRestrictionObject
-      properties:
-        reason:
-          type: string
-          description: 'The reason for the restriction. Supported values:
-
-            - `market` - The content item is not available in the given market.
-
-            - `product` - The content item is not available for the user''s subscription type.
-
-            - `explicit` - The content item is explicit and the user''s account is set to not play explicit content.
-
-
-            Additional reasons may be added in the future.
-
-            **Note**: If you use this field, make sure that your application safely handles unknown values.
-
-            '
     ImageObject:
       type: object
       x-spotify-docs-type: ImageObject
@@ -1489,39 +1533,95 @@ components:
           description: 'The image width in pixels.
 
             '
-    ExternalIdObject:
+    DeviceObject:
       type: object
-      x-spotify-docs-type: ExternalIdObject
+      x-spotify-docs-type: DeviceObject
       properties:
-        isrc:
-          type: string
-          description: '[International Standard Recording Code](http://en.wikipedia.org/wiki/International_Standard_Recording_Code)
-
-            '
-        ean:
-          type: string
-          description: '[International Article Number](http://en.wikipedia.org/wiki/International_Article_Number_%28EAN%29)
-
-            '
-        upc:
-          type: string
-          description: '[Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code)
-
-            '
-    ResumePointObject:
-      type: object
-      x-spotify-docs-type: ResumePointObject
-      properties:
-        fully_played:
+        id:
+          type:
+          - string
+          - 'null'
+          description: The device ID. This ID is unique and persistent to some extent. However, this is not guaranteed and any cached `device_id` should periodically be cleared out and refetched as necessary.
+        is_active:
           type: boolean
-          description: 'Whether or not the episode has been fully played by the user.
+          description: If this device is the currently active device.
+        is_private_session:
+          type: boolean
+          description: If this device is currently in a private session.
+        is_restricted:
+          type: boolean
+          description: Whether controlling this device is restricted. At present if this is "true" then no Web API commands will be accepted by this device.
+        name:
+          type: string
+          example: Kitchen speaker
+          description: A human-readable name for the device. Some devices have a name that the user can configure (e.g. \"Loudest speaker\") and some devices have a generic name associated with the manufacturer or device model.
+        type:
+          type: string
+          example: computer
+          description: Device type, such as "computer", "smartphone" or "speaker".
+        volume_percent:
+          type:
+          - integer
+          - 'null'
+          minimum: 0
+          example: 59
+          maximum: 100
+          description: The current volume in percent.
+        supports_volume:
+          type: boolean
+          description: If this device can be used to set the volume.
+    AlbumRestrictionObject:
+      type: object
+      x-spotify-docs-type: AlbumRestrictionObject
+      properties:
+        reason:
+          type: string
+          enum:
+          - market
+          - product
+          - explicit
+          description: 'The reason for the restriction. Albums may be restricted if the content is not available in a given market, to the user''s subscription type, or when the user''s account is set to not play explicit content.
+
+            Additional reasons may be added in the future.
 
             '
-        resume_position_ms:
-          type: integer
-          description: 'The user''s most recent position in the episode in milliseconds.
+    QueueObject:
+      type: object
+      x-spotify-docs-type: QueueObject
+      properties:
+        currently_playing:
+          oneOf:
+          - $ref: '#/components/schemas/TrackObject'
+          - $ref: '#/components/schemas/EpisodeObject'
+          discriminator:
+            propertyName: type
+          x-spotify-docs-type: TrackObject | EpisodeObject
+          description: The currently playing track or episode. Can be `null`.
+        queue:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/TrackObject'
+            - $ref: '#/components/schemas/EpisodeObject'
+            discriminator:
+              propertyName: type
+            x-spotify-docs-type: TrackObject | EpisodeObject
+          description: The tracks or episodes in the queue. Can be empty.
+    EpisodeObject:
+      x-spotify-docs-type: EpisodeObject
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/EpisodeBase'
+      - type: object
+        required:
+        - show
+        properties:
+          show:
+            allOf:
+            - $ref: '#/components/schemas/SimplifiedShowObject'
+            description: 'The show on which the episode belongs.
 
-            '
+              '
     CursorPagingPlayHistoryObject:
       type: object
       x-spotify-docs-type: PagingTrackObject
@@ -1533,42 +1633,29 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/PlayHistoryObject'
-    SimplifiedAlbumObject:
-      x-spotify-docs-type: SimplifiedAlbumObject
-      allOf:
-      - $ref: '#/components/schemas/AlbumBase'
-      - type: object
-        required:
-        - artists
-        properties:
-          artists:
-            type: array
-            items:
-              $ref: '#/components/schemas/SimplifiedArtistObject'
-            description: 'The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist.
-
-              '
-    ContextObject:
+    PlayHistoryObject:
       type: object
-      x-spotify-docs-type: ContextObject
+      x-spotify-docs-type: PlayHistoryObject
       properties:
-        type:
-          type: string
-          description: 'The object type, e.g. "artist", "playlist", "album", "show".
-
-            '
-        href:
-          type: string
-          description: A link to the Web API endpoint providing full details of the track.
-        external_urls:
+        track:
           allOf:
-          - $ref: '#/components/schemas/ExternalUrlObject'
-          description: External URLs for this context.
-        uri:
+          - $ref: '#/components/schemas/TrackObject'
+          description: The track the user listened to.
+        played_at:
           type: string
-          description: 'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the context.
-
-            '
+          format: date-time
+          x-spotify-docs-type: Timestamp
+          description: The date and time the track was played.
+        context:
+          allOf:
+          - $ref: '#/components/schemas/ContextObject'
+          description: The context the track was played from.
+  x-spotify-policy:
+    playerPolicyList:
+    - $ref: '#/components/x-spotify-policy/policies/CommercialStreaming'
+    - $ref: '#/components/x-spotify-policy/policies/ContentAlteration'
+    - $ref: '#/components/x-spotify-policy/policies/Synchronization'
+    - $ref: '#/components/x-spotify-policy/policies/Broadcasting'
   parameters:
     QueryAdditionalTypes:
       name: additional_types
@@ -1593,93 +1680,6 @@ components:
         description: "An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).\n  If a country code is specified, only content that is available in that market will be returned.<br/>\n  If a valid user access token is specified in the request header, the country associated with\n  the user account will take priority over this parameter.<br/>\n  _**Note**: If neither market or user country are provided, the content is considered unavailable for the client._<br/>\n  Users can view the country that is associated with their account in the [account settings](https://www.spotify.com/account/overview/).\n"
         example: ES
         type: string
-  responses:
-    Unauthorized:
-      description: 'Bad or expired token. This can happen if the user revoked a token or
-
-        the access token has expired. You should re-authenticate the user.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    Forbidden:
-      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
-
-        timestamp...). Unfortunately, re-authenticating the user won''t help here.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    OneCurrentlyPlayingTrack:
-      description: Information about the currently playing track
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CurrentlyPlayingContextObject'
-    Queue:
-      description: Information about the queue
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QueueObject'
-    TooManyRequests:
-      description: 'The app has exceeded its rate limits.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                $ref: '#/components/schemas/ErrorObject'
-    CursorPagedPlayHistory:
-      description: A paged set of tracks
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CursorPagingPlayHistoryObject'
-    OneCurrentlyPlaying:
-      description: Information about playback
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CurrentlyPlayingContextObject'
-    ManyDevices:
-      description: A set of devices
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - devices
-            properties:
-              devices:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DeviceObject'
-  x-spotify-policy:
-    playerPolicyList:
-    - $ref: '#/components/x-spotify-policy/policies/CommercialStreaming'
-    - $ref: '#/components/x-spotify-policy/policies/ContentAlteration'
-    - $ref: '#/components/x-spotify-policy/policies/Synchronization'
-    - $ref: '#/components/x-spotify-policy/policies/Broadcasting'
   securitySchemes:
     oauth_2_0:
       type: oauth2

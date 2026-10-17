@@ -32,11 +32,31 @@ paths:
       security:
       - oauth_2_0: []
 components:
-  responses:
-    Unauthorized:
-      description: 'Bad or expired token. This can happen if the user revoked a token or
+  schemas:
+    ErrorObject:
+      type: object
+      x-spotify-docs-type: ErrorObject
+      required:
+      - status
+      - message
+      properties:
+        status:
+          type: integer
+          minimum: 400
+          maximum: 599
+          description: 'The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).
 
-        the access token has expired. You should re-authenticate the user.
+            '
+        message:
+          type: string
+          description: 'A short description of the cause of the error.
+
+            '
+  responses:
+    Forbidden:
+      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
+
+        timestamp...). Unfortunately, re-authenticating the user won''t help here.
 
         '
       content:
@@ -48,8 +68,10 @@ components:
             properties:
               error:
                 $ref: '#/components/schemas/ErrorObject'
-    TooManyRequests:
-      description: 'The app has exceeded its rate limits.
+    Unauthorized:
+      description: 'Bad or expired token. This can happen if the user revoked a token or
+
+        the access token has expired. You should re-authenticate the user.
 
         '
       content:
@@ -77,10 +99,8 @@ components:
                 - samba
                 items:
                   type: string
-    Forbidden:
-      description: 'Bad OAuth request (wrong consumer key, bad nonce, expired
-
-        timestamp...). Unfortunately, re-authenticating the user won''t help here.
+    TooManyRequests:
+      description: 'The app has exceeded its rate limits.
 
         '
       content:
@@ -92,26 +112,6 @@ components:
             properties:
               error:
                 $ref: '#/components/schemas/ErrorObject'
-  schemas:
-    ErrorObject:
-      type: object
-      x-spotify-docs-type: ErrorObject
-      required:
-      - status
-      - message
-      properties:
-        status:
-          type: integer
-          minimum: 400
-          maximum: 599
-          description: 'The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).
-
-            '
-        message:
-          type: string
-          description: 'A short description of the cause of the error.
-
-            '
   securitySchemes:
     oauth_2_0:
       type: oauth2
