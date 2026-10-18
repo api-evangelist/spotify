@@ -244,8 +244,26 @@ edges:
     builder: 'community (Meltano Hub variant maintainers: matatika)'
   detected_by: sweep-data-integration.py
   first_seen: '2026-10-18'
+- partner_name: Google Workspace (own)
+  partner: google-workspace
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://workspace.google.com/marketplace/app/spotify/135083966748
+  mirror_of: google-workspace/integrations/google-workspace-integration-edges.yml
+  apps:
+  - Spotify
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Google Workspace app
 method: searched
 checked:
+- google-workspace/integrations/google-workspace-integration-edges.yml
 - https://connectors.airbyte.com/files/registries/v0/cloud_registry.json
 - https://connectors.airbyte.com/files/registries/v0/oss_registry.json
 - https://ddex.net/membership/current-members/
