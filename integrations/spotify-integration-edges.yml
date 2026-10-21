@@ -261,6 +261,257 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: Acast
+  app: Acast
+  partner: acast
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.acast.com/en/articles/3404285-submitting-your-podcast-to-spotify
+  category: podcast hosting
+  contract_reference:
+    register: Spotify for Creators hosting partners (support.spotify.com getting-your-podcast-on-spotify)
+    spec_file: null
+    role: spotify-app
+    registered_name: Acast
+    matched_domain: acast.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Acast
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+- partner_name: Blubrry
+  app: Blubrry
+  partner: blubrry-api-restful-api-for-podcast-publishing-statistics
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://blubrry.com/manual/podcast-promotion/submit-podcast-to-spotify/
+  category: podcast hosting
+  contract_reference:
+    register: Spotify for Creators hosting partners (support.spotify.com getting-your-podcast-on-spotify)
+    spec_file: null
+    role: spotify-app
+    registered_name: Blubrry
+    matched_domain: blubrry.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Blubrry
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+- partner_name: Buzzsprout
+  app: Buzzsprout
+  partner: buzzsprout
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.buzzsprout.com/help/59-submit-to-spotify
+  category: podcast hosting
+  contract_reference:
+    register: Spotify for Creators hosting partners (support.spotify.com getting-your-podcast-on-spotify)
+    spec_file: null
+    role: spotify-app
+    registered_name: Buzzsprout
+    matched_domain: buzzsprout.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Buzzsprout
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+- partner_name: Captivate
+  app: Captivate
+  partner: captivate-fm
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://help.captivate.fm/en/articles/3430043-how-to-get-your-podcast-on-spotify
+  category: podcast hosting
+  contract_reference:
+    register: Spotify for Creators hosting partners (support.spotify.com getting-your-podcast-on-spotify)
+    spec_file: null
+    role: spotify-app
+    registered_name: Captivate
+    matched_domain: captivate.fm
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Captivate
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+- partner_name: PodBean
+  app: PodBean
+  partner: podbean
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://help.podbean.com/support/solutions/articles/25000014128-how-to-submit-your-podbean-podcast-to-spotify
+  category: podcast hosting
+  contract_reference:
+    register: Spotify for Creators hosting partners (support.spotify.com getting-your-podcast-on-spotify)
+    spec_file: null
+    role: spotify-app
+    registered_name: PodBean
+    matched_domain: podbean.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - PodBean
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+- partner_name: RedCircle
+  app: RedCircle
+  partner: redcircle
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://support.redcircle.com/distributing-your-podcast-to-spotify
+  category: podcast hosting
+  contract_reference:
+    register: Spotify for Creators hosting partners (support.spotify.com getting-your-podcast-on-spotify)
+    spec_file: null
+    role: spotify-app
+    registered_name: RedCircle
+    matched_domain: redcircle.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - RedCircle
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+- partner_name: Simplecast
+  app: Simplecast
+  partner: simplecast
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://help.simplecast.com/en/articles/1545997-how-to-get-your-podcast-on-spotify
+  category: podcast hosting
+  contract_reference:
+    register: Spotify for Creators hosting partners (support.spotify.com getting-your-podcast-on-spotify)
+    spec_file: null
+    role: spotify-app
+    registered_name: Simplecast
+    matched_domain: simplecast.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Simplecast
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+- partner_name: Spreaker
+  app: Spreaker
+  partner: spreaker
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://help.spreaker.com/en/articles/3753192-distributing-your-podcast-on-spotify
+  category: podcast hosting
+  contract_reference:
+    register: Spotify for Creators hosting partners (support.spotify.com getting-your-podcast-on-spotify)
+    spec_file: null
+    role: spotify-app
+    registered_name: Spreaker
+    matched_domain: spreaker.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Spreaker
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+- partner_name: Transistor
+  app: Transistor
+  partner: transistor
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://support.transistor.fm/en/article/how-do-i-submit-my-show-to-spotify-11jnn4c/
+  category: podcast hosting
+  contract_reference:
+    register: Spotify for Creators hosting partners (support.spotify.com getting-your-podcast-on-spotify)
+    spec_file: null
+    role: spotify-app
+    registered_name: Transistor
+    matched_domain: transistor.fm
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Transistor
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+- partner_name: Apple (own)
+  partner: apple
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://creators.spotify.com
+  mirror_of: apple/integrations/apple-integration-edges.yml
+  apps:
+  - Spotify for Creators
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: podcast hosting
 method: searched
 checked:
 - google-workspace/integrations/google-workspace-integration-edges.yml
@@ -279,7 +530,20 @@ checked:
 - https://plugins.jetbrains.com/
 - https://raw.githubusercontent.com/c2pa-org/conformance-public/main/conforming-products/conforming-products-list.json
 - https://zapier.com/api/v4/apps/
+- https://iabtechlab.com/compliance-programs/compliant-companies/
+- https://podcasters.apple.com/partner-search
+- https://podcastindex.org/api/apps
+- https://raw.githubusercontent.com/Podcastindex-org/podcast-namespace/main/docs/element-support.md
+- https://support.spotify.com/us/creators/article/getting-your-podcast-on-spotify/
 source:
 - https://docs.mparticle.com/integrations/spotify/event/
 - https://hightouch.com/docs/destinations/spotify
-marketplace_apps: []
+marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: spotify
+  url: https://support.spotify.com/us/creators/article/getting-your-podcast-on-spotify/
+  app_count: 25
+  adapter: sweep-podcasting-2-0.py:spotify-podcast-hosting-partners
+  listed: 9
+  note: 25 hosting partners read; only domain-linked vendors are written
