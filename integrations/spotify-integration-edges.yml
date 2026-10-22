@@ -620,6 +620,55 @@ edges:
   - Stream Embed
   - Scrobble
   - Spotify Sorter
+- partner_name: APIs.guru OpenAPI Directory
+  partner: apis-guru
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: third-party
+  evidence: https://apis.guru/
+  category: API definition directory listing (OpenAPI)
+  contract_reference:
+    register: APIs.guru OpenAPI Directory
+    spec_file: null
+    standard: APIs.guru OpenAPI Directory
+    role: listed-in-directory
+    directory_provider: spotify.com
+    matched_domain: spotify.com
+    matched_by: domain+name-among-holders
+    apis_listed: 2
+    version_count: 2
+    first_added: '2021-06-18'
+    last_updated: '2023-03-06'
+    origin_publisher_hosted: true
+    origin_hosts:
+    - developer.spotify.com
+    - raw.githubusercontent.com
+    categories:
+    - media
+    own_openapi_files: 15
+    listings:
+    - key: spotify.com
+      title: Spotify Web API
+      preferred: 1.0.0
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/spotify.com/1.0.0/openapi.json
+      origin_url: https://developer.spotify.com/_data/documentation/web-api/reference/open-api-schema.yml
+      openapi_version: 3.0.1
+    - key: spotify.com:sonallux
+      title: Spotify Web API with fixes and improvements from sonallux
+      preferred: 2023.2.27
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/spotify.com/sonallux/2023.2.27/openapi.json
+      origin_url: https://raw.githubusercontent.com/sonallux/spotify-web-api/main/fixed-spotify-open-api.yml
+      openapi_version: 3.0.1
+    signal_note: 'participation only: a community directory listing (APIs.guru collects definitions; the provider
+      did not file them). Signals: version_count, apis_listed, origin_publisher_hosted.'
+    detected_by: sweep-openapi-directory-apis-guru.py
+    detected: '2026-10-22'
+  detected_by: sweep-openapi-directory-apis-guru.py
+  first_seen: '2026-10-22'
 method: searched
 checked:
 - google-workspace/integrations/google-workspace-integration-edges.yml
@@ -649,6 +698,8 @@ checked:
 - https://raw.githubusercontent.com/<repo>/HEAD/manifest.json
 - https://raw.githubusercontent.com/obsidianmd/obsidian-releases/793b52114f54b055b760ef47761ec5c93d689804/community-plugin-stats.json
 - https://raw.githubusercontent.com/obsidianmd/obsidian-releases/793b52114f54b055b760ef47761ec5c93d689804/community-plugins.json
+- https://api.apis.guru/v2/list.json
+- https://api.apis.guru/v2/providers.json
 source:
 - https://docs.mparticle.com/integrations/spotify/event/
 - https://hightouch.com/docs/destinations/spotify
