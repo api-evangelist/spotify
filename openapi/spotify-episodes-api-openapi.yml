@@ -913,3 +913,9 @@ components:
             streaming: 'Play content and control playback on your other devices.
 
               '
+x-provenance:
+  method: harvested
+  publisher: Spotify
+  source: https://developer.spotify.com/reference/web-api/open-api-schema.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
